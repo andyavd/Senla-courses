@@ -19,7 +19,7 @@ public class AssemblyLine implements IAssemblyLine {
         iProduct.installSecondPart(chassis);
         iProduct.installThirdPart(engine);
         
-        System.out.println("A new Product was successfully created");
+        System.out.println("A new Product was successfully created: " + body.getName() + " - " + body.getBodyType() + ", " + chassis.getName() + " - " + chassis.getDrive() + ", " + engine.getName() + " - " + engine.getPower() + " bhp.");
         
 		return iProduct;
 	}
