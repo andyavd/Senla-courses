@@ -1,6 +1,6 @@
 package com.andyavd;
 
-public class Chassis extends CarPart implements IProductPart {
+public class Chassis implements IProductPart {
 	
 	private String drive;
 
@@ -12,8 +12,7 @@ public class Chassis extends CarPart implements IProductPart {
         this.drive = drive;
     }
     
-    public Chassis(String name, String drive) {
-		super(name);
+    public Chassis(String drive) {
 		this.drive = drive;
 		System.out.println("Building Chassis");
 	}

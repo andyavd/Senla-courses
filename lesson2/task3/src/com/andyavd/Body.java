@@ -1,6 +1,6 @@
 package com.andyavd;
 
-public class Body extends CarPart implements IProductPart {
+public class Body implements IProductPart {
 	
 	private String bodyType;
 	
@@ -12,8 +12,7 @@ public class Body extends CarPart implements IProductPart {
         this.bodyType = bodyType;
     }
     
-    public Body(String name, String bodyType) {
-		super(name);
+    public Body(String bodyType) {
 		this.bodyType = bodyType;
 		System.out.println("Building Body");
 	}
