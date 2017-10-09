@@ -1,6 +1,6 @@
 package com.andyavd;
 
-public class Engine extends CarPart implements IProductPart {
+public class Engine implements IProductPart {
 	
 	private int power;
 	
@@ -12,8 +12,7 @@ public class Engine extends CarPart implements IProductPart {
         this.power = power;
     }
 	
-	public Engine(String name, int power) {
-		super(name);
+	public Engine(int power) {
 		this.power = power;
 		System.out.println("Building Engine");
 	}
