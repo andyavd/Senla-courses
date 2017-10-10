@@ -10,7 +10,7 @@ public class Department implements IUnit{
 		this.name = name;
 	}
 	public String getName(){
-		return this.name;
+		return name;
 	}
 	public Set getEmployees(){
 		return employees;	
