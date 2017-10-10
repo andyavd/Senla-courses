@@ -2,10 +2,6 @@ package com.andyavd;
 
 public class AssemblyLine implements IAssemblyLine {
 	
-	public AssemblyLine(){
-        assembleProduct(new Product());
-    }
-	
 	@Override
 	public IProduct assembleProduct(IProduct iProduct) {
 		
