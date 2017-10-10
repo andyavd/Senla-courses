@@ -7,8 +7,8 @@ public class Employee extends Person {
 	private IdCard idCard;
 	private Department department;
 
-	public void setPosition(String newPosition){
-		position = newPosition;
+	public void setPosition(String position){
+		this.position = position;
 	}
 	public String getPosition(){
 		return position;
