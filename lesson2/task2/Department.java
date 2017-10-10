@@ -6,11 +6,11 @@ public class Department implements IUnit{
 	private String name;
 	private Set employees = new HashSet();
 	
-	public void setName(String nm){
-		name = nm;
+	public void setName(String name){
+		this.name = name;
 	}
 	public String getName(){
-		return name;
+		return this.name;
 	}
 	public Set getEmployees(){
 		return employees;	
