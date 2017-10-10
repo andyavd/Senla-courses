@@ -10,13 +10,13 @@ public class Person{
 		this.firstName = firstName;
 	}
 	public String getFirstName(){
-		return this.firstName;
+		return firstName;
 	}
 	public void setLastName (String lastName){
 		this.lastName = lastName;
 	}
 	public String getLastName(){
-		return this.lastName;
+		return lastName;
 	}
 
 }
