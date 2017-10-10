@@ -7,20 +7,20 @@ public class Employee extends Person {
 	private IdCard idCard;
 	private Department department;
 
-	public void setPosition(String newPosition){
-		position = newPosition;
+	public void setPosition(String position){
+		this.position = position;
 	}
 	public String getPosition(){
 		return position;
 	}
-	public void setIdCard(IdCard ic){
-		idCard = ic;
+	public void setIdCard(IdCard idCard){
+		this.idCard = idCard;
 	}
 	public IdCard getIdCard(){
 		return idCard;
 	}
-	public void setDepartment(Department dp){
-		department = dp;
+	public void setDepartment(Department department){
+		this.department = department;
 	}
 	public Department getDepartment(){
 		return department;
