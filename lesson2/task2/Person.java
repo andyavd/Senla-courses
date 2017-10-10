@@ -7,16 +7,16 @@ public class Person{
 	protected String lastName;
 
 	public void setFirstName (String firstName){
-		firstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getFirstName(){
-		return firstName;
+		return this.firstName;
 	}
 	public void setLastName (String lastName){
-		lastName = lastName;
+		this.lastName = lastName;
 	}
 	public String getLastName(){
-		return lastName;
+		return this.lastName;
 	}
 
 }
