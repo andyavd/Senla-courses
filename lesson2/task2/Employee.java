@@ -13,14 +13,14 @@ public class Employee extends Person {
 	public String getPosition(){
 		return position;
 	}
-	public void setIdCard(IdCard ic){
-		idCard = ic;
+	public void setIdCard(IdCard idCard){
+		this.idCard = idCard;
 	}
 	public IdCard getIdCard(){
 		return idCard;
 	}
-	public void setDepartment(Department dp){
-		department = dp;
+	public void setDepartment(Department department){
+		this.department = department;
 	}
 	public Department getDepartment(){
 		return department;
