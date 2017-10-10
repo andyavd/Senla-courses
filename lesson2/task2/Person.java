@@ -6,14 +6,14 @@ public class Person{
 	protected String firstName;
 	protected String lastName;
 
-	public void setFirstName (String newFirstName){
-		firstName = newFirstName;
+	public void setFirstName (String firstName){
+		firstName = firstName;
 	}
 	public String getFirstName(){
 		return firstName;
 	}
-	public void setLastName (String newLastName){
-		lastName = newLastName;
+	public void setLastName (String lastName){
+		lastName = lastName;
 	}
 	public String getLastName(){
 		return lastName;
