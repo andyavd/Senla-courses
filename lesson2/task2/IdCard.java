@@ -10,13 +10,13 @@ public class IdCard{
 		this.number = number;
 	}
 	public int getNumber(){
-		return this.number;
+		return number;
 	}
 	public void setValidTill(String validTill){
 		this.validTill = validTill;
 	}
 	public String getValidTill(){
-		return this.validTill;
+		return validTill;
 	}
 
 	public IdCard(int nm, String vt){
