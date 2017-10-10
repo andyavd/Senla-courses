@@ -6,17 +6,17 @@ public class IdCard{
 	private int number;
 	private String validTill;
 
-	public void setNumber(int newNumber){
-		number = newNumber;
+	public void setNumber(int number){
+		this.number = number;
 	}
 	public int getNumber(){
-		return number;
+		return this.number;
 	}
-	public void setValidTill(String newValidTill){
-		validTill = newValidTill;
+	public void setValidTill(String validTill){
+		this.validTill = validTill;
 	}
 	public String getValidTill(){
-		return validTill;
+		return this.validTill;
 	}
 
 	public IdCard(int nm, String vt){
