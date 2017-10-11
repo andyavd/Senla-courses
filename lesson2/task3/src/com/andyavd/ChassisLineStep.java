@@ -4,7 +4,7 @@ public class ChassisLineStep implements ILineStep {
 
 	@Override
 	public IProductPart buildProductPart() {
-		return new Chassis("AWD");
+		System.out.println("Chassis building");
+		return new Chassis();
 	}
-
 }
