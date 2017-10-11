@@ -4,8 +4,7 @@ public class BodyLineStep implements ILineStep {
 
 	@Override
 	public IProductPart buildProductPart() {
-		
-		return new Body("Sedan");
+		System.out.println("Body building");
+		return new Body();
 	}
-
 }
