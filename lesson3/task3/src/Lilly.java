@@ -1,5 +1,3 @@
-package task3;
-
 public class Lilly extends Flower {
 
 	private int daysOfLife;
