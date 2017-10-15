@@ -1,6 +1,5 @@
-package task3;
-
 public abstract class Flower {
+	
 	private String group;
 	private String sort;
 	private String color;
@@ -36,8 +35,5 @@ public abstract class Flower {
 		this.sort = sort;
 		this.color = color;
 		this.price = price;
-	}
-	
-	
-	
+	}	
 }
