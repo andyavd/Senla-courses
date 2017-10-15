@@ -1,5 +1,3 @@
-package task3;
-
 public class Alstroemeria extends Flower {
 	
 	private int daysOfLife;
