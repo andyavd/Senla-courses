@@ -1,5 +1,3 @@
-package task2;
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -19,5 +17,4 @@ public class Test {
 		
 		System.out.println("Biggest digit in a randomly generated number is: " + array[2]);
 	}
-
 }
