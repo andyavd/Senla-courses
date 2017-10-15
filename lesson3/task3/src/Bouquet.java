@@ -1,5 +1,3 @@
-package task3;
-
 public class Bouquet {
 
 	private Flower[] flowers;
