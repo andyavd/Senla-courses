@@ -2,9 +2,9 @@ public class Test {
 
 	public static void main(String args[]) {
 
-		ToString ts = new ToString();
+		StringCreation sc = new StringCreation();
 
-		ts.getArrayAsString();
-		ts.getSumAsString();
+		sc.getArrayAsString();
+		sc.getSumAsString();
 	}
 }
