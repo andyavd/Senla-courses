@@ -4,5 +4,6 @@ public class Test {
 
 		RandomNumber rn = new RandomNumber();
 		rn.createRandomNumber();
+		rn.sortArray();
 	}
 }
