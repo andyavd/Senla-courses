@@ -1,5 +1,3 @@
-package task1;
-
 public class ArrayCreation {
 
 	private int[] array = { 2, 3, 4, 5, 6 };
