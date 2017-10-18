@@ -1,5 +1,3 @@
-package task4;
-
 public interface IHospitalAbilities {
 	
 	public void addDoctor(Doctor doctor);
