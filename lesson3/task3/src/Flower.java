@@ -1,5 +1,3 @@
-package task3;
-
 public abstract class Flower {
 	private String name;
 	private String color;
