@@ -1,5 +1,3 @@
-package task2;
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,7 +9,6 @@ public class RandomNumber {
 	
 	public int createRandomNumber() {
 		number = 100 + random.nextInt(999 - 100);
-//		System.out.println("Randomly generated number is: " + number);
 		return number;
 	}
 	
@@ -33,7 +30,6 @@ public class RandomNumber {
 	public int sortArray() {
 		int[] digitsArray = {extractHundreds(), extractTens(), extractOnes()};
 		Arrays.sort(digitsArray);
-//		System.out.println("Biggest digit in a randomly generated number is: " + digitsArray[2]);
 		return digitsArray[2];
 	}
 }
