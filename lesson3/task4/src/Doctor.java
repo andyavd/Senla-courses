@@ -1,5 +1,3 @@
-package task4;
-
 public class Doctor extends APerson implements IDoctorsAbilities {
 	private String specialization;
 	private Patient[] doctorsPatients = new Patient[10];
@@ -57,8 +55,7 @@ public class Doctor extends APerson implements IDoctorsAbilities {
 			return " has cured all the patients.";
 		} else {
 			return " has " + totalDoctorsPatients + changeTheWordPatient() +" for tomorrow.";
-		}
-		
+		}		
 	}
 	
 	public int getTotalDoctorsPatients() {
