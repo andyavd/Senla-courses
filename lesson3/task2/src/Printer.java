@@ -1,5 +1,3 @@
-package task2;
-
 public class Printer {
 	RandomNumber rn = new RandomNumber();
 	
