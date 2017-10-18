@@ -1,5 +1,3 @@
-package task4;
-
 public class Test {
 
 	public static void main(String[] args) {
@@ -49,6 +47,5 @@ public class Test {
 		print.getResults(doctor1);
 		print.getResults(doctor2);
 		print.getResults(doctor3);
-
 	}
 }
