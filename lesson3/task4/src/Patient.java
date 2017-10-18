@@ -1,5 +1,3 @@
-package task4;
-
 public class Patient extends APerson {
 
 	private String disease;
