@@ -2,16 +2,25 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		Rose rose1 = new Rose("Rose", "Naomi", "Red", 3.1);
-		Rose rose2 = new Rose("Rose", "Avalanche", "White", 3.3);
-		Chrysanthemum chrysanthemum = new Chrysanthemum("Chrysanthemum", "Zembla", "Peach", 2.5);
-		Alstroemeria alstroemeria = new Alstroemeria("Alstroemeria", "Emotion", "Purple", 2.9);
-		Lilly lilly = new Lilly("Lilly", "Altari", "Cream", 4.1);
+		Flower rose1 = new Rose("Rose", "Red", 3.1);
+		Flower rose2 = new Rose("Rose", "White", 3.3);
+		Flower chrysanthemum = new Chrysanthemum("Chrysanthemum", "Peach", 2.5);
+		Flower alstroemeria = new Alstroemeria("Alstroemeria", "Purple", 2.9);
+		Flower lilly = new Lilly("Lilly", "Cream", 4.1);
 		
-		Flower[] flowers = {rose1, rose1, rose1, rose2, rose2, rose2, chrysanthemum, chrysanthemum, alstroemeria, alstroemeria, lilly};
+		Flower[] bouquet = new Flower[7];
 		
-		Bouquet bouquet = new Bouquet(flowers);
+		Bouquet b = new Bouquet(bouquet);
 		
-		bouquet.bouquetCost();
+		b.addFlowerToBouquet(rose1);
+		b.addFlowerToBouquet(rose2);
+		b.addFlowerToBouquet(chrysanthemum);
+		b.addFlowerToBouquet(chrysanthemum);
+		b.addFlowerToBouquet(lilly);
+		b.addFlowerToBouquet(chrysanthemum);
+		b.addFlowerToBouquet(alstroemeria);
+		b.addFlowerToBouquet(alstroemeria);
+		
+		b.bouquetCost();
 	}
 }

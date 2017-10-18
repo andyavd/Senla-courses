@@ -1,6 +1,6 @@
 public class Lilly extends Flower {
 
-	public Lilly(String group, String sort, String color, double price) {
-		super(group, sort, color, price);
+	public Lilly(String name, String color, double price) {
+		super(name, color, price);
 	}
 }

@@ -2,19 +2,21 @@ import java.util.Arrays;
 
 public class StringCreation {
 
-	ArrayCreation ac = new ArrayCreation();
-
-	public void getArrayAsString() {
-		String createStringFromArray = Arrays.toString(ac.getArray());
+	public void getArrayAsString(int[] array) {
+		String createStringFromArray = Arrays.toString(array);
 		System.out.println("Array as a String is: " + createStringFromArray);
 	}
 
-	public void getSumAsString() {
-		String createStringFromSum = Integer.toString(ac.countSum());
+	public void getSumAsString(int[] array) {
+
+		int sum = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			sum = sum + array[i];
+		}
+
+		String createStringFromSum = Integer.toString(sum);
 		System.out.println("Sum as a String is: " + createStringFromSum);
 	}
 
-	public StringCreation() {
-
-	}
 }
