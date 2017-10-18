@@ -1,5 +1,3 @@
-package task4;
-
 public class Printer {
 	Hospital hospital = new Hospital();
 
