@@ -1,5 +1,3 @@
-package task4;
-
 public class Hospital implements IHospitalAbilities {
 
 	private Doctor[] doctors = new Doctor[20];
@@ -49,8 +47,5 @@ public class Hospital implements IHospitalAbilities {
 	@Override
 	public Patient[] getAllDoctorsPatients(Doctor doctor) {
 		return doctor.getDoctorsPatients();
-	}
-	
-	public Hospital() {
 	}
 }
