@@ -1,15 +1,20 @@
+import task4.Printer;
+
 public class Bouquet {
 
+	Printer printer = new Printer();
+	
 	private Flower[] bouquet;
-
-	public Flower[] getBouquet() {
-		return bouquet;
-	}
 
 	public void addFlowerToBouquet(Flower flower) {
 		if (bouquet[bouquet.length - 1] != null) {
-			System.out.println("Too much flowers in the bouquet. You'll see the price of the first " + bouquet.length
-					+ " flowers.");
+			
+			StringBuilder s = new StringBuilder();
+			s.append("Too much flowers in the bouquet. You'll see the price of the first ");
+			s.append(bouquet.length);
+			s.append(" flowers.");
+			
+			Printer.print(s.toString());
 		}
 		for (int i = 0; i < bouquet.length; i++) {
 			if (bouquet[i] == null) {
@@ -26,7 +31,12 @@ public class Bouquet {
 				totalPrice = totalPrice + bouquet[i].getPrice();
 			}
 		}
-		System.out.println("Total price of the bouquet is " + totalPrice);
+		
+		StringBuilder s = new StringBuilder();
+		s.append("Total price of the bouquet is ");
+		s.append(totalPrice);
+		
+		Printer.print(s.toString());
 	}
 
 	public Bouquet(Flower[] bouquet) {
