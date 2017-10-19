@@ -1,6 +1,5 @@
 public abstract class Flower {
 	private String name;
-	private String color;
 	private double price;
 
 	public String getGroup() {
@@ -11,14 +10,6 @@ public abstract class Flower {
 		this.name = name;
 	}
 
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
 	public double getPrice() {
 		return price;
 	}
@@ -27,9 +18,8 @@ public abstract class Flower {
 		this.price = price;
 	}
 
-	public Flower(String name, String color, double price) {
+	public Flower(String name, double price) {
 		this.name = name;
-		this.color = color;
 		this.price = price;
 	}
 }
