@@ -7,15 +7,14 @@ public class Bouquet {
 	}
 
 	public void addFlowerToBouquet(Flower flower) {
+		if (bouquet[bouquet.length - 1] != null) {
+			System.out.println("Too much flowers in the bouquet. You'll see the price of the first " + bouquet.length
+					+ " flowers.");
+		}
 		for (int i = 0; i < bouquet.length; i++) {
 			if (bouquet[i] == null) {
 				bouquet[i] = flower;
-				break;
-			}
-			if (bouquet[bouquet.length - 1] != null) {
-				System.out.println("Too much flowers in the bouquet. You'll see the price of the first "
-						+ bouquet.length + " flowers.");
-				break;
+				return;
 			}
 		}
 	}
