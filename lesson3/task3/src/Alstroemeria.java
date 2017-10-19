@@ -1,6 +1,6 @@
 public class Alstroemeria extends Flower {
 
-	public Alstroemeria(String name, String color, double price) {
-		super(name, color, price);
-	}	
+	public Alstroemeria(String name, double price) {
+		super(name, price);
+	}
 }

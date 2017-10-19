@@ -1,27 +1,9 @@
 public class Doctor extends APerson implements IDoctorsAbilities {
-	private String specialization;
 	private Patient[] doctorsPatients = new Patient[10];
 	private int totalDoctorsPatients = 0;
 	
-	public String getSpecialization() {
-		return specialization;
-	}
-
-	public void setSpecialization(String specialization) {
-		this.specialization = specialization;
-	}
-	
-	public String changeTheWordPatient() {
-		if(totalDoctorsPatients == 1) {
-			return " Patient";
-		} else {
-			return " Patients";
-		}
-	}
-	
-	public Doctor(String firstName, String lastName, String specialization) {
+	public Doctor(String firstName, String lastName) {
 		super(firstName, lastName);
-		this.specialization = specialization;
 	}
 
 	public Patient[] getDoctorsPatients() {
@@ -29,13 +11,13 @@ public class Doctor extends APerson implements IDoctorsAbilities {
 	}
 
 	@Override
-	public void setDoctorsPatients(Patient patient) {
+	public void setDoctorsPatient(Patient patient) {
 		doctorsPatients[totalDoctorsPatients] = patient;
 		totalDoctorsPatients++;
 	}
 	
 	@Override
-	public void removeDoctorPatients(Patient patient) {
+	public void removeDoctorPatient(Patient patient) {
 		for(int i=0; i<doctorsPatients.length; i++) {
 			if(doctorsPatients[i] == patient) {
 				doctorsPatients[i] = null;
@@ -46,19 +28,15 @@ public class Doctor extends APerson implements IDoctorsAbilities {
 
 	@Override
 	public String toString() {
-		return "Doctor " + firstName + " " + lastName + ", " + specialization + "";
+		StringBuilder s = new StringBuilder();
+		s.append("Doctor ");
+		s.append(firstName);
+		s.append(" ");
+		s.append(lastName);
+		return s.toString();
 	}
 	
-	@Override
-	public String isAnyoneLeft() {
-		if(totalDoctorsPatients == 0) {
-			return " has cured all the patients.";
-		} else {
-			return " has " + totalDoctorsPatients + changeTheWordPatient() +" for tomorrow.";
-		}		
-	}
-	
-	public int getTotalDoctorsPatients() {
+	public int getAllDoctorsPatients() {
 		return totalDoctorsPatients;
 	}
 }
