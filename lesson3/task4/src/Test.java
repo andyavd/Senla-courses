@@ -5,15 +5,15 @@ public class Test {
 		Hospital hospital = new Hospital();
 		Printer print = new Printer();
 		
-		Doctor doctor1 = new Doctor("Gregory", "House", "Diagnostican");
-		Doctor doctor2 = new Doctor("James", "Wilson", "Oncologist");
-		Doctor doctor3 = new Doctor("Eric", "Foreman", "Surgeon");
+		Doctor doctor1 = new Doctor("Gregory", "House");
+		Doctor doctor2 = new Doctor("James", "Wilson");
+		Doctor doctor3 = new Doctor("Eric", "Foreman");
 
-		Patient patient1 = new Patient("John", "Doe", "Flu");
-		Patient patient2 = new Patient("James", "Doe", "Migraine");
-		Patient patient3 = new Patient("Jane", "Doe", "Adenoma");
-		Patient patient4 = new Patient("Jack", "Doe", "Inflammation of appendicitis");
-		Patient patient5 = new Patient("Jim", "Doe", "Something strange");
+		Patient patient1 = new Patient("John", "Doe");
+		Patient patient2 = new Patient("James", "Doe");
+		Patient patient3 = new Patient("Jane", "Doe");
+		Patient patient4 = new Patient("Jack", "Doe");
+		Patient patient5 = new Patient("Jim", "Doe");
 
 		hospital.addDoctor(doctor1);
 		hospital.addDoctor(doctor2);
@@ -25,27 +25,25 @@ public class Test {
 		hospital.addPatient(patient4);
 		hospital.addPatient(patient5);
 		
-		print.getDoctors(hospital.getTotalDoctors());
-		print.getDoctors(hospital.getTotalPatients());
+		hospital.showAllDoctors();
+		hospital.showAllPatients();
 
-		doctor1.setDoctorsPatients(patient1);
-		doctor1.setDoctorsPatients(patient2);
-		doctor1.setDoctorsPatients(patient5);
-		print.getProcess(doctor1);
+		doctor1.setDoctorsPatient(patient1);
+		doctor1.setDoctorsPatient(patient2);
+		doctor1.setDoctorsPatient(patient5);
+		
+		doctor2.setDoctorsPatient(patient3);
+		
+		doctor3.setDoctorsPatient(patient4);
+		
+		hospital.showProcess(doctor1);
+		hospital.showProcess(doctor2);
+		hospital.showProcess(doctor3);
 
-		doctor2.setDoctorsPatients(patient3);
-		print.getProcess(doctor2);
+		doctor1.removeDoctorPatient(patient1);
+		doctor1.removeDoctorPatient(patient2);
+		doctor2.removeDoctorPatient(patient3);
+		doctor3.removeDoctorPatient(patient4);
 
-		doctor3.setDoctorsPatients(patient4);
-		print.getProcess(doctor3);
-
-		doctor1.removeDoctorPatients(patient1);
-		doctor1.removeDoctorPatients(patient2);
-		doctor2.removeDoctorPatients(patient3);
-		doctor3.removeDoctorPatients(patient4);
-
-		print.getResults(doctor1);
-		print.getResults(doctor2);
-		print.getResults(doctor3);
 	}
 }
