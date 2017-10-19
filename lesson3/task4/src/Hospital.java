@@ -1,47 +1,78 @@
 public class Hospital implements IHospitalAbilities {
-
+	
+	Printer printer = new Printer();
+	
 	private Doctor[] doctors = new Doctor[20];
 	private Patient[] patients = new Patient[20];
 	private int totalDoctors = 0;
 	private int totalPatients = 0;
 
-	public Doctor[] getDoctors() {
-		return doctors;
-	}
-
-	public void setDoctors(Doctor[] doctors) {
-		this.doctors = doctors;
-	}
-	
-	
-	public Patient[] getPatients() {
-		return patients;
-	}
-
-	public void setPatients(Patient[] patients) {
-		this.patients = patients;
-	}
-
 	public int getTotalDoctors() {
 		return totalDoctors;
 	}
 
+	public void showAllDoctors() {
+		StringBuilder s = new StringBuilder();
+		s.append("Today are working ");
+		s.append(totalDoctors);
+		s.append(" doctors.");
+		
+		Printer.print(s.toString());
+	}
+	
 	public int getTotalPatients() {
 		return totalPatients;
+	}
+	
+	public void showAllPatients() {
+		StringBuilder s = new StringBuilder();
+		s.append("Today are visiting ");
+		s.append(totalPatients);
+		s.append(" patients.");
+		
+		Printer.print(s.toString());
+	}
+	
+	public void showProcess(Doctor doctor) {
+		String patient;
+		
+		if(doctor.getAllDoctorsPatients()==1) {
+			patient = " Patient";
+		} else {
+			patient = " Patients";
+		}
+		
+		StringBuilder s = new StringBuilder();
+		s.append(doctor);
+		s.append(" works today with ");
+		s.append(doctor.getAllDoctorsPatients());
+		s.append(patient);
+		
+		Printer.print(s.toString());
 	}
 
 	@Override
 	public void addDoctor(Doctor doctor) {
 		doctors[totalDoctors] = doctor;
 		totalDoctors++;
-		System.out.println(doctor.toString() + " came to work today.");
+		
+		StringBuilder s = new StringBuilder();
+		s.append(doctor);
+		s.append(" came to work today.");
+		
+		Printer.print(s.toString());
 	}
 
 	@Override
 	public void addPatient(Patient patient) {
 		patients[totalPatients] = patient;
 		totalPatients++;
-		System.out.println(patient.toString() + " visited hospital today.");
+		
+		StringBuilder s = new StringBuilder();
+		s.append(patient);
+		s.append(" visited hospital today.");
+		
+		Printer.print(s.toString());
 	}
 
 	@Override
