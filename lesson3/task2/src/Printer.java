@@ -1,10 +1,6 @@
 public class Printer {
-	RandomNumber rn = new RandomNumber();
-	
-	public void randomlyGeneratedNumber() {
-		System.out.println("Randomly generated number is: " + rn.createRandomNumber());
-	}
-	public void biggestDigitInRandomlyGeneratedNumber() {
-		System.out.println("Biggest digit in a randomly generated number is: " + rn.sortArray());
+
+	public static void print(String message) {
+		System.out.println(message);
 	}
 }

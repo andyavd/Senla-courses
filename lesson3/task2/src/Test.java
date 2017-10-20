@@ -2,9 +2,9 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		Printer print = new Printer();
+		RandomNumber rn = new RandomNumber();
 		
-		print.randomlyGeneratedNumber();
-		print.biggestDigitInRandomlyGeneratedNumber();
+		rn.createRandomNumber();
+		rn.sortArray();
 	}
 }
