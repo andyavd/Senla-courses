@@ -5,26 +5,19 @@ import eu.senla.andyavd.hoteladministrator.entities.Service;
 public class ServicesStorage {
 
 	private Service[] services = new Service[4];
+	private int counter = 0;
 
 	public void addService(Service service) {
-		for (int i = 0; i < services.length; i++) {
-			
-//			 if(i == rooms.length - 1) {
-//			 Room[] stretchedArray = new Room[rooms.length * 2];
-//			 System.arraycopy(rooms, 0, stretchedArray, 0, rooms.length - 1);
-//			 rooms = stretchedArray;
-//			 }
-			if (services[i] == null) {
-				services[i] = service;
-				services[i].setId(i + 1);
-				break;
-			}
-		}
+
+		// if (services[services.length-1] != null) {
+		// services = (Service[]) ArrayWorker.expand(services);
+		// }
+		services[counter] = service;
+		services[counter].setId(counter + 1);
+		counter++;
 	}
 
-	
 	public Service[] getServices() {
 		return services;
 	}
-
 }
