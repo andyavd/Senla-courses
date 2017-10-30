@@ -6,21 +6,15 @@ import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 public class VisitorsStorage {
 
 	private Visitor[] visitors = new Visitor[5];
+	private int counter = 0;
 
 	public void addVisitor(Visitor visitor) {
-		for (int i = 0; i < visitors.length; i++) {
-
-			// if(i == visitors.length - 1) {
-			// Visitor[] stretchedArray = new Visitor[visitors.length * 2];
-			// System.arraycopy(visitors, 0, stretchedArray, 0, visitors.length - 1);
-			// visitors = stretchedArray;
-			// }
-			if (visitors[i] == null) {
-				visitors[i] = visitor;
-				visitors[i].setId(i + 1);
-				break;
-			}
-		}
+		// if (visitor[visitor.length-1] != null) {
+		// visitor = (Visitor[]) ArrayWorker.expand(visitor);
+		// }
+		visitors[counter] = visitor;
+		visitors[counter].setId(counter + 1);
+		counter++;
 	}
 
 	public Visitor[] getVisitors() {
@@ -28,17 +22,17 @@ public class VisitorsStorage {
 	}
 
 	public void updateVisitor(Visitor visitor, RoomHistory history) {
-		for(int i=0; i<visitor.getHistories().length; i++) {
-			if(visitor.getHistories()[i] == null) {
+		for (int i = 0; i < visitor.getHistories().length; i++) {
+			if (visitor.getHistories()[i] == null) {
 				visitor.getHistories()[i] = history;
 				break;
 			}
 		}
 	}
-	
+
 	public void deleteVisitor(Visitor visitor) {
 		for (int i = 0; i < visitors.length; i++) {
-			if(visitors[i] == visitor) {
+			if (visitors[i] == visitor) {
 				visitors[i] = null;
 			}
 		}
