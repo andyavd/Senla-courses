@@ -1,5 +1,5 @@
-java -cp E:\Java\eclipse-workspace\eu.senla.andyavd.hotel\lib\textFileWorker.jar 
+echo off
 
-java -jar lesson4task1.jar
+java -jar hotel.jar E:\Java\eclipse-workspace\eu.senla.andyavd.hotel\data\room.txt
 
 pause
