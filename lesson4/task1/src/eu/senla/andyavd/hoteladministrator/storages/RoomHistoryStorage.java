@@ -1,6 +1,7 @@
 package eu.senla.andyavd.hoteladministrator.storages;
 
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
+import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 
 public class RoomHistoryStorage {
 
@@ -9,9 +10,9 @@ public class RoomHistoryStorage {
 
 	public void addHistory(RoomHistory history) {
 
-		// if (histories[histories.length-1] != null) {
-		// histories = (RoomHistory[]) ArrayWorker.expand(histories);
-		// }
+		 if (histories[histories.length-1] != null) {
+		 histories = (RoomHistory[]) ArrayWorker.expandRoomHistory(histories);
+		 }
 		histories[counter] = history;
 		histories[counter].setId(counter + 1);
 		counter++;
