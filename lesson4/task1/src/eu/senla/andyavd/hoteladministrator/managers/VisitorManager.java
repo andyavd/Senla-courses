@@ -41,13 +41,13 @@ public class VisitorManager implements IVisitorManager {
 	@Override
 	public void addServicesToVisitor(Visitor visitor, Service service) {
 		if (visitor.getHistory() != null) {
-			for(int i=0; i<visitor.getHistory().getService().length; i++) {
-				if(visitor.getHistory().getService()[i] == null) {
+			for (int i = 0; i < visitor.getHistory().getService().length; i++) {
+				if (visitor.getHistory().getService()[i] == null) {
 					visitor.getHistory().getService()[i] = service;
 					break;
 				}
 			}
-			
+
 		} else {
 			Printer.print("No such checked-in user");
 		}
@@ -65,9 +65,13 @@ public class VisitorManager implements IVisitorManager {
 	public void sortVisitors(Comparator comparator) {
 		Arrays.sort(vs.getVisitors(), comparator);
 	}
-	
+
 	@Override
 	public void sortVisitorServicesByPrice(Visitor visitor, Comparator comparator) {
 		Arrays.sort(showVisitorServices(visitor), comparator);
+	}
+
+	public void save() {
+		vs.save();
 	}
 }
