@@ -1,21 +1,22 @@
 package eu.senla.andyavd.hoteladministrator.managers;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
-import eu.senla.andyavd.hoteladministrator.actions.IVisitorManager;
+import eu.senla.andyavd.hoteladministrator.api.IVisitorManager;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
+import eu.senla.andyavd.hoteladministrator.storages.RoomHistoryStorage;
 import eu.senla.andyavd.hoteladministrator.storages.VisitorsStorage;
+import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 import eu.senla.andyavd.hoteladministrator.utils.Printer;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.servisesorters.SortingServicesByName;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.servisesorters.SortingServicesByPrice;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.visitorsorters.SortingVisitorsByCheckOutDate;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.visitorsorters.SortingVisitorsByName;
 
 public class VisitorManager implements IVisitorManager {
 
 	VisitorsStorage vs = new VisitorsStorage();
+	ArrayWorker aw = new ArrayWorker();
+	RoomHistoryStorage his = new RoomHistoryStorage();
 
 	@Override
 	public void addVisitor(Visitor visitor) {
@@ -29,21 +30,7 @@ public class VisitorManager implements IVisitorManager {
 
 	@Override
 	public Visitor[] showVisitors() {
-		int newSize = 0;
-		for (int i = 0; i < vs.getVisitors().length; i++) {
-			if (vs.getVisitors()[i] != null) {
-				newSize++;
-			}
-		}
-		Visitor[] notEmptyVisitors = new Visitor[newSize];
-		int newIndex = 0;
-		for (int i = 0; i < vs.getVisitors().length; i++) {
-			if (vs.getVisitors()[i] != null) {
-				notEmptyVisitors[newIndex] = vs.getVisitors()[i];
-				newIndex++;
-			}
-		}
-		return notEmptyVisitors;
+		return vs.getVisitors();
 	}
 
 	@Override
@@ -53,98 +40,34 @@ public class VisitorManager implements IVisitorManager {
 
 	@Override
 	public void addServicesToVisitor(Visitor visitor, Service service) {
-
-		for (int i = 0; i < visitor.getHistories().length; i++) {
-			if (visitor.getHistories()[i].getId() == visitor.getLastHistoryWithCheckInStatusId()) {
-				visitor.setLastHistoryWithCheckInStatusIdIndex(i);
-				break;
+		if (visitor.getHistory() != null) {
+			for(int i=0; i<visitor.getHistory().getService().length; i++) {
+				if(visitor.getHistory().getService()[i] == null) {
+					visitor.getHistory().getService()[i] = service;
+					break;
+				}
 			}
-		}
-
-		for (int i = 0; i < visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()]
-				.getService().length; i++) {
-			if (visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()].getService()[i] == null) {
-				visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()].getService()[i] = service;
-				break;
-			}
+			
+		} else {
+			Printer.print("No such checked-in user");
 		}
 	}
 
 	@Override
 	public Service[] showVisitorServices(Visitor visitor) {
 
-		int newSize = 0;
-		for (int i = 0; i < visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()]
-				.getService().length; i++) {
-			if (visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()].getService()[i] != null) {
-				newSize++;
-			}
-		}
-
-		Service[] notEmptyServices = new Service[newSize];
-		int newIndex = 0;
-		for (int i = 0; i < visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()]
-				.getService().length; i++) {
-			if (visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()].getService()[i] != null) {
-				notEmptyServices[newIndex] = visitor.getHistories()[visitor.getLastHistoryWithCheckInStatusIdIndex()]
-						.getService()[i];
-				newIndex++;
-			}
-		}
-		return notEmptyServices;
-	}
-
-	@Override
-	public void sortVisitorServicesByName(Visitor visitor) {
-		Arrays.sort(showVisitorServices(visitor), new SortingServicesByName());
-		for (int i = 0; i < showVisitorServices(visitor).length; i++) {
-			Printer.print(showVisitorServices(visitor)[i].toString());
-		}
-	}
-
-	@Override
-	public void sortVisitorServicesByPrice(Visitor visitor) {
-		Arrays.sort(showVisitorServices(visitor), new SortingServicesByPrice());
-		for (int i = 0; i < showVisitorServices(visitor).length; i++) {
-			Printer.print(showVisitorServices(visitor)[i].toString());
-		}
+		return visitor.getHistory().getService();
 	}
 
 	/* ======================sorting============================ */
 
 	@Override
-	public void sortVisitorsByName() {
-		Arrays.sort(vs.getVisitors(), new SortingVisitorsByName());
-		for (int i = 0; i < vs.getVisitors().length; i++) {
-			if (vs.getVisitors()[i].getCheckOutDate() != null) {
-				Printer.print(vs.getVisitors()[i].toString());
-			}
-		}
+	public void sortVisitors(Comparator comparator) {
+		Arrays.sort(vs.getVisitors(), comparator);
 	}
-
+	
 	@Override
-	public void sortVisitorsByCheckOutDate() {
-
-		int newSize = 0;
-		for (int i = 0; i < vs.getVisitors().length; i++) {
-			if (vs.getVisitors()[i].getCheckOutDate() != null) {
-				newSize++;
-			}
-		}
-		Visitor[] notEmptyVisitors = new Visitor[newSize];
-		int newIndex = 0;
-		for (int i = 0; i < vs.getVisitors().length; i++) {
-			if (vs.getVisitors()[i].getCheckOutDate() != null) {
-				notEmptyVisitors[newIndex] = vs.getVisitors()[i];
-				newIndex++;
-			}
-		}
-
-		Arrays.sort(notEmptyVisitors, new SortingVisitorsByCheckOutDate());
-		for (int i = 0; i < notEmptyVisitors.length; i++) {
-			// if(notEmptyVisitors[i].getCheckOutDate() != null) {
-			Printer.print(notEmptyVisitors[i].toString());
-			// }
-		}
+	public void sortVisitorServicesByPrice(Visitor visitor, Comparator comparator) {
+		Arrays.sort(showVisitorServices(visitor), comparator);
 	}
 }

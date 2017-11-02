@@ -2,16 +2,17 @@ package eu.senla.andyavd.hoteladministrator.storages;
 
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
+import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 
 public class VisitorsStorage {
 
-	private Visitor[] visitors = new Visitor[5];
+	private Visitor[] visitors = new Visitor[10];
 	private int counter = 0;
 
 	public void addVisitor(Visitor visitor) {
-		// if (visitor[visitor.length-1] != null) {
-		// visitor = (Visitor[]) ArrayWorker.expand(visitor);
-		// }
+		 if (visitors[visitors.length-1] != null) {
+		 visitors = (Visitor[]) ArrayWorker.expandVisitor(visitors);
+		 }
 		visitors[counter] = visitor;
 		visitors[counter].setId(counter + 1);
 		counter++;
@@ -22,12 +23,7 @@ public class VisitorsStorage {
 	}
 
 	public void updateVisitor(Visitor visitor, RoomHistory history) {
-		for (int i = 0; i < visitor.getHistories().length; i++) {
-			if (visitor.getHistories()[i] == null) {
-				visitor.getHistories()[i] = history;
-				break;
-			}
-		}
+		visitor.setHistory(history);
 	}
 
 	public void deleteVisitor(Visitor visitor) {
