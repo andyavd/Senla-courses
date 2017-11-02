@@ -12,7 +12,7 @@ public class RoomHistory extends Entity {
 	private Visitor visitor;
 	private LocalDate checkInDate;
 	private LocalDate checkOutDate;
-	private Service[] services = new Service[4];
+	private Service[] services = new Service[10];
 	private RoomHistoryStatus status;
 
 	@Override
