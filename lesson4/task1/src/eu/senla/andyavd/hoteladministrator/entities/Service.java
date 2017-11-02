@@ -4,7 +4,7 @@ public class Service extends Entity{
 	
 	private int id=0;
 	private String name;
-	private double dailyPrice;
+	private Double dailyPrice;
 	
 	@Override
 	protected int getId() {
@@ -22,10 +22,10 @@ public class Service extends Entity{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getDailyPrice() {
+	public Double getDailyPrice() {
 		return dailyPrice;
 	}
-	public void setDailyPrice(double dailyPrice) {
+	public void setDailyPrice(Double dailyPrice) {
 		this.dailyPrice = dailyPrice;
 	}
 	
@@ -33,7 +33,7 @@ public class Service extends Entity{
 		
 	}
 	
-	public Service(String name, double dailyPrice) {
+	public Service(String name, Double dailyPrice) {
 		this.name = name;
 		this.dailyPrice = dailyPrice;
 	}
