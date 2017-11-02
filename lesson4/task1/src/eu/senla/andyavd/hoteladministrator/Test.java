@@ -1,5 +1,6 @@
 package eu.senla.andyavd.hoteladministrator;
 import java.text.ParseException;
+import java.time.LocalDate;
 
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
@@ -100,17 +101,17 @@ public class Test {
 		System.out.println();
 
 		System.out.println("/*Check-in visitors*/");
-		hm.checkInVisitorInARoom(visitor1, room1, "2017-10-11", "2017-10-15");
-		hm.checkInVisitorInARoom(visitor2, room2, "2017-10-11", "2017-10-13");
-		hm.checkInVisitorInARoom(visitor3, room3, "2017-10-11", "2017-10-14");
-		hm.checkInVisitorInARoom(visitor4, room4, "2017-10-11", "2017-10-15");
-		hm.checkInVisitorInARoom(visitor5, room9, "2017-10-11", "2017-10-14");
+		hm.checkInVisitorInARoom(visitor1, room1, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
+		hm.checkInVisitorInARoom(visitor2, room2, LocalDate.of(2017,10,11), LocalDate.of(2017,10,13));
+		hm.checkInVisitorInARoom(visitor3, room3, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
+		hm.checkInVisitorInARoom(visitor4, room4, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
+		hm.checkInVisitorInARoom(visitor5, room9, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
 		
 		System.out.println("/*Show empty rooms on a date*/");
-		hm.showEmptyRoomsOnADate("2017-10-12");
+		hm.showEmptyRoomsOnADate(LocalDate.of(2017, 10, 12));
 		
 		System.out.println("/*Show all visitors on a date*/");
-		hm.getTotalVisitorsOnDate("2017-10-13");
+		hm.getTotalVisitorsOnDate(LocalDate.of(2017, 10, 12));
 							
 		System.out.println("/*Bill visitor for a room*/");
 		hm.billVisitor(visitor1);
@@ -134,14 +135,16 @@ public class Test {
 		hm.checkOutVisitorFromARoom(visitor3, room3);
 		hm.checkOutVisitorFromARoom(visitor4, room4);
 		
-		hm.checkInVisitorInARoom(visitor2, room1, "2017-10-16", "2017-10-17");
-//		hm.checkOutVisitorFromARoom(visitor2, room1);
-//		hm.checkInVisitorInARoom(visitor1, room6, "2017-10-11", "2017-10-12");
-//		hm.checkInVisitorInARoom(visitor1, room2, "2017-10-11", "2017-10-13");
+		hm.checkInVisitorInARoom(visitor2, room1, LocalDate.of(2017,10,16), LocalDate.of(2017,10,17));
+		hm.checkOutVisitorFromARoom(visitor2, room1);
+		hm.checkInVisitorInARoom(visitor3, room1, LocalDate.of(2017,10,18), LocalDate.of(2017,10,20));
+		hm.checkOutVisitorFromARoom(visitor3, room1);
+		hm.checkInVisitorInARoom(visitor5, room1, LocalDate.of(2017,10,21), LocalDate.of(2017,10,23));
+		hm.checkOutVisitorFromARoom(visitor5, room1);
 
 		System.out.println("/*Last visitors of a room*/");
 		hm.getLastVisitorsOfARoom(room1);
-//		System.out.println(room1.getHistories()[2].toString());
+//		System.out.println(room1.getHistories()[3].toString());
 
 //		load currently unavailable
 //		hm.load();

@@ -54,9 +54,7 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public void showRoomsEmptyOnADate(String date) {
-
-		LocalDate targetDate = LocalDate.parse(date);
+	public void showRoomsEmptyOnADate(LocalDate date) {
 
 		for (int i = 0; i < rs.getRooms().length; i++) {
 			if (rs.getRooms()[i] != null && rs.getRooms()[i].getStatus() == RoomStatus.OCCUPIED) {
@@ -65,8 +63,8 @@ public class RoomManager implements IRoomManager {
 				for (int k = 0; k < rs.getRooms()[i].getHistories().length; k++) {
 
 					if (rs.getRooms()[i].getHistories()[k] != null
-							&& (targetDate.isBefore(rs.getRooms()[i].getHistories()[k].getCheckInDate())
-									|| targetDate.isAfter(rs.getRooms()[i].getHistories()[k].getCheckOutDate()))) {
+							&& (date.isBefore(rs.getRooms()[i].getHistories()[k].getCheckInDate())
+									|| date.isAfter(rs.getRooms()[i].getHistories()[k].getCheckOutDate()))) {
 						r = 1;
 						continue;
 					}
@@ -78,30 +76,30 @@ public class RoomManager implements IRoomManager {
 				}
 			}
 		}
-		
+
 		for (int i = 0; i < rs.getRooms().length; i++) {
 			if (rs.getRooms()[i] != null && rs.getRooms()[i].getStatus() == RoomStatus.EMPTY) {
 				Printer.print(rs.getRooms()[i].toString());
-				}
 			}
+		}
 	}
 
 	/* ======================sorting============================ */
 
-	
 	@Override
 	public void sortEmptyRooms(Comparator comparator) {
 		Arrays.sort(aw.getNotNullEmptyRooms(rs.getRooms()), comparator);
 	}
-	
+
 	@Override
 	public void sortRooms(Comparator comparator) {
 		Arrays.sort(rs.getRooms(), comparator);
 	}
-	
+
 	public void save() {
 		rs.save();
 	}
+
 	public void load() {
 		rs.load();
 	}

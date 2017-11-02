@@ -38,6 +38,12 @@ public class Service extends Entity{
 		this.dailyPrice = dailyPrice;
 	}
 	
+	public Service(Integer id, String name, double dailyPrice) {
+		this.id = id;
+		this.name = name;
+		this.dailyPrice = dailyPrice;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
@@ -47,5 +53,11 @@ public class Service extends Entity{
 		s.append(dailyPrice);
 		s.append(" USD per day.)");
 		return s.toString();
+	}
+	
+	public String getServiceParameters() {
+		return String.valueOf(new StringBuilder().append(id)
+				.append(" ").append(name)
+				.append(" ").append(dailyPrice));
 	}
 }

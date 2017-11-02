@@ -132,6 +132,30 @@ public class ArrayWorker {
 		}
 		return counter;
 	}
+	
+	public static int getArraySize(Service[] array) {
+		int counter = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == null)
+				break;
+			else
+				counter++;
+		}
+		return counter;
+	}
+	
+	public static int getArraySize(Visitor[] array) {
+		int counter = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == null)
+				break;
+			else
+				counter++;
+		}
+		return counter;
+	}
 
 	public static String[] arrayToString(Room[] entities) {
 		int size = getArraySize(entities);
@@ -142,6 +166,33 @@ public class ArrayWorker {
 				stringArray[i] = entities[i].getRoomParameters();
 			}
 			return stringArray;
+		} else {
+			return null;
+		}
+	}
+	public static String[] arrayToString(Service[] entities) {
+		int size = getArraySize(entities);
+		if (size != 0) {
+			String[] stringArray = new String[size];
+
+			for (int i = 0; i < size; i++) {
+				stringArray[i] = entities[i].getServiceParameters();
+			}
+			return stringArray;
+		} else {
+			return null;
+		}
+	}
+	public static String[] arrayToString(Visitor[] entities) {
+		int size = getArraySize(entities);
+		if (size != 0) {
+			String[] stringArray = new String[size];
+
+			for (int i = 0; i < size; i++) {
+				stringArray[i] = entities[i].getVisitorParameters();
+			}
+			return stringArray;
+			
 		} else {
 			return null;
 		}
