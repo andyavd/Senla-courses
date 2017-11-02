@@ -2,6 +2,7 @@ package eu.senla.andyavd.hoteladministrator.managers;
 
 import java.time.LocalDate;
 import java.time.Period;
+
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
@@ -9,6 +10,12 @@ import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 import eu.senla.andyavd.hoteladministrator.enums.RoomHistoryStatus;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.utils.Printer;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByCapacity;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByPrice;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByStars;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.services.SortingServicesByName;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.services.SortingServicesByPrice;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.visitors.SortingVisitorsByName;
 
 public class HotelManager {
 
@@ -24,95 +31,84 @@ public class HotelManager {
 	}
 
 	public void printRooms() {
-		rm.showRooms();
+		
+		Printer.printArray(rm.showRooms());
 	}
 
 	public void printEmptyRooms() {
-		rm.showEmptyRooms();
+		Printer.printArray(rm.showEmptyRooms());
 	}
 
 	public void printEmptyRoomsNumber() {
 		Printer.print(rm.showEmptyRoomsNumber().toString());
 	}
 
-	public void printDetailsOfRoomNumber(int roomNumber) {
+	public void printDetailsOfRoom(Room room) {
 
 		StringBuilder s = new StringBuilder();
 		s.append("Room details: ");
-		s.append(rm.showRoomDetails(roomNumber));
+		s.append(rm.showRoomDetails(room));
 
 		Printer.print(s.toString());
 	}
 
-	public void sortRoomsBy(String parameter) {
-		String p = parameter;
-		switch (p) {
-		case "price":
-			rm.sortRoomsByPrice();
-			break;
-		case "capacity":
-			rm.sortRoomsByCapacity();
-			break;
-		case "stars":
-			rm.sortRoomsByStars();
-			break;
-		default:
-			Printer.print("Please, choose price, capacity or stars as a parameter.");
-			break;
-		}
+	public void sortRoomsByCapacity() {
+		rm.sortRooms(new SortingRoomsByCapacity());		
+		Printer.printArray(rm.showRooms());
 	}
-
-	public void sortEmptyRoomsBy(String parameter) {
-		String p = parameter;
-		switch (p) {
-		case "price":
-			rm.sortEmptyRoomsByPrice();
-			break;
-		case "capacity":
-			rm.sortEmptyRoomsByCapacity();
-			break;
-		case "stars":
-			rm.sortEmptyRoomsByStars();
-			break;
-		default:
-			Printer.print("Please, choose price, capacity or stars as a parameter EMPTY.");
-			break;
-		}
+	public void sortRoomsByPrice() {
+		rm.sortRooms(new SortingRoomsByPrice());		
+		Printer.printArray(rm.showRooms());
+	}
+	public void sortRoomsByStars() {
+		rm.sortRooms(new SortingRoomsByStars());		
+		Printer.printArray(rm.showRooms());
+	}
+	
+	public void sortEmptyRoomsByCapacity() {
+		rm.sortEmptyRooms(new SortingRoomsByCapacity());		
+		Printer.printArray(rm.showEmptyRooms());
+	}
+	public void sortEmptyRoomsByPrice() {
+		rm.sortEmptyRooms(new SortingRoomsByPrice());		
+		Printer.printArray(rm.showEmptyRooms());
+	}
+	public void sortEmptyRoomsByStars() {
+		rm.sortEmptyRooms(new SortingRoomsByStars());		
+		Printer.printArray(rm.showEmptyRooms());
 	}
 
 	public void billVisitor(Visitor visitor) {
 
-		if (visitor.getRoom() != null) {
+		if (visitor.getHistory() != null) {
 
-			Period period = Period.between(visitor.getCheckInDate(), visitor.getCheckOutDate());
+			Period period = Period.between(visitor.getHistory().getCheckInDate(), visitor.getHistory().getCheckOutDate());
 			int days = period.getDays();
-			double payment = visitor.getRoom().getDailyPrice() * days;
+			double payment = visitor.getHistory().getRoom().getDailyPrice() * days;
 
 			StringBuilder s = new StringBuilder();
-			s.append("Visitor ");
 			s.append(visitor.getLastName());
 			s.append(" needs to pay ");
 			s.append(payment);
 			s.append(" USD for the room #");
-			s.append(visitor.getRoom().getRoomNumber());
+			s.append(visitor.getHistory().getRoom().getRoomNumber());
 			Printer.print(s.toString());
 		} else {
 			StringBuilder s = new StringBuilder();
-			s.append("Visitor ");
 			s.append(visitor.getLastName());
 			s.append(" isn't checked-in any Room.");
 			Printer.print(s.toString());
 		}
 	}
 
-	public void showRoomsEmptyOnAParticularDate(String date) {
-		rm.showRoomsEmptyOnAParticularDate(date);
+	public void showEmptyRoomsOnADate(String date) {
+		rm.showRoomsEmptyOnADate(date);
 	}
 
-	public void repairRoom(Room room) {
+	public void changeRoomStatus(Room room) {
 		if (room.getStatus() == RoomStatus.EMPTY) {
 			room.setStatus(RoomStatus.SERVICED);
-			Printer.print("Room is closed for services now. Sorry.");
+			Printer.print("Room is closed for services now.");
 		} else if (room.getStatus() == RoomStatus.OCCUPIED) {
 			Printer.print("Room is occupied. Please wait for the Visitor to check-out.");
 		} else {
@@ -121,70 +117,22 @@ public class HotelManager {
 	}
 
 	public void getLastVisitorsOfARoom(Room room) {
-		int newSize = 0;
+		
+//		int newSize = 0;
 		for (int i = 0; i < room.getHistories().length; i++) {
-			if ((room.getHistories()[i] != null) && (room.getHistories()[i].getStatus() == RoomHistoryStatus.CHECKIN)) {
-				newSize++;
-			}
-		}
-		RoomHistory[] checkInHistories = new RoomHistory[newSize];
-		int newIndex = 0;
-		for (int i = 0; i < room.getHistories().length; i++) {
-			if ((room.getHistories()[i] != null) && (room.getHistories()[i].getStatus() == RoomHistoryStatus.CHECKIN)) {
-				checkInHistories[newIndex] = room.getHistories()[i];
-				newIndex++;
-			}
-		}
-		if (checkInHistories.length <= 3) {
-			for (int i = 0; i < checkInHistories.length; i++) {
-
+			if (room.getHistories()[i] != null) {
 				StringBuilder s = new StringBuilder();
 				s.append("Visitors of a Room #");
-				s.append(checkInHistories[i].getRoom().getRoomNumber());
+				s.append(room.getHistories()[i].getRoom().getRoomNumber());
 				s.append(": ");
-				s.append(checkInHistories[i].getVisitor().getLastName());
+				s.append(room.getHistories()[i].getVisitor().getLastName());
 				s.append(", cheched-in ");
-				s.append(checkInHistories[i].getCheckInDate());
+				s.append(room.getHistories()[i].getCheckInDate());
 				s.append(", checked-out ");
-				s.append(checkInHistories[i].getCheckOutDate());
+				s.append(room.getHistories()[i].getCheckOutDate());
 
 				Printer.print(s.toString());
 			}
-		} else {
-			StringBuilder s3 = new StringBuilder();
-			s3.append("Visitors of a Room #");
-			s3.append(checkInHistories[checkInHistories.length-1].getRoom().getRoomNumber());
-			s3.append(": ");
-			s3.append(checkInHistories[checkInHistories.length-1].getVisitor().getLastName());
-			s3.append(", cheched-in ");
-			s3.append(checkInHistories[checkInHistories.length-1].getCheckInDate());
-			s3.append(", checked-out ");
-			s3.append(checkInHistories[checkInHistories.length-1].getCheckOutDate());
-			Printer.print(s3.toString());
-			
-			StringBuilder s2 = new StringBuilder();
-			s2.append("Visitors of a Room #");
-			s2.append(checkInHistories[checkInHistories.length-2].getRoom().getRoomNumber());
-			s2.append(": ");
-			s2.append(checkInHistories[checkInHistories.length-2].getVisitor().getLastName());
-			s2.append(", cheched-in ");
-			s2.append(checkInHistories[checkInHistories.length-2].getCheckInDate());
-			s2.append(", checked-out ");
-			s2.append(checkInHistories[checkInHistories.length-2].getCheckOutDate());
-			Printer.print(s3.toString());
-			
-			StringBuilder s1 = new StringBuilder();
-			s1.append("Visitors of a Room #");
-			s1.append(checkInHistories[checkInHistories.length-3].getRoom().getRoomNumber());
-			s1.append(": ");
-			s1.append(checkInHistories[checkInHistories.length-3].getVisitor().getLastName());
-			s1.append(", cheched-in ");
-			s1.append(checkInHistories[checkInHistories.length-3].getCheckInDate());
-			s1.append(", checked-out ");
-			s1.append(checkInHistories[checkInHistories.length-3].getCheckOutDate());
-			Printer.print(s3.toString());
-			
-			
 		}
 	}
 
@@ -200,29 +148,16 @@ public class HotelManager {
 	}
 
 	public void printVisitors() {
-		for (int i = 0; i < vm.showVisitors().length; i++) {
-			Printer.print(vm.showVisitors()[i].toString());
-		}
-		// vm.showVisitors();
+		Printer.printArray(vm.showVisitors());
 	}
 
 	public void deleteVisitor(Visitor visitor) {
 		vm.deleteVisitor(visitor);
 	}
 
-	public void showAndSortVisitorsBy(String parameter) {
-		String p = parameter;
-		switch (p) {
-		case "lastName":
-			vm.sortVisitorsByName();
-			break;
-		case "checkOutDate":
-			vm.sortVisitorsByCheckOutDate();
-			break;
-		default:
-			Printer.print("Please, choose lastName or checkOutDate as a parameter.");
-			break;
-		}
+	public void sortVisitorsByName() {
+		vm.sortVisitors(new SortingVisitorsByName());
+		Printer.printArray(vm.showVisitors());
 	}
 
 	public void addServicesToVisitor(Visitor visitor, Service service) {
@@ -231,37 +166,47 @@ public class HotelManager {
 
 	public void printVisitorServices(Visitor visitor) {
 		for (int i = 0; i < vm.showVisitorServices(visitor).length; i++) {
+			if(vm.showVisitorServices(visitor)[i] != null) {
 			StringBuilder s = new StringBuilder();
 			s.append("Visitor ");
 			s.append(visitor.getLastName());
 			s.append(" has used ");
 			s.append(vm.showVisitorServices(visitor)[i]);
 			Printer.print(s.toString());
+			}
 		}
 	}
 
-	public void sortVisitorServicesBy(Visitor visitor, String parameter) {
-		String p = parameter;
-		switch (p) {
-		case "name":
-			vm.sortVisitorServicesByName(visitor);
-			break;
-		case "price":
-			vm.sortVisitorServicesByPrice(visitor);
-			break;
-		default:
-			Printer.print("Please, choose price or name as a parameter.");
-			break;
-		}
+	public void sortVisitorServicesByPrice(Visitor visitor) {
+		vm.sortVisitorServicesByPrice(visitor, new SortingServicesByPrice());
+		Printer.print("Sorted services for Visitor");
+		Printer.printArray(vm.showVisitorServices(visitor));
 	}
+	
+	public void getTotalVisitorsOnDate(String date) {
+		
+		Integer count = 0;
+		LocalDate currentDate = LocalDate.parse(date);
 
-	// public void sortVisitorServicesByName(Visitor visitor) {
-	// vm.sortVisitorServicesByName(visitor);
-	// }
-	// public void sortVisitorServicesByPrice(Visitor visitor) {
-	// vm.sortVisitorServicesByPrice(visitor);
-	// }
+		for (int i = 0; i < vm.showVisitors().length; i++) {
+			if (vm.showVisitors()[i] != null && vm.showVisitors()[i].getHistory() != null) {
+				if ((vm.showVisitors()[i].getHistory().getCheckInDate().isBefore(currentDate)
+						|| vm.showVisitors()[i].getHistory().getCheckInDate().isEqual(currentDate))
+						&& (vm.showVisitors()[i].getHistory().getCheckOutDate().isAfter(currentDate)
+								|| vm.showVisitors()[i].getHistory().getCheckOutDate().isEqual(currentDate))) {
+					count++;
+				}
+			}
+		}
+		StringBuilder s = new StringBuilder();
+		s.append("There are ");
+		s.append(count);
+		s.append(" visitors on ");
+		s.append(date);
 
+		Printer.print(s.toString());
+	}		
+	
 	/* ========================Services======================== */
 
 	public void createService(Service service) {
@@ -270,31 +215,27 @@ public class HotelManager {
 	}
 
 	public void printServices() {
-		sm.showServices();
+		Printer.printArray(sm.getServices());
 	}
 
-	public void sortServicesBy(String parameter) {
-		String p = parameter;
-		switch (p) {
-		case "price":
-			sm.sortServicesByPrice();
-			break;
-		case "name":
-			sm.sortServicesByName();
-			break;
-		default:
-			Printer.print("Please, choose price or name as a parameter.");
-			break;
-		}
+	public void sortServicesByName() {
+		sm.sortServices(new SortingServicesByName());		
+		Printer.printArray(sm.getServices());
 	}
+	
+	public void sortServicesByPrice() {
+		sm.sortServices(new SortingServicesByPrice());		
+		Printer.printArray(sm.getServices());
+	}
+
 
 	public void changePriceOnService(Service service, double dailyPrice) {
 		service.setDailyPrice(dailyPrice);
 	}
+	
 	/* ========================Process========================= */
 
-	public void checkInVisitorInARoom(Visitor visitor, Room room, String checkInDate,
-			String checkOutDate) { /* yyyy-mm-dd */
+	public void checkInVisitorInARoom(Visitor visitor, Room room, String checkInDate, String checkOutDate) { /* yyyy-mm-dd */
 
 		if (room.getStatus() == RoomStatus.EMPTY) {
 			RoomHistory newHistory = new RoomHistory();
@@ -311,39 +252,34 @@ public class HotelManager {
 
 			rhm.addHistory(newHistory);
 
+			
 			rm.updateRoom(room, newHistory);
 			room.setStatus(RoomStatus.OCCUPIED);
-			/* delete */ room.setCheckInDate(inDate);
-			/* delete */ room.setCheckOutDate(outDate);
+//			room.setCheckInDate(inDate);
+//			room.setCheckOutDate(outDate);
 			vm.updateVisitor(visitor, newHistory);
-			visitor.setLastHistoryWithCheckInStatusId(newHistory.getId());
-			/* delete */ visitor.setRoom(room);
-			/* delete */ visitor.setCheckInDate(inDate);
-			/* delete */ visitor.setCheckOutDate(outDate);
+//			visitor.setLastHistoryWithCheckInStatusId(newHistory.getId());
+//			visitor.setRoom(room);
+//			visitor.setCheckInDate(inDate);
+//			visitor.setCheckOutDate(outDate);
 
 			StringBuilder s = new StringBuilder();
-			s.append("Mr ");
 			s.append(visitor.getLastName());
-			s.append(", You have been successfully checked-in. Room #");
+			s.append(", was checked-in. Room #");
 			s.append(room.getRoomNumber());
-			s.append(".");
 			Printer.print(s.toString());
 
 		} else if (room.getStatus() == RoomStatus.SERVICED) {
 			StringBuilder s = new StringBuilder();
-			s.append("Soory, Mr ");
-			s.append(visitor.getLastName());
-			s.append(", Room #");
+			s.append("Room #");
 			s.append(room.getRoomNumber());
-			s.append(" is being serviced now. Please, choose another room.");
+			s.append(" is being serviced now.");
 			Printer.print(s.toString());
 		} else if (room.getStatus() == RoomStatus.OCCUPIED) {
 			StringBuilder s = new StringBuilder();
-			s.append("Soory, Mr ");
-			s.append(visitor.getLastName());
-			s.append(", Room #");
+			s.append("Room #");
 			s.append(room.getRoomNumber());
-			s.append(" is occupied now. Please, choose another room.");
+			s.append(" is occupied now.");
 			Printer.print(s.toString());
 		}
 	}
@@ -360,30 +296,25 @@ public class HotelManager {
 
 		} else {
 			for (int i = 0; i < room.getHistories().length; i++) {
-				if ((room.getHistories()[i] != null) && (room.getHistories()[i + 1] == null)
-						&& (room.getHistories()[i].getVisitor() == visitor)) {
-
-					RoomHistory newHistory = new RoomHistory();
-
-					newHistory.setVisitor(visitor);
-					newHistory.setRoom(room);
-					newHistory.setStatus(RoomHistoryStatus.CHECKOUT);
-
-					rhm.addHistory(newHistory);
-
-					rm.updateRoom(room, newHistory);
-					room.setStatus(RoomStatus.EMPTY);
-					vm.updateVisitor(visitor, newHistory);
-
+				if (room.getHistories()[i] != null && room.getHistories()[i].getVisitor() == visitor && 
+						room.getHistories()[i].getStatus() == RoomHistoryStatus.CHECKIN) {
+					
 					StringBuilder s = new StringBuilder();
-					s.append("Mr ");
 					s.append(visitor.getLastName());
-					s.append(", You have been successfully checked-out. Room #");
+					s.append(" has checked-out from Room #");
 					s.append(room.getRoomNumber());
-					s.append(". See You next time!");
 					Printer.print(s.toString());
-					break;
-
+					
+					room.getHistories()[i].setStatus(RoomHistoryStatus.CHECKOUT);
+					visitor.setHistory(null);
+					room.setStatus(RoomStatus.EMPTY);
+					
+					
+					for(int k=0; k<rhm.showHistories().length; k++) {
+						if(rhm.showHistories()[k].getId() == room.getHistories()[i].getId()) {
+							rhm.showHistories()[k].setStatus(RoomHistoryStatus.CHECKOUT);
+						}
+					}
 				} else {
 					StringBuilder s = new StringBuilder();
 					s.append("The Room#");
@@ -397,28 +328,11 @@ public class HotelManager {
 		}
 	}
 
-	public void getTotalVisitorsOnDate(String date) {
-		Integer count = 0;
-
-		LocalDate currentDate = LocalDate.parse(date);
-
-		for (int i = 0; i < vm.showVisitors().length; i++) {
-			if (vm.showVisitors()[i].getCheckOutDate() != null) {
-				if ((vm.showVisitors()[i].getCheckInDate().isBefore(currentDate)
-						|| vm.showVisitors()[i].getCheckInDate().isEqual(currentDate))
-						&& (vm.showVisitors()[i].getCheckOutDate().isAfter(currentDate)
-								|| vm.showVisitors()[i].getCheckOutDate().isEqual(currentDate))) {
-					count++;
-				}
-			}
-		}
-		StringBuilder s = new StringBuilder();
-		s.append("There are ");
-		s.append(count);
-		s.append(" visitors on ");
-		s.append(date);
-
-		Printer.print(s.toString());
+	public void save() {
+		rm.save();
+		//add other managers
 	}
-
+	public void load() {
+		rm.load();
+	}
 }
