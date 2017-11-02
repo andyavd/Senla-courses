@@ -36,12 +36,16 @@ public class Visitor extends Entity{
 		this.lastName = lastName;
 	}
 	
-
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append("Visitor ");
 		s.append(lastName);
 		return s.toString();
+	}
+	
+	public String getVisitorParameters() {
+		return String.valueOf(new StringBuilder().append(id)
+				.append(" ").append(lastName));
 	}
 }
