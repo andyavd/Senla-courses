@@ -7,9 +7,12 @@ import java.util.Comparator;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.api.IRoomManager;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
+import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
+import eu.senla.andyavd.hoteladministrator.utils.FileReader;
+import eu.senla.andyavd.hoteladministrator.utils.FileWriter;
 import eu.senla.andyavd.hoteladministrator.utils.Printer;
 
 public class RoomManager implements IRoomManager {
@@ -17,6 +20,8 @@ public class RoomManager implements IRoomManager {
 	public RoomsStorage rs = new RoomsStorage();
 	ArrayWorker aw = new ArrayWorker();
 
+	private static final String path = Path.ROOM_STORAGE_PATH.getPath();
+	
 	@Override
 	public void addRoom(Room room) {
 		rs.addRoom(room);
@@ -97,10 +102,11 @@ public class RoomManager implements IRoomManager {
 	}
 
 	public void save() {
-		rs.save();
+		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(rs.getRooms()), ArrayWorker.getArraySize(rs.getRooms()));
+		FileWriter.writeToFile(stringArray, path); 
 	}
 
-	public void load() {
-		rs.load();
+	public String[] load() {
+		return FileReader.readFromFile(path);
 	}
 }
