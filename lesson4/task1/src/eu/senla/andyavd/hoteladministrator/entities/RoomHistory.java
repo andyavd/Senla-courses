@@ -1,9 +1,7 @@
 package eu.senla.andyavd.hoteladministrator.entities;
 
 import java.time.LocalDate;
-
 import eu.senla.andyavd.hoteladministrator.enums.RoomHistoryStatus;
-
 
 public class RoomHistory extends Entity {
 
@@ -91,16 +89,23 @@ public class RoomHistory extends Entity {
 			s.append(checkInDate);
 			s.append(". Check-out date: ");
 			s.append(checkOutDate);
+			s.append(status);
 		} else {
 			s.append("History #");
 			s.append(id);
 			s.append(" : Room ");
 			s.append(room.getRoomNumber());
-			s.append(", Visitor: ");
+			s.append(", Visitor ");
 			s.append(visitor.getLastName());
 			s.append(" has checked-out.");
+			s.append(status);
 		}
-		
+
 		return s.toString();
+	}
+
+	@Override
+	public String getEntityParameters() {
+		return null;
 	}
 }

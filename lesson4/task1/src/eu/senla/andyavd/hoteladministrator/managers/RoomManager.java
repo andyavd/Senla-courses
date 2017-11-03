@@ -1,19 +1,17 @@
 package eu.senla.andyavd.hoteladministrator.managers;
 
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
 
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.api.IRoomManager;
+import eu.senla.andyavd.hoteladministrator.entities.Entity;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.enums.Path;
-import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 import eu.senla.andyavd.hoteladministrator.utils.FileReader;
 import eu.senla.andyavd.hoteladministrator.utils.FileWriter;
-import eu.senla.andyavd.hoteladministrator.utils.Printer;
 
 public class RoomManager implements IRoomManager {
 
@@ -21,14 +19,19 @@ public class RoomManager implements IRoomManager {
 	ArrayWorker aw = new ArrayWorker();
 
 	private static final String path = Path.ROOM_STORAGE_PATH.getPath();
-	
+
+	private Room[] castEntitiesArray(Entity[] entities) {
+		Room[] roomArray = Arrays.copyOf(entities, entities.length, Room[].class);
+		return roomArray;
+	}
+
 	@Override
 	public void addRoom(Room room) {
 		rs.addRoom(room);
 	}
 
 	@Override
-	public Room[] showRooms() {
+	public Room[] getRooms() {
 		return rs.getRooms();
 	}
 
@@ -58,37 +61,6 @@ public class RoomManager implements IRoomManager {
 		return room;
 	}
 
-	@Override
-	public void showRoomsEmptyOnADate(LocalDate date) {
-
-		for (int i = 0; i < rs.getRooms().length; i++) {
-			if (rs.getRooms()[i] != null && rs.getRooms()[i].getStatus() == RoomStatus.OCCUPIED) {
-
-				int r = 0;
-				for (int k = 0; k < rs.getRooms()[i].getHistories().length; k++) {
-
-					if (rs.getRooms()[i].getHistories()[k] != null
-							&& (date.isBefore(rs.getRooms()[i].getHistories()[k].getCheckInDate())
-									|| date.isAfter(rs.getRooms()[i].getHistories()[k].getCheckOutDate()))) {
-						r = 1;
-						continue;
-					}
-
-					if (r == 1) {
-						Printer.print(rs.getRooms()[i].toString());
-						break;
-					}
-				}
-			}
-		}
-
-		for (int i = 0; i < rs.getRooms().length; i++) {
-			if (rs.getRooms()[i] != null && rs.getRooms()[i].getStatus() == RoomStatus.EMPTY) {
-				Printer.print(rs.getRooms()[i].toString());
-			}
-		}
-	}
-
 	/* ======================sorting============================ */
 
 	@Override
@@ -101,12 +73,13 @@ public class RoomManager implements IRoomManager {
 		Arrays.sort(rs.getRooms(), comparator);
 	}
 
-	public void save() {
-		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(rs.getRooms()), ArrayWorker.getArraySize(rs.getRooms()));
-		FileWriter.writeToFile(stringArray, path); 
+	public void saveToFile() {
+		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(rs.getRooms()),
+				ArrayWorker.getArraySize(rs.getRooms()));
+		FileWriter.writeToFile(stringArray, path);
 	}
 
-	public String[] load() {
+	public String[] loadFromFile() {
 		return FileReader.readFromFile(path);
 	}
 }

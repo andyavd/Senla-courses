@@ -1,8 +1,8 @@
 package eu.senla.andyavd.hoteladministrator.entities;
 
-public class Visitor extends Entity{
+public class Visitor extends Entity {
 
-	private int id=0;
+	private int id = 0;
 	private String lastName;
 	private RoomHistory history;
 
@@ -10,12 +10,12 @@ public class Visitor extends Entity{
 	protected int getId() {
 		return id;
 	}
-	
-	@Override	
+
+	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -31,11 +31,11 @@ public class Visitor extends Entity{
 	public void setHistory(RoomHistory history) {
 		this.history = history;
 	}
-	
+
 	public Visitor(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
@@ -43,9 +43,9 @@ public class Visitor extends Entity{
 		s.append(lastName);
 		return s.toString();
 	}
-	
-	public String getVisitorParameters() {
-		return String.valueOf(new StringBuilder().append(id)
-				.append(" ").append(lastName));
+
+	@Override
+	public String getEntityParameters() {
+		return String.valueOf(new StringBuilder().append(id).append(" ").append(lastName));
 	}
 }

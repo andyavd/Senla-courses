@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import eu.senla.andyavd.hoteladministrator.api.IVisitorManager;
+import eu.senla.andyavd.hoteladministrator.entities.Entity;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
@@ -18,10 +19,14 @@ import eu.senla.andyavd.hoteladministrator.utils.Printer;
 public class VisitorManager implements IVisitorManager {
 
 	VisitorsStorage vs = new VisitorsStorage();
-	ArrayWorker aw = new ArrayWorker();
 	RoomHistoryStorage his = new RoomHistoryStorage();
 	
 	private final static String path = Path.VISITOR_STORAGE_PATH.getPath();
+	
+	private Visitor[] castEntitiesArray(Entity[] entities) {
+		Visitor[] visitorArray = Arrays.copyOf(entities, entities.length, Visitor[].class);
+		return visitorArray;
+	}
 	
 	@Override
 	public void addVisitor(Visitor visitor) {
@@ -76,11 +81,11 @@ public class VisitorManager implements IVisitorManager {
 		Arrays.sort(showVisitorServices(visitor), comparator);
 	}
 
-	public void save() {
+	public void saveToFile() {
 		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(vs.getVisitors()), ArrayWorker.getArraySize(vs.getVisitors()));
 		FileWriter.writeToFile(stringArray, path); 
 	}
-	public String[] load() {
+	public String[] loadFromFile() {
 		return FileReader.readFromFile(this.path);
 	}
 }

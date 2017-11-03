@@ -1,24 +1,18 @@
 package eu.senla.andyavd.hoteladministrator;
 import java.text.ParseException;
 import java.time.LocalDate;
-
-import com.danco.training.TextFileWorker;
-
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
-import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStars;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.managers.HotelManager;
-import eu.senla.andyavd.hoteladministrator.utils.Printer;
 
 public class Test {
 
 	public static void main(String[] args) throws ParseException {
 		
 		HotelManager hm = new HotelManager();
-//		TextFileWorker tfw = new TextFileWorker(Path.VISITOR_STORAGE_PATH.getPath());
 		
 		Room room1 = new Room(101, 1, 10.4, RoomStars.STANDARD, RoomStatus.EMPTY);
 		Room room2 = new Room(102, 1, 10.4, RoomStars.STANDARD, RoomStatus.EMPTY);
@@ -30,7 +24,6 @@ public class Test {
 		Room room8 = new Room(108, 3, 25.7, RoomStars.LUX, RoomStatus.EMPTY);
 		Room room9 = new Room(109, 3, 24.8, RoomStars.STANDARD, RoomStatus.SERVICED);
 		Room room10 = new Room(110, 3, 4.1, RoomStars.STANDARD, RoomStatus.EMPTY);
-//		Room room11 = new Room(111, 3, 4.4, RoomStars.STANDARD, RoomStatus.EMPTY);
 		
 		hm.createRoom(room1);
 		hm.createRoom(room2);
@@ -42,7 +35,6 @@ public class Test {
 		hm.createRoom(room8);
 		hm.createRoom(room9);
 		hm.createRoom(room10);
-//		hm.createRoom(room11);
 		
 		System.out.println("/*Show all rooms*/");
 		hm.printRooms();
@@ -71,10 +63,8 @@ public class Test {
 		Visitor visitor3 = new Visitor("McCormick");
 		Visitor visitor4 = new Visitor("Cartman");
 		Visitor visitor5 = new Visitor("Stotch");
-//		Visitor visitor6 = new Visitor("Garrison");
-//		Visitor visitor7 = new Visitor("McKey");
 		
-//		System.out.println("/*Add visitors*/");
+		System.out.println("/*Add visitors*/");
 		hm.receiveVisitor(visitor1);
 		hm.receiveVisitor(visitor2);
 		hm.receiveVisitor(visitor3);
@@ -106,14 +96,14 @@ public class Test {
 		System.out.println();
 
 		System.out.println("/*Check-in visitors*/");
-		hm.checkInVisitorInARoom(visitor1, room1, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
-		hm.checkInVisitorInARoom(visitor2, room2, LocalDate.of(2017,10,11), LocalDate.of(2017,10,13));
-		hm.checkInVisitorInARoom(visitor3, room3, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
-		hm.checkInVisitorInARoom(visitor4, room4, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
-		hm.checkInVisitorInARoom(visitor5, room9, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
+		hm.checkInVisitorInRoom(visitor1, room1, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
+		hm.checkInVisitorInRoom(visitor2, room2, LocalDate.of(2017,10,11), LocalDate.of(2017,10,13));
+		hm.checkInVisitorInRoom(visitor3, room3, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
+		hm.checkInVisitorInRoom(visitor4, room4, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
+		hm.checkInVisitorInRoom(visitor5, room9, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
 		
 		System.out.println("/*Show empty rooms on a date*/");
-		hm.showEmptyRoomsOnADate(LocalDate.of(2017, 10, 12));
+		hm.showEmptyRoomsOnDate(LocalDate.of(2017, 10, 12));
 		
 		System.out.println("/*Show all visitors on a date*/");
 		hm.getTotalVisitorsOnDate(LocalDate.of(2017, 10, 12));
@@ -135,23 +125,23 @@ public class Test {
 
 		System.out.println();
 
-		hm.checkOutVisitorFromARoom(visitor1, room1);
-		hm.checkOutVisitorFromARoom(visitor2, room2);
-		hm.checkOutVisitorFromARoom(visitor3, room3);
-		hm.checkOutVisitorFromARoom(visitor4, room4);
+		hm.checkOutVisitorFromRoom(visitor1, room1);
+		hm.checkOutVisitorFromRoom(visitor2, room2);
+		hm.checkOutVisitorFromRoom(visitor3, room3);
+		hm.checkOutVisitorFromRoom(visitor4, room4);
 		
-		hm.checkInVisitorInARoom(visitor2, room1, LocalDate.of(2017,10,16), LocalDate.of(2017,10,17));
-		hm.checkOutVisitorFromARoom(visitor2, room1);
-		hm.checkInVisitorInARoom(visitor3, room1, LocalDate.of(2017,10,18), LocalDate.of(2017,10,20));
-		hm.checkOutVisitorFromARoom(visitor3, room1);
-		hm.checkInVisitorInARoom(visitor5, room1, LocalDate.of(2017,10,21), LocalDate.of(2017,10,23));
-		hm.checkOutVisitorFromARoom(visitor5, room1);
+		hm.checkInVisitorInRoom(visitor2, room1, LocalDate.of(2017,10,16), LocalDate.of(2017,10,17));
+		hm.checkOutVisitorFromRoom(visitor2, room1);
+		hm.checkInVisitorInRoom(visitor3, room1, LocalDate.of(2017,10,18), LocalDate.of(2017,10,20));
+		hm.checkOutVisitorFromRoom(visitor3, room1);
+		hm.checkInVisitorInRoom(visitor5, room1, LocalDate.of(2017,10,21), LocalDate.of(2017,10,23));
+		hm.checkOutVisitorFromRoom(visitor5, room1);
 
 		System.out.println("/*Last visitors of a room*/");
-		hm.getLastVisitorsOfARoom(room1);
+		hm.getLastVisitorsOfRoom(room1);
 
 
-		hm.save();
-		hm.load();
+		hm.saveToFile();
+		hm.loadFromFile();
 	}
 }

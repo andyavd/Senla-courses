@@ -1,24 +1,27 @@
 package eu.senla.andyavd.hoteladministrator.storages;
 
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
-import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
-
 import java.util.Arrays;
+import eu.senla.andyavd.hoteladministrator.entities.Entity;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 
 public class RoomsStorage {
 
 	private Room[] rooms = new Room[10];
 	private int counter = 0;
-	private final TextFileWorker textFileWorker = new TextFileWorker(Path.ROOM_STORAGE_PATH.getPath());
-
+	
+	private Room[] castEntitiesArray(Entity[] entities) {
+		Room[] roomArray = Arrays.copyOf(entities, entities.length, Room[].class);
+		return roomArray;
+	}
+	
 	public void addRoom(Room room) {
 
-		// if (rooms[rooms.length - 1] != null) {
-		//
-		// rooms = (Room[]) ArrayWorker.expandRoom(rooms);
-		// }
+		 if (rooms[rooms.length - 1] != null) {
+		
+		 rooms = castEntitiesArray(ArrayWorker.expandArray(rooms));
+		 }
 		rooms[counter] = room;
 		rooms[counter].setId(counter + 1);
 		counter++;
