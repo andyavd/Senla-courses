@@ -1,26 +1,27 @@
 package eu.senla.andyavd.hoteladministrator.api;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 
+import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
-import eu.senla.andyavd.hoteladministrator.entities.Service;
-import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 
-public interface IVisitorManager {
-	public void addVisitor(Visitor visitor);
+public interface IRoomManager {
 
-	public void deleteVisitor(Visitor visitor);
+	public void addRoom(Room room);
 
-	public Visitor[] showVisitors();
+	public Room[] getRooms();
 
-	public void updateVisitor(Visitor visitor, RoomHistory history);
+	public void updateRoom(Room room, RoomHistory history);
 
-	public void addServicesToVisitor(Visitor visitor, Service service);
+	public Room[] showEmptyRooms();
 
-	public Service[] showVisitorServices(Visitor visitor);
+	public Integer showEmptyRoomsNumber();
 
-	public void sortVisitorServicesByPrice(Visitor visitor, Comparator comparator);
+	public Room showRoomDetails(Room room);
 
-	void sortVisitors(Comparator comparator);
-	
+	public void sortEmptyRooms(Comparator comparator);
+
+	public void sortRooms(Comparator comparator);
+
 }
