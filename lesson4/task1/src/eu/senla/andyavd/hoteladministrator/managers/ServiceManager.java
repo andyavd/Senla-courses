@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import eu.senla.andyavd.hoteladministrator.api.IServiceManager;
+import eu.senla.andyavd.hoteladministrator.entities.Entity;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.storages.ServicesStorage;
@@ -17,6 +18,11 @@ public class ServiceManager implements IServiceManager {
 	ArrayWorker aw = new ArrayWorker();
 
 	private final static String path = Path.SERVICE_STORAGE_PATH.getPath();
+	
+	private Service[] castEntitiesArray(Entity[] entities) {
+		Service[] serviceArray = Arrays.copyOf(entities, entities.length, Service[].class);
+		return serviceArray;
+	}
 	
 	@Override
 	public void addService(Service service) {
@@ -35,12 +41,12 @@ public class ServiceManager implements IServiceManager {
 		Arrays.sort(ss.getServices(), comparator);
 	}
 
-	public void save() {
+	public void saveToFile() {
 		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(ss.getServices()), ArrayWorker.getArraySize(ss.getServices()));
 		FileWriter.writeToFile(stringArray, path); 
 	}
 
-	public String[] load() {
+	public String[] loadFromFile() {
 		return FileReader.readFromFile(path);
 	}
 }
