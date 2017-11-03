@@ -3,7 +3,7 @@ package eu.senla.andyavd.hoteladministrator.entities;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStars;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 
-public class Room extends Entity{
+public class Room extends Entity {
 
 	private int id;
 	private int roomNumber;
@@ -13,17 +13,16 @@ public class Room extends Entity{
 	private RoomStatus status;
 	private RoomHistory[] histories = new RoomHistory[10];
 
-
-//	@Override
+	@Override
 	public int getId() {
 		return id;
 	}
-	
-	@Override	
+
+	@Override
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getRoomNumber() {
 		return roomNumber;
 	}
@@ -63,7 +62,7 @@ public class Room extends Entity{
 	public void setStatus(RoomStatus status) {
 		this.status = status;
 	}
-	
+
 	public RoomHistory[] getHistories() {
 		return histories;
 	}
@@ -71,20 +70,13 @@ public class Room extends Entity{
 	public void setHistories(RoomHistory[] histories) {
 		this.histories = histories;
 	}
-		
+
 	public Room(int roomNumber, Integer capacity, Double dailyPrice, RoomStars stars, RoomStatus status) {
 		this.roomNumber = roomNumber;
 		this.capacity = capacity;
 		this.dailyPrice = dailyPrice;
 		this.stars = stars;
 		this.status = status;
-	}
-	
-	public Room(int id, int roomNumber, Integer capacity, Double dailyPrice) {
-		this.id = id;
-		this.roomNumber = roomNumber;
-		this.capacity = capacity;
-		this.dailyPrice = dailyPrice;
 	}
 
 	@Override
@@ -99,22 +91,20 @@ public class Room extends Entity{
 		s.append(". Daily price is ");
 		s.append(dailyPrice);
 		s.append(" USD. ");
-		
+
 		if (status == RoomStatus.OCCUPIED) {
 			s.append("Room is occupied. ");
-		} else if (status == RoomStatus.SERVICED){
+		} else if (status == RoomStatus.SERVICED) {
 			s.append("Room is being serviced.");
 		} else {
 			s.append("Room is empty.");
 		}
 		return s.toString();
 	}
-	
-	public String getRoomParameters() {
-		return String.valueOf(new StringBuilder().append(id)
-				.append(" ").append(roomNumber)
-				.append(" ").append(capacity)
-				.append(" ").append(stars)
-				.append(" ").append(dailyPrice));
+
+	@Override
+	public String getEntityParameters() {
+		return String.valueOf(new StringBuilder().append(id).append(" ").append(roomNumber).append(" ").append(capacity)
+				.append(" ").append(stars).append(" ").append(dailyPrice));
 	}
 }
