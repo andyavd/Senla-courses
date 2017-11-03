@@ -5,9 +5,6 @@ import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 
 import java.util.Arrays;
-
-import com.danco.training.TextFileWorker;
-
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 
 public class RoomsStorage {
@@ -42,27 +39,5 @@ public class RoomsStorage {
 				break;
 			}
 		}
-	}
-
-	public void save() {
-		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(rooms), ArrayWorker.getArraySize(rooms));
-		textFileWorker.writeToFile(stringArray);
-	}
-
-	public void load() {
-		String[] stringArray = textFileWorker.readFromFile();
-
-		for (int i = 0; i < stringArray.length; i++) {
-
-			String[] line = stringArray[i].trim().split("--");
-			String s = "";
-			for (int j = 4; j < line.length; j++) {
-	 			s += line[j] + "--";
-			}
-			rooms[i] = new Room(Integer.valueOf(line[0]), Integer.valueOf(line[1]), Integer.valueOf(line[2]), Double.parseDouble(line[3]));
-			
-            counter++;
-			
-		}	
 	}
 }

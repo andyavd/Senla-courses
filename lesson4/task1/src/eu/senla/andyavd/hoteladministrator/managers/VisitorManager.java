@@ -7,9 +7,12 @@ import eu.senla.andyavd.hoteladministrator.api.IVisitorManager;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
+import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.storages.RoomHistoryStorage;
 import eu.senla.andyavd.hoteladministrator.storages.VisitorsStorage;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
+import eu.senla.andyavd.hoteladministrator.utils.FileReader;
+import eu.senla.andyavd.hoteladministrator.utils.FileWriter;
 import eu.senla.andyavd.hoteladministrator.utils.Printer;
 
 public class VisitorManager implements IVisitorManager {
@@ -17,7 +20,9 @@ public class VisitorManager implements IVisitorManager {
 	VisitorsStorage vs = new VisitorsStorage();
 	ArrayWorker aw = new ArrayWorker();
 	RoomHistoryStorage his = new RoomHistoryStorage();
-
+	
+	private final static String path = Path.VISITOR_STORAGE_PATH.getPath();
+	
 	@Override
 	public void addVisitor(Visitor visitor) {
 		vs.addVisitor(visitor);
@@ -72,6 +77,10 @@ public class VisitorManager implements IVisitorManager {
 	}
 
 	public void save() {
-		vs.save();
+		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(vs.getVisitors()), ArrayWorker.getArraySize(vs.getVisitors()));
+		FileWriter.writeToFile(stringArray, path); 
+	}
+	public String[] load() {
+		return FileReader.readFromFile(this.path);
 	}
 }

@@ -38,9 +38,5 @@ public class VisitorsStorage {
 				visitors[i] = null;
 			}
 		}
-	}
-	public void save() {
-		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(visitors), ArrayWorker.getArraySize(visitors));
-		textFileWorker.writeToFile(stringArray);
 	}	
 }
