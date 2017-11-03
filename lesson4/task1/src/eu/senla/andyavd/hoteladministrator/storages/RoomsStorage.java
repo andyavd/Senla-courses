@@ -5,9 +5,6 @@ import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 
 import java.util.Arrays;
-
-import com.danco.training.TextFileWorker;
-
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 
 public class RoomsStorage {
