@@ -2,18 +2,23 @@ package eu.senla.andyavd.hoteladministrator;
 import java.text.ParseException;
 import java.time.LocalDate;
 
+import com.danco.training.TextFileWorker;
+
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
+import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStars;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.managers.HotelManager;
+import eu.senla.andyavd.hoteladministrator.utils.Printer;
 
 public class Test {
 
 	public static void main(String[] args) throws ParseException {
 		
 		HotelManager hm = new HotelManager();
+//		TextFileWorker tfw = new TextFileWorker(Path.VISITOR_STORAGE_PATH.getPath());
 		
 		Room room1 = new Room(101, 1, 10.4, RoomStars.STANDARD, RoomStatus.EMPTY);
 		Room room2 = new Room(102, 1, 10.4, RoomStars.STANDARD, RoomStatus.EMPTY);
@@ -86,7 +91,7 @@ public class Test {
 		Service service3 = new Service("Minibar", 10.4);
 		Service service4 = new Service("Wake-up call", 1.4);
 		
-//		System.out.println("/*Add services */");
+		System.out.println("/*Add services */");
 		hm.createService(service1);
 		hm.createService(service2);
 		hm.createService(service3);
@@ -144,10 +149,9 @@ public class Test {
 
 		System.out.println("/*Last visitors of a room*/");
 		hm.getLastVisitorsOfARoom(room1);
-//		System.out.println(room1.getHistories()[3].toString());
 
-//		load currently unavailable
-//		hm.load();
+
 		hm.save();
+		hm.load();
 	}
 }
