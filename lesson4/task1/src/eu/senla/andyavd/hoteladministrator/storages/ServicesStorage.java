@@ -1,9 +1,6 @@
 package eu.senla.andyavd.hoteladministrator.storages;
 
 import java.util.Arrays;
-
-import com.danco.training.TextFileWorker;
-
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
@@ -25,10 +22,5 @@ public class ServicesStorage {
 
 	public Service[] getServices() {
 		return services;
-	}
-
-	public void save() {
-		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(services), ArrayWorker.getArraySize(services));
-		textFileWorker.writeToFile(stringArray);
 	}
 }
