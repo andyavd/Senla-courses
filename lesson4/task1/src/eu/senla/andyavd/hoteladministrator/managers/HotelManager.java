@@ -33,6 +33,7 @@ public class HotelManager {
 	public void printRooms() {
 
 		Printer.printArray(rm.showRooms());
+		System.out.println(rm.showRooms().length);
 	}
 
 	public void printEmptyRooms() {
@@ -347,6 +348,8 @@ public class HotelManager {
 	}
 
 	public void load() {
-		sm.load();
+		Printer.printStringArray(vm.load());
+		Printer.printStringArray(rm.load());
+		Printer.printStringArray(sm.load());
 	}
 }
