@@ -32,8 +32,8 @@ public class HotelManager {
 
 	public void printRooms() {
 
-		Printer.printArray(rm.showRooms());
-		System.out.println(rm.showRooms().length);
+		Printer.printArray(rm.getRooms());
+		System.out.println(rm.getRooms().length);
 	}
 
 	public void printEmptyRooms() {
@@ -55,17 +55,17 @@ public class HotelManager {
 
 	public void sortRoomsByCapacity() {
 		rm.sortRooms(new SortingRoomsByCapacity());
-		Printer.printArray(rm.showRooms());
+		Printer.printArray(rm.getRooms());
 	}
 
 	public void sortRoomsByPrice() {
 		rm.sortRooms(new SortingRoomsByPrice());
-		Printer.printArray(rm.showRooms());
+		Printer.printArray(rm.getRooms());
 	}
 
 	public void sortRoomsByStars() {
 		rm.sortRooms(new SortingRoomsByStars());
-		Printer.printArray(rm.showRooms());
+		Printer.printArray(rm.getRooms());
 	}
 
 	public void sortEmptyRoomsByCapacity() {
@@ -107,8 +107,34 @@ public class HotelManager {
 		}
 	}
 
-	public void showEmptyRoomsOnADate(LocalDate date) {
-		rm.showRoomsEmptyOnADate(date);
+	public void showEmptyRoomsOnDate(LocalDate date) {
+
+		for (int i = 0; i < rm.getRooms().length; i++) {
+			if (rm.getRooms()[i] != null && rm.getRooms()[i].getStatus() == RoomStatus.OCCUPIED) {
+
+				int r = 0;
+				for (int k = 0; k < rm.getRooms()[i].getHistories().length; k++) {
+
+					if (rm.getRooms()[i].getHistories()[k] != null
+							&& (date.isBefore(rm.getRooms()[i].getHistories()[k].getCheckInDate())
+									|| date.isAfter(rm.getRooms()[i].getHistories()[k].getCheckOutDate()))) {
+						r = 1;
+						continue;
+					}
+
+					if (r == 1) {
+						Printer.print(rm.getRooms()[i].toString());
+						break;
+					}
+				}
+			}
+		}
+
+		for (int i = 0; i < rm.getRooms().length; i++) {
+			if (rm.getRooms()[i] != null && rm.getRooms()[i].getStatus() == RoomStatus.EMPTY) {
+				Printer.print(rm.getRooms()[i].toString());
+			}
+		}
 	}
 
 	public void changeRoomStatus(Room room) {
@@ -122,7 +148,7 @@ public class HotelManager {
 		}
 	}
 
-	public void getLastVisitorsOfARoom(Room room) {
+	public void getLastVisitorsOfRoom(Room room) {
 
 		for (int i = 0; i < room.getHistories().length; i++) {
 			if (room.getHistories()[i] != null && room.getHistories().length <= 3) {
@@ -271,7 +297,7 @@ public class HotelManager {
 
 	/* ========================Process========================= */
 
-	public void checkInVisitorInARoom(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
+	public void checkInVisitorInRoom(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate) {
 
 		if (room.getStatus() == RoomStatus.EMPTY) {
 			RoomHistory newHistory = new RoomHistory();
@@ -311,7 +337,7 @@ public class HotelManager {
 	}
 
 	@SuppressWarnings("unused")
-	public void checkOutVisitorFromARoom(Visitor visitor, Room room) {
+	public void checkOutVisitorFromRoom(Visitor visitor, Room room) {
 
 		if (room.getStatus() != RoomStatus.OCCUPIED) {
 			StringBuilder s = new StringBuilder();
@@ -341,15 +367,15 @@ public class HotelManager {
 		}
 	}
 
-	public void save() {
-		rm.save();
-		sm.save();
-		vm.save();
+	public void saveToFile() {
+		rm.saveToFile();
+		sm.saveToFile();
+		vm.saveToFile();
 	}
 
-	public void load() {
-		Printer.printStringArray(vm.load());
-		Printer.printStringArray(rm.load());
-		Printer.printStringArray(sm.load());
+	public void loadFromFile() {
+		Printer.printStringArray(vm.loadFromFile());
+		Printer.printStringArray(rm.loadFromFile());
+		Printer.printStringArray(sm.loadFromFile());
 	}
 }
