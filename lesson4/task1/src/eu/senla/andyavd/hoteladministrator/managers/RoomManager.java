@@ -8,6 +8,7 @@ import eu.senla.andyavd.hoteladministrator.api.IRoomManager;
 import eu.senla.andyavd.hoteladministrator.entities.Entity;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.enums.Path;
+import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 import eu.senla.andyavd.hoteladministrator.utils.FileReader;
@@ -15,8 +16,8 @@ import eu.senla.andyavd.hoteladministrator.utils.FileWriter;
 
 public class RoomManager implements IRoomManager {
 
-	public RoomsStorage rs = new RoomsStorage();
-	ArrayWorker aw = new ArrayWorker();
+	public RoomsStorage roomsStorage = new RoomsStorage();
+	ArrayWorker arrayWorker = new ArrayWorker();
 
 	private static final String path = Path.ROOM_STORAGE_PATH.getPath();
 
@@ -27,55 +28,63 @@ public class RoomManager implements IRoomManager {
 
 	@Override
 	public void addRoom(Room room) {
-		rs.addRoom(room);
+		roomsStorage.addRoom(room);
 	}
 
 	@Override
 	public Room[] getRooms() {
-		return rs.getRooms();
+		return roomsStorage.getRooms();
 	}
 
 	@Override
 	public void updateRoom(Room room, RoomHistory history) {
-		rs.updateRoom(room, history);
+		roomsStorage.updateRoom(room, history);
 	}
 
 	@Override
-	public Room[] showEmptyRooms() {
-		return aw.getNotNullEmptyRooms(rs.getRooms());
+	public Entity[] getEmptyRooms() {
+		Entity[] emptyRooms = new Entity[roomsStorage.getRooms().length];
+		for(int i=0; i<roomsStorage.getRooms().length; i++) {
+			if (roomsStorage.getRooms()[i] != null && roomsStorage.getRooms()[i].getStatus() == RoomStatus.EMPTY) {
+				emptyRooms[i] = roomsStorage.getRooms()[i];
+			}
+		}
+		return  ArrayWorker.getNotNullArray(emptyRooms);
 	}
 
 	@Override
-	public Integer showEmptyRoomsNumber() {
-		return aw.getNotNullEmptyRooms(rs.getRooms()).length;
+	public Integer getEmptyRoomsNumber() {
+		return this.getEmptyRooms().length;
 	}
 
 	@Override
-	public Room showRoomDetails(Room room) {
+	public Room getRoomDetails(Room room) {
 
-		for (int i = 0; i < rs.getRooms().length; i++) {
-			if (rs.getRooms()[i] == room) {
-				room = rs.getRooms()[i];
+		for (int i = 0; i < roomsStorage.getRooms().length; i++) {
+			if (roomsStorage.getRooms()[i] == room) {
+				room = roomsStorage.getRooms()[i];
 			}
 		}
 		return room;
 	}
 
-	/* ======================sorting============================ */
-
 	@Override
-	public void sortEmptyRooms(Comparator comparator) {
-		Arrays.sort(aw.getNotNullEmptyRooms(rs.getRooms()), comparator);
+	public Room[] sortEmptyRooms(Comparator<Room> comparator) {
+		Room[] sortedRooms = castEntitiesArray(this.getEmptyRooms());
+		Arrays.sort(sortedRooms, comparator);
+		return sortedRooms;
 	}
 
 	@Override
-	public void sortRooms(Comparator comparator) {
-		Arrays.sort(rs.getRooms(), comparator);
+	public Room[] sortRooms(Comparator<Room> comparator) {
+		Room[] sortedRooms = roomsStorage.getRooms();
+		Arrays.sort(sortedRooms, comparator);
+		return sortedRooms;
 	}
 
 	public void saveToFile() {
-		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(rs.getRooms()),
-				ArrayWorker.getArraySize(rs.getRooms()));
+		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(roomsStorage.getRooms()),
+				ArrayWorker.getArraySize(roomsStorage.getRooms()));
 		FileWriter.writeToFile(stringArray, path);
 	}
 
