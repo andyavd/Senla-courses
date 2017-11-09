@@ -14,8 +14,7 @@ import eu.senla.andyavd.hoteladministrator.utils.FileWriter;
 
 public class ServiceManager implements IServiceManager {
 
-	ServicesStorage ss = new ServicesStorage();
-	ArrayWorker aw = new ArrayWorker();
+	ServicesStorage servicesStorage = new ServicesStorage();
 
 	private final static String path = Path.SERVICE_STORAGE_PATH.getPath();
 	
@@ -26,23 +25,23 @@ public class ServiceManager implements IServiceManager {
 	
 	@Override
 	public void addService(Service service) {
-		ss.addService(service);
+		servicesStorage.addService(service);
 	}
 
 	@Override
 	public Service[] getServices() {
-		return ss.getServices();
+		return servicesStorage.getServices();
 	}
 
-	/* ======================sorting============================ */
-
 	@Override
-	public void sortServices(Comparator comparator) {
-		Arrays.sort(ss.getServices(), comparator);
+	public Service[] sortServices(Comparator<Service> comparator) {
+		Service[] sortedServices = servicesStorage.getServices();
+		Arrays.sort(sortedServices, comparator);
+		return sortedServices;
 	}
 
 	public void saveToFile() {
-		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(ss.getServices()), ArrayWorker.getArraySize(ss.getServices()));
+		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(servicesStorage.getServices()), ArrayWorker.getArraySize(servicesStorage.getServices()));
 		FileWriter.writeToFile(stringArray, path); 
 	}
 
