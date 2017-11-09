@@ -12,7 +12,7 @@ public class Test {
 
 	public static void main(String[] args) throws ParseException {
 		
-		HotelManager hm = new HotelManager();
+		HotelManager hotelManager = new HotelManager();
 		
 		Room room1 = new Room(101, 1, 10.4, RoomStars.STANDARD, RoomStatus.EMPTY);
 		Room room2 = new Room(102, 1, 10.4, RoomStars.STANDARD, RoomStatus.EMPTY);
@@ -25,38 +25,38 @@ public class Test {
 		Room room9 = new Room(109, 3, 24.8, RoomStars.STANDARD, RoomStatus.SERVICED);
 		Room room10 = new Room(110, 3, 4.1, RoomStars.STANDARD, RoomStatus.EMPTY);
 		
-		hm.createRoom(room1);
-		hm.createRoom(room2);
-		hm.createRoom(room3);
-		hm.createRoom(room4);
-		hm.createRoom(room5);
-		hm.createRoom(room6);
-		hm.createRoom(room7);
-		hm.createRoom(room8);
-		hm.createRoom(room9);
-		hm.createRoom(room10);
+		hotelManager.createRoom(room1);
+		hotelManager.createRoom(room2);
+		hotelManager.createRoom(room3);
+		hotelManager.createRoom(room4);
+		hotelManager.createRoom(room5);
+		hotelManager.createRoom(room6);
+		hotelManager.createRoom(room7);
+		hotelManager.createRoom(room8);
+		hotelManager.createRoom(room9);
+		hotelManager.createRoom(room10);
 		
 		System.out.println("/*Show all rooms*/");
-		hm.printRooms();
+		hotelManager.printRooms();
 		System.out.println("/*Show all empty rooms*/");
-		hm.printEmptyRooms();
+		hotelManager.printEmptyRooms();
 		System.out.println("/*Show empty rooms numbers*/");
-		hm.printEmptyRoomsNumber();
+		hotelManager.printEmptyRoomsNumber();
 		System.out.println("/*Sort rooms*/");
-		hm.sortRoomsByCapacity();
+		hotelManager.sortRoomsByCapacity();
 		System.out.println("price");
-		hm.sortRoomsByPrice();
+		hotelManager.sortRoomsByPrice();
 		System.out.println("stars");
-		hm.sortRoomsByStars();
+		hotelManager.sortRoomsByStars();
 		
 		System.out.println("/*Sort empty rooms*/");
-		hm.sortEmptyRoomsByCapacity();
+		hotelManager.sortEmptyRoomsByCapacity();
 		System.out.println("/*price*/");
-		hm.sortEmptyRoomsByPrice();
+		hotelManager.sortEmptyRoomsByPrice();
 		System.out.println("/*stars*/");
-		hm.sortEmptyRoomsByStars();
+		hotelManager.sortEmptyRoomsByStars();
 		System.out.println("/*Show room datails*/");
-		hm.printDetailsOfRoom(room6);
+		hotelManager.printDetailsOfRoom(room6);
 				
 		Visitor visitor1 = new Visitor("Marsh");
 		Visitor visitor2 = new Visitor("Broflovski");
@@ -65,16 +65,16 @@ public class Test {
 		Visitor visitor5 = new Visitor("Stotch");
 		
 		System.out.println("/*Add visitors*/");
-		hm.receiveVisitor(visitor1);
-		hm.receiveVisitor(visitor2);
-		hm.receiveVisitor(visitor3);
-		hm.receiveVisitor(visitor4);
-		hm.receiveVisitor(visitor5);
+		hotelManager.receiveVisitor(visitor1);
+		hotelManager.receiveVisitor(visitor2);
+		hotelManager.receiveVisitor(visitor3);
+		hotelManager.receiveVisitor(visitor4);
+		hotelManager.receiveVisitor(visitor5);
 		
 		System.out.println("/*Show visitors*/");
-		hm.printVisitors();
+		hotelManager.printVisitors();
 		System.out.println();
-		hm.sortVisitorsByName();
+		hotelManager.sortVisitorsByName();
 		
 		Service service1 = new Service("Laundry", 8.6);
 		Service service2 = new Service("Ironing", 2.3);
@@ -82,66 +82,66 @@ public class Test {
 		Service service4 = new Service("Wake-up call", 1.4);
 		
 		System.out.println("/*Add services */");
-		hm.createService(service1);
-		hm.createService(service2);
-		hm.createService(service3);
-		hm.createService(service4);
+		hotelManager.createService(service1);
+		hotelManager.createService(service2);
+		hotelManager.createService(service3);
+		hotelManager.createService(service4);
 		
 		System.out.println("/*Show services */");
-		hm.printServices();
+		hotelManager.printServices();
 		System.out.println("/*Sort services */");
-		hm.sortServicesByName();
+		hotelManager.sortServicesByName();
 		System.out.println();
-		hm.sortServicesByPrice();
+		hotelManager.sortServicesByPrice();
 		System.out.println();
 
 		System.out.println("/*Check-in visitors*/");
-		hm.checkInVisitorInRoom(visitor1, room1, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
-		hm.checkInVisitorInRoom(visitor2, room2, LocalDate.of(2017,10,11), LocalDate.of(2017,10,13));
-		hm.checkInVisitorInRoom(visitor3, room3, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
-		hm.checkInVisitorInRoom(visitor4, room4, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
-		hm.checkInVisitorInRoom(visitor5, room9, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
+		hotelManager.checkInVisitorInRoom(visitor1, room1, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
+		hotelManager.checkInVisitorInRoom(visitor2, room2, LocalDate.of(2017,10,11), LocalDate.of(2017,10,13));
+		hotelManager.checkInVisitorInRoom(visitor3, room3, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
+		hotelManager.checkInVisitorInRoom(visitor4, room4, LocalDate.of(2017,10,11), LocalDate.of(2017,10,15));
+		hotelManager.checkInVisitorInRoom(visitor5, room9, LocalDate.of(2017,10,11), LocalDate.of(2017,10,14));
 		
 		System.out.println("/*Show empty rooms on a date*/");
-		hm.showEmptyRoomsOnDate(LocalDate.of(2017, 10, 12));
+		hotelManager.showEmptyRoomsOnDate(LocalDate.of(2017, 10, 12));
 		
 		System.out.println("/*Show all visitors on a date*/");
-		hm.getTotalVisitorsOnDate(LocalDate.of(2017, 10, 12));
+		hotelManager.printTotalVisitorsOnDate(LocalDate.of(2017, 10, 12));
 							
 		System.out.println("/*Bill visitor for a room*/");
-		hm.billVisitor(visitor1);
+		hotelManager.billVisitor(visitor1);
 		System.out.println("/*Set room as serviced*/");
-		hm.changeRoomStatus(room8);
+		hotelManager.changeRoomStatus(room8);
 		
 		System.out.println("/*Adding services to a visitor*/");		
 		
-		hm.addServicesToVisitor(visitor1, service1);
-		hm.addServicesToVisitor(visitor1, service4);
+		hotelManager.addServicesToVisitor(visitor1, service1);
+		hotelManager.addServicesToVisitor(visitor1, service4);
 
-		hm.printVisitorServices(visitor1);
+		hotelManager.printVisitorServices(visitor1);
 		
 		System.out.println("/*Sorting visitors rervices*/");
-		hm.sortVisitorServicesByPrice(visitor1);
+		hotelManager.sortVisitorServicesByPrice(visitor1);
 
 		System.out.println();
 
-		hm.checkOutVisitorFromRoom(visitor1, room1);
-		hm.checkOutVisitorFromRoom(visitor2, room2);
-		hm.checkOutVisitorFromRoom(visitor3, room3);
-		hm.checkOutVisitorFromRoom(visitor4, room4);
+		hotelManager.checkOutVisitorFromRoom(visitor1, room1);
+		hotelManager.checkOutVisitorFromRoom(visitor2, room2);
+		hotelManager.checkOutVisitorFromRoom(visitor3, room3);
+		hotelManager.checkOutVisitorFromRoom(visitor4, room4);
 		
-		hm.checkInVisitorInRoom(visitor2, room1, LocalDate.of(2017,10,16), LocalDate.of(2017,10,17));
-		hm.checkOutVisitorFromRoom(visitor2, room1);
-		hm.checkInVisitorInRoom(visitor3, room1, LocalDate.of(2017,10,18), LocalDate.of(2017,10,20));
-		hm.checkOutVisitorFromRoom(visitor3, room1);
-		hm.checkInVisitorInRoom(visitor5, room1, LocalDate.of(2017,10,21), LocalDate.of(2017,10,23));
-		hm.checkOutVisitorFromRoom(visitor5, room1);
+		hotelManager.checkInVisitorInRoom(visitor2, room1, LocalDate.of(2017,10,16), LocalDate.of(2017,10,17));
+		hotelManager.checkOutVisitorFromRoom(visitor2, room1);
+		hotelManager.checkInVisitorInRoom(visitor3, room1, LocalDate.of(2017,10,18), LocalDate.of(2017,10,20));
+		hotelManager.checkOutVisitorFromRoom(visitor3, room1);
+		hotelManager.checkInVisitorInRoom(visitor5, room1, LocalDate.of(2017,10,21), LocalDate.of(2017,10,23));
+		hotelManager.checkOutVisitorFromRoom(visitor5, room1);
 
 		System.out.println("/*Last visitors of a room*/");
-		hm.getLastVisitorsOfRoom(room1);
+		hotelManager.getLastVisitorsOfRoom(room1);
 
 
-		hm.saveToFile();
-		hm.loadFromFile();
+		hotelManager.saveToFile();
+		hotelManager.loadFromFile();
 	}
 }
