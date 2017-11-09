@@ -1,0 +1,10 @@
+7 Room#107, Capacity 3, Rate STANDARD, DailyPrice 4.1, Status EMPTY
+10 Room#110, Capacity 3, Rate STANDARD, DailyPrice 4.1, Status EMPTY
+1 Room#101, Capacity 1, Rate STANDARD, DailyPrice 10.4, Status EMPTY
+2 Room#102, Capacity 1, Rate STANDARD, DailyPrice 10.4, Status EMPTY
+5 Room#105, Capacity 3, Rate STANDARD, DailyPrice 24.8, Status EMPTY
+9 Room#109, Capacity 3, Rate STANDARD, DailyPrice 24.8, Status SERVICED
+3 Room#103, Capacity 2, Rate JUNIOR_SUITE, DailyPrice 18.5, Status EMPTY
+4 Room#104, Capacity 2, Rate JUNIOR_SUITE, DailyPrice 18.5, Status EMPTY
+8 Room#108, Capacity 3, Rate LUX, DailyPrice 25.7, Status SERVICED
+6 Room#106, Capacity 3, Rate PRESIDENT_LUX, DailyPrice 50.0, Status EMPTY
