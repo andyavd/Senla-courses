@@ -6,15 +6,15 @@ import eu.senla.andyavd.hoteladministrator.storages.RoomHistoryStorage;
 
 public class RoomHistoryManager implements IRoomHistoryManager {
 
-	public RoomHistoryStorage his = new RoomHistoryStorage();
+	public RoomHistoryStorage roomHistoryStorage = new RoomHistoryStorage();
 
 	@Override
 	public void addHistory(RoomHistory history) {
-		his.addHistory(history);
+		roomHistoryStorage.addHistory(history);
 	}
 
 	@Override
 	public RoomHistory[] showHistories() {
-		return his.getHistory();
+		return roomHistoryStorage.getHistory();
 	}
 }
