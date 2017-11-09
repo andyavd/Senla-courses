@@ -15,4 +15,12 @@ public class Printer {
 			}
 		}
 	}
+	
+	public static void printStringArray(String[] strings) {
+		for (int i=0; i<strings.length; i++) {
+			if(strings[i] != null) {
+				System.out.println(strings[i]);
+			}
+		}
+	}
 }
