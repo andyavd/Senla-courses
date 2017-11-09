@@ -10,6 +10,6 @@ public interface IServiceManager {
 
 	public Service[] getServices();
 
-	public void sortServices(Comparator comparator);
+	public Service[] sortServices(Comparator<Service> comparator);
 	
 }

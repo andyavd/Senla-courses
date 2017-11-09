@@ -11,16 +11,16 @@ public interface IVisitorManager {
 
 	public void deleteVisitor(Visitor visitor);
 
-	public Visitor[] showVisitors();
+	public Visitor[] getVisitors();
 
 	public void updateVisitor(Visitor visitor, RoomHistory history);
 
 	public void addServicesToVisitor(Visitor visitor, Service service);
 
-	public Service[] showVisitorServices(Visitor visitor);
+	public Service[] getVisitorServices(Visitor visitor);
 
-	public void sortVisitorServicesByPrice(Visitor visitor, Comparator comparator);
+	public Service[] sortVisitorServicesByPrice(Visitor visitor, Comparator<Service> comparator);
 
-	void sortVisitors(Comparator comparator);
+	public Visitor[] sortVisitors(Comparator<Visitor> comparator);
 	
 }

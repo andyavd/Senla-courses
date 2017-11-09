@@ -1,5 +1,6 @@
 package eu.senla.andyavd.hoteladministrator.managers;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -18,8 +19,8 @@ import eu.senla.andyavd.hoteladministrator.utils.Printer;
 
 public class VisitorManager implements IVisitorManager {
 
-	VisitorsStorage vs = new VisitorsStorage();
-	RoomHistoryStorage his = new RoomHistoryStorage();
+	VisitorsStorage visitorsStorage = new VisitorsStorage();
+	RoomHistoryStorage roomHistoryStorage = new RoomHistoryStorage();
 	
 	private final static String path = Path.VISITOR_STORAGE_PATH.getPath();
 	
@@ -30,22 +31,22 @@ public class VisitorManager implements IVisitorManager {
 	
 	@Override
 	public void addVisitor(Visitor visitor) {
-		vs.addVisitor(visitor);
+		visitorsStorage.addVisitor(visitor);
 	}
 
 	@Override
 	public void deleteVisitor(Visitor visitor) {
-		vs.deleteVisitor(visitor);
+		visitorsStorage.deleteVisitor(visitor);
 	}
 
 	@Override
-	public Visitor[] showVisitors() {
-		return vs.getVisitors();
+	public Visitor[] getVisitors() {
+		return visitorsStorage.getVisitors();
 	}
 
 	@Override
 	public void updateVisitor(Visitor visitor, RoomHistory history) {
-		vs.updateVisitor(visitor, history);
+		visitorsStorage.updateVisitor(visitor, history);
 	}
 
 	@Override
@@ -64,25 +65,49 @@ public class VisitorManager implements IVisitorManager {
 	}
 
 	@Override
-	public Service[] showVisitorServices(Visitor visitor) {
+	public Service[] getVisitorServices(Visitor visitor) {
 
 		return visitor.getHistory().getService();
 	}
+	
+	public String getTotalVisitorsOnDate(LocalDate date) {
 
-	/* ======================sorting============================ */
+		Integer count = 0;
+		for (int i = 0; i < visitorsStorage.getVisitors().length; i++) {
+			if (visitorsStorage.getVisitors()[i] != null && visitorsStorage.getVisitors()[i].getHistory() != null) {
+				if ((visitorsStorage.getVisitors()[i].getHistory().getCheckInDate().isBefore(date)
+						|| visitorsStorage.getVisitors()[i].getHistory().getCheckInDate().isEqual(date))
+						&& (visitorsStorage.getVisitors()[i].getHistory().getCheckOutDate().isAfter(date)
+								|| visitorsStorage.getVisitors()[i].getHistory().getCheckOutDate().isEqual(date))) {
+					count++;
+				}
+			}
+		}
+		StringBuilder s = new StringBuilder();
+		s.append("There are ");
+		s.append(count);
+		s.append(" visitors on ");
+		s.append(date);
 
-	@Override
-	public void sortVisitors(Comparator comparator) {
-		Arrays.sort(vs.getVisitors(), comparator);
+		return s.toString();
 	}
 
 	@Override
-	public void sortVisitorServicesByPrice(Visitor visitor, Comparator comparator) {
-		Arrays.sort(showVisitorServices(visitor), comparator);
+	public Visitor[] sortVisitors(Comparator comparator) {
+		Visitor[] sortedVisitors = visitorsStorage.getVisitors();
+		Arrays.sort(sortedVisitors, comparator);
+		return sortedVisitors;
+	}
+
+	@Override
+	public Service[] sortVisitorServicesByPrice(Visitor visitor, Comparator<Service> comparator) {
+		Service[] sortedVisitorServices = getVisitorServices(visitor);
+		Arrays.sort(sortedVisitorServices, comparator);
+		return sortedVisitorServices;
 	}
 
 	public void saveToFile() {
-		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(vs.getVisitors()), ArrayWorker.getArraySize(vs.getVisitors()));
+		String[] stringArray = Arrays.copyOf(ArrayWorker.arrayToString(visitorsStorage.getVisitors()), ArrayWorker.getArraySize(visitorsStorage.getVisitors()));
 		FileWriter.writeToFile(stringArray, path); 
 	}
 	public String[] loadFromFile() {
