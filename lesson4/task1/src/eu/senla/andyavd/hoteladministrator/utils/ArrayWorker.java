@@ -33,20 +33,6 @@ public class ArrayWorker {
 		return newEntity;
 	}
 
-	public Room[] getNotNullEmptyRooms(Room[] entities) {
-
-		Integer newCount = 0;
-
-		for (int i = 0; i < entities.length; i++) {
-			if (entities[i] != null && entities[i].getStatus() == RoomStatus.EMPTY)
-				newCount++;
-		}
-		Room[] newEntity = new Room[newCount];
-
-		System.arraycopy(entities, 0, newEntity, 0, newCount);
-		return newEntity;
-	}
-
 	public static int getArraySize(Entity[] array) {
 		int counter = 0;
 
