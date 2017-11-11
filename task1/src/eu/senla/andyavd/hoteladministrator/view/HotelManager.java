@@ -29,10 +29,10 @@ import eu.senla.andyavd.hoteladministrator.utils.sorters.visitors.SortingVisitor
 
 public class HotelManager {
 	
-	RoomManager rm = new RoomManager();
-	VisitorManager vm = new VisitorManager();
-	ServiceManager sm = new ServiceManager();
-	RoomHistoryManager rhm = new RoomHistoryManager();
+	private RoomManager rm = new RoomManager();
+	private VisitorManager vm = new VisitorManager();
+	private ServiceManager sm = new ServiceManager();
+	private RoomHistoryManager rhm = new RoomHistoryManager();
 
 	
 	private static HotelManager hm;
