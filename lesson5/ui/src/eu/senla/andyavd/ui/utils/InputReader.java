@@ -3,8 +3,6 @@ package eu.senla.andyavd.ui.utils;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import eu.senla.andyavd.hoteladministrator.enums.RoomStars;
-import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.utils.Printer;
 
 public class InputReader {
@@ -72,7 +70,6 @@ public class InputReader {
 		return getLocalDateInput(scanner);
 	}
 
-	@SuppressWarnings("unused")
 	private static LocalDate getLocalDateInput(Scanner scanner) {
 		boolean isValid = false;
 		String input;
@@ -89,81 +86,5 @@ public class InputReader {
 			}
 		}
 		return date;
-	}
-	
-	public static RoomStars getStarsInput(Scanner scanner, String message) {
-		Printer.print(message);
-
-		return getStarsInput(scanner);
-	}
-
-	private static RoomStars getStarsInput(Scanner scanner) {
-		boolean isValid = false;
-		Integer input;
-		RoomStars star = null;
-		while (!isValid) {
-			if (scanner.hasNextInt()) {
-				input = scanner.nextInt();
-	
-				switch (input) {
-				case 1:
-					star = RoomStars.STANDARD;
-					break;
-				case 2:
-					star = RoomStars.JUNIOR_SUITE;
-					break;
-				case 3:
-					star = RoomStars.LUX;
-					break;
-				case 4:
-					star = RoomStars.PRESIDENT_LUX;
-					break;
-				default:
-					Printer.print("Wrong input. Please, input a number from 1 to 4.");
-					scanner.nextLine();
-					continue;
-				}
-				isValid = true;
-			} else {
-				Printer.print("Wrong input. Please, input a number from 1 to 4.");
-				scanner.nextLine();
-				continue;
-			}
-		}
-		return star;
-	}
-	
-	public static RoomStatus getStatusInput(Scanner scanner, String message) {
-		Printer.print(message);
-
-		return getStatusInput(scanner);
-	}
-
-	private static RoomStatus getStatusInput(Scanner scanner) {
-		boolean isValid = false;
-		String input;
-		RoomStatus status = null;
-		while (!isValid) {
-			if (scanner.hasNext()) {
-				input = scanner.next();
-	
-				switch (input) {
-				case "empty":
-					status = RoomStatus.EMPTY;
-					break;
-				case "occupied":
-					status = RoomStatus.OCCUPIED;
-					break;
-				case "serviced":
-					status = RoomStatus.SERVICED;
-					break;
-				default:Printer.print("Wrong input. Please, input a \"empty\", \"occupied\" or \"serviced\".");
-				scanner.nextLine();
-				continue;
-				}
-				isValid = true;
-			}
-		}
-		return status;
 	}
 }
