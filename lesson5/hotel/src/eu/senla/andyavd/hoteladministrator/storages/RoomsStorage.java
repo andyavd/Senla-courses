@@ -4,29 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 import eu.senla.andyavd.hoteladministrator.api.storages.IRoomsStorage;
-import eu.senla.andyavd.hoteladministrator.entities.AEntity;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 
 public class RoomsStorage implements IRoomsStorage{
 
-	private List<AEntity> rooms = new ArrayList<AEntity>();
-	private int counter = 0;
+	private List<Room> rooms = new ArrayList<Room>();
+	
+	private static RoomsStorage roomsStorage;
+
+	public static RoomsStorage getInstance() {
+		if (roomsStorage == null) {
+			roomsStorage = new RoomsStorage();
+		}
+		return roomsStorage;
+	}
 	
 	@Override
 	public void addRoom(Room room) {
 		rooms.add(room);
-		rooms.get(counter).setId(counter + 1);
-		counter++;
+		for (int i = 0; i < rooms.size(); i++) {
+			rooms.get(rooms.size()-1).setId(rooms.size());
+		}
 	}
 
 	@Override
-	public void setRooms(List<AEntity> rooms) {
+	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
 
 	@Override
-	public List<AEntity> getRooms() {
+	public List<Room> getRooms() {
 		return rooms;
 	}
 
