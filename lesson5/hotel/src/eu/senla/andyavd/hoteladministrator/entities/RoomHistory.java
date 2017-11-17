@@ -13,7 +13,7 @@ public class RoomHistory extends AEntity {
 	private Visitor visitor;
 	private LocalDate checkInDate;
 	private LocalDate checkOutDate;
-	private List<AEntity> services = new ArrayList<AEntity>();
+	private List<Service> services = new ArrayList<Service>();
 	private RoomHistoryStatus status;
 
 	@Override
@@ -58,11 +58,11 @@ public class RoomHistory extends AEntity {
 		this.checkOutDate = checkOutDate;
 	}
 
-	public List<AEntity> getService() {
+	public List<Service> getService() {
 		return services;
 	}
 
-	public void setService(List<AEntity> services) {
+	public void setService(List<Service> services) {
 		this.services = services;
 	}
 
