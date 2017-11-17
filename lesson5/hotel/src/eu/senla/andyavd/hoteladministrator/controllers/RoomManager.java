@@ -1,88 +1,136 @@
 package eu.senla.andyavd.hoteladministrator.controllers;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import eu.senla.andyavd.hoteladministrator.api.managers.IRoomManager;
-import eu.senla.andyavd.hoteladministrator.api.storages.IRoomsStorage;
-import eu.senla.andyavd.hoteladministrator.entities.AEntity;
+import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomManager;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.enums.Path;
+import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 import eu.senla.andyavd.hoteladministrator.utils.FileReader;
 import eu.senla.andyavd.hoteladministrator.utils.FileWriter;
 
 public class RoomManager implements IRoomManager {
-
-	private IRoomsStorage roomStorage = new RoomsStorage();
-
+	
+	FileReader fileReader = new FileReader();
+	FileWriter fileWriter = new FileWriter();
+	
 	private static final String path = Path.ROOM_STORAGE_PATH.getPath();
 
 	@Override
 	public void addRoom(Room room) {
-		roomStorage.addRoom(room);
+		RoomsStorage.getInstance().addRoom(room);
 	}
 
 	@Override
-	public List<AEntity> getRooms() {
-		return roomStorage.getRooms();
+	public List<Room> getRooms() {
+		return RoomsStorage.getInstance().getRooms();
+	}
+
+	@Override
+	public void setRooms(List<Room> entities) {
+		RoomsStorage.getInstance().setRooms(entities);
 	}
 
 	@Override
 	public void updateRoom(Room room, RoomHistory history) {
-		roomStorage.updateRoom(room, history);
+		RoomsStorage.getInstance().updateRoom(room, history);
 	}
 
 	@Override
-	public List<AEntity> showEmptyRooms() {
-		return ArrayWorker.getNotNullEmptyRooms(roomStorage.getRooms());
+	public List<Room> getEmptyRooms(List<Room> entities) {
+
+		List<Room> newEntity = new ArrayList<Room>();
+
+		for (int i = 0; i < entities.size(); i++) {
+			if (((Room) entities.get(i)).getStatus() == RoomStatus.EMPTY)
+				newEntity.add(entities.get(i));
+		}
+		return newEntity;
 	}
 
 	@Override
-	public Integer showEmptyRoomsNumber() {
-		return ArrayWorker.getNotNullEmptyRooms(roomStorage.getRooms()).size();
+	public Integer getEmptyRoomsNumber(List<Room> entities) {
+		return entities.size();
 	}
 
 	@Override
 	public Room getRoomDetails(Room room) {
 
-		for (int i = 0; i < roomStorage.getRooms().size(); i++) {
-			if (roomStorage.getRooms().get(i) == room) {
-				room = (Room) roomStorage.getRooms().get(i);
+		for (int i = 0; i < RoomsStorage.getInstance().getRooms().size(); i++) {
+			if (RoomsStorage.getInstance().getRooms().get(i).equals(room)) {
+				room = RoomsStorage.getInstance().getRooms().get(i);
 			}
 		}
 		return room;
 	}
 
 	@Override
-	public List<AEntity> sortEmptyRooms(Comparator<AEntity> comparator) {
-		List<AEntity> sortedRooms = ArrayWorker.getNotNullEmptyRooms(roomStorage.getRooms());
+	public List<Room> getEmptyRoomsOnDate(LocalDate date) {
+
+		List<Room> emptyRoomsOnDate = new ArrayList<Room>();
+
+		for (int i = 0; i < getRooms().size(); i++) {
+			if (getRooms().get(i) != null && ((Room) getRooms().get(i)).getStatus() == RoomStatus.OCCUPIED) {
+
+				int r = 0;
+				for (int k = 0; k < ((Room) getRooms().get(i)).getHistories().size(); k++) {
+
+					if (((Room) getRooms().get(i)).getHistories().get(k) != null
+							&& (date.isBefore(((Room) getRooms().get(i)).getHistories().get(k).getCheckInDate()) || date
+									.isAfter(((Room) getRooms().get(i)).getHistories().get(k).getCheckOutDate()))) {
+						r = 1;
+						continue;
+					}
+
+					if (r == 1) {
+						emptyRoomsOnDate.add(getRooms().get(i));
+						break;
+					}
+				}
+			}
+		}
+
+		for (int i = 0; i < getRooms().size(); i++) {
+			if (getRooms().get(i) != null && ((Room) getRooms().get(i)).getStatus() == RoomStatus.EMPTY) {
+				emptyRoomsOnDate.add((getRooms().get(i)));
+			}
+		}
+		return emptyRoomsOnDate;
+	}
+
+	@Override
+	public List<Room> sortEmptyRooms(Comparator<Room> comparator) {
+		List<Room> sortedRooms = getEmptyRooms(RoomsStorage.getInstance().getRooms());
 		Collections.sort(sortedRooms, comparator);
 		return sortedRooms;
 	}
 
 	@Override
-	public List<AEntity> sortRooms(Comparator<AEntity> comparator) {
-		List<AEntity> sortedRooms = roomStorage.getRooms();
+	public List<Room> sortRooms(Comparator<Room> comparator) {
+		List<Room> sortedRooms = RoomsStorage.getInstance().getRooms();
 		Collections.sort(sortedRooms, comparator);
 		return sortedRooms;
 	}
-	
+
 	@Override
 	public Room getRoomById(Integer id) {
-		return roomStorage.getRoomById(id);
+		return RoomsStorage.getInstance().getRoomById(id);
 	}
 
 	@Override
 	public void saveToFile() {
-		FileWriter.writeToFile(ArrayWorker.arrayToString(roomStorage.getRooms()), path); 
+		fileWriter.writeToFile(ArrayWorker.arrayToString(RoomsStorage.getInstance().getRooms()), path);
 	}
 
 	@Override
 	public String[] loadFromFile() {
-		return FileReader.readFromFile(path);
+		return fileReader.readFromFile(path);
 	}
 }
