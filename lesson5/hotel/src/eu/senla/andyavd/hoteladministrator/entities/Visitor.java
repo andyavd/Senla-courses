@@ -32,12 +32,16 @@ public class Visitor extends AEntity {
 		this.history = history;
 	}
 
+	public Visitor() {
+
+	}
+
 	public Visitor(String lastName) {
 		this.lastName = lastName;
 	}
 
 	@Override
 	public String toString() {
-		return String.valueOf(new StringBuilder().append(id).append(" Visitor ").append(lastName));
+		return String.valueOf(new StringBuilder().append(id).append(" ").append(lastName));
 	}
 }
