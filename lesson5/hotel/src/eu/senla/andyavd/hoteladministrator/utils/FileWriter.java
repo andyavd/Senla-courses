@@ -2,9 +2,12 @@ package eu.senla.andyavd.hoteladministrator.utils;
 
 import com.danco.training.TextFileWorker;
 
-public class FileWriter {
-	public static void writeToFile(String[] values, String path) {
-		TextFileWorker tfw = new TextFileWorker(path);
+public class FileWriter extends ClassLoaderContainsClass{
+	
+	public void writeToFile(String[] values, String path) {
+	
+		setPathToFile(path);
+		TextFileWorker tfw = new TextFileWorker(url.getPath());
 		tfw.writeToFile(values);
 	}
 }
