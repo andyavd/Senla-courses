@@ -1,29 +1,41 @@
 package eu.senla.andyavd.hoteladministrator.storages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import eu.senla.andyavd.hoteladministrator.api.storages.IVisitorsStorage;
-import eu.senla.andyavd.hoteladministrator.entities.AEntity;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 
-import java.util.ArrayList;
+public class VisitorsStorage implements IVisitorsStorage {
 
-public class VisitorsStorage implements IVisitorsStorage{
+	private List<Visitor> visitors = new ArrayList<Visitor>();
 
-	private List<AEntity> visitors = new ArrayList<AEntity>();
-	private int counter = 0;
+	private static VisitorsStorage visitorsStorage;
+
+	public static VisitorsStorage getInstance() {
+		if (visitorsStorage == null) {
+			visitorsStorage = new VisitorsStorage();
+		}
+		return visitorsStorage;
+	}
 
 	@Override
-	public List<AEntity> getVisitors() {
+	public List<Visitor> getVisitors() {
 		return visitors;
 	}
-	
+
+	@Override
+	public void setVisitors(List<Visitor> visitors) {
+		this.visitors = visitors;
+	}
+
 	@Override
 	public void addVisitor(Visitor visitor) {
 		visitors.add(visitor);
-		visitors.get(counter).setId(counter + 1);
-		counter++;
+		for (int i = 0; i < visitors.size(); i++) {
+			visitors.get(visitors.size()-1).setId(visitors.size());
+		}
 	}
 
 	@Override
