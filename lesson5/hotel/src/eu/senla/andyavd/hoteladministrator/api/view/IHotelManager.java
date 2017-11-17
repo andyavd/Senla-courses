@@ -1,10 +1,10 @@
-package eu.senla.andyavd.hoteladministrator.api.facade;
+package eu.senla.andyavd.hoteladministrator.api.view;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import eu.senla.andyavd.hoteladministrator.entities.AEntity;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
+import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.EmptyRoomException;
@@ -16,33 +16,31 @@ public interface IHotelManager {
 
 	public void addRoom(Room room);
 
-	public List<AEntity> getRooms();
+	public List<Room> getRooms();
 
-	public List<AEntity> getEmptyRooms();
+	public List<Room> getEmptyRooms(List<Room> rooms);
 
-	public Integer getEmptyRoomsNumber();
+	public Integer getEmptyRoomsNumber(List<Room> rooms);
 
-	public String getRoomDetails(Room room);
+	public List<Room> sortRoomsByCapacity();
 
-	public List<AEntity> sortRoomsByCapacity();
+	public List<Room> sortRoomsByPrice();
 
-	public List<AEntity> sortRoomsByPrice();
+	public List<Room> sortRoomsByStars();
 
-	public List<AEntity> sortRoomsByStars();
+	public List<Room> sortEmptyRoomsByCapacity();
 
-	public List<AEntity> sortEmptyRoomsByCapacity();
+	public List<Room> sortEmptyRoomsByPrice();
 
-	public List<AEntity> sortEmptyRoomsByPrice();
+	public List<Room> sortEmptyRoomsByStars();
 
-	public List<AEntity> sortEmptyRoomsByStars();
+	public Double billVisitor(Visitor visitor);
 
-	public String billVisitor(Visitor visitor);
-
-	public List<AEntity> getEmptyRoomsOnDate(LocalDate date);
+	public List<Room> getEmptyRoomsOnDate(LocalDate date);
 
 	public String changeRoomStatus(Room room);
 
-	public List<String> getLastVisitorsOfRoom(Room room);
+	public List<RoomHistory> getLastVisitorsOfRoom(Room room);
 
 	public void changePriceOnRoom(Room room, double dailyPrice);
 
@@ -52,19 +50,19 @@ public interface IHotelManager {
 
 	public void addVisitor(Visitor visitor);
 
-	public List<AEntity> getVisitors();
+	public List<Visitor> getVisitors();
 
 	public void deleteVisitor(Visitor visitor);
 
-	public List<AEntity> sortVisitorsByName();
+	public List<Visitor> sortVisitorsByName();
 
 	public void addServicesToVisitor(Visitor visitor, Service service);
 
-	public List<String> getVisitorServices(Visitor visitor);
+	public List<Service> getVisitorServices(Visitor visitor);
 
-	public List<AEntity> sortVisitorServicesByPrice(Visitor visitor);
+	public List<Service> sortVisitorServicesByPrice(Visitor visitor);
 
-	public String getTotalVisitorsOnDate(LocalDate date);
+	public Integer getTotalVisitorsOnDate(LocalDate date);
 
 	public Visitor getVisitorById(Integer id);
 
@@ -72,11 +70,11 @@ public interface IHotelManager {
 
 	public void addService(Service service);
 
-	public List<AEntity> getServices();
+	public List<Service> getServices();
 
-	public List<AEntity> sortServicesByName();
+	public List<Service> sortServicesByName();
 
-	public List<AEntity> sortServicesByPrice();
+	public List<Service> sortServicesByPrice();
 
 	public void changePriceOnService(Service service, double dailyPrice);
 
@@ -84,12 +82,11 @@ public interface IHotelManager {
 
 	/* ========================Process========================= */
 
-	public String checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate) throws NotEmptyRoomException;
+	public void checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate) throws NotEmptyRoomException;
 
-	public String checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException;
+	public void checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException;
 	
 	public void saveToFile();
 	
 	public void loadFromFile();
-
 }
