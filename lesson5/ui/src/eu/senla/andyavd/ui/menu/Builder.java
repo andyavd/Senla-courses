@@ -1,12 +1,11 @@
 package eu.senla.andyavd.ui.menu;
 
-import eu.senla.andyavd.ui.entityactions.room.*;
-import eu.senla.andyavd.ui.entityactions.room.sorters.*;
-import eu.senla.andyavd.ui.entityactions.service.*;
-import eu.senla.andyavd.ui.entityactions.service.sorters.*;
-import eu.senla.andyavd.ui.entityactions.visitor.*;
-import eu.senla.andyavd.ui.entityactions.visitor.sorters.*;
-
+import eu.senla.andyavd.ui.actions.room.*;
+import eu.senla.andyavd.ui.actions.service.*;
+import eu.senla.andyavd.ui.actions.sorters.room.*;
+import eu.senla.andyavd.ui.actions.sorters.service.*;
+import eu.senla.andyavd.ui.actions.sorters.visitor.*;
+import eu.senla.andyavd.ui.actions.visitor.*;
 import eu.senla.andyavd.ui.utils.MenuTypes;
 
 public class Builder {
@@ -23,15 +22,15 @@ public class Builder {
 		
 		//====================Room==================
 		
-		roomMenu.addMenuItem(new MenuItem("Add a Room", roomMenu, new AddRoom()));
-		roomMenu.addMenuItem(new MenuItem("Print the Rooms", roomMenu, new PrintRooms()));
-		roomMenu.addMenuItem(new MenuItem("Print empty Rooms", roomMenu, new PrintEmptyRooms()));
-		roomMenu.addMenuItem(new MenuItem("Print the quantity of the empty Rooms", roomMenu, new PrintEmptyRoomsNumber()));
-		roomMenu.addMenuItem(new MenuItem("Print the Room details", roomMenu, new PrintRoomDetails()));
-		roomMenu.addMenuItem(new MenuItem("Print empty Rooms on a date", roomMenu, new PrintEmptyRoomsOnDate()));
-		roomMenu.addMenuItem(new MenuItem("Print the last visitors of the Room", roomMenu, new PrintLastVisitorsOfRoom()));
-		roomMenu.addMenuItem(new MenuItem("Change the Room's price", roomMenu, new ChangeRoomPrice()));
-		roomMenu.addMenuItem(new MenuItem("Change the Room's status", roomMenu, new ChangeRoomStatus()));
+		roomMenu.addMenuItem(new MenuItem("Add a Room", roomMenu, new AddRoomAction()));
+		roomMenu.addMenuItem(new MenuItem("Print the Rooms", roomMenu, new PrintRoomsAction()));
+		roomMenu.addMenuItem(new MenuItem("Print empty Rooms", roomMenu, new PrintEmptyRoomsAction()));
+		roomMenu.addMenuItem(new MenuItem("Print the quantity of the empty Rooms", roomMenu, new PrintEmptyRoomsNumberAction()));
+		roomMenu.addMenuItem(new MenuItem("Print the Room details", roomMenu, new PrintRoomDetailsAction()));
+		roomMenu.addMenuItem(new MenuItem("Print empty Rooms on a date", roomMenu, new PrintEmptyRoomsOnDateAction()));
+		roomMenu.addMenuItem(new MenuItem("Print the last visitors of the Room", roomMenu, new PrintLastVisitorsOfRoomAction()));
+		roomMenu.addMenuItem(new MenuItem("Change the Room's price", roomMenu, new ChangeRoomPriceAction()));
+		roomMenu.addMenuItem(new MenuItem("Change the Room's status", roomMenu, new ChangeRoomStatusAction()));
 		
 		roomMenu.addMenuItem(new MenuItem("Sort the Rooms by capacity", roomMenu, new SortRoomsByCapacity()));
 		roomMenu.addMenuItem(new MenuItem("Sort the Rooms by price", roomMenu, new SortRoomsByPrice()));
@@ -44,9 +43,9 @@ public class Builder {
 		
 		//====================Service===============
 		
-		serviceMenu.addMenuItem(new MenuItem("Add a Service", serviceMenu, new AddService()));
-		serviceMenu.addMenuItem(new MenuItem("Print the Services", serviceMenu, new PrintServices()));
-		serviceMenu.addMenuItem(new MenuItem("Change the Service's price", serviceMenu, new ChangeServicePrice()));
+		serviceMenu.addMenuItem(new MenuItem("Add a Service", serviceMenu, new AddServiceAction()));
+		serviceMenu.addMenuItem(new MenuItem("Print the Services", serviceMenu, new PrintServicesAction()));
+		serviceMenu.addMenuItem(new MenuItem("Change the Service's price", serviceMenu, new ChangeServicePriceAction()));
 		
 		serviceMenu.addMenuItem(new MenuItem("Sort the Services by name", serviceMenu, new SortServicesByName()));
 		serviceMenu.addMenuItem(new MenuItem("Sort the Services by price", serviceMenu, new SortServicesByPrice()));
@@ -55,15 +54,15 @@ public class Builder {
 		
 		//====================Visitor===============
 		
-		visitorMenu.addMenuItem(new MenuItem("Add a Visitor", visitorMenu, new AddVisitor()));
-		visitorMenu.addMenuItem(new MenuItem("Print the Visitors", visitorMenu, new PrintVisitors()));
-		visitorMenu.addMenuItem(new MenuItem("Check-in the Visitor", visitorMenu, new CheckInVisitor()));
-		visitorMenu.addMenuItem(new MenuItem("Add a Service to the Visitor", visitorMenu, new AddServiceToVisitor()));
-		visitorMenu.addMenuItem(new MenuItem("Print the Visitor's Services", visitorMenu, new PrintVisitorServices()));
-		visitorMenu.addMenuItem(new MenuItem("Bill the Visitor", visitorMenu, new BillVisitor()));
-		visitorMenu.addMenuItem(new MenuItem("Check-out the Visitor", visitorMenu, new CheckOutVisitor()));
-		visitorMenu.addMenuItem(new MenuItem("Print the quantity of the Visitors on a date", visitorMenu, new PrintTotalVisitorsOnDate()));
-		visitorMenu.addMenuItem(new MenuItem("Delete the Visitor", visitorMenu, new DeleteVisitor()));
+		visitorMenu.addMenuItem(new MenuItem("Add a Visitor", visitorMenu, new AddVisitorAction()));
+		visitorMenu.addMenuItem(new MenuItem("Print the Visitors", visitorMenu, new PrintVisitorsAction()));
+		visitorMenu.addMenuItem(new MenuItem("Check-in the Visitor", visitorMenu, new CheckInVisitorAction()));
+		visitorMenu.addMenuItem(new MenuItem("Add a Service to the Visitor", visitorMenu, new AddServiceToVisitorAction()));
+		visitorMenu.addMenuItem(new MenuItem("Print the Visitor's Services", visitorMenu, new PrintVisitorServicesAction()));
+		visitorMenu.addMenuItem(new MenuItem("Bill the Visitor", visitorMenu, new BillVisitorAction()));
+		visitorMenu.addMenuItem(new MenuItem("Check-out the Visitor", visitorMenu, new CheckOutVisitorAction()));
+		visitorMenu.addMenuItem(new MenuItem("Print the quantity of the Visitors on a date", visitorMenu, new PrintAllVisitorsOnDateAction()));
+		visitorMenu.addMenuItem(new MenuItem("Delete the Visitor", visitorMenu, new DeleteVisitorAction()));
 		
 		visitorMenu.addMenuItem(new MenuItem("Sort the Visitors by name", visitorMenu, new SortVisitorsByName()));
 		visitorMenu.addMenuItem(new MenuItem("Sort the Visitor's Services by price", visitorMenu, new SortVisitorServicesByPrice()));

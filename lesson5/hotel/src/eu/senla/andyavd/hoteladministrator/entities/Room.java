@@ -74,6 +74,10 @@ public class Room extends AEntity {
 		this.histories = histories;
 	}
 
+	public Room() {
+
+	}
+	
 	public Room(int roomNumber, Integer capacity, Double dailyPrice, RoomStars stars, RoomStatus status) {
 		this.roomNumber = roomNumber;
 		this.capacity = capacity;
@@ -84,7 +88,7 @@ public class Room extends AEntity {
 
 	@Override
 	public String toString() {
-		return String.valueOf(new StringBuilder().append(id).append(" Room#").append(roomNumber).append(", Capacity ").append(capacity)
-				.append(", Rate ").append(stars).append(", DailyPrice ").append(dailyPrice).append(", Status ").append(status));
+		return String.valueOf(new StringBuilder().append(id).append(" ").append(roomNumber).append(" ").append(capacity)
+				.append(" ").append(dailyPrice).append(" ").append(stars).append(" ").append(status));
 	}
 }

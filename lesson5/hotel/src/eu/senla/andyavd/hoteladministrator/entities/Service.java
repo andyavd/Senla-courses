@@ -49,6 +49,6 @@ public class Service extends AEntity {
 
 	@Override
 	public String toString() {
-		return String.valueOf(new StringBuilder().append(id).append(" Service ").append(name).append(", DailyPrice ").append(dailyPrice));
+		return String.valueOf(new StringBuilder().append(id).append(" ").append(name).append(" ").append(dailyPrice));
 	}
 }

@@ -5,23 +5,22 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.senla.andyavd.hoteladministrator.api.facade.IHotelManager;
-import eu.senla.andyavd.hoteladministrator.api.managers.IRoomHistoryManager;
-import eu.senla.andyavd.hoteladministrator.api.managers.IRoomManager;
-import eu.senla.andyavd.hoteladministrator.api.managers.IServiceManager;
-import eu.senla.andyavd.hoteladministrator.api.managers.IVisitorManager;
+import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomHistoryManager;
+import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomManager;
+import eu.senla.andyavd.hoteladministrator.api.controllers.IServiceManager;
+import eu.senla.andyavd.hoteladministrator.api.controllers.IVisitorManager;
+import eu.senla.andyavd.hoteladministrator.api.view.IHotelManager;
 import eu.senla.andyavd.hoteladministrator.controllers.RoomHistoryManager;
 import eu.senla.andyavd.hoteladministrator.controllers.RoomManager;
 import eu.senla.andyavd.hoteladministrator.controllers.ServiceManager;
 import eu.senla.andyavd.hoteladministrator.controllers.VisitorManager;
-import eu.senla.andyavd.hoteladministrator.entities.AEntity;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 import eu.senla.andyavd.hoteladministrator.enums.RoomHistoryStatus;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
-import eu.senla.andyavd.hoteladministrator.utils.Printer;
+import eu.senla.andyavd.hoteladministrator.utils.FileReaderParser;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.EmptyRoomException;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.NotEmptyRoomException;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByCapacity;
@@ -48,75 +47,65 @@ public class HotelManager implements IHotelManager {
 	}
 
 	/* ========================Rooms=========================== */
-	
+
 	@Override
 	public void addRoom(Room room) {
 		roomManager.addRoom(room);
 	}
 
 	@Override
-	public List<AEntity> getRooms() {
+	public List<Room> getRooms() {
 		return roomManager.getRooms();
 	}
 
 	@Override
-	public List<AEntity> getEmptyRooms() {
-		return roomManager.showEmptyRooms();
+	public List<Room> getEmptyRooms(List<Room> rooms) {
+		return roomManager.getEmptyRooms(rooms);
 	}
 
 	@Override
-	public Integer getEmptyRoomsNumber() {
-		return roomManager.showEmptyRoomsNumber();
+	public Integer getEmptyRoomsNumber(List<Room> rooms) {
+		return roomManager.getEmptyRoomsNumber(rooms);
 	}
 
 	@Override
-	public String getRoomDetails(Room room) {
-
-		StringBuilder s = new StringBuilder();
-		s.append("Room details: ");
-		s.append(roomManager.getRoomDetails(room));
-
-		return s.toString();
-	}
-
-	@Override
-	public List<AEntity> sortRoomsByCapacity() {
-		List<AEntity> sortedRooms = roomManager.sortRooms(new SortingRoomsByCapacity());
+	public List<Room> sortRoomsByCapacity() {
+		List<Room> sortedRooms = roomManager.sortRooms(new SortingRoomsByCapacity());
 		return sortedRooms;
 	}
 
 	@Override
-	public List<AEntity> sortRoomsByPrice() {
-		List<AEntity> sortedRooms = roomManager.sortRooms(new SortingRoomsByPrice());
+	public List<Room> sortRoomsByPrice() {
+		List<Room> sortedRooms = roomManager.sortRooms(new SortingRoomsByPrice());
 		return sortedRooms;
 	}
 
 	@Override
-	public List<AEntity> sortRoomsByStars() {
-		List<AEntity> sortedRooms = roomManager.sortRooms(new SortingRoomsByStars());
+	public List<Room> sortRoomsByStars() {
+		List<Room> sortedRooms = roomManager.sortRooms(new SortingRoomsByStars());
 		return sortedRooms;
 	}
 
 	@Override
-	public List<AEntity> sortEmptyRoomsByCapacity() {
-		List<AEntity> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByCapacity());
+	public List<Room> sortEmptyRoomsByCapacity() {
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByCapacity());
 		return sortedRooms;
 	}
 
 	@Override
-	public List<AEntity> sortEmptyRoomsByPrice() {
-		List<AEntity> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByPrice());
+	public List<Room> sortEmptyRoomsByPrice() {
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByPrice());
 		return sortedRooms;
 	}
 
 	@Override
-	public List<AEntity> sortEmptyRoomsByStars() {
-		List<AEntity> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByStars());
+	public List<Room> sortEmptyRoomsByStars() {
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByStars());
 		return sortedRooms;
 	}
 
 	@Override
-	public String billVisitor(Visitor visitor) throws NullPointerException {
+	public Double billVisitor(Visitor visitor) throws NullPointerException {
 
 		if (visitor.getHistory() != null) {
 
@@ -125,54 +114,15 @@ public class HotelManager implements IHotelManager {
 			int days = period.getDays();
 			double payment = visitor.getHistory().getRoom().getDailyPrice() * days;
 
-			StringBuilder s = new StringBuilder();
-			s.append(visitor.getLastName());
-			s.append(" needs to pay ");
-			s.append(payment);
-			s.append(" USD for the room #");
-			s.append(visitor.getHistory().getRoom().getRoomNumber());
-
-			return s.toString();
+			return payment;
 		} else {
 			throw new NullPointerException("No such visitor to bill!");
 		}
 	}
 
 	@Override
-	public List<AEntity> getEmptyRoomsOnDate(LocalDate date) {
-
-		List<AEntity> emptyRoomsOnDate = new ArrayList<AEntity>();
-
-		for (int i = 0; i < roomManager.getRooms().size(); i++) {
-			if (roomManager.getRooms().get(i) != null
-					&& ((Room) roomManager.getRooms().get(i)).getStatus() == RoomStatus.OCCUPIED) {
-
-				int r = 0;
-				for (int k = 0; k < ((Room) roomManager.getRooms().get(i)).getHistories().size(); k++) {
-
-					if (((Room) roomManager.getRooms().get(i)).getHistories().get(k) != null && (date
-							.isBefore(((Room) roomManager.getRooms().get(i)).getHistories().get(k).getCheckInDate())
-							|| date.isAfter(
-									((Room) roomManager.getRooms().get(i)).getHistories().get(k).getCheckOutDate()))) {
-						r = 1;
-						continue;
-					}
-
-					if (r == 1) {
-						emptyRoomsOnDate.add((roomManager.getRooms().get(i)));
-						break;
-					}
-				}
-			}
-		}
-
-		for (int i = 0; i < roomManager.getRooms().size(); i++) {
-			if (roomManager.getRooms().get(i) != null
-					&& ((Room) roomManager.getRooms().get(i)).getStatus() == RoomStatus.EMPTY) {
-				emptyRoomsOnDate.add((roomManager.getRooms().get(i)));
-			}
-		}
-		return emptyRoomsOnDate;
+	public List<Room> getEmptyRoomsOnDate(LocalDate date) {
+		return roomManager.getEmptyRoomsOnDate(date);
 	}
 
 	@Override
@@ -180,10 +130,10 @@ public class HotelManager implements IHotelManager {
 
 		String result = null;
 
-		if (room.getStatus() == RoomStatus.EMPTY) {
+		if (room.getStatus().equals(RoomStatus.EMPTY)) {
 			room.setStatus(RoomStatus.SERVICED);
 			result = "Room is closed for services now.";
-		} else if (room.getStatus() == RoomStatus.OCCUPIED) {
+		} else if (room.getStatus().equals(RoomStatus.OCCUPIED)) {
 			result = "Room is occupied. Please wait for the Visitor to check-out.";
 		} else {
 			result = "Room is already being serviced.";
@@ -192,59 +142,40 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public List<String> getLastVisitorsOfRoom(Room room) {
+	public List<RoomHistory> getLastVisitorsOfRoom(Room room) {
 
-		List<String> lastVisitorsOfRoom = new ArrayList<String>();
+		List<RoomHistory> lastVisitorsOfRoom = new ArrayList<RoomHistory>();
 
 		if (room.getHistories().size() <= 3) {
 
 			for (int i = 0; i < room.getHistories().size(); i++) {
 				if (room.getHistories().get(i) != null) {
-					StringBuilder s = new StringBuilder();
-					s.append("Visitors of a Room #");
-					s.append(room.getHistories().get(i).getRoom().getRoomNumber());
-					s.append(": ");
-					s.append(room.getHistories().get(i).getVisitor().getLastName());
-					s.append(", cheched-in ");
-					s.append(room.getHistories().get(i).getCheckInDate());
-					s.append(", checked-out ");
-					s.append(room.getHistories().get(i).getCheckOutDate());
-
-					lastVisitorsOfRoom.add(s.toString());
+					lastVisitorsOfRoom.add(room.getHistories().get(i));
 				}
 			}
 
 		} else {
 			for (int i = room.getHistories().size() - 3; i < room.getHistories().size(); i++) {
 				if (room.getHistories().get(i) != null) {
-					StringBuilder s = new StringBuilder();
-					s.append("Visitors of a Room #");
-					s.append(room.getHistories().get(i).getRoom().getRoomNumber());
-					s.append(": ");
-					s.append(room.getHistories().get(i).getVisitor().getLastName());
-					s.append(", cheched-in ");
-					s.append(room.getHistories().get(i).getCheckInDate());
-					s.append(", checked-out ");
-					s.append(room.getHistories().get(i).getCheckOutDate());
-
-					lastVisitorsOfRoom.add(s.toString());
+					lastVisitorsOfRoom.add(room.getHistories().get(i));
 				}
-
 			}
-
 		}
 		return lastVisitorsOfRoom;
-
 	}
 
 	@Override
 	public void changePriceOnRoom(Room room, double dailyPrice) {
 		room.setDailyPrice(dailyPrice);
 	}
-	
+
 	@Override
 	public Room getRoomById(Integer id) {
 		return roomManager.getRoomById(id);
+	}
+
+	public void setRooms(List<Room> rooms) {
+		roomManager.setRooms(rooms);
 	}
 
 	/* ========================Visitors======================== */
@@ -253,76 +184,64 @@ public class HotelManager implements IHotelManager {
 	public void addVisitor(Visitor visitor) {
 		visitorManager.addVisitor(visitor);
 	}
-	
+
 	@Override
-	public List<AEntity> getVisitors() {
+	public List<Visitor> getVisitors() {
 		return visitorManager.getVisitors();
 	}
-	
+
 	@Override
 	public void deleteVisitor(Visitor visitor) {
 		visitorManager.deleteVisitor(visitor);
 	}
-	
+
 	@Override
-	public List<AEntity> sortVisitorsByName() {
-		List<AEntity> sortedVisitors = visitorManager.sortVisitors(new SortingVisitorsByName());
+	public List<Visitor> sortVisitorsByName() {
+		List<Visitor> sortedVisitors = visitorManager.sortVisitors(new SortingVisitorsByName());
 		return sortedVisitors;
 	}
-	
+
 	@Override
 	public void addServicesToVisitor(Visitor visitor, Service service) throws NullPointerException {
 		visitorManager.addServicesToVisitor(visitor, service);
 	}
-	
+
 	@Override
-	public List<String> getVisitorServices(Visitor visitor) {
+	public List<Service> getVisitorServices(Visitor visitor) {
 
-		List<String> visitorServices = new ArrayList<String>();
+		List<Service> visitorServices = new ArrayList<Service>();
 
-		for (int i = 0; i < visitorManager.showVisitorServices(visitor).size(); i++) {
-			if (visitorManager.showVisitorServices(visitor).get(i) != null) {
-				StringBuilder s = new StringBuilder();
-				s.append("Visitor ");
-				s.append(visitor.getLastName());
-				s.append(" has used ");
-				s.append(visitorManager.showVisitorServices(visitor).get(i));
+		for (int i = 0; i < visitorManager.getVisitorServices(visitor).size(); i++) {
+			if (visitorManager.getVisitorServices(visitor).get(i) != null) {
 
-				visitorServices.add(s.toString());
+				visitorServices.add(visitorManager.getVisitorServices(visitor).get(i));
 			}
 		}
 		return visitorServices;
 	}
-	
+
 	@Override
-	public List<AEntity> sortVisitorServicesByPrice(Visitor visitor) {
-		List<AEntity> sortedServices = visitorManager.sortVisitorServicesByPrice(visitor, new SortingServicesByPrice());
+	public List<Service> sortVisitorServicesByPrice(Visitor visitor) {
+		List<Service> sortedServices = visitorManager.sortVisitorServicesByPrice(visitor, new SortingServicesByPrice());
 		return sortedServices;
 	}
-	
+
 	@Override
-	public String getTotalVisitorsOnDate(LocalDate date) {
+	public Integer getTotalVisitorsOnDate(LocalDate date) {
 
 		Integer count = 0;
-		for (int i = 0; i < visitorManager.getVisitors().size(); i++) {
-			if (visitorManager.getVisitors().get(i) != null
-					&& ((Visitor) visitorManager.getVisitors().get(i)).getHistory() != null) {
-				if ((((Visitor) visitorManager.getVisitors().get(i)).getHistory().getCheckInDate().isBefore(date)
-						|| ((Visitor) visitorManager.getVisitors().get(i)).getHistory().getCheckInDate().isEqual(date))
-						&& (((Visitor) visitorManager.getVisitors().get(i)).getHistory().getCheckOutDate().isAfter(date)
-								|| ((Visitor) visitorManager.getVisitors().get(i)).getHistory().getCheckOutDate()
-										.isEqual(date))) {
+		List<Visitor> visitors = visitorManager.getVisitors();
+		for (int i = 0; i < visitors.size(); i++) {
+			Visitor visitor = visitors.get(i) ;
+			if (visitor!= null && (visitor.getHistory() != null)) {
+				if ((visitor.getHistory().getCheckInDate().isBefore(date) || (visitor.getHistory().getCheckInDate().isEqual(date))
+						&& (visitor).getHistory().getCheckOutDate().isAfter(date)
+								|| (visitor.getHistory().getCheckOutDate().isEqual(date)))) {
 					count++;
 				}
 			}
 		}
-		StringBuilder s = new StringBuilder();
-		s.append("There are ");
-		s.append(count);
-		s.append(" visitors on ");
-		s.append(date);
-
-		return s.toString();
+		return count;
 	}
 
 	@Override
@@ -336,24 +255,24 @@ public class HotelManager implements IHotelManager {
 	public void addService(Service service) {
 		serviceManager.addService(service);
 	}
-	
+
 	@Override
-	public List<AEntity> getServices() {
+	public List<Service> getServices() {
 		return serviceManager.getServices();
 	}
-	
+
 	@Override
-	public List<AEntity> sortServicesByName() {
-		List<AEntity> sortedServices = serviceManager.sortServices(new SortingServicesByName());
+	public List<Service> sortServicesByName() {
+		List<Service> sortedServices = serviceManager.sortServices(new SortingServicesByName());
 		return sortedServices;
 	}
-	
+
 	@Override
-	public List<AEntity> sortServicesByPrice() {
-		List<AEntity> sortedServices = serviceManager.sortServices(new SortingServicesByPrice());
+	public List<Service> sortServicesByPrice() {
+		List<Service> sortedServices = serviceManager.sortServices(new SortingServicesByPrice());
 		return sortedServices;
 	}
-	
+
 	@Override
 	public void changePriceOnService(Service service, double dailyPrice) {
 		service.setDailyPrice(dailyPrice);
@@ -367,10 +286,10 @@ public class HotelManager implements IHotelManager {
 	/* ========================Process========================= */
 
 	@Override
-	public String checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate)
+	public void checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate)
 			throws NotEmptyRoomException {
 
-		if (room.getStatus() == RoomStatus.EMPTY) {
+		if (room.getStatus().equals(RoomStatus.EMPTY)) {
 			RoomHistory newHistory = new RoomHistory();
 
 			newHistory.setVisitor(visitor);
@@ -385,38 +304,22 @@ public class HotelManager implements IHotelManager {
 			room.setStatus(RoomStatus.OCCUPIED);
 			visitorManager.updateVisitor(visitor, newHistory);
 
-			StringBuilder s = new StringBuilder();
-			s.append(visitor.getLastName());
-			s.append(" was checked-in. Room #");
-			s.append(room.getRoomNumber());
-
-			return s.toString();
-
 		} else {
 			throw new NotEmptyRoomException("Room is not empty!");
 		}
 	}
-	
+
 	@Override
-	public String checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException {
+	public void checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException {
 
-		String result = "";
-
-		if (room.getStatus() == RoomStatus.OCCUPIED) {
+		if (room.getStatus().equals(RoomStatus.OCCUPIED)) {
 			for (int i = 0; i < room.getHistories().size(); i++) {
-				if (room.getHistories().get(i) != null && room.getHistories().get(i).getVisitor() == visitor
-						&& room.getHistories().get(i).getStatus() == RoomHistoryStatus.CHECKIN) {
+				if (room.getHistories().get(i) != null && room.getHistories().get(i).getVisitor().equals(visitor)
+						&& room.getHistories().get(i).getStatus().equals(RoomHistoryStatus.CHECKIN)) {
 
 					room.getHistories().get(i).setStatus(RoomHistoryStatus.CHECKOUT);
 					visitor.setHistory(null);
 					room.setStatus(RoomStatus.EMPTY);
-
-					StringBuilder s = new StringBuilder();
-					s.append(visitor.getLastName());
-					s.append(" has checked-out from Room #");
-					s.append(room.getRoomNumber());
-
-					result = s.toString();
 
 					break;
 				}
@@ -425,9 +328,8 @@ public class HotelManager implements IHotelManager {
 		} else {
 			throw new EmptyRoomException("Room has no visitors!");
 		}
-		return result;
 	}
-	
+
 	@Override
 	public void saveToFile() {
 		roomManager.saveToFile();
@@ -437,8 +339,21 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public void loadFromFile() {
-		Printer.printStringArray(visitorManager.loadFromFile());
-		Printer.printStringArray(roomManager.loadFromFile());
-		Printer.printStringArray(serviceManager.loadFromFile());
+
+		roomManager.loadFromFile();
+		if (roomManager.loadFromFile() != null) {
+			roomManager.setRooms(FileReaderParser.loadedRoomsToRooms(roomManager.loadFromFile()));
+		}
+
+		visitorManager.loadFromFile();
+		if (visitorManager.loadFromFile() != null) {
+			visitorManager.setVisitors(FileReaderParser.loadedVisitorsToVisitors(visitorManager.loadFromFile()));
+		}
+
+		serviceManager.loadFromFile();
+
+		if (serviceManager.loadFromFile() != null) {
+			serviceManager.setServices(FileReaderParser.loadedServicesToServices(serviceManager.loadFromFile()));
+		}
 	}
 }

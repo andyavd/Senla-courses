@@ -2,10 +2,12 @@ package eu.senla.andyavd.hoteladministrator.utils;
 
 import com.danco.training.TextFileWorker;
 
-public class FileReader {
+public class FileReader extends ClassLoaderContainsClass {
 
-	public static String[] readFromFile(String path) {
-		TextFileWorker tfw = new TextFileWorker(path);
+	public String[] readFromFile(String path) {
+
+		setPathToFile(path);
+		TextFileWorker tfw = new TextFileWorker(url.getPath());
 		return tfw.readFromFile();
 	}
 }

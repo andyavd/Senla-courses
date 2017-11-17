@@ -48,6 +48,5 @@ public class MenuItem {
 
 	void act() {
 		action.execute();
-
 	}
 }
