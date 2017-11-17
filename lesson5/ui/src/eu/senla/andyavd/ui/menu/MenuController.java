@@ -3,43 +3,46 @@ package eu.senla.andyavd.ui.menu;
 import java.util.Scanner;
 
 import eu.senla.andyavd.hoteladministrator.utils.Printer;
+import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.utils.InputReader;
 
 public class MenuController {
-	
+
 	private Builder builder = new Builder();
-    private Navigator navigator = new Navigator();
-    
-    public void run() {
-        
-    		Scanner scanner = new Scanner(System.in);
+	private Navigator navigator = new Navigator();
 
-        boolean exit = false;
+	public void run() {
 
-        navigator.setCurrentMenu(builder.getMenu());
-        navigator.printMenu();
+		Scanner scanner = new Scanner(System.in);
 
-        while (!exit) {
+		boolean exit = false;
 
-            Integer choice = InputReader.getIntegerInput(scanner) - 1;
+		navigator.setCurrentMenu(builder.getMenu());
+		navigator.printMenu();
 
-            if (choice >= navigator.getCurrentMenu().getMenuItems().size()) {
-                Printer.print("Incorrect choice. Try again");
-                continue;
-            } else {
-                navigator.navigate(choice);
-            }
+		HotelManager.getInstance().loadFromFile();
+		
+		while (!exit) {
 
-            if (navigator.getCurrentMenu().getMenuItems().get(choice).getNextMenu() == null) {
-                exit = true;
-                continue;
-            }
+			Integer choice = InputReader.getIntegerInput(scanner) - 1;
 
-            navigator.setCurrentMenu(navigator.getCurrentMenu().getMenuItems().get(choice).getNextMenu());
-            navigator.printMenu();
-        }
+			if (choice >= navigator.getCurrentMenu().getMenuItems().size()) {
+				Printer.print("Incorrect choice. Try again");
+				continue;
+			} else {
+				navigator.navigate(choice);
+			}
 
-        scanner.close();
-        Printer.print("Bye.");
-    }
+			if (navigator.getCurrentMenu().getMenuItems().get(choice).getNextMenu() == null) {
+				exit = true;
+				continue;
+			}
+
+			navigator.setCurrentMenu(navigator.getCurrentMenu().getMenuItems().get(choice).getNextMenu());
+			navigator.printMenu();
+		}
+		HotelManager.getInstance().saveToFile();
+		scanner.close();
+		Printer.print("Goodbye! Your changes have been saved!");
+	}
 }
