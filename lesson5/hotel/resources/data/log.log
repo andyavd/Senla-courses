@@ -1,0 +1,43 @@
+2017-11-17 02:02:09 ERROR CheckInVisitorAction:47 - Room is not empty!
+2017-11-17 02:08:21 ERROR ChangeRoomPriceAction:30 - 
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:10:49 ERROR ChangeRoomPriceAction:30 - 
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:14:25 ERROR ChangeRoomPriceAction:30 - 
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:16:23 ERROR ChangeRoomPriceAction:30 - No such room, to change the Price!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:21:44 ERROR CheckInVisitorAction:42 - Input correct parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.storages.VisitorsStorage.updateVisitor(VisitorsStorage.java:43)
+	at eu.senla.andyavd.hoteladministrator.controllers.VisitorManager.updateVisitor(VisitorManager.java:41)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.checkInVisitor(HotelManager.java:305)
+	at eu.senla.andyavd.ui.actions.visitor.CheckInVisitorAction.execute(CheckInVisitorAction.java:32)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
