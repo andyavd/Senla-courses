@@ -17,10 +17,6 @@ public interface IServiceManager {
 	
 	public Service getServiceById(Integer id);
 
-	public void saveToFile();
-
-	public String[] loadFromFile();
-
 	public void deleteService(Service service);
 	
 }
