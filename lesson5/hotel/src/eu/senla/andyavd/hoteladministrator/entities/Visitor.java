@@ -1,6 +1,10 @@
 package eu.senla.andyavd.hoteladministrator.entities;
 
-public class Visitor extends AEntity {
+import java.io.Serializable;
+
+public class Visitor extends AEntity implements Serializable{
+
+	private static final long serialVersionUID = -5868446232504296194L;
 
 	private int id = 0;
 	private String lastName;

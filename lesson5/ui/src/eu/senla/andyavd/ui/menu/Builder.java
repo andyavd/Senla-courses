@@ -25,6 +25,7 @@ public class Builder {
 		
 		roomMenu.addMenuItem(new MenuItem("Add a Room", roomMenu, new AddRoomAction()));
 		roomMenu.addMenuItem(new MenuItem("Print the Rooms", roomMenu, new PrintRoomsAction()));
+		roomMenu.addMenuItem(new MenuItem("Clone the Room", roomMenu, new CloneAction()));
 		roomMenu.addMenuItem(new MenuItem("Print empty Rooms", roomMenu, new PrintEmptyAction()));
 		roomMenu.addMenuItem(new MenuItem("Print the quantity of the empty Rooms", roomMenu, new PrintEmptyNumberAction()));
 		roomMenu.addMenuItem(new MenuItem("Print the Room details", roomMenu, new PrintDetailsAction()));

@@ -11,8 +11,6 @@ import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.storages.ServicesStorage;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
-import eu.senla.andyavd.hoteladministrator.utils.FileReader;
-import eu.senla.andyavd.hoteladministrator.utils.FileWriterSenla;
 
 public class ServiceManager implements IServiceManager {
 
@@ -55,17 +53,4 @@ public class ServiceManager implements IServiceManager {
 		return ServicesStorage.getInstance().getServiceById(id);
 	}
 	
-	@Override
-	public void saveToFile() {
-		try{
-			fileWriter.writeToFile(ArrayWorker.arrayToString(ServicesStorage.getInstance().getServices()), path); 
-		} catch (Exception e) {
-			logger.error("Failed to save to a file!", e);
-		}
-	}
-
-	@Override
-	public String[] loadFromFile() {
-		return fileReader.readFromFile(path);
-	}
 }

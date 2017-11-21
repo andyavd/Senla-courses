@@ -23,7 +23,6 @@ import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 import eu.senla.andyavd.hoteladministrator.enums.RoomHistoryStatus;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
-import eu.senla.andyavd.hoteladministrator.utils.FileReaderParser;
 import eu.senla.andyavd.hoteladministrator.utils.SerializationUtil;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.EmptyRoomException;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.NotEmptyRoomException;
@@ -62,6 +61,11 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void addRoom(Room room) {
 		roomManager.addRoom(room);
+	}
+
+	@Override
+	public void cloneRoom(Room room) throws IOException, ClassNotFoundException {
+		roomManager.cloneRoom(room);
 	}
 
 	@Override
@@ -135,6 +139,18 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Room> getEmptyRoomsOnDate(LocalDate date) {
 		return roomManager.getEmptyRoomsOnDate(date);
+	}
+
+	@Override
+	public boolean isRoomStatus() {
+
+		boolean isAllowed = Boolean.parseBoolean(Settings.getInstance().getProperty("status"));
+
+		if (isAllowed) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -243,11 +259,6 @@ public class HotelManager implements IHotelManager {
 		return visitorManager.getVisitorById(id);
 	}
 
-	@Override
-	public void exportVisitors(List<Visitor> visitors) throws IOException {
-		visitorManager.exportVisitors(visitors);
-	}
-
 	/* ========================Services======================== */
 
 	@Override
@@ -343,32 +354,17 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void saveToFile() {
 
-		roomManager.saveToFile();
-		serviceManager.saveToFile();
-		visitorManager.saveToFile();
+		SerializationUtil.serialize(getRooms(), getServices(), getVisitors(), getHistories());
+
 	}
 
 	@Override
 	public void loadFromFile() {
-		
-	try {
-			roomManager.loadFromFile();
-			if (roomManager.loadFromFile() != null) {
-				roomManager.setRooms(FileReaderParser.loadedRoomsToRooms(roomManager.loadFromFile()));
-			}
+		try {
+			SerializationUtil.deserialize();
 
-			visitorManager.loadFromFile();
-			if (visitorManager.loadFromFile() != null) {
-				visitorManager.setVisitors(FileReaderParser.loadedVisitorsToVisitors(visitorManager.loadFromFile()));
-			}
-
-			serviceManager.loadFromFile();
-
-			if (serviceManager.loadFromFile() != null) {
-				serviceManager.setServices(FileReaderParser.loadedServicesToServices(serviceManager.loadFromFile()));
-			}
 		} catch (Exception e) {
-			logger.error("Failed to load!", e);
+			logger.error("Failed to load from file!", e);
 		}
 	}
 }

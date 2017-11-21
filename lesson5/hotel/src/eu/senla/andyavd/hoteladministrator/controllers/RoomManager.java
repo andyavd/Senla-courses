@@ -38,6 +38,22 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
+	public void cloneRoom(Room room) throws IOException, ClassNotFoundException {
+		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+
+		objectOutputStream.writeObject(room);
+		objectOutputStream.close();
+
+		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+		ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+		Room roomClone = (Room) objectInputStream.readObject();
+		roomClone.setRoomNumber(roomClone.getRoomNumber() + 100);
+
+		this.addRoom(roomClone);
+	}
+	
+	@Override
 	public List<Room> getRooms() {
 		return RoomsStorage.getInstance().getRooms();
 	}
@@ -130,17 +146,4 @@ public class RoomManager implements IRoomManager {
 		return RoomsStorage.getInstance().getRoomById(id);
 	}
 
-	@Override
-	public void saveToFile() {
-		try{
-			fileWriter.writeToFile(ArrayWorker.arrayToString(RoomsStorage.getInstance().getRooms()), path);
-		} catch (Exception e) {
-			logger.error("Failed to save to a file!", e);
-		}
-	}
-
-	@Override
-	public String[] loadFromFile() {
-		return fileReader.readFromFile(path);
-	}
 }

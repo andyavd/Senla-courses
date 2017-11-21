@@ -1,13 +1,16 @@
 package eu.senla.andyavd.hoteladministrator.entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import eu.senla.andyavd.hoteladministrator.enums.RoomHistoryStatus;
 
-public class RoomHistory extends AEntity {
+public class RoomHistory extends AEntity implements Serializable{
 
+	private static final long serialVersionUID = 8310876147491569183L;
+	
 	private int id = 0;
 	private Room room;
 	private Visitor visitor;
