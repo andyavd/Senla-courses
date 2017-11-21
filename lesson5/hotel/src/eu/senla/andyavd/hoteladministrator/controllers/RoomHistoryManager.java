@@ -15,6 +15,6 @@ public class RoomHistoryManager implements IRoomHistoryManager {
 
 	@Override
 	public List<RoomHistory> getHistories() {
-		return RoomHistoriesStorage.getInstance().getHistory();
+		return RoomHistoriesStorage.getInstance().getHistories();
 	}
 }
