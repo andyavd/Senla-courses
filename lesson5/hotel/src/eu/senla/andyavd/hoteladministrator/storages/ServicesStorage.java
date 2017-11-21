@@ -11,6 +11,10 @@ public class ServicesStorage implements IServicesStorage {
 	private List<Service> services = new ArrayList<Service>();
 
 	private static ServicesStorage servicesStorage;
+	
+	private ServicesStorage() {
+		
+	}
 
 	public static ServicesStorage getInstance() {
 		if (servicesStorage == null) {
@@ -38,11 +42,20 @@ public class ServicesStorage implements IServicesStorage {
 		Service service = null;
 
 		for (int i = 0; i < services.size(); i++) {
-			if (((Service) services.get(i)).getId() == id) {
-				service = (Service) services.get(i);
+			if ((services.get(i)).getId() == id) {
+				service = services.get(i);
 			}
 		}
 		return service;
+	}
+	
+	@Override
+	public void deleteService(Service service) {
+		for (int i = 0; i < services.size(); i++) {
+			if (services.get(i) == service) {
+				services.remove(i);
+			}
+		}
 	}
 
 	@Override
