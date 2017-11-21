@@ -107,14 +107,4 @@ public class VisitorManager implements IVisitorManager {
 			logger.error("Failed to save to a file!", e);
 		}
 	}
-	
-	@Override
-	public String[] loadFromFile() {
-		return fileReader.readFromFile(VisitorManager.path);
-	}
-
-	@Override
-	public void setVisitors(List<Visitor> visitors) {
-		VisitorsStorage.getInstance().setVisitors(visitors);
-	}
 }
