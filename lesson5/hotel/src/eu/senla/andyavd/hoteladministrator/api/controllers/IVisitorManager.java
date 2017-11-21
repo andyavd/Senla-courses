@@ -32,8 +32,4 @@ public interface IVisitorManager {
 
 	public Visitor getVisitorById(Integer id);
 
-	public void saveToFile();
-
-	public String[] loadFromFile();
-
 }
