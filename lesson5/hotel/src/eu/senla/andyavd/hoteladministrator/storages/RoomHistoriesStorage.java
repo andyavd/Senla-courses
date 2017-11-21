@@ -11,6 +11,10 @@ public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 	private List<RoomHistory> histories = new ArrayList<RoomHistory>();
 	
 	private static RoomHistoriesStorage roomHistoriesStorage;
+	
+	private RoomHistoriesStorage() {
+		
+	}
 
 	public static RoomHistoriesStorage getInstance() {
 		if (roomHistoriesStorage == null) {
@@ -28,7 +32,12 @@ public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 	}
 
 	@Override
-	public List<RoomHistory> getHistory() {
+	public List<RoomHistory> getHistories() {
 		return histories;
+	}
+	
+	@Override
+	public void setHistories(List<RoomHistory> histories) {
+		this.histories = histories;
 	}
 }
