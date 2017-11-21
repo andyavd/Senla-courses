@@ -12,6 +12,10 @@ public class RoomsStorage implements IRoomsStorage{
 	private List<Room> rooms = new ArrayList<Room>();
 	
 	private static RoomsStorage roomsStorage;
+	
+	private RoomsStorage() {
+		
+	}
 
 	public static RoomsStorage getInstance() {
 		if (roomsStorage == null) {
@@ -45,13 +49,18 @@ public class RoomsStorage implements IRoomsStorage{
 	}
 	
 	@Override
+	public void updateStorage(int id, Room room) {
+		rooms.set(id - 1, room);
+	}
+	
+	@Override
 	public Room getRoomById(Integer id) {
 		
 		Room room = null;
 		
 		for(int i=0; i<rooms.size(); i++) {
-			if( ((Room) rooms.get(i)).getId() == id ) {
-				room = (Room) rooms.get(i);
+			if( (rooms.get(i)).getId() == id ) {
+				room = rooms.get(i);
 			} 
 		}
 		return room;
