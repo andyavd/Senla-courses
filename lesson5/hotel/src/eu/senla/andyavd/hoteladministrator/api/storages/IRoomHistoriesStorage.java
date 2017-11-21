@@ -8,5 +8,8 @@ public interface IRoomHistoriesStorage {
 
 	public void addHistory(RoomHistory history);
 
-	public List<RoomHistory> getHistory();
+	public List<RoomHistory> getHistories();
+
+	void setHistories(List<RoomHistory> histories);
+
 }

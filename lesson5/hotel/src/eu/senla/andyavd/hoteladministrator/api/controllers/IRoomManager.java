@@ -1,5 +1,6 @@
 package eu.senla.andyavd.hoteladministrator.api.controllers;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -15,6 +16,8 @@ public interface IRoomManager {
 
 	public void updateRoom(Room room, RoomHistory history);
 
+	public void updateStorage(int id, Room room);
+	
 	public List<Room> getEmptyRooms(List<Room> entities);
 
 	public Integer getEmptyRoomsNumber(List<Room> entities);
@@ -34,6 +37,5 @@ public interface IRoomManager {
 	public void setRooms(List<Room> entities);
 	
 	public List<Room> getEmptyRoomsOnDate(LocalDate date);
-
 	
 }

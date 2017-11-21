@@ -20,5 +20,7 @@ public interface IServiceManager {
 	public void saveToFile();
 
 	public String[] loadFromFile();
+
+	public void deleteService(Service service);
 	
 }

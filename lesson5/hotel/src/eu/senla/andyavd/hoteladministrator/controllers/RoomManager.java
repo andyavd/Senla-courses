@@ -1,10 +1,17 @@
 package eu.senla.andyavd.hoteladministrator.controllers;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomManager;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
@@ -14,13 +21,15 @@ import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
 import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 import eu.senla.andyavd.hoteladministrator.utils.FileReader;
-import eu.senla.andyavd.hoteladministrator.utils.FileWriter;
+import eu.senla.andyavd.hoteladministrator.utils.FileWriterSenla;
 
 public class RoomManager implements IRoomManager {
+
+	private final static Logger logger = Logger.getLogger(RoomManager.class);
 	
 	FileReader fileReader = new FileReader();
-	FileWriter fileWriter = new FileWriter();
-	
+	FileWriterSenla fileWriter = new FileWriterSenla();
+
 	private static final String path = Path.ROOM_STORAGE_PATH.getPath();
 
 	@Override
@@ -41,6 +50,11 @@ public class RoomManager implements IRoomManager {
 	@Override
 	public void updateRoom(Room room, RoomHistory history) {
 		RoomsStorage.getInstance().updateRoom(room, history);
+	}
+	
+	@Override
+	public void updateStorage(int id, Room room) {
+		getRooms().set(id - 1, room);
 	}
 
 	@Override
@@ -75,31 +89,23 @@ public class RoomManager implements IRoomManager {
 	public List<Room> getEmptyRoomsOnDate(LocalDate date) {
 
 		List<Room> emptyRoomsOnDate = new ArrayList<Room>();
+		List<Room> rooms = getRooms();
 
-		for (int i = 0; i < getRooms().size(); i++) {
-			if (getRooms().get(i) != null && ((Room) getRooms().get(i)).getStatus() == RoomStatus.OCCUPIED) {
+		for (int i = 0; i < rooms.size(); i++) {
+			Room room = rooms.get(i);
 
-				int r = 0;
-				for (int k = 0; k < ((Room) getRooms().get(i)).getHistories().size(); k++) {
+			if (room != null && room.getStatus() == RoomStatus.OCCUPIED) {
+				List<RoomHistory> roomHistories = room.getHistories();
 
-					if (((Room) getRooms().get(i)).getHistories().get(k) != null
-							&& (date.isBefore(((Room) getRooms().get(i)).getHistories().get(k).getCheckInDate()) || date
-									.isAfter(((Room) getRooms().get(i)).getHistories().get(k).getCheckOutDate()))) {
-						r = 1;
-						continue;
-					}
-
-					if (r == 1) {
-						emptyRoomsOnDate.add(getRooms().get(i));
-						break;
+				for (int k = 0; k < roomHistories.size(); k++) {
+					RoomHistory roomHistory = roomHistories.get(k);
+					if (roomHistory != null && (date.isBefore(roomHistory.getCheckInDate())
+							|| date.isAfter(roomHistory.getCheckOutDate()))) {
+						emptyRoomsOnDate.add(room);
 					}
 				}
-			}
-		}
-
-		for (int i = 0; i < getRooms().size(); i++) {
-			if (getRooms().get(i) != null && ((Room) getRooms().get(i)).getStatus() == RoomStatus.EMPTY) {
-				emptyRoomsOnDate.add((getRooms().get(i)));
+			} else if (room != null && room.getStatus() == RoomStatus.EMPTY) {
+				emptyRoomsOnDate.add(room);
 			}
 		}
 		return emptyRoomsOnDate;
@@ -126,7 +132,11 @@ public class RoomManager implements IRoomManager {
 
 	@Override
 	public void saveToFile() {
-		fileWriter.writeToFile(ArrayWorker.arrayToString(RoomsStorage.getInstance().getRooms()), path);
+		try{
+			fileWriter.writeToFile(ArrayWorker.arrayToString(RoomsStorage.getInstance().getRooms()), path);
+		} catch (Exception e) {
+			logger.error("Failed to save to a file!", e);
+		}
 	}
 
 	@Override

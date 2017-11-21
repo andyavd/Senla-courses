@@ -1,9 +1,12 @@
 package eu.senla.andyavd.hoteladministrator.view;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomHistoryManager;
 import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomManager;
@@ -21,6 +24,7 @@ import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 import eu.senla.andyavd.hoteladministrator.enums.RoomHistoryStatus;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.utils.FileReaderParser;
+import eu.senla.andyavd.hoteladministrator.utils.SerializationUtil;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.EmptyRoomException;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.NotEmptyRoomException;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByCapacity;
@@ -29,8 +33,11 @@ import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsBySta
 import eu.senla.andyavd.hoteladministrator.utils.sorters.services.SortingServicesByName;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.services.SortingServicesByPrice;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.visitors.SortingVisitorsByName;
+import eu.senla.andyavd.properties.Settings;
 
 public class HotelManager implements IHotelManager {
+
+	final static Logger logger = Logger.getLogger(HotelManager.class);
 
 	private IRoomManager roomManager = new RoomManager();
 	private IVisitorManager visitorManager = new VisitorManager();
@@ -38,6 +45,10 @@ public class HotelManager implements IHotelManager {
 	private IRoomHistoryManager roomHistoryManager = new RoomHistoryManager();
 
 	private static HotelManager hotelManager;
+
+	private HotelManager() {
+
+	}
 
 	public static HotelManager getInstance() {
 		if (hotelManager == null) {
@@ -116,7 +127,8 @@ public class HotelManager implements IHotelManager {
 
 			return payment;
 		} else {
-			throw new NullPointerException("No such visitor to bill!");
+			logger.error("No such visitor to bill!");
+			return null;
 		}
 	}
 
@@ -126,27 +138,22 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public String changeRoomStatus(Room room) {
-
-		String result = null;
+	public void changeRoomStatus(Room room) {
 
 		if (room.getStatus().equals(RoomStatus.EMPTY)) {
+
 			room.setStatus(RoomStatus.SERVICED);
-			result = "Room is closed for services now.";
-		} else if (room.getStatus().equals(RoomStatus.OCCUPIED)) {
-			result = "Room is occupied. Please wait for the Visitor to check-out.";
-		} else {
-			result = "Room is already being serviced.";
+			roomManager.updateStorage(room.getId(), room);
 		}
-		return result;
 	}
 
 	@Override
 	public List<RoomHistory> getLastVisitorsOfRoom(Room room) {
 
 		List<RoomHistory> lastVisitorsOfRoom = new ArrayList<RoomHistory>();
+		Integer variableProperty = Integer.parseInt(Settings.getInstance().getProperty("count"));
 
-		if (room.getHistories().size() <= 3) {
+		if (room.getHistories().size() <= variableProperty) {
 
 			for (int i = 0; i < room.getHistories().size(); i++) {
 				if (room.getHistories().get(i) != null) {
@@ -155,7 +162,7 @@ public class HotelManager implements IHotelManager {
 			}
 
 		} else {
-			for (int i = room.getHistories().size() - 3; i < room.getHistories().size(); i++) {
+			for (int i = room.getHistories().size() - variableProperty; i < room.getHistories().size(); i++) {
 				if (room.getHistories().get(i) != null) {
 					lastVisitorsOfRoom.add(room.getHistories().get(i));
 				}
@@ -228,25 +235,17 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public Integer getTotalVisitorsOnDate(LocalDate date) {
-
-		Integer count = 0;
-		List<Visitor> visitors = visitorManager.getVisitors();
-		for (int i = 0; i < visitors.size(); i++) {
-			Visitor visitor = visitors.get(i) ;
-			if (visitor!= null && (visitor.getHistory() != null)) {
-				if ((visitor.getHistory().getCheckInDate().isBefore(date) || (visitor.getHistory().getCheckInDate().isEqual(date))
-						&& (visitor).getHistory().getCheckOutDate().isAfter(date)
-								|| (visitor.getHistory().getCheckOutDate().isEqual(date)))) {
-					count++;
-				}
-			}
-		}
-		return count;
+		return visitorManager.getTotalVisitorsOnDate(date);
 	}
 
 	@Override
 	public Visitor getVisitorById(Integer id) {
 		return visitorManager.getVisitorById(id);
+	}
+
+	@Override
+	public void exportVisitors(List<Visitor> visitors) throws IOException {
+		visitorManager.exportVisitors(visitors);
 	}
 
 	/* ========================Services======================== */
@@ -259,6 +258,11 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Service> getServices() {
 		return serviceManager.getServices();
+	}
+
+	@Override
+	public void deleteService(Service service) {
+		serviceManager.deleteService(service);
 	}
 
 	@Override
@@ -284,6 +288,12 @@ public class HotelManager implements IHotelManager {
 	}
 
 	/* ========================Process========================= */
+
+	@Override
+	public List<RoomHistory> getHistories() {
+		return roomHistoryManager.getHistories();
+
+	}
 
 	@Override
 	public void checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate)
@@ -332,6 +342,7 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public void saveToFile() {
+
 		roomManager.saveToFile();
 		serviceManager.saveToFile();
 		visitorManager.saveToFile();
@@ -339,21 +350,25 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public void loadFromFile() {
+		
+	try {
+			roomManager.loadFromFile();
+			if (roomManager.loadFromFile() != null) {
+				roomManager.setRooms(FileReaderParser.loadedRoomsToRooms(roomManager.loadFromFile()));
+			}
 
-		roomManager.loadFromFile();
-		if (roomManager.loadFromFile() != null) {
-			roomManager.setRooms(FileReaderParser.loadedRoomsToRooms(roomManager.loadFromFile()));
-		}
+			visitorManager.loadFromFile();
+			if (visitorManager.loadFromFile() != null) {
+				visitorManager.setVisitors(FileReaderParser.loadedVisitorsToVisitors(visitorManager.loadFromFile()));
+			}
 
-		visitorManager.loadFromFile();
-		if (visitorManager.loadFromFile() != null) {
-			visitorManager.setVisitors(FileReaderParser.loadedVisitorsToVisitors(visitorManager.loadFromFile()));
-		}
+			serviceManager.loadFromFile();
 
-		serviceManager.loadFromFile();
-
-		if (serviceManager.loadFromFile() != null) {
-			serviceManager.setServices(FileReaderParser.loadedServicesToServices(serviceManager.loadFromFile()));
+			if (serviceManager.loadFromFile() != null) {
+				serviceManager.setServices(FileReaderParser.loadedServicesToServices(serviceManager.loadFromFile()));
+			}
+		} catch (Exception e) {
+			logger.error("Failed to load!", e);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package eu.senla.andyavd.hoteladministrator.api.view;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public interface IHotelManager {
 
 	public List<Room> getEmptyRoomsOnDate(LocalDate date);
 
-	public String changeRoomStatus(Room room);
+	public void changeRoomStatus(Room room);
 
 	public List<RoomHistory> getLastVisitorsOfRoom(Room room);
 
@@ -71,6 +72,8 @@ public interface IHotelManager {
 	public void addService(Service service);
 
 	public List<Service> getServices();
+	
+	void deleteService(Service service);
 
 	public List<Service> sortServicesByName();
 

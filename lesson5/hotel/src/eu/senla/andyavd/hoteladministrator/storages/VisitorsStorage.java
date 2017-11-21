@@ -12,6 +12,10 @@ public class VisitorsStorage implements IVisitorsStorage {
 	private List<Visitor> visitors = new ArrayList<Visitor>();
 
 	private static VisitorsStorage visitorsStorage;
+	
+	private VisitorsStorage() {
+		
+	}
 
 	public static VisitorsStorage getInstance() {
 		if (visitorsStorage == null) {
@@ -58,8 +62,8 @@ public class VisitorsStorage implements IVisitorsStorage {
 		Visitor visitor = null;
 
 		for (int i = 0; i < visitors.size(); i++) {
-			if (((Visitor) visitors.get(i)).getId() == id) {
-				visitor = (Visitor) visitors.get(i);
+			if (visitors.get(i).getId() == id) {
+				visitor = visitors.get(i);
 			}
 		}
 		return visitor;

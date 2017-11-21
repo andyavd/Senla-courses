@@ -17,4 +17,6 @@ public interface IRoomsStorage {
 
 	public Room getRoomById(Integer id);
 
+	public void updateStorage(int id, Room room);
+
 }

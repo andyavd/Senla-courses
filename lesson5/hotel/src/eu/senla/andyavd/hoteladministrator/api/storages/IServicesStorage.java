@@ -14,4 +14,6 @@ public interface IServicesStorage {
 
 	public Service getServiceById(Integer id);
 
+	void deleteService(Service service);
+
 }
