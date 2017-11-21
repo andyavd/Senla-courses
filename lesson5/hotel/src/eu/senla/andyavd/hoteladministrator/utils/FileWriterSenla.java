@@ -2,7 +2,7 @@ package eu.senla.andyavd.hoteladministrator.utils;
 
 import com.danco.training.TextFileWorker;
 
-public class FileWriter extends ClassLoaderContainsClass{
+public class FileWriterSenla extends ClassLoaderContainsClass{
 	
 	public void writeToFile(String[] values, String path) {
 	
