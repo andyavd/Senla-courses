@@ -1,5 +1,7 @@
 package eu.senla.andyavd.hoteladministrator.api.controllers;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 
@@ -13,6 +15,8 @@ public interface IVisitorManager {
 	public void deleteVisitor(Visitor visitor);
 
 	public List<Visitor> getVisitors();
+	
+	public Integer getTotalVisitorsOnDate(LocalDate date);
 
 	public void setVisitors(List<Visitor> visitors);
 
