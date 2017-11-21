@@ -1,7 +1,11 @@
 package eu.senla.andyavd.hoteladministrator.entities;
 
-public class Service extends AEntity {
+import java.io.Serializable;
 
+public class Service extends AEntity implements Serializable{
+
+	private static final long serialVersionUID = 7837575998552612234L;
+	
 	private int id = 0;
 	private String name;
 	private Double dailyPrice;
