@@ -38,4 +38,6 @@ public interface IRoomManager {
 	
 	public List<Room> getEmptyRoomsOnDate(LocalDate date);
 	
+	public void cloneRoom(Room room) throws IOException, ClassNotFoundException;
+	
 }
