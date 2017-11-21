@@ -30,10 +30,6 @@ public interface IRoomManager {
 	
 	public Room getRoomById(Integer number);
 
-	public void saveToFile();
-
-	public String[] loadFromFile();
-
 	public void setRooms(List<Room> entities);
 	
 	public List<Room> getEmptyRoomsOnDate(LocalDate date);
