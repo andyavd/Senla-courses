@@ -9,9 +9,9 @@ import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.api.IAction;
 import eu.senla.andyavd.ui.utils.InputReader;
 
-public class BillVisitorAction implements IAction {
+public class BillAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(BillVisitorAction.class);
+	final static Logger logger = Logger.getLogger(BillAction.class);
 
 	@Override
 	public void execute() {

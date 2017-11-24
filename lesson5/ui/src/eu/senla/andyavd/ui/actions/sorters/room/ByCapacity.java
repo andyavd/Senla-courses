@@ -4,7 +4,7 @@ import eu.senla.andyavd.hoteladministrator.utils.Printer;
 import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.api.IAction;
 
-public class SortRoomsByCapacity implements IAction {
+public class ByCapacity implements IAction {
 
 	@Override
 	public void execute() {

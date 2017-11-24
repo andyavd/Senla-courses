@@ -10,9 +10,9 @@ import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.api.IAction;
 import eu.senla.andyavd.ui.utils.InputReader;
 
-public class CheckInVisitorAction implements IAction {
+public class CheckInAction implements IAction {
 
-	private final static Logger logger = Logger.getLogger(CheckInVisitorAction.class);
+	private final static Logger logger = Logger.getLogger(CheckInAction.class);
 
 	@Override
 	public void execute() {

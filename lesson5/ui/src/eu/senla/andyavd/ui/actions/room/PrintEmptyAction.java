@@ -6,9 +6,9 @@ import eu.senla.andyavd.hoteladministrator.utils.Printer;
 import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.api.IAction;
 
-public class PrintEmptyRoomsAction implements IAction{
+public class PrintEmptyAction implements IAction{
 
-	final static Logger logger = Logger.getLogger(PrintEmptyRoomsAction.class);
+	final static Logger logger = Logger.getLogger(PrintEmptyAction.class);
 	
 	@Override
 	public void execute() {

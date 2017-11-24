@@ -4,7 +4,7 @@ import eu.senla.andyavd.hoteladministrator.utils.Printer;
 import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.api.IAction;
 
-public class SortServicesByName implements IAction {
+public class ByName implements IAction {
 
 	@Override
 	public void execute() {
