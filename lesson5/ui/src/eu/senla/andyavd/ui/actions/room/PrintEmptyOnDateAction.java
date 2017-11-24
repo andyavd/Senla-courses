@@ -10,7 +10,7 @@ import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.api.IAction;
 import eu.senla.andyavd.ui.utils.InputReader;
 
-public class PrintEmptyRoomsOnDateAction implements IAction {
+public class PrintEmptyOnDateAction implements IAction {
 
 	final static Logger logger = Logger.getLogger(PrintEmptyRoomsOnDateAction.class);
 	
