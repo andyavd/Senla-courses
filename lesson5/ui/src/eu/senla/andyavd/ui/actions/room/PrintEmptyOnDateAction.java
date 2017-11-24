@@ -12,7 +12,7 @@ import eu.senla.andyavd.ui.utils.InputReader;
 
 public class PrintEmptyOnDateAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(PrintEmptyRoomsOnDateAction.class);
+	final static Logger logger = Logger.getLogger(PrintEmptyOnDateAction.class);
 	
 	@Override
 	public void execute() {
