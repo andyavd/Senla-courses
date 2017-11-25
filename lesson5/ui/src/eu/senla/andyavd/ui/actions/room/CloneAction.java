@@ -11,7 +11,7 @@ import eu.senla.andyavd.ui.utils.InputReader;
 
 public class CloneAction implements IAction {
 
-final static Logger logger = Logger.getLogger(ChangeStatusAction.class);
+final static Logger logger = Logger.getLogger(CloneAction.class);
 	
 	@Override
 	public void execute() {
