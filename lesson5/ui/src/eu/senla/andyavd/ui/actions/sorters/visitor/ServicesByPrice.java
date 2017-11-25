@@ -7,7 +7,7 @@ import eu.senla.andyavd.hoteladministrator.view.HotelManager;
 import eu.senla.andyavd.ui.api.IAction;
 import eu.senla.andyavd.ui.utils.InputReader;
 
-public class SortVisitorServicesByPrice implements IAction {
+public class ServicesByPrice implements IAction {
 
 	@Override
 	public void execute() {
