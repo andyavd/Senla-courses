@@ -7,7 +7,7 @@ import java.util.List;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStars;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 
-public class Room extends AEntity implements Serializable{
+public class Room extends AEntity implements Serializable, Cloneable{
 
 	private static final long serialVersionUID = -7832618903079077100L;
 
@@ -88,6 +88,10 @@ public class Room extends AEntity implements Serializable{
 		this.stars = stars;
 		this.status = status;
 	}
+	
+	public Room clone() throws CloneNotSupportedException {
+        return (Room)super.clone();
+  }
 
 	@Override
 	public String toString() {
