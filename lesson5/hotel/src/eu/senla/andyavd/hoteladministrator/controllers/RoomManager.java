@@ -38,19 +38,16 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public void cloneRoom(Room room) throws IOException, ClassNotFoundException {
-		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-
-		objectOutputStream.writeObject(room);
-		objectOutputStream.close();
-
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-		ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
-		Room roomClone = (Room) objectInputStream.readObject();
-		roomClone.setRoomNumber(roomClone.getRoomNumber() + 100);
-
-		this.addRoom(roomClone);
+	public void cloneRoom(Room room) {
+		
+		Room clone = null;
+		try {
+			clone = room.clone();
+		} catch (CloneNotSupportedException e) {
+			logger.error("Failed to clone the Room!", e);
+     		}
+		
+		this.addRoom(clone);
 	}
 	
 	@Override
