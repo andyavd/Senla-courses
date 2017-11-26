@@ -92,10 +92,15 @@ public interface IHotelManager {
 	public void saveToFile();
 	
 	public void loadFromFile();
+
+	////////////////////////
 	
 	boolean isRoomStatus();
-	
-	public void cloneRoom(Room room) throws IOException, ClassNotFoundException;
-	
+	public void cloneRoom(Room room);
+
 	public List<RoomHistory> getHistories();
+
+	void exportVisitors(List<Visitor> visitors) throws IOException;
+
+	void setServices(List<Service> services);
 }
