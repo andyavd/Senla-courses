@@ -1,6 +1,5 @@
 package eu.senla.andyavd.hoteladministrator.api.controllers;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -30,10 +29,14 @@ public interface IRoomManager {
 	
 	public Room getRoomById(Integer number);
 
+	public void saveToFile();
+
+	public String[] loadFromFile();
+
 	public void setRooms(List<Room> entities);
 	
 	public List<Room> getEmptyRoomsOnDate(LocalDate date);
-	
-	public void cloneRoom(Room room) throws IOException, ClassNotFoundException;
+	////////////
+	public void cloneRoom(Room room);
 	
 }

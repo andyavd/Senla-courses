@@ -270,7 +270,12 @@ public class HotelManager implements IHotelManager {
 	public List<Service> getServices() {
 		return serviceManager.getServices();
 	}
-
+	
+	@Override
+	public void setServices(List<Service> services) {
+		serviceManager.setServices(services);
+	}
+	
 	@Override
 	public void deleteService(Service service) {
 		serviceManager.deleteService(service);
