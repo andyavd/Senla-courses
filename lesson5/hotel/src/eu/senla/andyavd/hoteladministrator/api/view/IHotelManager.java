@@ -1,6 +1,5 @@
 package eu.senla.andyavd.hoteladministrator.api.view;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -100,7 +99,7 @@ public interface IHotelManager {
 
 	public List<RoomHistory> getHistories();
 
-	void exportVisitors(List<Visitor> visitors) throws IOException;
-
 	void setServices(List<Service> services);
+	
+	void setVisitors(List<Visitor> visitors);
 }

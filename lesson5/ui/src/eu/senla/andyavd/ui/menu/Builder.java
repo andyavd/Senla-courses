@@ -45,6 +45,7 @@ public class Builder {
 		roomMenu.addMenuItem(new MenuItem("Sort the empty Rooms by price", roomMenu, new EmptyByPrice()));
 		roomMenu.addMenuItem(new MenuItem("Sort the empty Rooms by rate", roomMenu, new EmptyByStars()));
 		roomMenu.addMenuItem(new MenuItem("Export Rooms information to file", roomMenu, new ExportRoomsAction()));
+		roomMenu.addMenuItem(new MenuItem("Import Rooms information from file", roomMenu, new ImportRoomsAction()));
 		
 		roomMenu.addMenuItem(new MenuItem("Back to Main menu", mainMenu));
 		
@@ -58,6 +59,7 @@ public class Builder {
 		serviceMenu.addMenuItem(new MenuItem("Sort the Services by name", serviceMenu, new ByName()));
 		serviceMenu.addMenuItem(new MenuItem("Sort the Services by price", serviceMenu, new ByDailyPrice()));
 		serviceMenu.addMenuItem(new MenuItem("Export Services information to file", serviceMenu, new ExportServicesAction()));
+		serviceMenu.addMenuItem(new MenuItem("Import Services information from file", serviceMenu, new ImportServicesAction()));
 		
 		serviceMenu.addMenuItem(new MenuItem("Back to Main menu", mainMenu));
 		
@@ -75,7 +77,8 @@ public class Builder {
 		
 		visitorMenu.addMenuItem(new MenuItem("Sort the Visitors by name", visitorMenu, new ByLastName()));
 		visitorMenu.addMenuItem(new MenuItem("Sort the Visitor's Services by price", visitorMenu, new ServicesByPrice()));
-		visitorMenu.addMenuItem(new MenuItem("Export Visitors information to file", visitorMenu, new ExportRoomsAction()));
+		visitorMenu.addMenuItem(new MenuItem("Export Visitors information to file", visitorMenu, new ExportVisitorsAction()));
+		visitorMenu.addMenuItem(new MenuItem("Import Visitors information from file", visitorMenu, new ImportVisitorsAction()));
 		
 		visitorMenu.addMenuItem(new MenuItem("Back to Main menu", mainMenu));
 		

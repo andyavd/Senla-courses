@@ -51,19 +51,6 @@ public class FileParser {
 			s.append(SEPARATOR);
 			s.append(String.valueOf(history.getCheckOutDate()));
 			s.append(SEPARATOR);
-
-			// if (history.getService() == null) {
-			// s.append(" ");
-			// } else {
-			//
-			// String[] services = new String[history.getService().size()];
-			// for (int i = 0; i < services.length; i++) {
-			// services[i] = serviceToString(history.getService().get(i));
-			// }
-			// s.append(services);
-			// }
-			// s.append(SEPARATOR);
-
 			s.append(String.valueOf(history.getStatus()));
 			s.append(SEPARATOR);
 
@@ -100,21 +87,6 @@ public class FileParser {
 				s.append(SEPARATOR);
 			}
 			serviceStrings[i] = s.toString();
-			// if (visitor.getHistory().getService() == null) {
-			// s.append(" ");
-			// } else {
-			// String[] visitorsServices = new
-			// String[visitor.getHistory().getService().size()];
-			// for (int i = 0; i < visitorsServices.length; i++) {
-			// s.append(String.valueOf(visitor.getHistory().getService().get(i).getId()));
-			// s.append(SEPARATOR);
-			// s.append(visitor.getHistory().getService().get(i).getName());
-			// s.append(SEPARATOR);
-			// s.append(String.valueOf(visitor.getHistory().getService().get(i).getDailyPrice()));
-			// s.append(SEPARATOR);
-			// }
-			// }
-
 		}
 		return serviceStrings;
 	}
@@ -161,7 +133,7 @@ public class FileParser {
 
 		for (int i = 1; i < array.length; i++) {
 
-			String[] parsedString = array[i].split(" ");
+			String[] parsedString = array[i].split(",");
 
 			Room newRoom = new Room();
 
@@ -198,7 +170,7 @@ public class FileParser {
 
 		for (int i = 1; i < array.length; i++) {
 
-			String[] parsedString = array[i].split(" ");
+			String[] parsedString = array[i].split(",");
 
 			Service newService = new Service();
 
@@ -217,7 +189,7 @@ public class FileParser {
 
 		for (int i = 1; i < array.length; i++) {
 
-			String[] parsedString = array[i].split(" ");
+			String[] parsedString = array[i].split(",");
 
 			Visitor newVisitor = new Visitor();
 
