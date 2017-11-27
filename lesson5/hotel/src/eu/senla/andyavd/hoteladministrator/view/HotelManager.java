@@ -1,6 +1,5 @@
 package eu.senla.andyavd.hoteladministrator.view;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -64,7 +63,7 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public void cloneRoom(Room room) throws IOException, ClassNotFoundException {
+	public void cloneRoom(Room room){
 		roomManager.cloneRoom(room);
 	}
 
@@ -141,6 +140,7 @@ public class HotelManager implements IHotelManager {
 		return roomManager.getEmptyRoomsOnDate(date);
 	}
 
+	//////////////
 	@Override
 	public boolean isRoomStatus() {
 
@@ -152,6 +152,7 @@ public class HotelManager implements IHotelManager {
 			return false;
 		}
 	}
+	///////////////
 
 	@Override
 	public void changeRoomStatus(Room room) {
@@ -258,6 +259,11 @@ public class HotelManager implements IHotelManager {
 	public Visitor getVisitorById(Integer id) {
 		return visitorManager.getVisitorById(id);
 	}
+	
+	@Override
+	public void setVisitors(List<Visitor> visitors) {
+		visitorManager.setVisitors(visitors);
+	};
 
 	/* ========================Services======================== */
 
@@ -275,7 +281,7 @@ public class HotelManager implements IHotelManager {
 	public void setServices(List<Service> services) {
 		serviceManager.setServices(services);
 	}
-	
+
 	@Override
 	public void deleteService(Service service) {
 		serviceManager.deleteService(service);
@@ -360,14 +366,12 @@ public class HotelManager implements IHotelManager {
 	public void saveToFile() {
 
 		SerializationUtil.serialize(getRooms(), getServices(), getVisitors(), getHistories());
-
 	}
 
 	@Override
 	public void loadFromFile() {
 		try {
 			SerializationUtil.deserialize();
-
 		} catch (Exception e) {
 			logger.error("Failed to load from file!", e);
 		}
