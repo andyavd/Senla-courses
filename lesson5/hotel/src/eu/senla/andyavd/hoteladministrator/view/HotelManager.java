@@ -140,19 +140,13 @@ public class HotelManager implements IHotelManager {
 		return roomManager.getEmptyRoomsOnDate(date);
 	}
 
-	//////////////
 	@Override
 	public boolean isRoomStatus() {
 
 		boolean isAllowed = Boolean.parseBoolean(Settings.getInstance().getProperty("status"));
 
-		if (isAllowed) {
-			return true;
-		} else {
-			return false;
-		}
+		return isAllowed;
 	}
-	///////////////
 
 	@Override
 	public void changeRoomStatus(Room room) {

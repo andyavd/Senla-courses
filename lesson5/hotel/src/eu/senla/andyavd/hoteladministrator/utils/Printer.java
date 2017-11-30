@@ -18,7 +18,7 @@ public class Printer {
 		}
 	}
 	
-	public static void printList(List<AEntity> entities) {
+	public static void printList(List<? extends AEntity> entities) {
 		for (int i=0; i<entities.size(); i++) {
 			if(entities.get(i) != null) {
 				System.out.println(entities.get(i).toString());
