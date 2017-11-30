@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="lesson5/hotel/src"/>
+	<classpathentry kind="src" path="lesson5/properties/src"/>
+	<classpathentry kind="src" path="lesson5/ui/src"/>
+	<classpathentry kind="lib" path="lesson5/hotel/lib/hotel.jar"/>
+	<classpathentry kind="lib" path="lesson5/hotel/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

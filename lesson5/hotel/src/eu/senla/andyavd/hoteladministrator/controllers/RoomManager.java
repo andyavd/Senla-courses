@@ -1,10 +1,5 @@
 package eu.senla.andyavd.hoteladministrator.controllers;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,10 +11,8 @@ import org.apache.log4j.Logger;
 import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomManager;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
-import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
-import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 import eu.senla.andyavd.hoteladministrator.utils.FileReader;
 import eu.senla.andyavd.hoteladministrator.utils.FileWriterSenla;
 
@@ -29,8 +22,6 @@ public class RoomManager implements IRoomManager {
 	
 	FileReader fileReader = new FileReader();
 	FileWriterSenla fileWriter = new FileWriterSenla();
-
-	private static final String path = Path.ROOM_STORAGE_PATH.getPath();
 
 	@Override
 	public void addRoom(Room room) {
