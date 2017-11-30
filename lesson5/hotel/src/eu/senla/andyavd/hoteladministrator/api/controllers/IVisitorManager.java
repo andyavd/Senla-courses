@@ -1,6 +1,5 @@
 package eu.senla.andyavd.hoteladministrator.api.controllers;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;

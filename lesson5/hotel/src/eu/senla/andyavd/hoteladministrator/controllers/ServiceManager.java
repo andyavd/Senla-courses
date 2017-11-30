@@ -8,18 +8,11 @@ import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.hoteladministrator.api.controllers.IServiceManager;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
-import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.storages.ServicesStorage;
-import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
 
 public class ServiceManager implements IServiceManager {
 
 	final static Logger logger = Logger.getLogger(ServiceManager.class);
-	
-	FileReader fileReader = new FileReader();
-	FileWriterSenla fileWriter = new FileWriterSenla();
-	
-	private final static String path = Path.SERVICE_STORAGE_PATH.getPath();
 	
 	@Override
 	public void addService(Service service) {

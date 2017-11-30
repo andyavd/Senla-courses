@@ -1,9 +1,6 @@
 package eu.senla.andyavd.hoteladministrator.controllers;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -14,20 +11,11 @@ import eu.senla.andyavd.hoteladministrator.api.controllers.IVisitorManager;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
-import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.storages.VisitorsStorage;
-import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
-import eu.senla.andyavd.hoteladministrator.utils.FileReader;
-import eu.senla.andyavd.hoteladministrator.utils.FileWriterSenla;
 
 public class VisitorManager implements IVisitorManager {
 	
 	final static Logger logger = Logger.getLogger(VisitorManager.class);
-	
-	FileReader fileReader = new FileReader();
-	FileWriterSenla fileWriter = new FileWriterSenla();
-	
-	private final static String path = Path.VISITOR_STORAGE_PATH.getPath();
 
 	@Override
 	public void addVisitor(Visitor visitor) {
@@ -98,13 +86,10 @@ public class VisitorManager implements IVisitorManager {
 	public Visitor getVisitorById(Integer id) {
 		return VisitorsStorage.getInstance().getVisitorById(id);
 	}
-	
+
 	@Override
-	public void saveToFile() {
-		try{
-			fileWriter.writeToFile(ArrayWorker.arrayToString(VisitorsStorage.getInstance().getVisitors()), path);
-		} catch (Exception e) {
-			logger.error("Failed to save to a file!", e);
-		}
+	public void setVisitors(List<Visitor> visitors) {
+		VisitorsStorage.getInstance().setVisitors(visitors);
+		
 	}
 }
