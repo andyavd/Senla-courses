@@ -9,6 +9,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import eu.senla.andyavd.hoteladministrator.entities.AEntity;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
@@ -22,6 +24,7 @@ import eu.senla.andyavd.properties.Settings;
 
 public class SerializationUtil {
 
+	private static final Logger logger = Logger.getLogger(SerializationUtil.class);
 	private static final String SAVELOAD_PROPERTY = Settings.getInstance().getProperty("saveload");
 
 	public static void serialize(List<Room> rooms, List<Service> services, List<Visitor> visitors, List<RoomHistory> histories) {
@@ -44,9 +47,9 @@ public class SerializationUtil {
 			fileOutputStream.close();
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			logger.error("No such file!", e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Fail to save the Hotel state!", e);
 		}
 	}
 

@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import eu.senla.andyavd.hoteladministrator.entities.Service;
 
-public class SortingServicesByName implements Comparator<Service>{
+public class ByName implements Comparator<Service>{
 
 	@Override
 	public int compare(Service s1, Service s2) {

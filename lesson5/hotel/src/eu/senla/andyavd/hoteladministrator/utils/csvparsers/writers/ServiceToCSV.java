@@ -11,7 +11,7 @@ import eu.senla.andyavd.properties.Settings;
 
 public class ServiceToCSV {
 
-	final static Logger logger = Logger.getLogger(ServiceToCSV.class);
+	private static final Logger logger = Logger.getLogger(ServiceToCSV.class);
 	private static final String SERVICE_CSV = Settings.getInstance().getProperty("services");
 	
 	public static void writeServicesToCSV() {

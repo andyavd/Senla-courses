@@ -11,7 +11,7 @@ import eu.senla.andyavd.properties.Settings;
 
 public class RoomHistoryToCSV {
 
-	final static Logger logger = Logger.getLogger(RoomHistoryToCSV.class);
+	private static final Logger logger = Logger.getLogger(RoomHistoryToCSV.class);
 	private static final String HISTORY_CSV = Settings.getInstance().getProperty("roomhistories");
 	
 	public static void writeHistoriesToCSV() {

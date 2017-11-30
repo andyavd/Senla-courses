@@ -11,7 +11,7 @@ import eu.senla.andyavd.properties.Settings;
 
 public class VisitorToCSV {
 
-	final static Logger logger = Logger.getLogger(VisitorToCSV.class);
+	private static final Logger logger = Logger.getLogger(VisitorToCSV.class);
 	private static final String VISITOR_CSV = Settings.getInstance().getProperty("visitors");
 
 	public static void writeVisitorsToCSV() {

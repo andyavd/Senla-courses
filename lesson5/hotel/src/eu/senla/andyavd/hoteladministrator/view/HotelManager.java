@@ -22,15 +22,23 @@ import eu.senla.andyavd.hoteladministrator.entities.Service;
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 import eu.senla.andyavd.hoteladministrator.enums.RoomHistoryStatus;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
+import eu.senla.andyavd.hoteladministrator.utils.FileParser;
 import eu.senla.andyavd.hoteladministrator.utils.SerializationUtil;
+import eu.senla.andyavd.hoteladministrator.utils.csvparsers.readers.CSVToRoom;
+import eu.senla.andyavd.hoteladministrator.utils.csvparsers.readers.CSVToService;
+import eu.senla.andyavd.hoteladministrator.utils.csvparsers.readers.CSVToVisitor;
+import eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.RoomHistoryToCSV;
+import eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.RoomToCSV;
+import eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.ServiceToCSV;
+import eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.VisitorToCSV;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.EmptyRoomException;
 import eu.senla.andyavd.hoteladministrator.utils.exceptions.NotEmptyRoomException;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByCapacity;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByPrice;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.SortingRoomsByStars;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.services.SortingServicesByName;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.services.SortingServicesByPrice;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.visitors.SortingVisitorsByName;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.ByCapacity;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.ByPrice;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.ByStars;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.services.ByName;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.services.ByDailyPrice;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.visitors.ByLastName;
 import eu.senla.andyavd.properties.Settings;
 
 public class HotelManager implements IHotelManager {
@@ -63,7 +71,7 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public void cloneRoom(Room room){
+	public void cloneRoom(Room room) {
 		roomManager.cloneRoom(room);
 	}
 
@@ -84,37 +92,37 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public List<Room> sortRoomsByCapacity() {
-		List<Room> sortedRooms = roomManager.sortRooms(new SortingRoomsByCapacity());
+		List<Room> sortedRooms = roomManager.sortRooms(new ByCapacity());
 		return sortedRooms;
 	}
 
 	@Override
 	public List<Room> sortRoomsByPrice() {
-		List<Room> sortedRooms = roomManager.sortRooms(new SortingRoomsByPrice());
+		List<Room> sortedRooms = roomManager.sortRooms(new ByPrice());
 		return sortedRooms;
 	}
 
 	@Override
 	public List<Room> sortRoomsByStars() {
-		List<Room> sortedRooms = roomManager.sortRooms(new SortingRoomsByStars());
+		List<Room> sortedRooms = roomManager.sortRooms(new ByStars());
 		return sortedRooms;
 	}
 
 	@Override
 	public List<Room> sortEmptyRoomsByCapacity() {
-		List<Room> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByCapacity());
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(new ByCapacity());
 		return sortedRooms;
 	}
 
 	@Override
 	public List<Room> sortEmptyRoomsByPrice() {
-		List<Room> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByPrice());
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(new ByPrice());
 		return sortedRooms;
 	}
 
 	@Override
 	public List<Room> sortEmptyRoomsByStars() {
-		List<Room> sortedRooms = roomManager.sortEmptyRooms(new SortingRoomsByStars());
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(new ByStars());
 		return sortedRooms;
 	}
 
@@ -215,7 +223,7 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public List<Visitor> sortVisitorsByName() {
-		List<Visitor> sortedVisitors = visitorManager.sortVisitors(new SortingVisitorsByName());
+		List<Visitor> sortedVisitors = visitorManager.sortVisitors(new ByLastName());
 		return sortedVisitors;
 	}
 
@@ -240,7 +248,7 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public List<Service> sortVisitorServicesByPrice(Visitor visitor) {
-		List<Service> sortedServices = visitorManager.sortVisitorServicesByPrice(visitor, new SortingServicesByPrice());
+		List<Service> sortedServices = visitorManager.sortVisitorServicesByPrice(visitor, new ByDailyPrice());
 		return sortedServices;
 	}
 
@@ -253,7 +261,7 @@ public class HotelManager implements IHotelManager {
 	public Visitor getVisitorById(Integer id) {
 		return visitorManager.getVisitorById(id);
 	}
-	
+
 	@Override
 	public void setVisitors(List<Visitor> visitors) {
 		visitorManager.setVisitors(visitors);
@@ -270,7 +278,7 @@ public class HotelManager implements IHotelManager {
 	public List<Service> getServices() {
 		return serviceManager.getServices();
 	}
-	
+
 	@Override
 	public void setServices(List<Service> services) {
 		serviceManager.setServices(services);
@@ -283,13 +291,13 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public List<Service> sortServicesByName() {
-		List<Service> sortedServices = serviceManager.sortServices(new SortingServicesByName());
+		List<Service> sortedServices = serviceManager.sortServices(new ByName());
 		return sortedServices;
 	}
 
 	@Override
 	public List<Service> sortServicesByPrice() {
-		List<Service> sortedServices = serviceManager.sortServices(new SortingServicesByPrice());
+		List<Service> sortedServices = serviceManager.sortServices(new ByDailyPrice());
 		return sortedServices;
 	}
 
@@ -358,7 +366,6 @@ public class HotelManager implements IHotelManager {
 
 	@Override
 	public void saveToFile() {
-
 		SerializationUtil.serialize(getRooms(), getServices(), getVisitors(), getHistories());
 	}
 
@@ -368,6 +375,56 @@ public class HotelManager implements IHotelManager {
 			SerializationUtil.deserialize();
 		} catch (Exception e) {
 			logger.error("Failed to load from file!", e);
+		}
+	}
+
+	// ========================CSV=========================
+	public void exportRoomsToCSV() {
+		try {
+			RoomToCSV.writeRoomsToCSV();
+			RoomHistoryToCSV.writeHistoriesToCSV();
+		} catch (Exception e) {
+			logger.error("Failed to export Rooms data to CSV file", e);
+		}
+	}
+	
+	public void exportServicesToCSV() {
+		try {
+			ServiceToCSV.writeServicesToCSV();
+		} catch (Exception e) {
+			logger.error("Failed to export Services data to CSV file", e);
+		}
+	}
+	
+	public void exportVisitorsToCSV() {
+		try {
+			VisitorToCSV.writeVisitorsToCSV();
+		} catch (Exception e) {
+			logger.error("Failed to export Visitors data to CSV file", e);
+		}
+	}
+	
+	public void importRoomsFromCSV() {
+		try {
+			this.setRooms(FileParser.stringToRooms(CSVToRoom.readRooms()));
+		} catch (Exception e) {
+			logger.error("Rooms were not imported!", e);
+		}
+	}
+	
+	public void importServicesFromCSV() {
+		try {
+			this.setServices(FileParser.stringToServices(CSVToService.readServices()));
+		} catch (Exception e) {
+			logger.error("Services were not imported!", e);
+		}
+	}
+	
+	public void importVisitorsFromCSV() {
+		try {
+			this.setVisitors(FileParser.stringToVisitors(CSVToVisitor.readVisitors()));
+		} catch (Exception e) {
+			logger.error("Visitors were not imported!", e);
 		}
 	}
 }

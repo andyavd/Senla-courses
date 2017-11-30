@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 
-public class SortingRoomsByStars implements Comparator<Room>{
+public class ByStars implements Comparator<Room>{
 
 	@Override
 	public int compare(Room r1, Room r2) {

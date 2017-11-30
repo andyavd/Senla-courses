@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import eu.senla.andyavd.hoteladministrator.entities.Visitor;
 
-public class SortingVisitorsByName implements Comparator<Visitor>{
+public class ByLastName implements Comparator<Visitor>{
 
 	@Override
 	public int compare(Visitor v1, Visitor v2) {
