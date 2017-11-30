@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import eu.senla.andyavd.properties.Settings;
 
 public class CSVToRoomHistory {
+	private static final Logger logger = Logger.getLogger(CSVToRoomHistory.class);
 	private static final String HISTORY_CSV = Settings.getInstance().getProperty("roomhistories");
 	String line = "";
 	String cvsSplitBy = ",";
@@ -25,7 +28,7 @@ public class CSVToRoomHistory {
 			array = lines.toArray(new String[0]);
 
         } catch (IOException e) {
-            e.printStackTrace();
+        		logger.error("Failed to read from the file!", e);
         }
 		
 		return array;

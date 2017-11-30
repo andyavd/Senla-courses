@@ -13,15 +13,10 @@ import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
-import eu.senla.andyavd.hoteladministrator.utils.FileReader;
-import eu.senla.andyavd.hoteladministrator.utils.FileWriterSenla;
 
 public class RoomManager implements IRoomManager {
 
 	private final static Logger logger = Logger.getLogger(RoomManager.class);
-	
-	FileReader fileReader = new FileReader();
-	FileWriterSenla fileWriter = new FileWriterSenla();
 
 	@Override
 	public void addRoom(Room room) {

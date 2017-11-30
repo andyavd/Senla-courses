@@ -25,10 +25,8 @@ public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 	
 	@Override
 	public void addHistory(RoomHistory history) {
+		histories.get(histories.size()-1).setId(histories.size());
 		histories.add(history);
-		for (int i = 0; i < histories.size(); i++) {
-			histories.get(histories.size()-1).setId(histories.size());
-		}
 	}
 
 	@Override

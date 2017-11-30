@@ -26,10 +26,8 @@ public class RoomsStorage implements IRoomsStorage{
 	
 	@Override
 	public void addRoom(Room room) {
+		rooms.get(rooms.size()-1).setId(rooms.size());
 		rooms.add(room);
-		for (int i = 0; i < rooms.size(); i++) {
-			rooms.get(rooms.size()-1).setId(rooms.size());
-		}
 	}
 
 	@Override

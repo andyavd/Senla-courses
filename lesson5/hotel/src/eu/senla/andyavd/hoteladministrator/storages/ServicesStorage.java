@@ -11,9 +11,9 @@ public class ServicesStorage implements IServicesStorage {
 	private List<Service> services = new ArrayList<Service>();
 
 	private static ServicesStorage servicesStorage;
-	
+
 	private ServicesStorage() {
-		
+
 	}
 
 	public static ServicesStorage getInstance() {
@@ -30,10 +30,8 @@ public class ServicesStorage implements IServicesStorage {
 
 	@Override
 	public void addService(Service service) {
+		services.get(services.size() - 1).setId(services.size());
 		services.add(service);
-		for (int i = 0; i < services.size(); i++) {
-			services.get(services.size() - 1).setId(services.size());
-		}
 	}
 
 	@Override
@@ -48,7 +46,7 @@ public class ServicesStorage implements IServicesStorage {
 		}
 		return service;
 	}
-	
+
 	@Override
 	public void deleteService(Service service) {
 		for (int i = 0; i < services.size(); i++) {
