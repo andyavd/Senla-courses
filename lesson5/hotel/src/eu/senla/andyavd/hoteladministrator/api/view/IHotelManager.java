@@ -18,7 +18,7 @@ public interface IHotelManager {
 
 	public List<Room> getRooms();
 
-	public List<Room> getEmptyRooms(List<Room> rooms);
+	public List<Room> getEmptyRooms();
 
 	public Integer getEmptyRoomsNumber(List<Room> rooms);
 

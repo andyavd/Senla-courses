@@ -17,7 +17,7 @@ public interface IRoomManager {
 
 	public void updateStorage(int id, Room room);
 	
-	public List<Room> getEmptyRooms(List<Room> entities);
+	public List<Room> getEmptyRooms();
 
 	public Integer getEmptyRoomsNumber(List<Room> entities);
 

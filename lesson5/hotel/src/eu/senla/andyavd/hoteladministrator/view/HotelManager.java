@@ -86,8 +86,8 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public List<Room> getEmptyRooms(List<Room> rooms) {
-		return roomManager.getEmptyRooms(rooms);
+	public List<Room> getEmptyRooms() {
+		return roomManager.getEmptyRooms();
 	}
 
 	@Override

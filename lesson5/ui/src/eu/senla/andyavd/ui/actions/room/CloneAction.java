@@ -36,13 +36,8 @@ public class CloneAction implements IAction {
 			}
 			if (numbers.contains(newNumber)) {
 				Printer.print("Such room number id already used! Cloning fails. Try again!");
-//				HotelManager.getInstance().deleteRoom(HotelManager.getInstance().getRoomById(0));
 				return;
 			}
-			// if (room.getRoomNumber() == newNumber) {
-			// rooms.get(rooms.size() - 1).setRoomNumber(newNumber);
-			//
-			// }
 			else {
 				cloned.setRoomNumber(newNumber);
 				HotelManager.getInstance().addRoom(cloned);

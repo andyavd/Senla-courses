@@ -347,3 +347,70 @@ java.lang.NullPointerException
 	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
 	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
 	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:12:37 ERROR CloneAction:38 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:95)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:12:58 ERROR CloneAction:38 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:95)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:44:31 ERROR CloneAction:48 - No such room to clone!
+java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
+	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+	at java.util.ArrayList.get(ArrayList.java:433)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:43)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:54:49 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:55:03 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:95)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:57:31 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:33)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 11:02:47 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:96)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)

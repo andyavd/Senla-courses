@@ -13,7 +13,7 @@ public class PrintEmptyAction implements IAction{
 	@Override
 	public void execute() {
 		
-		Printer.printList(HotelManager.getInstance().getEmptyRooms(HotelManager.getInstance().getRooms()));
+		Printer.printList(HotelManager.getInstance().getEmptyRooms());
 		
 	}
 }

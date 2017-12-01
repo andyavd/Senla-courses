@@ -62,8 +62,10 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public List<Room> getEmptyRooms(List<Room> rooms) {
-
+	public List<Room> getEmptyRooms() {
+		
+		List<Room> rooms = RoomsStorage.getInstance().getRooms();
+		
 		List<Room> newRooms = new ArrayList<Room>();
 
 		for (int i = 0; i < rooms.size(); i++) {
@@ -117,7 +119,7 @@ public class RoomManager implements IRoomManager {
 
 	@Override
 	public List<Room> sortEmptyRooms(Comparator<Room> comparator) {
-		List<Room> sortedRooms = getEmptyRooms(RoomsStorage.getInstance().getRooms());
+		List<Room> sortedRooms = getEmptyRooms();
 		Collections.sort(sortedRooms, comparator);
 		return sortedRooms;
 	}
