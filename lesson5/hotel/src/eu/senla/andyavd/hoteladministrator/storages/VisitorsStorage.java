@@ -36,8 +36,8 @@ public class VisitorsStorage implements IVisitorsStorage {
 
 	@Override
 	public void addVisitor(Visitor visitor) {
-		visitors.get(visitors.size() - 1).setId(visitors.size());
 		visitors.add(visitor);
+		visitors.get(visitors.size() - 1).setId(visitors.size());
 	}
 
 	@Override

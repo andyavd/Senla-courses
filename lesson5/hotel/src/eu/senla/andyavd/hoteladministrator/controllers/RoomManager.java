@@ -24,7 +24,12 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public void cloneRoom(Room room) {
+	public void deleteRoom(Room room) {
+		RoomsStorage.getInstance().deleteRoom(room);
+	}
+	
+	@Override
+	public Room cloneRoom(Room room) {
 		
 		Room clone = null;
 		try {
@@ -33,7 +38,7 @@ public class RoomManager implements IRoomManager {
 			logger.error("Failed to clone the Room!", e);
      		}
 		
-		this.addRoom(clone);
+		return clone;
 	}
 	
 	@Override
@@ -42,8 +47,8 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public void setRooms(List<Room> entities) {
-		RoomsStorage.getInstance().setRooms(entities);
+	public void setRooms(List<Room> rooms) {
+		RoomsStorage.getInstance().setRooms(rooms);
 	}
 
 	@Override
@@ -57,20 +62,20 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public List<Room> getEmptyRooms(List<Room> entities) {
+	public List<Room> getEmptyRooms(List<Room> rooms) {
 
-		List<Room> newEntity = new ArrayList<Room>();
+		List<Room> newRooms = new ArrayList<Room>();
 
-		for (int i = 0; i < entities.size(); i++) {
-			if (((Room) entities.get(i)).getStatus() == RoomStatus.EMPTY)
-				newEntity.add(entities.get(i));
+		for (int i = 0; i < rooms.size(); i++) {
+			if (rooms.get(i).getStatus() == RoomStatus.EMPTY)
+				newRooms.add(rooms.get(i));
 		}
-		return newEntity;
+		return newRooms;
 	}
 
 	@Override
-	public Integer getEmptyRoomsNumber(List<Room> entities) {
-		return entities.size();
+	public Integer getEmptyRoomsNumber(List<Room> rooms) {
+		return rooms.size();
 	}
 
 	@Override

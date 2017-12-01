@@ -30,8 +30,8 @@ public class ServicesStorage implements IServicesStorage {
 
 	@Override
 	public void addService(Service service) {
-		services.get(services.size() - 1).setId(services.size());
 		services.add(service);
+		services.get(services.size() - 1).setId(services.size());
 	}
 
 	@Override

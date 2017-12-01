@@ -32,7 +32,9 @@ public interface IRoomManager {
 	public void setRooms(List<Room> entities);
 	
 	public List<Room> getEmptyRoomsOnDate(LocalDate date);
-	////////////
-	public void cloneRoom(Room room);
+
+	public Room cloneRoom(Room room);
+
+	public void deleteRoom(Room room);
 	
 }

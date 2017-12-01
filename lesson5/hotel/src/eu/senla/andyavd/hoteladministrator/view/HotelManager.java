@@ -71,8 +71,13 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public void cloneRoom(Room room) {
-		roomManager.cloneRoom(room);
+	public void deleteRoom(Room room) {
+		roomManager.deleteRoom(room);
+	}
+	
+	@Override
+	public Room cloneRoom(Room room) {
+		return roomManager.cloneRoom(room);
 	}
 
 	@Override
@@ -169,21 +174,24 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<RoomHistory> getLastVisitorsOfRoom(Room room) {
 
-		List<RoomHistory> lastVisitorsOfRoom = new ArrayList<RoomHistory>();
 		Integer variableProperty = Integer.parseInt(Settings.getInstance().getProperty("count"));
+		List<RoomHistory> lastVisitorsOfRoom = new ArrayList<RoomHistory>();
+		List<RoomHistory> histories = room.getHistories();
 
-		if (room.getHistories().size() <= variableProperty) {
+		if (histories.size() <= variableProperty) {
 
-			for (int i = 0; i < room.getHistories().size(); i++) {
-				if (room.getHistories().get(i) != null) {
-					lastVisitorsOfRoom.add(room.getHistories().get(i));
+			for (int i = 0; i < histories.size(); i++) {
+				RoomHistory history = histories.get(i);
+				if (history != null) {
+					lastVisitorsOfRoom.add(history);
 				}
 			}
 
 		} else {
-			for (int i = room.getHistories().size() - variableProperty; i < room.getHistories().size(); i++) {
-				if (room.getHistories().get(i) != null) {
-					lastVisitorsOfRoom.add(room.getHistories().get(i));
+			for (int i = histories.size() - variableProperty; i < histories.size(); i++) {
+				RoomHistory history = histories.get(i);
+				if (history != null) {
+					lastVisitorsOfRoom.add(history);
 				}
 			}
 		}
@@ -236,11 +244,11 @@ public class HotelManager implements IHotelManager {
 	public List<Service> getVisitorServices(Visitor visitor) {
 
 		List<Service> visitorServices = new ArrayList<Service>();
-
-		for (int i = 0; i < visitorManager.getVisitorServices(visitor).size(); i++) {
-			if (visitorManager.getVisitorServices(visitor).get(i) != null) {
-
-				visitorServices.add(visitorManager.getVisitorServices(visitor).get(i));
+		List<Service> services = visitorManager.getVisitorServices(visitor);
+		for (int i = 0; i < services.size(); i++) {
+			Service service = services.get(i);
+			if (service != null) {
+				visitorServices.add(service);
 			}
 		}
 		return visitorServices;
@@ -354,7 +362,6 @@ public class HotelManager implements IHotelManager {
 					room.getHistories().get(i).setStatus(RoomHistoryStatus.CHECKOUT);
 					visitor.setHistory(null);
 					room.setStatus(RoomStatus.EMPTY);
-
 					break;
 				}
 			}
@@ -379,6 +386,7 @@ public class HotelManager implements IHotelManager {
 	}
 
 	// ========================CSV=========================
+	
 	public void exportRoomsToCSV() {
 		try {
 			RoomToCSV.writeRoomsToCSV();
@@ -387,7 +395,7 @@ public class HotelManager implements IHotelManager {
 			logger.error("Failed to export Rooms data to CSV file", e);
 		}
 	}
-	
+
 	public void exportServicesToCSV() {
 		try {
 			ServiceToCSV.writeServicesToCSV();
@@ -395,7 +403,7 @@ public class HotelManager implements IHotelManager {
 			logger.error("Failed to export Services data to CSV file", e);
 		}
 	}
-	
+
 	public void exportVisitorsToCSV() {
 		try {
 			VisitorToCSV.writeVisitorsToCSV();
@@ -403,7 +411,7 @@ public class HotelManager implements IHotelManager {
 			logger.error("Failed to export Visitors data to CSV file", e);
 		}
 	}
-	
+
 	public void importRoomsFromCSV() {
 		try {
 			this.setRooms(FileParser.stringToRooms(CSVToRoom.readRooms()));
@@ -411,7 +419,7 @@ public class HotelManager implements IHotelManager {
 			logger.error("Rooms were not imported!", e);
 		}
 	}
-	
+
 	public void importServicesFromCSV() {
 		try {
 			this.setServices(FileParser.stringToServices(CSVToService.readServices()));
@@ -419,7 +427,7 @@ public class HotelManager implements IHotelManager {
 			logger.error("Services were not imported!", e);
 		}
 	}
-	
+
 	public void importVisitorsFromCSV() {
 		try {
 			this.setVisitors(FileParser.stringToVisitors(CSVToVisitor.readVisitors()));
