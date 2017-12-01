@@ -19,8 +19,6 @@ public class MenuController {
 
 		navigator.setCurrentMenu(builder.getMenu());
 		navigator.printMenu();
-
-		HotelManager.getInstance().loadFromFile();
 		
 		while (!exit) {
 

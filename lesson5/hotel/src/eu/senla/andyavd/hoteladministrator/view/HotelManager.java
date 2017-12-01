@@ -53,7 +53,7 @@ public class HotelManager implements IHotelManager {
 	private static HotelManager hotelManager;
 
 	private HotelManager() {
-
+		loadFromFile();
 	}
 
 	public static HotelManager getInstance() {
