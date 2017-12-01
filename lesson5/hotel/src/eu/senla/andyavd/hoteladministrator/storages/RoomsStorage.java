@@ -27,9 +27,7 @@ public class RoomsStorage implements IRoomsStorage{
 	@Override
 	public void addRoom(Room room) {
 		rooms.add(room);
-		for (int i = 0; i < rooms.size(); i++) {
-			rooms.get(rooms.size()-1).setId(rooms.size());
-		}
+		rooms.get(rooms.size()-1).setId(rooms.size());
 	}
 
 	@Override
@@ -52,6 +50,16 @@ public class RoomsStorage implements IRoomsStorage{
 	public void updateStorage(int id, Room room) {
 		rooms.set(id - 1, room);
 	}
+	
+	@Override
+	public void deleteRoom(Room room) {
+		for (int i = 0; i < rooms.size(); i++) {
+			if (rooms.get(i) == room) {
+				rooms.remove(i);
+			}
+		}
+	}
+
 	
 	@Override
 	public Room getRoomById(Integer id) {

@@ -90,7 +90,10 @@ public class Room extends AEntity implements Serializable, Cloneable{
 	}
 	
 	public Room clone() throws CloneNotSupportedException {
-        return (Room)super.clone();
+        Room cloneRoom = (Room)super.clone();
+        cloneRoom.setRoomNumber(0);
+        cloneRoom.setId(0);
+		return cloneRoom;
   }
 
 	@Override

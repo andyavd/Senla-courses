@@ -12,9 +12,9 @@ public class VisitorsStorage implements IVisitorsStorage {
 	private List<Visitor> visitors = new ArrayList<Visitor>();
 
 	private static VisitorsStorage visitorsStorage;
-	
+
 	private VisitorsStorage() {
-		
+
 	}
 
 	public static VisitorsStorage getInstance() {
@@ -37,9 +37,7 @@ public class VisitorsStorage implements IVisitorsStorage {
 	@Override
 	public void addVisitor(Visitor visitor) {
 		visitors.add(visitor);
-		for (int i = 0; i < visitors.size(); i++) {
-			visitors.get(visitors.size()-1).setId(visitors.size());
-		}
+		visitors.get(visitors.size() - 1).setId(visitors.size());
 	}
 
 	@Override

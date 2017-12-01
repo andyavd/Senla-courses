@@ -125,8 +125,6 @@ public class FileParser {
 		return roomStrings;
 	}
 
-	//////////////////////////////////////////////////////////////////////
-
 	public static List<Room> stringToRooms(String[] array) {
 
 		List<Room> loadedRooms = new ArrayList<Room>();

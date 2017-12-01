@@ -18,7 +18,7 @@ public interface IHotelManager {
 
 	public List<Room> getRooms();
 
-	public List<Room> getEmptyRooms(List<Room> rooms);
+	public List<Room> getEmptyRooms();
 
 	public Integer getEmptyRoomsNumber(List<Room> rooms);
 
@@ -71,7 +71,7 @@ public interface IHotelManager {
 	public void addService(Service service);
 
 	public List<Service> getServices();
-	
+
 	void deleteService(Service service);
 
 	public List<Service> sortServicesByName();
@@ -84,22 +84,24 @@ public interface IHotelManager {
 
 	/* ========================Process========================= */
 
-	public void checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate) throws NotEmptyRoomException;
+	public void checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate)
+			throws NotEmptyRoomException;
 
 	public void checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException;
-	
+
 	public void saveToFile();
-	
+
 	public void loadFromFile();
 
-	////////////////////////
-	
 	boolean isRoomStatus();
-	public void cloneRoom(Room room);
+
+	public Room cloneRoom(Room room);
 
 	public List<RoomHistory> getHistories();
 
-	void setServices(List<Service> services);
-	
-	void setVisitors(List<Visitor> visitors);
+	public void setServices(List<Service> services);
+
+	public void setVisitors(List<Visitor> visitors);
+
+	public void deleteRoom(Room room);
 }

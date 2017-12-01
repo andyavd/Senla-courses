@@ -1,10 +1,5 @@
 package eu.senla.andyavd.hoteladministrator.controllers;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,21 +11,12 @@ import org.apache.log4j.Logger;
 import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomManager;
 import eu.senla.andyavd.hoteladministrator.entities.Room;
 import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
-import eu.senla.andyavd.hoteladministrator.enums.Path;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
-import eu.senla.andyavd.hoteladministrator.utils.ArrayWorker;
-import eu.senla.andyavd.hoteladministrator.utils.FileReader;
-import eu.senla.andyavd.hoteladministrator.utils.FileWriterSenla;
 
 public class RoomManager implements IRoomManager {
 
 	private final static Logger logger = Logger.getLogger(RoomManager.class);
-	
-	FileReader fileReader = new FileReader();
-	FileWriterSenla fileWriter = new FileWriterSenla();
-
-	private static final String path = Path.ROOM_STORAGE_PATH.getPath();
 
 	@Override
 	public void addRoom(Room room) {
@@ -38,7 +24,12 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public void cloneRoom(Room room) {
+	public void deleteRoom(Room room) {
+		RoomsStorage.getInstance().deleteRoom(room);
+	}
+	
+	@Override
+	public Room cloneRoom(Room room) {
 		
 		Room clone = null;
 		try {
@@ -47,7 +38,7 @@ public class RoomManager implements IRoomManager {
 			logger.error("Failed to clone the Room!", e);
      		}
 		
-		this.addRoom(clone);
+		return clone;
 	}
 	
 	@Override
@@ -56,8 +47,8 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public void setRooms(List<Room> entities) {
-		RoomsStorage.getInstance().setRooms(entities);
+	public void setRooms(List<Room> rooms) {
+		RoomsStorage.getInstance().setRooms(rooms);
 	}
 
 	@Override
@@ -71,20 +62,22 @@ public class RoomManager implements IRoomManager {
 	}
 
 	@Override
-	public List<Room> getEmptyRooms(List<Room> entities) {
+	public List<Room> getEmptyRooms() {
+		
+		List<Room> rooms = RoomsStorage.getInstance().getRooms();
+		
+		List<Room> newRooms = new ArrayList<Room>();
 
-		List<Room> newEntity = new ArrayList<Room>();
-
-		for (int i = 0; i < entities.size(); i++) {
-			if (((Room) entities.get(i)).getStatus() == RoomStatus.EMPTY)
-				newEntity.add(entities.get(i));
+		for (int i = 0; i < rooms.size(); i++) {
+			if (rooms.get(i).getStatus() == RoomStatus.EMPTY)
+				newRooms.add(rooms.get(i));
 		}
-		return newEntity;
+		return newRooms;
 	}
 
 	@Override
-	public Integer getEmptyRoomsNumber(List<Room> entities) {
-		return entities.size();
+	public Integer getEmptyRoomsNumber(List<Room> rooms) {
+		return rooms.size();
 	}
 
 	@Override
@@ -126,7 +119,7 @@ public class RoomManager implements IRoomManager {
 
 	@Override
 	public List<Room> sortEmptyRooms(Comparator<Room> comparator) {
-		List<Room> sortedRooms = getEmptyRooms(RoomsStorage.getInstance().getRooms());
+		List<Room> sortedRooms = getEmptyRooms();
 		Collections.sort(sortedRooms, comparator);
 		return sortedRooms;
 	}

@@ -17,7 +17,7 @@ public interface IRoomManager {
 
 	public void updateStorage(int id, Room room);
 	
-	public List<Room> getEmptyRooms(List<Room> entities);
+	public List<Room> getEmptyRooms();
 
 	public Integer getEmptyRoomsNumber(List<Room> entities);
 
@@ -29,14 +29,12 @@ public interface IRoomManager {
 	
 	public Room getRoomById(Integer number);
 
-	public void saveToFile();
-
-	public String[] loadFromFile();
-
 	public void setRooms(List<Room> entities);
 	
 	public List<Room> getEmptyRoomsOnDate(LocalDate date);
-	////////////
-	public void cloneRoom(Room room);
+
+	public Room cloneRoom(Room room);
+
+	public void deleteRoom(Room room);
 	
 }

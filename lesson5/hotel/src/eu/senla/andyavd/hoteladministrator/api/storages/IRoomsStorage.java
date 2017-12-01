@@ -19,4 +19,6 @@ public interface IRoomsStorage {
 
 	public void updateStorage(int id, Room room);
 
+	public void deleteRoom(Room room);
+
 }

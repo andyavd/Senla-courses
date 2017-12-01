@@ -21,7 +21,7 @@ public class ChangeStatusAction implements IAction {
 		Printer.printList(HotelManager.getInstance().getRooms());
 		try {
 		Integer id = InputReader.getIntegerInput(scanner, "Input the Room id...");
-		Printer.print(HotelManager.getInstance().changeRoomStatus(HotelManager.getInstance().getRoomById(id)));
+		HotelManager.getInstance().changeRoomStatus(HotelManager.getInstance().getRoomById(id));
 		} catch (Exception e) {
 			logger.error("No such room to change the Status!", e);
 		}
