@@ -1,5 +1,6 @@
 package eu.senla.andyavd.properties;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,9 +10,9 @@ import org.apache.log4j.Logger;
 
 public class Settings {
 	private static final Logger logger = Logger.getLogger(Settings.class);
-	private final String FILENAME = "config.properties";
+	private final String FILENAME = "/Users/andreiaudzeichyk/Senla-courses/lesson5/properties/resources/config.properties";
 	private static Properties properties = new Properties();
-	private static InputStream input = null;
+	private static InputStream input;
 
 	private static Settings setting;
 
@@ -29,12 +30,20 @@ public class Settings {
 	private void initialize() {
 
 		try {
-			input = Settings.class.getClassLoader().getResourceAsStream(FILENAME);
+			input = new FileInputStream(FILENAME);
 			properties.load(input);
 		} catch (FileNotFoundException e) {
 			logger.error("File not Found", e);
 		} catch (IOException e) {
 			logger.error(e.getMessage(), e);
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					logger.error(e.getMessage(), e);
+				}
+			}
 		}
 	}
 
