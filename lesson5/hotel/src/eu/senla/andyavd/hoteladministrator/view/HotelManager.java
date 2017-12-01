@@ -347,7 +347,8 @@ public class HotelManager implements IHotelManager {
 			visitorManager.updateVisitor(visitor, newHistory);
 
 		} else {
-			throw new NotEmptyRoomException("Room is not empty!");
+			logger.error("The Room is not empty!");
+			return;
 		}
 	}
 
@@ -367,7 +368,8 @@ public class HotelManager implements IHotelManager {
 			}
 
 		} else {
-			throw new EmptyRoomException("Room has no visitors!");
+			logger.error("The room is empty!");
+			return;
 		}
 	}
 
