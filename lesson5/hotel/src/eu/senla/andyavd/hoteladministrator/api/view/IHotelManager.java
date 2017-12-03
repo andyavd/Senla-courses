@@ -89,7 +89,7 @@ public interface IHotelManager {
 
 	public void checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException;
 
-	public void saveToFile();
+	public void exit();
 
 	public void loadFromFile();
 

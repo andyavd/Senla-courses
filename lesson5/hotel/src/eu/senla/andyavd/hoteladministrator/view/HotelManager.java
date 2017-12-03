@@ -374,7 +374,7 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public void saveToFile() {
+	public void exit() {
 		SerializationUtil.serialize(getRooms(), getServices(), getVisitors(), getHistories());
 	}
 
