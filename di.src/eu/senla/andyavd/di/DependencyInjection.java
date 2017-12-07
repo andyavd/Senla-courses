@@ -6,41 +6,40 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 public class DependencyInjection {
-    private static final Logger LOG = Logger.getLogger(DependencyInjection.class);
-    private static Map<Class<?>, Object> mainMaps = new HashMap<>();
-    private static InstanceProperties instanceProperties = new InstanceProperties();
 
-    public DependencyInjection() {
-    }
+	private static final Logger LOG = Logger.getLogger(DependencyInjection.class);
+	private static Map<Class<?>, Object> instanceMap = new HashMap<>();
+	private static InstanceProperties instanceProperties = new InstanceProperties();
 
-    private static DependencyInjection injection;
+	public DependencyInjection() {
+	}
 
-    public static DependencyInjection getInjection() {
-        if (injection == null) {
-            injection = new DependencyInjection();
-        }
+	private static DependencyInjection dependencyInjection;
 
-        return injection;
-    }
+	public static DependencyInjection getInjection() {
+		if (dependencyInjection == null) {
+			dependencyInjection = new DependencyInjection();
+		}
 
+		return dependencyInjection;
+	}
 
-    public Object getInstance(Class<?> className) {
-        Object object = mainMaps.get(className);
+	public Object getInstance(Class<?> className) {
+		Object object = instanceMap.get(className);
 
-        if (object == null) {
-            String nameInstance = instanceProperties.getRealization(className.getSimpleName());
+		if (object == null) {
+			String instanceName = instanceProperties.getRealization(className.getSimpleName());
 
-            try {
-                Class<?> clazz = Class.forName(nameInstance);
-                Object obj = clazz.newInstance();
-                mainMaps.put(className, obj);
+			try {
+				Class<?> instanceClass = Class.forName(instanceName);
+				Object obj = instanceClass.newInstance();
+				instanceMap.put(className, obj);
+				return obj;
+			} catch (Exception e) {
+				LOG.error(e.getMessage(), e);
+			}
+		}
 
-                return obj;
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-                LOG.error(e.getMessage(), e);
-            }
-        }
-
-        return object;
-    }
+		return object;
+	}
 }
