@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 
 public class DependencyInjection {
 
-	private static final Logger LOG = Logger.getLogger(DependencyInjection.class);
+	private static final Logger logger = Logger.getLogger(DependencyInjection.class);
 	private static Map<Class<?>, Object> instanceMap = new HashMap<>();
 	private static InstanceProperties instanceProperties = new InstanceProperties();
 
@@ -36,7 +36,7 @@ public class DependencyInjection {
 				instanceMap.put(className, obj);
 				return obj;
 			} catch (Exception e) {
-				LOG.error(e.getMessage(), e);
+				logger.error(e.getMessage(), e);
 			}
 		}
 
