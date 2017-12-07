@@ -414,3 +414,30 @@ java.lang.NullPointerException
 	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
 	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
 	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-04 20:47:54 ERROR RoomToCSV:29 - No such file!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.RoomToCSV.writeRoomsToCSV(RoomToCSV.java:19)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.exportRoomsToCSV(HotelManager.java:394)
+	at eu.senla.andyavd.ui.actions.room.ExportRoomsAction.execute(ExportRoomsAction.java:11)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-04 20:47:54 ERROR RoomHistoryToCSV:30 - No such file!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.RoomHistoryToCSV.writeHistoriesToCSV(RoomHistoryToCSV.java:19)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.exportRoomsToCSV(HotelManager.java:395)
+	at eu.senla.andyavd.ui.actions.room.ExportRoomsAction.execute(ExportRoomsAction.java:11)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-04 20:48:07 ERROR HotelManager:421 - Rooms were not imported!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.utils.csvparsers.readers.CSVToRoom.readRooms(CSVToRoom.java:21)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.importRoomsFromCSV(HotelManager.java:419)
+	at eu.senla.andyavd.ui.actions.room.ImportRoomsAction.execute(ImportRoomsAction.java:16)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
