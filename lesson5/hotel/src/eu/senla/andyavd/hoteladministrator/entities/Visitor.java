@@ -2,11 +2,17 @@ package eu.senla.andyavd.hoteladministrator.entities;
 
 import java.io.Serializable;
 
+import eu.senla.andyavd.annotations.CsvEntity;
+import eu.senla.andyavd.annotations.CsvProperty;
+
+@CsvEntity(filename = "data/visitors.csv")
 public class Visitor extends AEntity implements Serializable{
 
 	private static final long serialVersionUID = -5868446232504296194L;
 
+	@CsvProperty(columnNumber = 0)
 	private int id = 0;
+	@CsvProperty(columnNumber = 1)
 	private String lastName;
 	private RoomHistory history;
 

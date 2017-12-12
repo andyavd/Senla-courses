@@ -8,38 +8,24 @@ import org.apache.log4j.Logger;
 public class DependencyInjection {
 
 	private static final Logger logger = Logger.getLogger(DependencyInjection.class);
-	private static Map<Class<?>, Object> instanceMap = new HashMap<>();
-	private static InstanceProperties instanceProperties = new InstanceProperties();
 
-	public DependencyInjection() {
-	}
+	private static Map<String, Object> classMap = new HashMap<String, Object>();
 
-	private static DependencyInjection dependencyInjection;
+	public static Object getClassInstance(Class<?> cl) {
+		Object obj = null;
+		if (classMap.containsKey(cl.getName())) {
 
-	public static DependencyInjection getInjection() {
-		if (dependencyInjection == null) {
-			dependencyInjection = new DependencyInjection();
-		}
-
-		return dependencyInjection;
-	}
-
-	public Object getInstance(Class<?> className) {
-		Object object = instanceMap.get(className);
-
-		if (object == null) {
-			String instanceName = instanceProperties.getRealization(className.getSimpleName());
-
+			obj = classMap.get(cl.getName());
+		} else {
+			String implClassName = InstanceProperties.getClassName(cl.getName());
 			try {
-				Class<?> instanceClass = Class.forName(instanceName);
-				Object obj = instanceClass.newInstance();
-				instanceMap.put(className, obj);
-				return obj;
+				Class<?> implClass = Class.forName(implClassName);
+				obj = implClass.newInstance();
+				classMap.put(cl.getName(), obj);
 			} catch (Exception e) {
-				logger.error(e.getMessage(), e);
+				logger.error(e.getMessage());
 			}
 		}
-
-		return object;
+		return obj;
 	}
 }

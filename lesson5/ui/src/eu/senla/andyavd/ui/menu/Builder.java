@@ -19,6 +19,10 @@ public class Builder {
 	private Menu visitorMenu = new Menu(action);
 	private Menu mainMenu = new Menu(main);
 	
+	public Builder() {
+		HotelManager.getInstance();
+	}
+	
 	public Menu buildMenu() {
 		
 		//====================Room==================

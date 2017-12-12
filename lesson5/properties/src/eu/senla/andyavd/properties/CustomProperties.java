@@ -1,16 +1,41 @@
 package eu.senla.andyavd.properties;
 
+import java.util.Properties;
+
 public class CustomProperties {
 	
 	private boolean status;
     private Integer count;
     private String saveload;
-    private String entityPath;
+    private String instancepath;
     private String roomHistoriesPath;
     private String roomsPath;
     private String servicesPath;
     private String visitorsPath;
     
+    private static CustomProperties customProperties;
+    
+    public static CustomProperties getInstance() {
+		if (customProperties == null) {
+			customProperties = new CustomProperties();
+			customProperties.init();
+		}
+		return customProperties;
+	}
+    
+    public void init() {
+		Properties properties = Settings.initialize();
+		status = Boolean.parseBoolean(properties.getProperty("status"));
+		count = Integer.parseInt(properties.getProperty("count"));
+		saveload = properties.getProperty("saveload");
+		instancepath = properties.getProperty("instancepath");
+		roomHistoriesPath = properties.getProperty("roomHistoriesPath");
+		roomsPath = properties.getProperty("roomsPath");
+		servicesPath = properties.getProperty("servicesPath");
+		visitorsPath = properties.getProperty("visitorsPath");
+		
+		
+	}
 
     public boolean isStatus() {
         return status;
@@ -37,11 +62,11 @@ public class CustomProperties {
     }
 
     public String getEntityPath() {
-        return entityPath;
+        return instancepath;
     }
 
-    public void setEntityPath(String entitypath) {
-        this.entityPath = entitypath;
+    public void setEntityPath(String instancepath) {
+        this.instancepath = instancepath;
     }
     
     public String getRoomHistoriesPath() {
