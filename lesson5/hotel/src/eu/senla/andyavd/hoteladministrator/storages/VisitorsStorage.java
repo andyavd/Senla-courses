@@ -13,10 +13,6 @@ public class VisitorsStorage implements IVisitorsStorage {
 
 	private static VisitorsStorage visitorsStorage;
 
-	private VisitorsStorage() {
-
-	}
-
 	public static VisitorsStorage getInstance() {
 		if (visitorsStorage == null) {
 			visitorsStorage = new VisitorsStorage();

@@ -39,7 +39,7 @@ public class MenuController {
 			navigator.setCurrentMenu(navigator.getCurrentMenu().getMenuItems().get(choice).getNextMenu());
 			navigator.printMenu();
 		}
-		HotelManager.getInstance().saveToFile();
+		HotelManager.getInstance().exit();
 		scanner.close();
 		Printer.print("Goodbye! Your changes have been saved!");
 	}

@@ -12,10 +12,6 @@ public class RoomsStorage implements IRoomsStorage{
 	private List<Room> rooms = new ArrayList<Room>();
 	
 	private static RoomsStorage roomsStorage;
-	
-	private RoomsStorage() {
-		
-	}
 
 	public static RoomsStorage getInstance() {
 		if (roomsStorage == null) {
