@@ -104,18 +104,4 @@ public interface IHotelManager {
 	public void setVisitors(List<Visitor> visitors);
 
 	public void deleteRoom(Room room);
-
-	public void exportRoomsToCSV();
-
-	public void importRoomsFromCSV();
-
-	public void exportServicesToCSV();
-
-	public void importServicesFromCSV();
-
-	public void importVisitorsFromCSV();
-
-	public void exportVisitorsToCSV();
-
-//	public void initializedManagers();
 }

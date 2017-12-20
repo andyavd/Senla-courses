@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import eu.senla.andyavd.di.DependencyInjection;
 import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomHistoryManager;
 import eu.senla.andyavd.hoteladministrator.api.controllers.IRoomManager;
 import eu.senla.andyavd.hoteladministrator.api.controllers.IServiceManager;
@@ -37,8 +36,8 @@ import eu.senla.andyavd.hoteladministrator.utils.exceptions.NotEmptyRoomExceptio
 import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.ByCapacity;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.ByPrice;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.rooms.ByStars;
-import eu.senla.andyavd.hoteladministrator.utils.sorters.services.ByDailyPrice;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.services.ByName;
+import eu.senla.andyavd.hoteladministrator.utils.sorters.services.ByDailyPrice;
 import eu.senla.andyavd.hoteladministrator.utils.sorters.visitors.ByLastName;
 import eu.senla.andyavd.properties.Settings;
 
@@ -46,29 +45,24 @@ public class HotelManager implements IHotelManager {
 
 	final static Logger logger = Logger.getLogger(HotelManager.class);
 
-	private IRoomHistoryManager roomHistoryManager;
-	private IRoomManager roomManager;
-	private IServiceManager serviceManager;
-	private IVisitorManager visitorManager;
+	private IRoomManager roomManager = new RoomManager();
+	private IVisitorManager visitorManager = new VisitorManager();
+	private IServiceManager serviceManager = new ServiceManager();
+	private IRoomHistoryManager roomHistoryManager = new RoomHistoryManager();
 
-	private static IHotelManager hotelManager;
+	private static HotelManager hotelManager;
 
 	private HotelManager() {
 		loadFromFile();
-		roomHistoryManager = (RoomHistoryManager) DependencyInjection.getClassInstance(IRoomHistoryManager.class);
-		roomManager = (RoomManager) DependencyInjection.getClassInstance(IRoomManager.class);
-		serviceManager = (ServiceManager) DependencyInjection.getClassInstance(IServiceManager.class);
-		visitorManager = (VisitorManager) DependencyInjection.getClassInstance(IVisitorManager.class);
 	}
 
-	public static IHotelManager getInstance() {
+	public static HotelManager getInstance() {
 		if (hotelManager == null) {
 			hotelManager = new HotelManager();
 		}
 		return hotelManager;
 	}
-	
-	
+
 	/* ========================Rooms=========================== */
 
 	@Override

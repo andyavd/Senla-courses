@@ -4,27 +4,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.senla.andyavd.annotations.CsvEntity;
-import eu.senla.andyavd.annotations.CsvProperty;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStars;
 import eu.senla.andyavd.hoteladministrator.enums.RoomStatus;
 
-@CsvEntity(filename = "data/rooms.csv")
 public class Room extends AEntity implements Serializable, Cloneable{
 
 	private static final long serialVersionUID = -7832618903079077100L;
 
-	@CsvProperty(columnNumber = 0)
 	private int id;
-	@CsvProperty(columnNumber = 1)
 	private int roomNumber;
-	@CsvProperty(columnNumber = 2)
 	private Integer capacity;
-	@CsvProperty(columnNumber = 3)
 	private Double dailyPrice;
-	@CsvProperty(columnNumber = 4)
 	private RoomStars stars;
-	@CsvProperty(columnNumber = 5)
 	private RoomStatus status;
 	private List <RoomHistory> histories = new ArrayList<RoomHistory>();
 

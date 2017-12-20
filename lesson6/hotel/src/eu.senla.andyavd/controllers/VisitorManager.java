@@ -17,9 +17,6 @@ public class VisitorManager implements IVisitorManager {
 	
 	final static Logger logger = Logger.getLogger(VisitorManager.class);
 
-	public VisitorManager() {
-	}
-	
 	@Override
 	public void addVisitor(Visitor visitor) {
 		VisitorsStorage.getInstance().addVisitor(visitor);

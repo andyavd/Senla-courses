@@ -12,6 +12,10 @@ public class ServicesStorage implements IServicesStorage {
 
 	private static ServicesStorage servicesStorage;
 
+	private ServicesStorage() {
+
+	}
+
 	public static ServicesStorage getInstance() {
 		if (servicesStorage == null) {
 			servicesStorage = new ServicesStorage();

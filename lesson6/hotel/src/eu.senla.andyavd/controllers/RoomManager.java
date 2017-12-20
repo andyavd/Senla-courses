@@ -17,10 +17,7 @@ import eu.senla.andyavd.hoteladministrator.storages.RoomsStorage;
 public class RoomManager implements IRoomManager {
 
 	private final static Logger logger = Logger.getLogger(RoomManager.class);
-	
-	public RoomManager() {
-	}
-	
+
 	@Override
 	public void addRoom(Room room) {
 		RoomsStorage.getInstance().addRoom(room);

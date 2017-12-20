@@ -7,10 +7,7 @@ import eu.senla.andyavd.hoteladministrator.entities.RoomHistory;
 import eu.senla.andyavd.hoteladministrator.storages.RoomHistoriesStorage;
 
 public class RoomHistoryManager implements IRoomHistoryManager {
-	
-	public RoomHistoryManager() {
-	}
-	
+
 	@Override
 	public void addHistory(RoomHistory history) {
 		RoomHistoriesStorage.getInstance().addHistory(history);

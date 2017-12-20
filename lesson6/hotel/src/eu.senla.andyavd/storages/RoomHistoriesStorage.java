@@ -11,6 +11,10 @@ public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 	private List<RoomHistory> histories = new ArrayList<RoomHistory>();
 	
 	private static RoomHistoriesStorage roomHistoriesStorage;
+	
+	private RoomHistoriesStorage() {
+		
+	}
 
 	public static RoomHistoriesStorage getInstance() {
 		if (roomHistoriesStorage == null) {
