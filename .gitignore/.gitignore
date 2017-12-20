@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 bin/
 # Compiled class file
 *.class
 
+=======
+>>>>>>> master
 # Log file
 *.log
 
