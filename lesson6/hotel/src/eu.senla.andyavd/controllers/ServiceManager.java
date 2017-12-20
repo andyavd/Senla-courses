@@ -13,6 +13,9 @@ import eu.senla.andyavd.hoteladministrator.storages.ServicesStorage;
 public class ServiceManager implements IServiceManager {
 
 	final static Logger logger = Logger.getLogger(ServiceManager.class);
+
+	public ServiceManager() {
+	}
 	
 	@Override
 	public void addService(Service service) {
