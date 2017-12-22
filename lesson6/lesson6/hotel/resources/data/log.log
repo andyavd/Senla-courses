@@ -1,0 +1,1569 @@
+2017-11-17 02:02:09 ERROR CheckInVisitorAction:47 - Room is not empty!
+2017-11-17 02:08:21 ERROR ChangeRoomPriceAction:30 - 
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:10:49 ERROR ChangeRoomPriceAction:30 - 
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:14:25 ERROR ChangeRoomPriceAction:30 - 
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:16:23 ERROR ChangeRoomPriceAction:30 - No such room, to change the Price!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.changePriceOnRoom(HotelManager.java:169)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:27)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 02:21:44 ERROR CheckInVisitorAction:42 - Input correct parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.storages.VisitorsStorage.updateVisitor(VisitorsStorage.java:43)
+	at eu.senla.andyavd.hoteladministrator.controllers.VisitorManager.updateVisitor(VisitorManager.java:41)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.checkInVisitor(HotelManager.java:305)
+	at eu.senla.andyavd.ui.actions.visitor.CheckInVisitorAction.execute(CheckInVisitorAction.java:32)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 08:47:29 ERROR BillVisitorAction:34 - No such Visitor to bill!
+java.lang.NullPointerException
+	at eu.senla.andyavd.ui.actions.visitor.BillVisitorAction.execute(BillVisitorAction.java:26)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-17 15:05:31 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:11)
+2017-11-18 09:41:54 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.menu.Builder.buildMenu(Builder.java:35)
+	at eu.senla.andyavd.ui.menu.Builder.getMenu(Builder.java:86)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:20)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-18 09:42:32 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.menu.Builder.buildMenu(Builder.java:35)
+	at eu.senla.andyavd.ui.menu.Builder.getMenu(Builder.java:86)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:20)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-11-18 09:44:42 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:45:12 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:45:26 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:49:27 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:52:08 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:52:12 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:52:31 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:52:33 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:53:40 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:132)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:58:12 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:46)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 09:58:12 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:133)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 10:01:43 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:135)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 10:03:48 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:135)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 10:03:51 ERROR Settings:38 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:135)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 10:38:25 ERROR Settings:39 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:134)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 10:38:56 ERROR Settings:39 - File not Found
+java.io.FileNotFoundException: properties\resources\config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:20)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:134)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 10:52:14 ERROR Settings:41 - File not Found
+java.io.FileNotFoundException: Users/andreiaudzeichyk/eclipse-workspace/eu.senla.andyavd.properties/resources/config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:36)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:135)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 10:52:52 ERROR Settings:41 - File not Found
+java.io.FileNotFoundException: Users/andreiaudzeichyk/eclipse-workspace/eu.senla.andyavd.properties/resources/config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.init(Settings.java:36)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:135)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 11:23:28 ERROR Settings:37 - File not Found
+java.io.FileNotFoundException: /eu.senla.andyavd.properties/resources/config.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.properties.Settings.initialize(Settings.java:34)
+	at eu.senla.andyavd.properties.Settings.<init>(Settings.java:28)
+	at eu.senla.andyavd.properties.Settings.getInstance(Settings.java:22)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.isRoomStatus(HotelManager.java:134)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 12:39:38 ERROR ChangeRoomStatusAction:27 - No such room to clone!
+java.io.NotSerializableException: eu.senla.andyavd.hoteladministrator.entities.Room
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1184)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:41)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:60)
+	at eu.senla.andyavd.ui.actions.room.CloneRoomAction.execute(CloneRoomAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 14:02:14 ERROR ChangeRoomStatusAction:27 - No such room to clone!
+java.io.NotSerializableException: eu.senla.andyavd.hoteladministrator.entities.Room
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1184)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:41)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:60)
+	at eu.senla.andyavd.ui.actions.room.CloneRoomAction.execute(CloneRoomAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-18 14:05:43 ERROR ChangeRoomStatusAction:27 - No such room to clone!
+java.io.NotSerializableException: eu.senla.andyavd.hoteladministrator.entities.Room
+	at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1184)
+	at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:41)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:60)
+	at eu.senla.andyavd.ui.actions.room.CloneRoomAction.execute(CloneRoomAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-20 02:26:03 ERROR ChangeRoomStatusAction:27 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:47)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:61)
+	at eu.senla.andyavd.ui.actions.room.CloneRoomAction.execute(CloneRoomAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-20 02:42:38 ERROR CheckInVisitorAction:42 - Failed to chek-in the visitor! Input valid parameters!
+java.lang.ClassCastException: eu.senla.andyavd.hoteladministrator.entities.RoomHistory cannot be cast to eu.senla.andyavd.hoteladministrator.entities.Visitor
+	at eu.senla.andyavd.hoteladministrator.storages.VisitorsStorage.getVisitorById(VisitorsStorage.java:61)
+	at eu.senla.andyavd.hoteladministrator.controllers.VisitorManager.getVisitorById(VisitorManager.java:77)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getVisitorById(HotelManager.java:274)
+	at eu.senla.andyavd.ui.actions.visitor.CheckInVisitorAction.execute(CheckInVisitorAction.java:36)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-11-21 03:07:17 ERROR HotelManager:134 - No such visitor to bill!
+2017-11-21 03:07:17 ERROR BillAction:34 - No such Visitor to bill!!
+java.lang.NullPointerException
+	at eu.senla.andyavd.ui.actions.visitor.BillAction.execute(BillAction.java:30)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:12:37 ERROR CloneAction:38 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:95)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:12:58 ERROR CloneAction:38 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:95)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:44:31 ERROR CloneAction:48 - No such room to clone!
+java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
+	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
+	at java.util.ArrayList.get(ArrayList.java:433)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:43)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:54:49 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:55:03 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:95)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 10:57:31 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:33)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-01 11:02:47 ERROR CloneAction:39 - No such room to clone!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.entities.Room.clone(Room.java:96)
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.cloneRoom(RoomManager.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.cloneRoom(HotelManager.java:75)
+	at eu.senla.andyavd.ui.actions.room.CloneAction.execute(CloneAction.java:25)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:33)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-04 20:47:54 ERROR RoomToCSV:29 - No such file!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.RoomToCSV.writeRoomsToCSV(RoomToCSV.java:19)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.exportRoomsToCSV(HotelManager.java:394)
+	at eu.senla.andyavd.ui.actions.room.ExportRoomsAction.execute(ExportRoomsAction.java:11)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-04 20:47:54 ERROR RoomHistoryToCSV:30 - No such file!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.utils.csvparsers.writers.RoomHistoryToCSV.writeHistoriesToCSV(RoomHistoryToCSV.java:19)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.exportRoomsToCSV(HotelManager.java:395)
+	at eu.senla.andyavd.ui.actions.room.ExportRoomsAction.execute(ExportRoomsAction.java:11)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-04 20:48:07 ERROR HotelManager:421 - Rooms were not imported!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.utils.csvparsers.readers.CSVToRoom.readRooms(CSVToRoom.java:21)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.importRoomsFromCSV(HotelManager.java:419)
+	at eu.senla.andyavd.ui.actions.room.ImportRoomsAction.execute(ImportRoomsAction.java:16)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:44)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:45)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:46)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:30 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:47)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:44)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:45)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:46)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:30:57 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:47)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:44)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:45)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:46)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:31:49 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:47)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:00 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.ServiceManager.addService(ServiceManager.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:302)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 10:32:44 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:44)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:45)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:46)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:47)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:33:07 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.ServiceManager.addService(ServiceManager.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:302)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 10:36:08 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:44)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:45)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:46)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:08 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:47)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 10:36:23 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.ServiceManager.addService(ServiceManager.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:302)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 10:36:30 ERROR ChangeRoomPriceAction:30 - No such room to change the Price!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.RoomManager.getRooms(RoomManager.java:60)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getRooms(HotelManager.java:105)
+	at eu.senla.andyavd.ui.actions.room.ChangeRoomPriceAction.execute(ChangeRoomPriceAction.java:22)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 10:36:46 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.controllers.ServiceManager.addService(ServiceManager.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:302)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 16:02:20 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:02:20 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:02:20 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:64)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:02:20 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:65)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:02:20 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:66)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:03:45 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:03:45 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:03:45 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:64)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:03:45 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:65)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:03:45 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:66)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:07:18 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:07:18 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:07:18 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:64)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:07:18 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:65)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:07:18 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:66)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:27:37 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:27:37 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:27:37 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:64)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:27:37 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:65)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:27:37 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:66)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:32:21 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:32:44 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:33:23 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:64)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:33:23 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:65)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:33:24 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:66)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:35:30 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:35:34 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:29)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:35:36 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:30)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:35:38 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:31)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:37:52 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:32)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:38:01 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:44)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:38:01 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:45)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:38:01 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:46)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:38:01 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.fillManagers(Initializer.java:47)
+	at eu.senla.andyavd.hoteladministrator.utils.Initializer.<init>(Initializer.java:40)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.init(HotelManager.java:81)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:39:13 ERROR InstanceProperties:28 - data/instance.properties (No such file or directory)
+java.io.FileNotFoundException: data/instance.properties (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at eu.senla.andyavd.di.InstanceProperties.<init>(InstanceProperties.java:25)
+	at eu.senla.andyavd.di.DependencyInjection.<clinit>(DependencyInjection.java:12)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:39:13 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:63)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:39:13 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:64)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:39:13 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:65)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:39:13 ERROR DependencyInjection:39 - 
+java.lang.NullPointerException
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at eu.senla.andyavd.di.DependencyInjection.getClassInstance(DependencyInjection.java:34)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.<init>(HotelManager.java:66)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.getInstance(HotelManager.java:71)
+	at eu.senla.andyavd.ui.menu.Builder.<init>(Builder.java:23)
+	at eu.senla.andyavd.ui.menu.MenuController.<init>(MenuController.java:11)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:9)
+2017-12-11 16:39:27 ERROR AddRoomAction:74 - Failed to add a Room! Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addRoom(HotelManager.java:95)
+	at eu.senla.andyavd.ui.actions.room.AddRoomAction.execute(AddRoomAction.java:71)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 17:35:28 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 17:35:28 ERROR DependencyInjection:26 - 
+2017-12-11 17:35:28 ERROR DependencyInjection:26 - 
+2017-12-11 17:35:28 ERROR DependencyInjection:26 - 
+2017-12-11 17:35:28 ERROR DependencyInjection:26 - 
+2017-12-11 17:35:48 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:306)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 17:36:10 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 17:36:10 ERROR DependencyInjection:26 - 
+2017-12-11 17:36:10 ERROR DependencyInjection:26 - 
+2017-12-11 17:36:10 ERROR DependencyInjection:26 - 
+2017-12-11 17:36:10 ERROR DependencyInjection:26 - 
+2017-12-11 17:36:17 ERROR HotelManager:453 - Services were not imported!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.utils.csvparsers.readers.CSVToService.readServices(CSVToService.java:21)
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.importServicesFromCSV(HotelManager.java:451)
+	at eu.senla.andyavd.ui.actions.service.ImportServicesAction.execute(ImportServicesAction.java:16)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 17:39:46 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 17:39:46 ERROR DependencyInjection:26 - 
+2017-12-11 17:39:46 ERROR DependencyInjection:26 - 
+2017-12-11 17:39:46 ERROR DependencyInjection:26 - 
+2017-12-11 17:39:46 ERROR DependencyInjection:26 - 
+2017-12-11 17:40:05 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:311)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 17:40:59 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 17:40:59 ERROR DependencyInjection:26 - 
+2017-12-11 17:40:59 ERROR DependencyInjection:26 - 
+2017-12-11 17:40:59 ERROR DependencyInjection:26 - 
+2017-12-11 17:40:59 ERROR DependencyInjection:26 - 
+2017-12-11 17:41:05 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:311)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 17:42:23 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 17:42:23 ERROR DependencyInjection:26 - 
+2017-12-11 17:42:23 ERROR DependencyInjection:26 - 
+2017-12-11 17:42:23 ERROR DependencyInjection:26 - 
+2017-12-11 17:42:23 ERROR DependencyInjection:26 - 
+2017-12-11 17:42:36 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:311)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 17:52:25 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 17:52:25 ERROR DependencyInjection:26 - 
+2017-12-11 17:52:25 ERROR DependencyInjection:26 - 
+2017-12-11 17:52:25 ERROR DependencyInjection:26 - 
+2017-12-11 17:52:25 ERROR DependencyInjection:26 - 
+2017-12-11 17:54:03 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 17:54:03 ERROR DependencyInjection:26 - 
+2017-12-11 17:54:03 ERROR DependencyInjection:26 - 
+2017-12-11 17:54:03 ERROR DependencyInjection:26 - 
+2017-12-11 17:54:03 ERROR DependencyInjection:26 - 
+2017-12-11 22:14:45 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 22:14:45 ERROR DependencyInjection:26 - 
+2017-12-11 22:14:45 ERROR DependencyInjection:26 - 
+2017-12-11 22:14:45 ERROR DependencyInjection:26 - 
+2017-12-11 22:14:45 ERROR DependencyInjection:26 - 
+2017-12-11 22:15:00 ERROR AddServiceAction:26 - Failed to add a Service. Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addService(HotelManager.java:311)
+	at eu.senla.andyavd.ui.actions.service.AddServiceAction.execute(AddServiceAction.java:24)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
+2017-12-11 22:15:16 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 22:15:16 ERROR DependencyInjection:26 - 
+2017-12-11 22:15:16 ERROR DependencyInjection:26 - 
+2017-12-11 22:15:16 ERROR DependencyInjection:26 - 
+2017-12-11 22:15:16 ERROR DependencyInjection:26 - 
+2017-12-11 22:32:16 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 22:35:36 ERROR DependencyInjection:26 - 
+2017-12-11 22:36:04 ERROR DependencyInjection:26 - 
+2017-12-11 22:36:10 ERROR DependencyInjection:26 - 
+2017-12-11 22:36:14 ERROR DependencyInjection:26 - 
+2017-12-11 23:13:29 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 23:13:29 ERROR DependencyInjection:26 - 
+2017-12-11 23:13:29 ERROR DependencyInjection:26 - 
+2017-12-11 23:13:29 ERROR DependencyInjection:26 - 
+2017-12-11 23:13:29 ERROR DependencyInjection:26 - 
+2017-12-11 23:14:14 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 23:14:14 ERROR DependencyInjection:26 - 
+2017-12-11 23:14:14 ERROR DependencyInjection:26 - 
+2017-12-11 23:14:14 ERROR DependencyInjection:26 - 
+2017-12-11 23:14:14 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:20 ERROR InstanceProperties:22 - data/instance.properties (No such file or directory)
+2017-12-11 23:16:20 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:20 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:20 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:20 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:52 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:52 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:52 ERROR DependencyInjection:26 - 
+2017-12-11 23:16:52 ERROR DependencyInjection:26 - 
+2017-12-11 23:21:07 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-11 23:21:07 ERROR DependencyInjection:26 - 
+2017-12-11 23:21:07 ERROR DependencyInjection:26 - 
+2017-12-11 23:21:07 ERROR DependencyInjection:26 - 
+2017-12-11 23:21:07 ERROR DependencyInjection:26 - 
+2017-12-12 00:28:07 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 00:28:07 ERROR DependencyInjection:26 - 
+2017-12-12 00:28:07 ERROR DependencyInjection:26 - 
+2017-12-12 00:28:07 ERROR DependencyInjection:26 - 
+2017-12-12 00:28:07 ERROR DependencyInjection:26 - 
+2017-12-12 00:36:52 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 00:36:52 ERROR DependencyInjection:26 - 
+2017-12-12 00:36:52 ERROR DependencyInjection:26 - 
+2017-12-12 00:36:52 ERROR DependencyInjection:26 - 
+2017-12-12 00:36:52 ERROR DependencyInjection:26 - 
+2017-12-12 00:40:18 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 00:40:18 ERROR DependencyInjection:26 - 
+2017-12-12 00:40:18 ERROR DependencyInjection:26 - 
+2017-12-12 00:40:18 ERROR DependencyInjection:26 - 
+2017-12-12 00:40:18 ERROR DependencyInjection:26 - 
+2017-12-12 00:56:16 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 00:56:16 ERROR DependencyInjection:26 - 
+2017-12-12 00:56:16 ERROR DependencyInjection:26 - 
+2017-12-12 00:56:16 ERROR DependencyInjection:26 - 
+2017-12-12 00:56:16 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:34 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 01:07:34 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:34 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:34 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:34 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:42 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 01:07:42 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:42 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:42 ERROR DependencyInjection:26 - 
+2017-12-12 01:07:42 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:44 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 01:08:44 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:44 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:44 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:44 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:49 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 01:08:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:08:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:33 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 01:09:33 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:33 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:33 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:33 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:48 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 01:09:48 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:48 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:48 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:48 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:49 ERROR InstanceProperties:22 - instance.properties (No such file or directory)
+2017-12-12 01:09:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:09:49 ERROR DependencyInjection:26 - 
+2017-12-12 01:10:02 ERROR AddRoomAction:74 - Failed to add a Room! Input valid parameters!
+java.lang.NullPointerException
+	at eu.senla.andyavd.hoteladministrator.view.HotelManager.addRoom(HotelManager.java:99)
+	at eu.senla.andyavd.ui.actions.room.AddRoomAction.execute(AddRoomAction.java:71)
+	at eu.senla.andyavd.ui.menu.MenuItem.act(MenuItem.java:50)
+	at eu.senla.andyavd.ui.menu.Navigator.navigate(Navigator.java:31)
+	at eu.senla.andyavd.ui.menu.MenuController.run(MenuController.java:31)
+	at eu.senla.andyavd.ui.test.Test.main(Test.java:10)
