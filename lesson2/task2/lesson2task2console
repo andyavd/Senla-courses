@@ -1,0 +1,391 @@
+Last login: Sat Oct  7 18:56:23 on ttys000
+iMac-Andrei:~ andreiaudzeichyk$ pwd
+/Users/andreiaudzeichyk
+iMac-Andrei:~ andreiaudzeichyk$ cd Desktop/lesson2/task2/
+iMac-Andrei:task2 andreiaudzeichyk$ pwd
+/Users/andreiaudzeichyk/Desktop/lesson2/task2
+iMac-Andrei:task2 andreiaudzeichyk$ ls
+iMac-Andrei:task2 andreiaudzeichyk$ touch Peson.java
+iMac-Andrei:task2 andreiaudzeichyk$ touch Employee.java
+iMac-Andrei:task2 andreiaudzeichyk$ touch IdCard.java
+iMac-Andrei:task2 andreiaudzeichyk$ touch Department.java
+iMac-Andrei:task2 andreiaudzeichyk$ touch IUnit.java
+iMac-Andrei:task2 andreiaudzeichyk$ ls
+Department.java	Employee.java	IUnit.java	IdCard.java	Peson.java
+iMac-Andrei:task2 andreiaudzeichyk$ ls -t
+IUnit.java	Department.java	IdCard.java	Employee.java	Peson.java
+iMac-Andrei:task2 andreiaudzeichyk$ touch Test.java
+iMac-Andrei:task2 andreiaudzeichyk$ ls
+Department.java	IUnit.java	Peson.java
+Employee.java	IdCard.java	Test.java
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+./Employee.java:1: error: cannot find symbol
+public class Employee extends Person {
+                              ^
+  symbol: class Person
+./IdCard.java:4: error: cannot find symbol
+	protected Date validTill;
+	          ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:12: error: cannot find symbol
+	public void setValidTill(Date newValidTill){
+	                         ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:15: error: cannot find symbol
+	public Date getValidTill(){
+	       ^
+  symbol:   class Date
+  location: class IdCard
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	          ^
+  symbol:   class Set
+  location: class Department
+./Department.java:12: error: cannot find symbol
+	public Set getEmployees(){
+	       ^
+  symbol:   class Set
+  location: class Department
+Test.java:4: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                            ^
+  symbol:   method getFirstName()
+  location: variable developer of type Employee
+Test.java:4: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                                                             ^
+  symbol:   method getLastName()
+  location: variable developer of type Employee
+./Employee.java:27: error: cannot find symbol
+		firstName = fn;
+		^
+  symbol:   variable firstName
+  location: class Employee
+./Employee.java:28: error: cannot find symbol
+		lastName = ln;
+		^
+  symbol:   variable lastName
+  location: class Employee
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	                              ^
+  symbol:   class HashSet
+  location: class Department
+11 errors
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+./Employee.java:1: error: cannot find symbol
+public class Employee extends Person {
+                              ^
+  symbol: class Person
+./IdCard.java:4: error: cannot find symbol
+	protected Date validTill;
+	          ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:12: error: cannot find symbol
+	public void setValidTill(Date newValidTill){
+	                         ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:15: error: cannot find symbol
+	public Date getValidTill(){
+	       ^
+  symbol:   class Date
+  location: class IdCard
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	          ^
+  symbol:   class Set
+  location: class Department
+./Department.java:12: error: cannot find symbol
+	public Set getEmployees(){
+	       ^
+  symbol:   class Set
+  location: class Department
+Test.java:7: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                            ^
+  symbol:   method getFirstName()
+  location: variable developer of type Employee
+Test.java:7: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                                                             ^
+  symbol:   method getLastName()
+  location: variable developer of type Employee
+./Employee.java:27: error: cannot find symbol
+		firstName = fn;
+		^
+  symbol:   variable firstName
+  location: class Employee
+./Employee.java:28: error: cannot find symbol
+		lastName = ln;
+		^
+  symbol:   variable lastName
+  location: class Employee
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	                              ^
+  symbol:   class HashSet
+  location: class Department
+11 errors
+iMac-Andrei:task2 andreiaudzeichyk$ pwd
+/Users/andreiaudzeichyk/Desktop/lesson2/task2
+iMac-Andrei:task2 andreiaudzeichyk$ ls
+Department.java	IUnit.java	Peson.java
+Employee.java	IdCard.java	Test.java
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+Test.java:3: error: package task2 does not exist
+import task2.*;
+^
+./Employee.java:1: error: cannot find symbol
+public class Employee extends Person {
+                              ^
+  symbol: class Person
+./IdCard.java:4: error: cannot find symbol
+	protected Date validTill;
+	          ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:12: error: cannot find symbol
+	public void setValidTill(Date newValidTill){
+	                         ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:15: error: cannot find symbol
+	public Date getValidTill(){
+	       ^
+  symbol:   class Date
+  location: class IdCard
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	          ^
+  symbol:   class Set
+  location: class Department
+./Department.java:12: error: cannot find symbol
+	public Set getEmployees(){
+	       ^
+  symbol:   class Set
+  location: class Department
+Test.java:8: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                            ^
+  symbol:   method getFirstName()
+  location: variable developer of type Employee
+Test.java:8: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                                                             ^
+  symbol:   method getLastName()
+  location: variable developer of type Employee
+./Employee.java:27: error: cannot find symbol
+		firstName = fn;
+		^
+  symbol:   variable firstName
+  location: class Employee
+./Employee.java:28: error: cannot find symbol
+		lastName = ln;
+		^
+  symbol:   variable lastName
+  location: class Employee
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	                              ^
+  symbol:   class HashSet
+  location: class Department
+12 errors
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+./Employee.java:1: error: cannot find symbol
+public class Employee extends Person {
+                              ^
+  symbol: class Person
+./IdCard.java:4: error: cannot find symbol
+	protected Date validTill;
+	          ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:12: error: cannot find symbol
+	public void setValidTill(Date newValidTill){
+	                         ^
+  symbol:   class Date
+  location: class IdCard
+./IdCard.java:15: error: cannot find symbol
+	public Date getValidTill(){
+	       ^
+  symbol:   class Date
+  location: class IdCard
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	          ^
+  symbol:   class Set
+  location: class Department
+./Department.java:12: error: cannot find symbol
+	public Set getEmployees(){
+	       ^
+  symbol:   class Set
+  location: class Department
+Test.java:7: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                            ^
+  symbol:   method getFirstName()
+  location: variable developer of type Employee
+Test.java:7: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                                                             ^
+  symbol:   method getLastName()
+  location: variable developer of type Employee
+./Employee.java:27: error: cannot find symbol
+		firstName = fn;
+		^
+  symbol:   variable firstName
+  location: class Employee
+./Employee.java:28: error: cannot find symbol
+		lastName = ln;
+		^
+  symbol:   variable lastName
+  location: class Employee
+./Department.java:4: error: cannot find symbol
+	protected Set employees = new HashSet();
+	                              ^
+  symbol:   class HashSet
+  location: class Department
+11 errors
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+./Employee.java:4: error: cannot find symbol
+public class Employee extends Person {
+                              ^
+  symbol: class Person
+./Department.java:7: error: cannot find symbol
+	protected Set employees = new HashSet();
+	          ^
+  symbol:   class Set
+  location: class Department
+./Department.java:15: error: cannot find symbol
+	public Set getEmployees(){
+	       ^
+  symbol:   class Set
+  location: class Department
+Test.java:7: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                            ^
+  symbol:   method getFirstName()
+  location: variable developer of type Employee
+Test.java:7: error: cannot find symbol
+		System.out.println(developer.getFirstName() + " " + developer.getLastName() + " works as " + developer.getPosition());
+		                                                             ^
+  symbol:   method getLastName()
+  location: variable developer of type Employee
+./Employee.java:30: error: cannot find symbol
+		firstName = fn;
+		^
+  symbol:   variable firstName
+  location: class Employee
+./Employee.java:31: error: cannot find symbol
+		lastName = ln;
+		^
+  symbol:   variable lastName
+  location: class Employee
+./Department.java:7: error: cannot find symbol
+	protected Set employees = new HashSet();
+	                              ^
+  symbol:   class HashSet
+  location: class Department
+8 errors
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+./Person.java:13: error: ';' expected
+	r	eturn firstName;
+	 	     ^
+./Person.java:13: error: not a statement
+	r	eturn firstName;
+	 	      ^
+./Department.java:7: error: cannot find symbol
+	protected Set employees = new HashSet();
+	          ^
+  symbol:   class Set
+  location: class Department
+./Department.java:15: error: cannot find symbol
+	public Set getEmployees(){
+	       ^
+  symbol:   class Set
+  location: class Department
+./Person.java:13: error: cannot find symbol
+	r	eturn firstName;
+	^
+  symbol:   class r
+  location: class Person
+./Department.java:7: error: cannot find symbol
+	protected Set employees = new HashSet();
+	                              ^
+  symbol:   class HashSet
+  location: class Department
+6 errors
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+./Department.java:7: error: cannot find symbol
+	protected Set employees = new HashSet();
+	          ^
+  symbol:   class Set
+  location: class Department
+./Department.java:15: error: cannot find symbol
+	public Set getEmployees(){
+	       ^
+  symbol:   class Set
+  location: class Department
+./Department.java:7: error: cannot find symbol
+	protected Set employees = new HashSet();
+	                              ^
+  symbol:   class HashSet
+  location: class Department
+3 errors
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+Note: ./Department.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+iMac-Andrei:task2 andreiaudzeichyk$ java Test
+John Doe works as Junior Developer
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+Note: ./Department.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+iMac-Andrei:task2 andreiaudzeichyk$ java Test
+Developer 1 was created
+Developer 2 was created
+Developer 3 was created
+John Doe works as Junior Developer
+Jane Doe works as Middle Developer
+James Doe works as Senior Developer
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+Note: ./Department.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+iMac-Andrei:task2 andreiaudzeichyk$ java Test
+Developer 1 was created
+Developer 2 was created
+Developer 3 was created
+IdCard 1 was created
+IdCard 2 was created
+IdCard 3 was created
+IdCard # 111 was given to an Employee John Doe
+IdCard # 222 was given to an Employee Jane Doe
+IdCard # 333 was given to an Employee James Doe
+John Doe works as Junior Developer
+Jane Doe works as Middle Developer
+James Doe works as Senior Developer
+iMac-Andrei:task2 andreiaudzeichyk$ javac Test.java
+Note: ./Department.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+iMac-Andrei:task2 andreiaudzeichyk$ java Test
+Department Java Developers was created
+Developer 1 was created
+Developer 2 was created
+Developer 3 was created
+IdCard 1 was created
+IdCard 2 was created
+IdCard 3 was created
+IdCard # 111 was given to an Employee John Doe
+IdCard # 222 was given to an Employee Jane Doe
+IdCard # 333 was given to an Employee James Doe
+John Doe starts working in the department Java Developers
+Jane Doe starts working in the department Java Developers
+James Doe starts working in the department Java Developers
+John Doe works as Junior Developer, has IdCard # 111 valid till 29 of December, 2017. Works in Java Developers department
+Jane Doe works as Middle Developer, has IdCard # 222 valid till 30 of December, 2017. Works in Java Developers department
+James Doe works as Senior Developer, has IdCard # 333 valid till 31 of December, 2017. Works in Java Developers department
+Total number of employees in the department Java Developers is 3
+iMac-Andrei:task2 andreiaudzeichyk$ 
