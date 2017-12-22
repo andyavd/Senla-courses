@@ -16,11 +16,10 @@ public class RoomToCSV {
 
 	public static void writeRoomsToCSV() {
 		try {
-			PrintWriter pr = new PrintWriter(RoomToCSV.class.getClassLoader().getResource(ROOM_CSV).getFile());
+			PrintWriter pr = new PrintWriter(ROOM_CSV);
 			String[] array = FileParser.roomsToString(HotelManager.getInstance().getRooms());
 			pr.println("Room_ID,Room_Number,Room_Capacity,Room_Price,Room_Stars,Room_Status,Room_LasHistory_ID");
 			for (int i = 0; i < array.length; i++) {
-				
 				pr.println(array[i]);
 			}
 			Printer.print("ok");

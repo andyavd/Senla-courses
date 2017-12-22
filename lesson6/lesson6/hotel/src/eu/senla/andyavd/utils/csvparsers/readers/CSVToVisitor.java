@@ -16,21 +16,22 @@ public class CSVToVisitor {
 	String line = "";
 	String cvsSplitBy = ",";
 	static String[] array;
-	
+
 	public static String[] readVisitors() {
-		try (Scanner sc = new Scanner(new File(CSVToVisitor.class.getClassLoader().getResource(VISITOR_CSV).getFile()))) {
-			
+		try {
+			@SuppressWarnings("resource")
+			Scanner sc = new Scanner(new File(VISITOR_CSV));
 			List<String> lines = new ArrayList<String>();
 			while (sc.hasNextLine()) {
-			  lines.add(sc.nextLine().replaceAll("\"", ""));
-			  
+				lines.add(sc.nextLine().replaceAll("\"", ""));
+
 			}
 			array = lines.toArray(new String[0]);
 
-        } catch (IOException e) {
-        		logger.error("Failed to read from the file!", e);
-        }
-		
+		} catch (IOException e) {
+			logger.error("Failed to read from the file!", e);
+		}
+
 		return array;
 
 	}

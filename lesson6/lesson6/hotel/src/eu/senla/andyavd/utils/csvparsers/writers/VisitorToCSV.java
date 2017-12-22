@@ -16,7 +16,7 @@ public class VisitorToCSV {
 
 	public static void writeVisitorsToCSV() {
 		try {
-			PrintWriter pr = new PrintWriter(VisitorToCSV.class.getClassLoader().getResource(VISITOR_CSV).getFile());
+			PrintWriter pr = new PrintWriter(VISITOR_CSV);
 			String[] array = FileParser.visitorsToString(HotelManager.getInstance().getVisitors());
 			pr.println("Visitor_ID,Visitor_LastName,Room_ID,CheckIn_Date,CheckOut_Date");
 			for (int i = 0; i < array.length; i++) {	

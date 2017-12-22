@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 public class Settings {
 	private static final Logger logger = Logger.getLogger(Settings.class);
 	
-	private static final String FILENAME = "/Users/andreiaudzeichyk/Senla-courses-Ready/src/lesson6/properties/resources/config.properties";
+	private static final String FILENAME = "resources/config.properties";
 	
 	private static Properties properties = new Properties();
 	private static InputStream input;

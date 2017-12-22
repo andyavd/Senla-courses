@@ -18,8 +18,9 @@ public class CSVToService {
 	static String[] array;
 	
 	public static String[] readServices() {
-		try (Scanner sc = new Scanner(new File(CSVToService.class.getClassLoader().getResource(SERVICE_CSV).getFile()))) {
-			
+		try {
+			@SuppressWarnings("resource")
+			Scanner sc = new Scanner(new File(SERVICE_CSV));
 			List<String> lines = new ArrayList<String>();
 			while (sc.hasNextLine()) {
 			  lines.add(sc.nextLine().replaceAll("\"", ""));

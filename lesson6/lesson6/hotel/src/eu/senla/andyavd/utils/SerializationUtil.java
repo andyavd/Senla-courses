@@ -33,9 +33,7 @@ public class SerializationUtil {
 		
 		try {
 
-			FileOutputStream fileOutputStream = new FileOutputStream(
-					SerializationUtil.class.getClassLoader().getResource(SAVELOAD_PROPERTY).getFile());
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(SAVELOAD_PROPERTY));
 			
 			entities.add(rooms);
 			entities.add(services);
@@ -44,7 +42,6 @@ public class SerializationUtil {
 			
 			objectOutputStream.writeObject(entities);
 			objectOutputStream.close();
-			fileOutputStream.close();
 
 		} catch (FileNotFoundException e) {
 			logger.error("No such file!", e);
@@ -57,9 +54,7 @@ public class SerializationUtil {
 	public static void deserialize() {
 
 		try {
-			FileInputStream fileInputStream = new FileInputStream(
-					SerializationUtil.class.getClassLoader().getResource(SAVELOAD_PROPERTY).getFile());
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(SAVELOAD_PROPERTY));
 
 			List<List<? extends AEntity>> entities = (List<List<? extends AEntity>>) objectInputStream.readObject();
 			

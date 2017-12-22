@@ -16,12 +16,10 @@ public class RoomHistoryToCSV {
 	
 	public static void writeHistoriesToCSV() {
 		try {
-			PrintWriter pr = new PrintWriter(RoomHistoryToCSV.class.getClassLoader().getResource(HISTORY_CSV).getFile());
+			PrintWriter pr = new PrintWriter(HISTORY_CSV);
 			String[] array = FileParser.roomHistoriesToString(HotelManager.getInstance().getHistories());
 			pr.println("History_ID,Room_ID,Visitor_ID,CheckIn_Date,CheckOut_Date,History_Status");
-			
 			for (int i = 0; i < array.length; i++) {
-				
 				pr.println(array[i]);
 			}
 			Printer.print("ok");

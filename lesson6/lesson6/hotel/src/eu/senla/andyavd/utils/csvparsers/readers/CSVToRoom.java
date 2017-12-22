@@ -16,21 +16,21 @@ public class CSVToRoom {
 	String line = "";
 	String cvsSplitBy = ",";
 	static String[] array;
-	
+
 	public static String[] readRooms() {
-		try (Scanner sc = new Scanner(new File(CSVToRoom.class.getClassLoader().getResource(ROOM_CSV).getFile()))) {
-			
+		try {
+			@SuppressWarnings("resource")
+			Scanner sc = new Scanner(new File(ROOM_CSV));
 			List<String> lines = new ArrayList<String>();
 			while (sc.hasNextLine()) {
-			  lines.add(sc.nextLine().replaceAll("\"", ""));
-			  
+				lines.add(sc.nextLine().replaceAll("\"", ""));
 			}
 			array = lines.toArray(new String[0]);
 
-        } catch (IOException e) {
-            logger.error("Failed to read from the file!", e);
-        }
-		
+		} catch (IOException e) {
+			logger.error("Failed to read from the file!", e);
+		}
+
 		return array;
 
 	}

@@ -52,3 +52,30 @@ java.lang.NullPointerException
 	at lesson6.ui.src.eu.senla.andyavd.menu.Navigator.navigate(Navigator.java:31)
 	at lesson6.ui.src.eu.senla.andyavd.menu.MenuController.run(MenuController.java:31)
 	at lesson6.ui.src.eu.senla.andyavd.test.Test.main(Test.java:10)
+2017-12-22 12:42:04 ERROR ServiceToCSV:29 - No such file!
+java.lang.NullPointerException
+	at lesson6.hotel.src.eu.senla.andyavd.utils.csvparsers.writers.ServiceToCSV.writeServicesToCSV(ServiceToCSV.java:19)
+	at lesson6.hotel.src.eu.senla.andyavd.view.HotelManager.exportServicesToCSV(HotelManager.java:404)
+	at lesson6.ui.src.eu.senla.andyavd.actions.service.ExportServicesAction.execute(ExportServicesAction.java:12)
+	at lesson6.ui.src.eu.senla.andyavd.menu.MenuItem.act(MenuItem.java:50)
+	at lesson6.ui.src.eu.senla.andyavd.menu.Navigator.navigate(Navigator.java:31)
+	at lesson6.ui.src.eu.senla.andyavd.menu.MenuController.run(MenuController.java:31)
+	at lesson6.ui.src.eu.senla.andyavd.test.Test.main(Test.java:10)
+2017-12-22 12:45:19 ERROR ServiceToCSV:29 - No such file!
+java.lang.NullPointerException
+	at lesson6.hotel.src.eu.senla.andyavd.utils.csvparsers.writers.ServiceToCSV.writeServicesToCSV(ServiceToCSV.java:19)
+	at lesson6.hotel.src.eu.senla.andyavd.view.HotelManager.exportServicesToCSV(HotelManager.java:404)
+	at lesson6.ui.src.eu.senla.andyavd.actions.service.ExportServicesAction.execute(ExportServicesAction.java:12)
+	at lesson6.ui.src.eu.senla.andyavd.menu.MenuItem.act(MenuItem.java:50)
+	at lesson6.ui.src.eu.senla.andyavd.menu.Navigator.navigate(Navigator.java:31)
+	at lesson6.ui.src.eu.senla.andyavd.menu.MenuController.run(MenuController.java:31)
+	at lesson6.ui.src.eu.senla.andyavd.test.Test.main(Test.java:10)
+2017-12-22 12:47:13 ERROR ServiceToCSV:29 - No such file!
+java.lang.NullPointerException
+	at lesson6.hotel.src.eu.senla.andyavd.utils.csvparsers.writers.ServiceToCSV.writeServicesToCSV(ServiceToCSV.java:19)
+	at lesson6.hotel.src.eu.senla.andyavd.view.HotelManager.exportServicesToCSV(HotelManager.java:404)
+	at lesson6.ui.src.eu.senla.andyavd.actions.service.ExportServicesAction.execute(ExportServicesAction.java:12)
+	at lesson6.ui.src.eu.senla.andyavd.menu.MenuItem.act(MenuItem.java:50)
+	at lesson6.ui.src.eu.senla.andyavd.menu.Navigator.navigate(Navigator.java:31)
+	at lesson6.ui.src.eu.senla.andyavd.menu.MenuController.run(MenuController.java:31)
+	at lesson6.ui.src.eu.senla.andyavd.test.Test.main(Test.java:10)

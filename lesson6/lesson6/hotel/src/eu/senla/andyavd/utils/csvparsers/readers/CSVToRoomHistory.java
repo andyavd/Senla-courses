@@ -18,8 +18,9 @@ public class CSVToRoomHistory {
 	static String[] array;
 	
 	public static String[] readHistories() {
-		try (Scanner sc = new Scanner(new File(CSVToRoomHistory.class.getClassLoader().getResource(HISTORY_CSV).getFile()))) {
-			
+		try {
+			@SuppressWarnings("resource")
+			Scanner sc = new Scanner(new File(HISTORY_CSV));
 			List<String> lines = new ArrayList<String>();
 			while (sc.hasNextLine()) {
 			  lines.add(sc.nextLine().replaceAll("\"", ""));

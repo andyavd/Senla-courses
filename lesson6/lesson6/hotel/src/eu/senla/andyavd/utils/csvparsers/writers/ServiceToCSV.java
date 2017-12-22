@@ -16,11 +16,10 @@ public class ServiceToCSV {
 	
 	public static void writeServicesToCSV() {
 		try {
-			PrintWriter pr = new PrintWriter(ServiceToCSV.class.getClassLoader().getResource(SERVICE_CSV).getFile());
+			PrintWriter pr = new PrintWriter(SERVICE_CSV);
 			String[] array = FileParser.servicesToString(HotelManager.getInstance().getServices());
 			pr.println("Service_ID,Service_name,Service_Price");
 			for (int i = 0; i < array.length; i++) {
-				
 				pr.println(array[i]);
 			}
 			Printer.print("ok");
