@@ -79,6 +79,7 @@ java.lang.NullPointerException
 	at lesson6.ui.src.eu.senla.andyavd.menu.Navigator.navigate(Navigator.java:31)
 	at lesson6.ui.src.eu.senla.andyavd.menu.MenuController.run(MenuController.java:31)
 	at lesson6.ui.src.eu.senla.andyavd.test.Test.main(Test.java:10)
+<<<<<<< HEAD
 2017-12-24 07:51:49 ERROR DependencyInjection:41 - Properties were not loaded!
 java.io.FileNotFoundException: data/instance.properties (No such file or directory)
 	at java.io.FileInputStream.open0(Native Method)
@@ -205,3 +206,5 @@ java.io.FileNotFoundException: data/instance.properties (No such file or directo
 	at lesson7.ui.src.eu.senla.andyavd.menu.Builder.<init>(Builder.java:23)
 	at lesson7.ui.src.eu.senla.andyavd.menu.MenuController.<init>(MenuController.java:11)
 	at lesson7.ui.src.eu.senla.andyavd.test.Test.main(Test.java:9)
+=======
+>>>>>>> master
