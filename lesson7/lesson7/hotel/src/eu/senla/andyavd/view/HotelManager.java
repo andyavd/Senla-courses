@@ -7,15 +7,12 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import lesson7.dependencyinjection.src.eu.senla.andyavd.di.DependencyInjection;
 import lesson7.hotel.src.eu.senla.andyavd.api.controllers.IRoomHistoryManager;
 import lesson7.hotel.src.eu.senla.andyavd.api.controllers.IRoomManager;
 import lesson7.hotel.src.eu.senla.andyavd.api.controllers.IServiceManager;
 import lesson7.hotel.src.eu.senla.andyavd.api.controllers.IVisitorManager;
 import lesson7.hotel.src.eu.senla.andyavd.api.view.IHotelManager;
-import lesson7.hotel.src.eu.senla.andyavd.controllers.RoomHistoryManager;
-import lesson7.hotel.src.eu.senla.andyavd.controllers.RoomManager;
-import lesson7.hotel.src.eu.senla.andyavd.controllers.ServiceManager;
-import lesson7.hotel.src.eu.senla.andyavd.controllers.VisitorManager;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Room;
 import lesson7.hotel.src.eu.senla.andyavd.entities.RoomHistory;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Service;
@@ -45,10 +42,10 @@ public class HotelManager implements IHotelManager {
 
 	final static Logger logger = Logger.getLogger(HotelManager.class);
 
-	private IRoomHistoryManager roomHistoryManager = new RoomHistoryManager();
-	private IRoomManager roomManager = new RoomManager();
-	private IServiceManager serviceManager = new ServiceManager();
-	private IVisitorManager visitorManager = new VisitorManager();
+	private IRoomHistoryManager roomHistoryManager = (IRoomHistoryManager) DependencyInjection.getInstance().getInstance(IRoomHistoryManager.class);
+	private IRoomManager roomManager = (IRoomManager) DependencyInjection.getInstance().getInstance(IRoomManager.class);
+	private IServiceManager serviceManager = (IServiceManager) DependencyInjection.getInstance().getInstance(IServiceManager.class);
+	private IVisitorManager visitorManager = (IVisitorManager) DependencyInjection.getInstance().getInstance(IVisitorManager.class);
 
 	private static IHotelManager hotelManager;
 

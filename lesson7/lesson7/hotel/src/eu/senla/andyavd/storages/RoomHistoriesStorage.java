@@ -3,9 +3,11 @@ package lesson7.hotel.src.eu.senla.andyavd.storages;
 import java.util.ArrayList;
 import java.util.List;
 
+import lesson7.annotations.src.eu.senla.andyavd.annotations.Storage;
 import lesson7.hotel.src.eu.senla.andyavd.api.storages.IRoomHistoriesStorage;
 import lesson7.hotel.src.eu.senla.andyavd.entities.RoomHistory;
 
+@Storage
 public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 
 	private List<RoomHistory> histories = new ArrayList<RoomHistory>();

@@ -6,47 +6,50 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import lesson7.dependencyinjection.src.eu.senla.andyavd.di.DependencyInjection;
 import lesson7.hotel.src.eu.senla.andyavd.api.controllers.IServiceManager;
+import lesson7.hotel.src.eu.senla.andyavd.api.storages.IServicesStorage;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Service;
-import lesson7.hotel.src.eu.senla.andyavd.storages.ServicesStorage;
 
 public class ServiceManager implements IServiceManager {
 
 	final static Logger logger = Logger.getLogger(ServiceManager.class);
+	
+	private IServicesStorage servicesStorage = (IServicesStorage) DependencyInjection.getInstance().getInstance(IServicesStorage.class);
 
 	public ServiceManager() {
 	}
 	
 	@Override
 	public void addService(Service service) {
-		ServicesStorage.getInstance().addService(service);
+		servicesStorage.addService(service);
 	}
 
 	@Override
 	public void deleteService(Service service) {
-		ServicesStorage.getInstance().deleteService(service);
+		servicesStorage.deleteService(service);
 	}
 	
 	@Override
 	public List<Service> getServices() {
-		return ServicesStorage.getInstance().getServices();
+		return servicesStorage.getServices();
 	}
 	
 	@Override
 	public void setServices(List<Service> services) {
-		ServicesStorage.getInstance().setServices(services);
+		servicesStorage.setServices(services);
 	}
 
 	@Override
 	public List<Service> sortServices(Comparator<Service> comparator) {
-		List<Service> sortedServices = ServicesStorage.getInstance().getServices();
+		List<Service> sortedServices = servicesStorage.getServices();
 		Collections.sort(sortedServices, comparator);
 		return sortedServices;
 	}
 
 	@Override
 	public Service getServiceById(Integer id) {
-		return ServicesStorage.getInstance().getServiceById(id);
+		return servicesStorage.getServiceById(id);
 	}
 	
 }

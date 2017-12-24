@@ -3,9 +3,11 @@ package lesson7.hotel.src.eu.senla.andyavd.storages;
 import java.util.ArrayList;
 import java.util.List;
 
+import lesson7.annotations.src.eu.senla.andyavd.annotations.Storage;
 import lesson7.hotel.src.eu.senla.andyavd.api.storages.IServicesStorage;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Service;
 
+@Storage
 public class ServicesStorage implements IServicesStorage {
 
 	private List<Service> services = new ArrayList<Service>();

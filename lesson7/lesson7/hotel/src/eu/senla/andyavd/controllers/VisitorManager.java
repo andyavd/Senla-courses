@@ -7,32 +7,34 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import lesson7.dependencyinjection.src.eu.senla.andyavd.di.DependencyInjection;
 import lesson7.hotel.src.eu.senla.andyavd.api.controllers.IVisitorManager;
+import lesson7.hotel.src.eu.senla.andyavd.api.storages.IVisitorsStorage;
 import lesson7.hotel.src.eu.senla.andyavd.entities.RoomHistory;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Service;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Visitor;
-import lesson7.hotel.src.eu.senla.andyavd.storages.VisitorsStorage;
 
 public class VisitorManager implements IVisitorManager {
 	
 	final static Logger logger = Logger.getLogger(VisitorManager.class);
 
+	private IVisitorsStorage visitorsStorage = (IVisitorsStorage) DependencyInjection.getInstance().getInstance(IVisitorsStorage.class);
 	public VisitorManager() {
 	}
 	
 	@Override
 	public void addVisitor(Visitor visitor) {
-		VisitorsStorage.getInstance().addVisitor(visitor);
+		visitorsStorage.addVisitor(visitor);
 	}
 
 	@Override
 	public void deleteVisitor(Visitor visitor) {
-		VisitorsStorage.getInstance().deleteVisitor(visitor);
+		visitorsStorage.deleteVisitor(visitor);
 	}
 
 	@Override
 	public List<Visitor> getVisitors() {
-		return VisitorsStorage.getInstance().getVisitors();
+		return visitorsStorage.getVisitors();
 	}
 
 	@Override
@@ -52,7 +54,7 @@ public class VisitorManager implements IVisitorManager {
 	
 	@Override
 	public void updateVisitor(Visitor visitor, RoomHistory history) {
-		VisitorsStorage.getInstance().updateVisitor(visitor, history);
+		visitorsStorage.updateVisitor(visitor, history);
 	}
 
 	@Override
@@ -73,7 +75,7 @@ public class VisitorManager implements IVisitorManager {
 
 	@Override
 	public List<Visitor> sortVisitors(Comparator<Visitor> comparator) {
-		List<Visitor> sortedVisitors = VisitorsStorage.getInstance().getVisitors();
+		List<Visitor> sortedVisitors = visitorsStorage.getVisitors();
 		Collections.sort(sortedVisitors, comparator);
 		return sortedVisitors;
 	}
@@ -87,12 +89,12 @@ public class VisitorManager implements IVisitorManager {
 	
 	@Override
 	public Visitor getVisitorById(Integer id) {
-		return VisitorsStorage.getInstance().getVisitorById(id);
+		return visitorsStorage.getVisitorById(id);
 	}
 
 	@Override
 	public void setVisitors(List<Visitor> visitors) {
-		VisitorsStorage.getInstance().setVisitors(visitors);
+		visitorsStorage.setVisitors(visitors);
 		
 	}
 }

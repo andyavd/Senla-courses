@@ -3,10 +3,12 @@ package lesson7.hotel.src.eu.senla.andyavd.storages;
 import java.util.ArrayList;
 import java.util.List;
 
+import lesson7.annotations.src.eu.senla.andyavd.annotations.Storage;
 import lesson7.hotel.src.eu.senla.andyavd.api.storages.IVisitorsStorage;
 import lesson7.hotel.src.eu.senla.andyavd.entities.RoomHistory;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Visitor;
 
+@Storage
 public class VisitorsStorage implements IVisitorsStorage {
 
 	private List<Visitor> visitors = new ArrayList<Visitor>();

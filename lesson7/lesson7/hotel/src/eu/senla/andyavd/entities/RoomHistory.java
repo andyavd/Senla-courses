@@ -5,12 +5,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import lesson7.annotations.src.eu.senla.andyavd.annotations.CsvEntity;
+import lesson7.annotations.src.eu.senla.andyavd.annotations.CsvProperty;
+import lesson7.hotel.src.eu.senla.andyavd.enums.PropertyType;
 import lesson7.hotel.src.eu.senla.andyavd.enums.RoomHistoryStatus;
 
+@CsvEntity(filename = "data/roomHistories.csv")
 public class RoomHistory extends AEntity implements Serializable{
 
 	private static final long serialVersionUID = 8310876147491569183L;
 	
+	@CsvProperty(propertyType = PropertyType.SimpleProperty, columnNumber = 1)
 	private int id = 0;
 	private Room room;
 	private Visitor visitor;

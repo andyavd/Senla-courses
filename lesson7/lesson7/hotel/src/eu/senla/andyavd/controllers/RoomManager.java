@@ -8,27 +8,30 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import lesson7.dependencyinjection.src.eu.senla.andyavd.di.DependencyInjection;
 import lesson7.hotel.src.eu.senla.andyavd.api.controllers.IRoomManager;
+import lesson7.hotel.src.eu.senla.andyavd.api.storages.IRoomsStorage;
 import lesson7.hotel.src.eu.senla.andyavd.entities.Room;
 import lesson7.hotel.src.eu.senla.andyavd.entities.RoomHistory;
 import lesson7.hotel.src.eu.senla.andyavd.enums.RoomStatus;
-import lesson7.hotel.src.eu.senla.andyavd.storages.RoomsStorage;
 
 public class RoomManager implements IRoomManager {
 
 	private final static Logger logger = Logger.getLogger(RoomManager.class);
+	
+	private IRoomsStorage roomsStorage = (IRoomsStorage) DependencyInjection.getInstance().getInstance(IRoomsStorage.class);
 	
 	public RoomManager() {
 	}
 	
 	@Override
 	public void addRoom(Room room) {
-		RoomsStorage.getInstance().addRoom(room);
+		roomsStorage.addRoom(room);
 	}
 
 	@Override
 	public void deleteRoom(Room room) {
-		RoomsStorage.getInstance().deleteRoom(room);
+		roomsStorage.deleteRoom(room);
 	}
 	
 	@Override
@@ -46,17 +49,17 @@ public class RoomManager implements IRoomManager {
 	
 	@Override
 	public List<Room> getRooms() {
-		return RoomsStorage.getInstance().getRooms();
+		return roomsStorage.getRooms();
 	}
 
 	@Override
 	public void setRooms(List<Room> rooms) {
-		RoomsStorage.getInstance().setRooms(rooms);
+		roomsStorage.setRooms(rooms);
 	}
 
 	@Override
 	public void updateRoom(Room room, RoomHistory history) {
-		RoomsStorage.getInstance().updateRoom(room, history);
+		roomsStorage.updateRoom(room, history);
 	}
 	
 	@Override
@@ -67,7 +70,7 @@ public class RoomManager implements IRoomManager {
 	@Override
 	public List<Room> getEmptyRooms() {
 		
-		List<Room> rooms = RoomsStorage.getInstance().getRooms();
+		List<Room> rooms = roomsStorage.getRooms();
 		
 		List<Room> newRooms = new ArrayList<Room>();
 
@@ -86,9 +89,9 @@ public class RoomManager implements IRoomManager {
 	@Override
 	public Room getRoomDetails(Room room) {
 
-		for (int i = 0; i < RoomsStorage.getInstance().getRooms().size(); i++) {
-			if (RoomsStorage.getInstance().getRooms().get(i).equals(room)) {
-				room = RoomsStorage.getInstance().getRooms().get(i);
+		for (int i = 0; i < roomsStorage.getRooms().size(); i++) {
+			if (roomsStorage.getRooms().get(i).equals(room)) {
+				room = roomsStorage.getRooms().get(i);
 			}
 		}
 		return room;
@@ -129,14 +132,14 @@ public class RoomManager implements IRoomManager {
 
 	@Override
 	public List<Room> sortRooms(Comparator<Room> comparator) {
-		List<Room> sortedRooms = RoomsStorage.getInstance().getRooms();
+		List<Room> sortedRooms = roomsStorage.getRooms();
 		Collections.sort(sortedRooms, comparator);
 		return sortedRooms;
 	}
 
 	@Override
 	public Room getRoomById(Integer id) {
-		return RoomsStorage.getInstance().getRoomById(id);
+		return roomsStorage.getRoomById(id);
 	}
 
 }

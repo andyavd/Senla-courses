@@ -2,12 +2,20 @@ package lesson7.hotel.src.eu.senla.andyavd.entities;
 
 import java.io.Serializable;
 
+import lesson7.annotations.src.eu.senla.andyavd.annotations.CsvEntity;
+import lesson7.annotations.src.eu.senla.andyavd.annotations.CsvProperty;
+import lesson7.hotel.src.eu.senla.andyavd.enums.PropertyType;
+
+@CsvEntity(filename = "data/services.cs")
 public class Service extends AEntity implements Serializable{
 
 	private static final long serialVersionUID = 7837575998552612234L;
 
+	@CsvProperty(propertyType = PropertyType.SimpleProperty, columnNumber = 1)
 	private int id = 0;
+	@CsvProperty(propertyType = PropertyType.SimpleProperty, columnNumber = 2)
 	private String name;
+	@CsvProperty(propertyType = PropertyType.SimpleProperty, columnNumber = 3)
 	private Double dailyPrice;
 
 	@Override
