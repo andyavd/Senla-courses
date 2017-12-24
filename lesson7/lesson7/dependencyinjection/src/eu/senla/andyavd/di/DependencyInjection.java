@@ -16,7 +16,6 @@ public class DependencyInjection {
 
 	private static final Logger logger = Logger.getLogger(DependencyInjection.class);
 	private static final String INSTANCEPATH = Settings.getInstance().getProperty("instancepath");
-//	private static final String INSTANCEPATH = "/Users/andreiaudzeichyk/Senla-courses-Ready/resources/data/instance.properties";
 	private static DependencyInjection instance;
 	
 	private Map<String, String> dependencies = new HashMap<>();
