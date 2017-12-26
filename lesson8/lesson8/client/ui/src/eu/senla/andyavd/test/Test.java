@@ -1,13 +1,13 @@
 package lesson8.client.ui.src.eu.senla.andyavd.test;
 
-import lesson8.client.ui.src.eu.senla.andyavd.menu.MenuController;
+import lesson8.client.ui.src.eu.senla.andyavd.client.Client;
 
 public class Test {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ReflectiveOperationException{
 		
-		MenuController menuController = new MenuController();
-		menuController.run();
+		Client client = new Client();
+		client.run();
 
 	}
 }

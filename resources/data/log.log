@@ -205,3 +205,21 @@ java.io.FileNotFoundException: data/instance.properties (No such file or directo
 	at lesson7.ui.src.eu.senla.andyavd.menu.Builder.<init>(Builder.java:23)
 	at lesson7.ui.src.eu.senla.andyavd.menu.MenuController.<init>(MenuController.java:11)
 	at lesson7.ui.src.eu.senla.andyavd.test.Test.main(Test.java:9)
+2017-12-26 09:22:19 ERROR Client:24 - Connection problems!
+java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at java.net.Socket.connect(Socket.java:538)
+	at java.net.Socket.<init>(Socket.java:434)
+	at java.net.Socket.<init>(Socket.java:244)
+	at lesson8.client.ui.src.eu.senla.andyavd.client.Client.<init>(Client.java:22)
+	at lesson8.client.ui.src.eu.senla.andyavd.test.Test.main(Test.java:9)
+2017-12-26 09:22:19 ERROR ServerWorker:36 - Null Pointer!
+java.lang.NullPointerException
+	at lesson8.server.hotel.src.eu.senla.andyavd.server.ServerWorker.setSocket(ServerWorker.java:31)
+	at lesson8.client.ui.src.eu.senla.andyavd.client.Client.run(Client.java:29)
+	at lesson8.client.ui.src.eu.senla.andyavd.test.Test.main(Test.java:10)

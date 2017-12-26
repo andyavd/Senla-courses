@@ -18,7 +18,7 @@ public class DependencyInjection {
 	private static final String INSTANCEPATH = Settings.getInstance().getProperty("instancepath");
 	private static DependencyInjection instance;
 	
-	private Map<String, String> dependencies = new HashMap<>();
+	private static Map<String, String> dependencies = new HashMap<>();
 
 	private DependencyInjection() {
         loadDependencies();
@@ -40,7 +40,7 @@ public class DependencyInjection {
         }
     }
 	
-	public Object getInstance(Class<?> type) {
+	public static  Object getInstance(Class<?> type) {
 
         Class<?> cl = null;
         boolean isStorage = false;

@@ -42,10 +42,10 @@ public class HotelManager implements IHotelManager {
 
 	final static Logger logger = Logger.getLogger(HotelManager.class);
 
-	private IRoomHistoryManager roomHistoryManager = (IRoomHistoryManager) DependencyInjection.getInstance().getInstance(IRoomHistoryManager.class);
-	private IRoomManager roomManager = (IRoomManager) DependencyInjection.getInstance().getInstance(IRoomManager.class);
-	private IServiceManager serviceManager = (IServiceManager) DependencyInjection.getInstance().getInstance(IServiceManager.class);
-	private IVisitorManager visitorManager = (IVisitorManager) DependencyInjection.getInstance().getInstance(IVisitorManager.class);
+	private IRoomHistoryManager roomHistoryManager = (IRoomHistoryManager) DependencyInjection.getInstance(IRoomHistoryManager.class);
+	private IRoomManager roomManager = (IRoomManager) DependencyInjection.getInstance(IRoomManager.class);
+	private IServiceManager serviceManager = (IServiceManager) DependencyInjection.getInstance(IServiceManager.class);
+	private IVisitorManager visitorManager = (IVisitorManager) DependencyInjection.getInstance(IVisitorManager.class);
 
 	private static IHotelManager hotelManager;
 
