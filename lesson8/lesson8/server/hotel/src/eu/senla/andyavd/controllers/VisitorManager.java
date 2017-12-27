@@ -18,7 +18,7 @@ public class VisitorManager implements IVisitorManager {
 	
 	final static Logger logger = Logger.getLogger(VisitorManager.class);
 
-	private IVisitorsStorage visitorsStorage = (IVisitorsStorage) DependencyInjection.getInstance().getInstance(IVisitorsStorage.class);
+	private IVisitorsStorage visitorsStorage = (IVisitorsStorage) DependencyInjection.getInstance(IVisitorsStorage.class);
 	public VisitorManager() {
 	}
 	
