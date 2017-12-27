@@ -15,7 +15,7 @@ public class ServiceManager implements IServiceManager {
 
 	final static Logger logger = Logger.getLogger(ServiceManager.class);
 	
-	private IServicesStorage servicesStorage = (IServicesStorage) DependencyInjection.getInstance().getInstance(IServicesStorage.class);
+	private IServicesStorage servicesStorage = (IServicesStorage) DependencyInjection.getInstance(IServicesStorage.class);
 
 	public ServiceManager() {
 	}
