@@ -19,7 +19,7 @@ public class RoomManager implements IRoomManager {
 
 	private final static Logger logger = Logger.getLogger(RoomManager.class);
 	
-	private IRoomsStorage roomsStorage = (IRoomsStorage) DependencyInjection.getInstance().getInstance(IRoomsStorage.class);
+	private IRoomsStorage roomsStorage = (IRoomsStorage) DependencyInjection.getInstance(IRoomsStorage.class);
 	
 	public RoomManager() {
 	}
