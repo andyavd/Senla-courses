@@ -7,7 +7,7 @@ import java.net.Socket;
 
 import org.apache.log4j.Logger;
 
-import eu.senla.andyavd.hoteladministrator.managers.HotelManager;
+import lesson8.server.hotel.src.eu.senla.andyavd.view.HotelManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
