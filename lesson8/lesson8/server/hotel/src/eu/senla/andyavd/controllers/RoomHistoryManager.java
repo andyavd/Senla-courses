@@ -9,7 +9,7 @@ import lesson8.server.hotel.src.eu.senla.andyavd.entities.RoomHistory;
 
 public class RoomHistoryManager implements IRoomHistoryManager {
 	
-	private IRoomHistoriesStorage historiesStorage = (IRoomHistoriesStorage) DependencyInjection.getInstance().getInstance(IRoomHistoriesStorage.class);
+	private IRoomHistoriesStorage historiesStorage = (IRoomHistoriesStorage) DependencyInjection.getInstance(IRoomHistoriesStorage.class);
 	
 	public RoomHistoryManager() {
 	}
