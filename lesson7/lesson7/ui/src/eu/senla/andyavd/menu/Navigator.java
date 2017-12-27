@@ -2,7 +2,7 @@ package lesson7.ui.src.eu.senla.andyavd.menu;
 
 import java.util.List;
 
-import eu.senla.andyavd.hoteladministrator.utils.Printer;
+import lesson7.hotel.src.eu.senla.andyavd.utils.Printer;
 
 public class Navigator {
 
