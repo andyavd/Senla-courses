@@ -354,11 +354,12 @@ public class HotelManager implements IHotelManager {
 	public void checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException {
 
 		if (room.getStatus().equals(RoomStatus.OCCUPIED)) {
-			for (int i = 0; i < room.getHistories().size(); i++) {
-				if (room.getHistories().get(i) != null && room.getHistories().get(i).getVisitor().equals(visitor)
-						&& room.getHistories().get(i).getStatus().equals(RoomHistoryStatus.CHECKIN)) {
-
-					room.getHistories().get(i).setStatus(RoomHistoryStatus.CHECKOUT);
+			
+			List<RoomHistory> histories = room.getHistories();
+			for (int i = 0; i < histories.size(); i++) {
+				RoomHistory history = histories.get(i);
+				if (history != null && history.getVisitor().equals(visitor)&& history.getStatus().equals(RoomHistoryStatus.CHECKIN)){
+					history.setStatus(RoomHistoryStatus.CHECKOUT);
 					visitor.setHistory(null);
 					room.setStatus(RoomStatus.EMPTY);
 					break;

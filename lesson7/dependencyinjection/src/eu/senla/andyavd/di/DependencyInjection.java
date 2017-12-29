@@ -17,68 +17,61 @@ public class DependencyInjection {
 	private static final Logger logger = Logger.getLogger(DependencyInjection.class);
 	private static final String INSTANCEPATH = Settings.getInstance().getProperty("instancepath");
 	private static DependencyInjection instance;
-	
+
 	private Map<String, String> dependencies = new HashMap<>();
 
 	private DependencyInjection() {
-        loadDependencies();
-    }
-	
+		loadDependencies();
+	}
+
 	public static DependencyInjection getInstance() {
-        if (instance == null) instance = new DependencyInjection();
-        return instance;
-    }
-	
+		if (instance == null)
+			instance = new DependencyInjection();
+		return instance;
+	}
+
 	@SuppressWarnings("unchecked")
 	private void loadDependencies() {
-        Properties properties = new Properties();
-        try (FileInputStream fileInputStream = new FileInputStream(INSTANCEPATH)) {
-            properties.load(fileInputStream);
-            dependencies = (Map<String, String>) properties.clone();
-        } catch (IOException e) {
-            logger.error("Properties were not loaded!", e);
-        }
-    }
-	
+		Properties properties = new Properties();
+		try (FileInputStream fileInputStream = new FileInputStream(INSTANCEPATH)) {
+			properties.load(fileInputStream);
+			dependencies = (Map<String, String>) properties.clone();
+		} catch (IOException e) {
+			logger.error("Properties were not loaded!", e);
+		}
+	}
+
 	public Object getInstance(Class<?> type) {
 
-        Class<?> cl = null;
-        boolean isStorage = false;
+		Class<?> cl = null;
+		boolean isStorage = false;
 
-        try {
-            cl = Class.forName(dependencies.get(type.getName()));
-            if (cl.isAnnotationPresent(Storage.class)) isStorage = true;
-        } catch (ClassNotFoundException e) {
-            logger.error("Class NotFound Exception!", e);
-            return null;
-        }
+		try {
+			cl = Class.forName(dependencies.get(type.getName()));
 
-        if (isStorage) {
-            try {
-                return cl.getMethod("getInstance").invoke(null);
-            } catch (IllegalAccessException e) {
-            	logger.error("Illegal Access!", e);
-                return null;
-            } catch (InvocationTargetException e) {
-            	logger.error("Invocation Target!", e);
-                return null;
-            } catch (NoSuchMethodException e) {
-            	logger.error("No Such Method!", e);
-                return null;
-            }
-            
-        } else {
-            try {
-                return cl.newInstance();
-            } catch (InstantiationException e) {
-            	logger.error("Instantiation!", e);
-                return null;
-            } catch (IllegalAccessException e) {
-            	logger.error("Illegal Access!", e);
-                return null;
-            }
-        }
-    }
+			if (cl.isAnnotationPresent(Storage.class))
+				isStorage = true;
+			if (isStorage) {
+				return cl.getMethod("getInstance").invoke(null);
+			} else {
+				return cl.newInstance();
+			}
+		} catch (ClassNotFoundException e) {
+			logger.error("Class NotFound Exception!", e);
+			return null;
+		} catch (IllegalAccessException e) {
+			logger.error("Illegal Access!", e);
+			return null;
+		} catch (InvocationTargetException e) {
+			logger.error("Invocation Target!", e);
+			return null;
+		} catch (NoSuchMethodException e) {
+			logger.error("No Such Method!", e);
+			return null;
+		} catch (InstantiationException e) {
+			logger.error("Instantiation!", e);
+			return null;
+		}
 
-	
+	}
 }
