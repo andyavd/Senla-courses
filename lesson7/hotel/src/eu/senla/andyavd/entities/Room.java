@@ -30,6 +30,17 @@ public class Room extends AEntity implements Serializable, Cloneable{
 	@CsvProperty(propertyType = PropertyType.SimpleProperty, columnNumber = 7)
 	private List <RoomHistory> histories = new ArrayList<RoomHistory>();
 
+	public Room() {
+	}
+	
+	public Room(int roomNumber, Integer capacity, Double dailyPrice, RoomStars stars, RoomStatus status) {
+		this.roomNumber = roomNumber;
+		this.capacity = capacity;
+		this.dailyPrice = dailyPrice;
+		this.stars = stars;
+		this.status = status;
+	}
+	
 	@Override
 	public int getId() {
 		return id;
@@ -88,18 +99,6 @@ public class Room extends AEntity implements Serializable, Cloneable{
 		this.histories = histories;
 	}
 
-	public Room() {
-
-	}
-	
-	public Room(int roomNumber, Integer capacity, Double dailyPrice, RoomStars stars, RoomStatus status) {
-		this.roomNumber = roomNumber;
-		this.capacity = capacity;
-		this.dailyPrice = dailyPrice;
-		this.stars = stars;
-		this.status = status;
-	}
-	
 	public Room clone() throws CloneNotSupportedException {
         Room cloneRoom = (Room)super.clone();
         cloneRoom.setRoomNumber(0);

@@ -18,6 +18,20 @@ public class Service extends AEntity implements Serializable{
 	@CsvProperty(propertyType = PropertyType.SimpleProperty, columnNumber = 3)
 	private Double dailyPrice;
 
+	public Service() {
+	}
+
+	public Service(String name, Double dailyPrice) {
+		this.name = name;
+		this.dailyPrice = dailyPrice;
+	}
+
+	public Service(Integer id, String name, double dailyPrice) {
+		this.id = id;
+		this.name = name;
+		this.dailyPrice = dailyPrice;
+	}
+	
 	@Override
 	public int getId() {
 		return id;
@@ -41,21 +55,6 @@ public class Service extends AEntity implements Serializable{
 	}
 
 	public void setDailyPrice(Double dailyPrice) {
-		this.dailyPrice = dailyPrice;
-	}
-
-	public Service() {
-
-	}
-
-	public Service(String name, Double dailyPrice) {
-		this.name = name;
-		this.dailyPrice = dailyPrice;
-	}
-
-	public Service(Integer id, String name, double dailyPrice) {
-		this.id = id;
-		this.name = name;
 		this.dailyPrice = dailyPrice;
 	}
 

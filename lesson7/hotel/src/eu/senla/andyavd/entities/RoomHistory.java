@@ -24,6 +24,9 @@ public class RoomHistory extends AEntity implements Serializable{
 	private List<Service> services = new ArrayList<Service>();
 	private RoomHistoryStatus status;
 
+	public RoomHistory() {
+	}
+	
 	@Override
 	public int getId() {
 		return id;
@@ -80,10 +83,6 @@ public class RoomHistory extends AEntity implements Serializable{
 
 	public void setStatus(RoomHistoryStatus status) {
 		this.status = status;
-	}
-
-	public RoomHistory() {
-
 	}
 
 	@Override
