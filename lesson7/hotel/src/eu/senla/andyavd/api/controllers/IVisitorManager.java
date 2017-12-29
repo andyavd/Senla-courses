@@ -31,4 +31,8 @@ public interface IVisitorManager {
 
 	public Visitor getVisitorById(Integer id);
 
+	void importFromCsv();
+
+	void exportToCsv();
+
 }

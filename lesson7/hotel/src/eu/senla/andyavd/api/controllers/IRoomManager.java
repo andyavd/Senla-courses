@@ -36,5 +36,9 @@ public interface IRoomManager {
 	public Room cloneRoom(Room room);
 
 	public void deleteRoom(Room room);
+
+	void importFromCsv();
+
+	void exportToCsv();
 	
 }

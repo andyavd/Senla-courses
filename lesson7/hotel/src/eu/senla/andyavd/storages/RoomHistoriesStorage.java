@@ -6,6 +6,8 @@ import java.util.List;
 import eu.senla.andyavd.annotations.Storage;
 import eu.senla.andyavd.api.storages.IRoomHistoriesStorage;
 import eu.senla.andyavd.entities.RoomHistory;
+import eu.senla.andyavd.utils.csvutils.CommonCSVReader;
+import eu.senla.andyavd.utils.csvutils.CommonCSVWriter;
 
 @Storage
 public class RoomHistoriesStorage implements IRoomHistoriesStorage{
@@ -35,5 +37,21 @@ public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 	@Override
 	public void setHistories(List<RoomHistory> histories) {
 		this.histories = histories;
+	}
+	
+	@Override
+	public void importFromCsv() {
+		@SuppressWarnings("unchecked")
+		List<RoomHistory> importedRoomHistories = (List<RoomHistory>) CommonCSVReader.readFromFile(RoomHistory.class);
+		for (RoomHistory history : importedRoomHistories) {
+			if (!histories.contains(history)) {
+				histories.add(history);
+			}
+		}
+	}
+
+	@Override
+	public void exportToCsv() {
+		CommonCSVWriter.writeToFile(histories);
 	}
 }

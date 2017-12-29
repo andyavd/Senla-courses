@@ -23,4 +23,14 @@ public class RoomHistoryManager implements IRoomHistoryManager {
 	public List<RoomHistory> getHistories() {
 		return historiesStorage.getHistories();
 	}
+	
+	@Override
+	public void importFromCsv() {
+		historiesStorage.importFromCsv();
+	}
+	
+	@Override
+	public void exportToCsv() {
+		historiesStorage.exportToCsv();
+	}
 }

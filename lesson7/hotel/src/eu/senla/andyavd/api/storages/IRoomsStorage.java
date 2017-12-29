@@ -21,4 +21,8 @@ public interface IRoomsStorage {
 
 	public void deleteRoom(Room room);
 
+	void importFromCsv();
+
+	void exportToCsv();
+
 }

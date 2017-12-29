@@ -10,4 +10,8 @@ public interface IRoomHistoryManager {
 
 	public List<RoomHistory> getHistories();
 
+	void importFromCsv();
+
+	void exportToCsv();
+
 }

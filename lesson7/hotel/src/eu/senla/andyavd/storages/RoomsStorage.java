@@ -7,6 +7,8 @@ import eu.senla.andyavd.annotations.Storage;
 import eu.senla.andyavd.api.storages.IRoomsStorage;
 import eu.senla.andyavd.entities.Room;
 import eu.senla.andyavd.entities.RoomHistory;
+import eu.senla.andyavd.utils.csvutils.CommonCSVReader;
+import eu.senla.andyavd.utils.csvutils.CommonCSVWriter;
 
 @Storage
 public class RoomsStorage implements IRoomsStorage{
@@ -58,7 +60,6 @@ public class RoomsStorage implements IRoomsStorage{
 		}
 	}
 
-	
 	@Override
 	public Room getRoomById(Integer id) {
 		
@@ -70,5 +71,22 @@ public class RoomsStorage implements IRoomsStorage{
 			} 
 		}
 		return room;
+	}
+	
+
+	@Override
+	public void importFromCsv() {
+		@SuppressWarnings("unchecked")
+		List<Room> importedRooms = (List<Room>) CommonCSVReader.readFromFile(Room.class);
+		for (Room room : importedRooms) {
+			if (!rooms.contains(room)) {
+				rooms.add(room);
+			}
+		}
+	}
+
+	@Override
+	public void exportToCsv() {
+		CommonCSVWriter.writeToFile(rooms);
 	}
 }

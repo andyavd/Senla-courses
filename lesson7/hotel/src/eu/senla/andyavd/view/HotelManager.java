@@ -7,27 +7,20 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import eu.senla.andyavd.di.DependencyInjection;
 import eu.senla.andyavd.api.controllers.IRoomHistoryManager;
 import eu.senla.andyavd.api.controllers.IRoomManager;
 import eu.senla.andyavd.api.controllers.IServiceManager;
 import eu.senla.andyavd.api.controllers.IVisitorManager;
 import eu.senla.andyavd.api.view.IHotelManager;
+import eu.senla.andyavd.di.DependencyInjection;
 import eu.senla.andyavd.entities.Room;
 import eu.senla.andyavd.entities.RoomHistory;
 import eu.senla.andyavd.entities.Service;
 import eu.senla.andyavd.entities.Visitor;
 import eu.senla.andyavd.enums.RoomHistoryStatus;
 import eu.senla.andyavd.enums.RoomStatus;
-import eu.senla.andyavd.utils.FileParser;
+import eu.senla.andyavd.properties.Settings;
 import eu.senla.andyavd.utils.SerializationUtil;
-import eu.senla.andyavd.utils.csvparsers.readers.CSVToRoom;
-import eu.senla.andyavd.utils.csvparsers.readers.CSVToService;
-import eu.senla.andyavd.utils.csvparsers.readers.CSVToVisitor;
-import eu.senla.andyavd.utils.csvparsers.writers.RoomHistoryToCSV;
-import eu.senla.andyavd.utils.csvparsers.writers.RoomToCSV;
-import eu.senla.andyavd.utils.csvparsers.writers.ServiceToCSV;
-import eu.senla.andyavd.utils.csvparsers.writers.VisitorToCSV;
 import eu.senla.andyavd.utils.exceptions.EmptyRoomException;
 import eu.senla.andyavd.utils.exceptions.NotEmptyRoomException;
 import eu.senla.andyavd.utils.sorters.rooms.ByCapacity;
@@ -36,7 +29,6 @@ import eu.senla.andyavd.utils.sorters.rooms.ByStars;
 import eu.senla.andyavd.utils.sorters.services.ByDailyPrice;
 import eu.senla.andyavd.utils.sorters.services.ByName;
 import eu.senla.andyavd.utils.sorters.visitors.ByLastName;
-import eu.senla.andyavd.properties.Settings;
 
 public class HotelManager implements IHotelManager {
 
@@ -390,8 +382,8 @@ public class HotelManager implements IHotelManager {
 	
 	public void exportRoomsToCSV() {
 		try {
-			RoomToCSV.writeRoomsToCSV();
-			RoomHistoryToCSV.writeHistoriesToCSV();
+			roomManager.exportToCsv();
+			roomHistoryManager.exportToCsv();
 		} catch (Exception e) {
 			logger.error("Failed to export Rooms data to CSV file", e);
 		}
@@ -399,7 +391,7 @@ public class HotelManager implements IHotelManager {
 
 	public void exportServicesToCSV() {
 		try {
-			ServiceToCSV.writeServicesToCSV();
+			serviceManager.exportToCsv();
 		} catch (Exception e) {
 			logger.error("Failed to export Services data to CSV file", e);
 		}
@@ -407,7 +399,7 @@ public class HotelManager implements IHotelManager {
 
 	public void exportVisitorsToCSV() {
 		try {
-			VisitorToCSV.writeVisitorsToCSV();
+			visitorManager.exportToCsv();
 		} catch (Exception e) {
 			logger.error("Failed to export Visitors data to CSV file", e);
 		}
@@ -415,7 +407,7 @@ public class HotelManager implements IHotelManager {
 
 	public void importRoomsFromCSV() {
 		try {
-			this.setRooms(FileParser.stringToRooms(CSVToRoom.readRooms()));
+			roomManager.importFromCsv();
 		} catch (Exception e) {
 			logger.error("Rooms were not imported!", e);
 		}
@@ -423,7 +415,7 @@ public class HotelManager implements IHotelManager {
 
 	public void importServicesFromCSV() {
 		try {
-			this.setServices(FileParser.stringToServices(CSVToService.readServices()));
+			serviceManager.importFromCsv();
 		} catch (Exception e) {
 			logger.error("Services were not imported!", e);
 		}
@@ -431,7 +423,7 @@ public class HotelManager implements IHotelManager {
 
 	public void importVisitorsFromCSV() {
 		try {
-			this.setVisitors(FileParser.stringToVisitors(CSVToVisitor.readVisitors()));
+			visitorManager.importFromCsv();
 		} catch (Exception e) {
 			logger.error("Visitors were not imported!", e);
 		}

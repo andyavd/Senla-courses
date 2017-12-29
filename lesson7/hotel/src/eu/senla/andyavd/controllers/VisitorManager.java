@@ -97,4 +97,14 @@ public class VisitorManager implements IVisitorManager {
 		visitorsStorage.setVisitors(visitors);
 		
 	}
+	
+	@Override
+	public void importFromCsv() {
+		visitorsStorage.importFromCsv();
+	}
+	
+	@Override
+	public void exportToCsv() {
+		visitorsStorage.exportToCsv();
+	}
 }

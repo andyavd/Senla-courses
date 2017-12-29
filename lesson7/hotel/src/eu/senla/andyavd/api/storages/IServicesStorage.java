@@ -16,4 +16,8 @@ public interface IServicesStorage {
 
 	void deleteService(Service service);
 
+	void importFromCsv();
+
+	void exportToCsv();
+
 }

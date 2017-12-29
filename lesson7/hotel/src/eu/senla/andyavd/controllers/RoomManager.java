@@ -142,4 +142,13 @@ public class RoomManager implements IRoomManager {
 		return roomsStorage.getRoomById(id);
 	}
 
+	@Override
+	public void importFromCsv() {
+		roomsStorage.importFromCsv();
+	}
+	
+	@Override
+	public void exportToCsv() {
+		roomsStorage.exportToCsv();
+	}
 }

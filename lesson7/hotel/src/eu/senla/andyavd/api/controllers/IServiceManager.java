@@ -18,5 +18,9 @@ public interface IServiceManager {
 	public Service getServiceById(Integer id);
 
 	public void deleteService(Service service);
+
+	void importFromCsv();
+
+	void exportToCsv();
 	
 }

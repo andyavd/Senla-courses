@@ -6,6 +6,8 @@ import java.util.List;
 import eu.senla.andyavd.annotations.Storage;
 import eu.senla.andyavd.api.storages.IServicesStorage;
 import eu.senla.andyavd.entities.Service;
+import eu.senla.andyavd.utils.csvutils.CommonCSVReader;
+import eu.senla.andyavd.utils.csvutils.CommonCSVWriter;
 
 @Storage
 public class ServicesStorage implements IServicesStorage {
@@ -58,5 +60,21 @@ public class ServicesStorage implements IServicesStorage {
 	public void setServices(List<Service> services) {
 		this.services = services;
 
+	}
+
+	@Override
+	public void importFromCsv() {
+		@SuppressWarnings("unchecked")
+		List<Service> importedServices = (List<Service>) CommonCSVReader.readFromFile(Service.class);
+		for (Service service : importedServices) {
+			if (!services.contains(service)) {
+				services.add(service);
+			}
+		}
+	}
+
+	@Override
+	public void exportToCsv() {
+		CommonCSVWriter.writeToFile(services);
 	}
 }

@@ -52,4 +52,13 @@ public class ServiceManager implements IServiceManager {
 		return servicesStorage.getServiceById(id);
 	}
 	
+	@Override
+	public void importFromCsv() {
+		servicesStorage.importFromCsv();
+	}
+	
+	@Override
+	public void exportToCsv() {
+		servicesStorage.exportToCsv();
+	}
 }

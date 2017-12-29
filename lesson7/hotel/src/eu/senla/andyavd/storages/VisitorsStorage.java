@@ -7,6 +7,8 @@ import eu.senla.andyavd.annotations.Storage;
 import eu.senla.andyavd.api.storages.IVisitorsStorage;
 import eu.senla.andyavd.entities.RoomHistory;
 import eu.senla.andyavd.entities.Visitor;
+import eu.senla.andyavd.utils.csvutils.CommonCSVReader;
+import eu.senla.andyavd.utils.csvutils.CommonCSVWriter;
 
 @Storage
 public class VisitorsStorage implements IVisitorsStorage {
@@ -63,5 +65,21 @@ public class VisitorsStorage implements IVisitorsStorage {
 			}
 		}
 		return visitor;
+	}
+	
+	@Override
+	public void importFromCsv() {
+		@SuppressWarnings("unchecked")
+		List<Visitor> importedVisitors = (List<Visitor>) CommonCSVReader.readFromFile(Visitor.class);
+		for (Visitor visitor : importedVisitors) {
+			if (!visitors.contains(visitor)) {
+				visitors.add(visitor);
+			}
+		}
+	}
+
+	@Override
+	public void exportToCsv() {
+		CommonCSVWriter.writeToFile(visitors);
 	}
 }

@@ -18,4 +18,8 @@ public interface IVisitorsStorage {
 	public void deleteVisitor(Visitor visitor);
 
 	public Visitor getVisitorById(Integer id);
+
+	void importFromCsv();
+
+	void exportToCsv();
 }

@@ -12,4 +12,8 @@ public interface IRoomHistoriesStorage {
 
 	void setHistories(List<RoomHistory> histories);
 
+	void importFromCsv();
+
+	void exportToCsv();
+
 }
