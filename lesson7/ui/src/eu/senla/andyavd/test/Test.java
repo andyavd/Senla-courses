@@ -8,7 +8,7 @@ public class Test {
 	
 	public static void main(String[] args) {
 		
-		String log4jConfPath = "/Users/andreiaudzeichyk/Senla-courses-Ready/resources/log4j.properties";
+		String log4jConfPath = "resources/log4j.properties";
 		PropertyConfigurator.configure(log4jConfPath);
 		
 		MenuController menuController = new MenuController();

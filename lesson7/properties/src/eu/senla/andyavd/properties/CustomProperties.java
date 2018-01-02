@@ -24,16 +24,8 @@ public class CustomProperties {
 	}
     
     public void init() {
+		@SuppressWarnings("unused")
 		Properties properties = Settings.initialize();
-//		status = Boolean.parseBoolean(properties.getProperty("status"));
-//		count = Integer.parseInt(properties.getProperty("count"));
-//		saveload = properties.getProperty("saveload");
-//		instancepath = properties.getProperty("instancepath");
-//		roomHistoriesPath = properties.getProperty("roomhistories");
-//		roomsPath = properties.getProperty("rooms");
-//		servicesPath = properties.getProperty("services");
-//		visitorsPath = properties.getProperty("visitors");
-//		setDataStorage(properties.getProperty("datastorage"));
 	}
 
     public boolean isStatus() {
