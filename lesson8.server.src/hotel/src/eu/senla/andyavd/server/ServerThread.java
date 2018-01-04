@@ -9,16 +9,9 @@ import java.net.Socket;
 
 import org.apache.log4j.Logger;
 
-<<<<<<< HEAD:lesson8.server.src/hotel/src/eu/senla/andyavd/server/ServerThread.java
 import dependencyinjection.src.eu.senla.andyavd.di.DependencyInjection;
 import hotel.src.eu.senla.andyavd.api.view.IHotelManager;
 import hotel.src.eu.senla.andyavd.view.HotelManager;
-=======
-import lesson8.server.hotel.src.eu.senla.andyavd.view.HotelManager;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
->>>>>>> 8b05dbb95ab2ea88fee51e08c4527577aa14a336:lesson8/lesson8/server/hotel/src/eu/senla/andyavd/server/ServerThread.java
 
 
 public class ServerThread extends Thread {

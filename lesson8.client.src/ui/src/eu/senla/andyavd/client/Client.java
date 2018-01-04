@@ -26,7 +26,7 @@ public class Client {
 	}
 
 	public void run() throws ReflectiveOperationException {
-		ServerWorker.getInstance().setSocket(socket);
+//		ServerWorker.getInstance().setSocket(socket);
 		MenuController contr = new MenuController();
 		contr.run();
 	}
