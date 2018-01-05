@@ -29,7 +29,7 @@ public class ServicesStorage implements IServicesStorage {
 	}
 
 	@Override
-	public void addService(Service service) {
+	public synchronized void addService(Service service) {
 		services.add(service);
 		services.get(services.size() - 1).setId(services.size());
 	}
@@ -48,7 +48,7 @@ public class ServicesStorage implements IServicesStorage {
 	}
 
 	@Override
-	public void deleteService(Service service) {
+	public synchronized void deleteService(Service service) {
 		for (int i = 0; i < services.size(); i++) {
 			if (services.get(i) == service) {
 				services.remove(i);
@@ -57,7 +57,7 @@ public class ServicesStorage implements IServicesStorage {
 	}
 
 	@Override
-	public void setServices(List<Service> services) {
+	public synchronized void setServices(List<Service> services) {
 		this.services = services;
 
 	}

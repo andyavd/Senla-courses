@@ -30,23 +30,23 @@ public class VisitorsStorage implements IVisitorsStorage {
 	}
 
 	@Override
-	public void setVisitors(List<Visitor> visitors) {
+	public synchronized void setVisitors(List<Visitor> visitors) {
 		this.visitors = visitors;
 	}
 
 	@Override
-	public void addVisitor(Visitor visitor) {
+	public synchronized void addVisitor(Visitor visitor) {
 		visitors.add(visitor);
 		visitors.get(visitors.size() - 1).setId(visitors.size());
 	}
 
 	@Override
-	public void updateVisitor(Visitor visitor, RoomHistory history) {
+	public synchronized void updateVisitor(Visitor visitor, RoomHistory history) {
 		visitor.setHistory(history);
 	}
 
 	@Override
-	public void deleteVisitor(Visitor visitor) {
+	public synchronized void deleteVisitor(Visitor visitor) {
 		for (int i = 0; i < visitors.size(); i++) {
 			if (visitors.get(i) == visitor) {
 				visitors.remove(i);

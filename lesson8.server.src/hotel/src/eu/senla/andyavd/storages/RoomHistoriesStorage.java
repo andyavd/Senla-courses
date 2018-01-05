@@ -24,7 +24,7 @@ public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 	}
 	
 	@Override
-	public void addHistory(RoomHistory history) {
+	public synchronized void addHistory(RoomHistory history) {
 		histories.add(history);
 		histories.get(histories.size()-1).setId(histories.size());
 	}
@@ -35,7 +35,7 @@ public class RoomHistoriesStorage implements IRoomHistoriesStorage{
 	}
 	
 	@Override
-	public void setHistories(List<RoomHistory> histories) {
+	public synchronized void setHistories(List<RoomHistory> histories) {
 		this.histories = histories;
 	}
 	
