@@ -1,11 +1,13 @@
 package ui.src.eu.senla.andyavd.menu;
 
+import hotel.src.eu.senla.andyavd.server.ServerWorker;
 import ui.src.eu.senla.andyavd.api.IAction;
 
 public class MenuItem {
 	private String name;
 	private IAction action;
 	private Menu nextMenu;
+	private ServerWorker serverWorker;
 
 	public String getName() {
 		return name;
@@ -47,6 +49,6 @@ public class MenuItem {
 	}
 
 	void act() {
-		action.execute();
+		action.execute(serverWorker);
 	}
 }

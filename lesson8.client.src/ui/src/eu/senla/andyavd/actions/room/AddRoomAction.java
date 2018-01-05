@@ -8,7 +8,6 @@ import hotel.src.eu.senla.andyavd.entities.Room;
 import hotel.src.eu.senla.andyavd.enums.RoomStars;
 import hotel.src.eu.senla.andyavd.enums.RoomStatus;
 import hotel.src.eu.senla.andyavd.server.Request;
-import hotel.src.eu.senla.andyavd.server.Response;
 import hotel.src.eu.senla.andyavd.server.ServerWorker;
 import hotel.src.eu.senla.andyavd.utils.Printer;
 import ui.src.eu.senla.andyavd.api.IAction;
@@ -60,7 +59,7 @@ public class AddRoomAction implements IAction {
 	}
 
 	@Override
-	public void execute() {
+	public void execute(ServerWorker serverWorker) {
 
 		Scanner scanner = new Scanner(System.in);
 		
@@ -74,17 +73,13 @@ public class AddRoomAction implements IAction {
 
 			Room room = new Room(roomNumber, capacity, dailyPrice, stars, status);
 
-			Request request = new Request("addRoom", new Object[] { room });
-			Response response = ServerWorker.getInstance().sendMessage(request);
+			Request request = new Request("addRoom", room);
+			serverWorker.sendRequest(request);
 
-			if (response.isAccepted()) {
-				Printer.print("Room was successfully added!");
-			} else {
-				Printer.print("Failed to add a Room!");
-			}
+			Printer.print("Room was successfully added!");
 
 		} catch (Exception e) {
-			logger.error("Failed to add a Room! Input valid parameters!", e);
+			logger.error("Failed to add a Room!", e);
 		}
 	}
 }

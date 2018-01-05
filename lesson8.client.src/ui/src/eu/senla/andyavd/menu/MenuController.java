@@ -2,6 +2,7 @@ package ui.src.eu.senla.andyavd.menu;
 
 import java.util.Scanner;
 
+import hotel.src.eu.senla.andyavd.server.ServerWorker;
 import hotel.src.eu.senla.andyavd.utils.Printer;
 import hotel.src.eu.senla.andyavd.view.HotelManager;
 import ui.src.eu.senla.andyavd.utils.InputReader;
@@ -11,6 +12,12 @@ public class MenuController {
 	private Builder builder = new Builder();
 	private Navigator navigator = new Navigator();
 
+	private ServerWorker serverWorker;
+	
+	public MenuController(ServerWorker serverWorker) {
+		this.serverWorker = serverWorker;
+	}
+	
 	public void run() {
 
 		Scanner scanner = new Scanner(System.in);
@@ -42,5 +49,7 @@ public class MenuController {
 		HotelManager.getInstance().exit();
 		scanner.close();
 		Printer.print("Goodbye! Your changes have been saved!");
+		
+		serverWorker.disconnect();
 	}
 }

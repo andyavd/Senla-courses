@@ -10,50 +10,49 @@ import org.apache.log4j.Logger;
 public class ServerWorker {
 	
 	private static final Logger logger = Logger.getLogger(ServerWorker.class);
-	private static ServerWorker serverWorker;
-	private Socket socket;
-	private ObjectInputStream objectInputStream;
 	private ObjectOutputStream objectOutputStream;
+	private ObjectInputStream objectInputStream;
 	
-	private ServerWorker() {
+	private void saveData() {
+		Request request = new Request("exit", null);
+		sendRequest(request);
 	}
 	
-	public static ServerWorker getInstance() {
-		if (serverWorker == null) {
-			serverWorker = new ServerWorker();
-		}
-		return serverWorker;
-	}
-	
-	public void setSocket(Socket socket) {
-		this.socket = socket;
+	public ServerWorker(Socket socket) {
 		try {
-			objectInputStream = new ObjectInputStream(socket.getInputStream());
 			objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+			objectInputStream = new ObjectInputStream(socket.getInputStream());
 		} catch (IOException e) {
-			logger.error("Input/Output errors!", e);
+			logger.error("Errors with ServerWorker!", e);
 		}
 	}
 	
-	public Response sendMessage(Request request) {
-		try {
-			objectOutputStream.writeObject(request);
-			objectOutputStream.flush();
-			return (Response) objectInputStream.readObject();
-		} catch (ClassNotFoundException e) {
+	public Object sendRequest(Request request) {
+		Object response = null;
+        try {
+        	objectOutputStream.writeObject(request);
+        	objectOutputStream.flush();
+        
+        	response = (Object) objectInputStream.readObject();
+        	
+        	return response;
+        	
+        } catch (ClassNotFoundException e) {
 			logger.error("Class not Found!", e);
 			return null;
 		} catch (IOException e) {
 			logger.error("Input/Output errors!", e);
 			return null;
 		}
-	}
+    }
 	
 	public void disconnect() {
 		try {
-			socket.close();
+			saveData();
+			objectOutputStream.close();
+			objectInputStream.close();
 		} catch (IOException e) {
-			logger.error("Disconnect errors!", e);
+			logger.error("Disconnect failed!", e);
 		} 
 	}
 }

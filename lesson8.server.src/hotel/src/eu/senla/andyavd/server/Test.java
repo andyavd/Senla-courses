@@ -6,8 +6,6 @@ import java.net.Socket;
 
 import org.apache.log4j.Logger;
 
-import dependencyinjection.src.eu.senla.andyavd.di.DependencyInjection;
-import hotel.src.eu.senla.andyavd.api.view.IHotelManager;
 import hotel.src.eu.senla.andyavd.utils.Printer;
 
 public class Test {
@@ -17,19 +15,30 @@ public class Test {
 	
 	public static void main(String[] args) {
 		
-		IHotelManager hotelManager = (IHotelManager) DependencyInjection.getInstance().getInstance(IHotelManager.class);
-		hotelManager.loadFromFile();
+		Invoker.invokeHotelManager("loadFromFile", null);
 		
-		Printer.print("Server is running on poort " + PORT);
-		
-		try (ServerSocket server = new ServerSocket(PORT)) {
+		ServerSocket serverSocket = null;
+
+		try {
+			
+			ServerThread serverThread;
+			serverSocket = new ServerSocket(PORT);
+			
 			while (true) {
-				Socket socket = server.accept();
-				ServerThread serverThread = new ServerThread(socket);
+				Printer.print("Waiting for a connection on port " + PORT + "...");
+				Socket socket = serverSocket.accept();
+				serverThread = new ServerThread(socket);
+				Printer.print("Connected: " + serverThread.getName());
 				serverThread.start();
 			}
 		} catch (IOException e) {
 			logger.error("Connection errors!", e);
-		} 
+		} finally {
+            try {
+                if(serverSocket != null) serverSocket.close();
+            } catch (IOException e) {
+            		logger.error("Failed to close the connection!", e);
+            }
+        }
 	}
 }

@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import hotel.src.eu.senla.andyavd.server.Request;
+import hotel.src.eu.senla.andyavd.server.ServerWorker;
 import hotel.src.eu.senla.andyavd.utils.Printer;
-import hotel.src.eu.senla.andyavd.view.HotelManager;
 import ui.src.eu.senla.andyavd.api.IAction;
 import ui.src.eu.senla.andyavd.utils.InputReader;
 
@@ -15,19 +16,17 @@ public class PrintOnDateAction implements IAction {
 	final static Logger logger = Logger.getLogger(PrintOnDateAction.class);
 
 	@Override
-	public void execute() {
+	public void execute(ServerWorker serverWorker) {
 
 		Scanner scanner = new Scanner(System.in);
 		try {
 			LocalDate localDate = InputReader.getLocalDateInput(scanner, "Input the date like \"YYYY-MM-DD\"...");
 
-			StringBuilder s = new StringBuilder();
-			s.append("There are ");
-			s.append(HotelManager.getInstance().getTotalVisitorsOnDate(localDate));
-			s.append(" visitors on ");
-			s.append(localDate);
+			Request request = new Request("getTotalVisitorsOnDate", localDate);
+			Integer number = (Integer) serverWorker.sendRequest(request);
 
-			Printer.print(s.toString());
+			Printer.print("There are " + number + " visitors on " + localDate);
+			
 		} catch (Exception e) {
 			logger.error("Failed to print Visitors. Input a valid date!", e);
 		}

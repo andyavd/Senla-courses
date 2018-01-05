@@ -6,9 +6,9 @@ public class Request implements Serializable{
 
 	private static final long serialVersionUID = -958397086792015513L;
 	private String methodName;
-	private Object[] parameters;
+	private Object parameters;
 
-	public Request(String methodName, Object[] parameters) {
+	public Request(String methodName, Object parameters) {
 		this.methodName = methodName;
 		this.parameters = parameters;
 	}
@@ -21,11 +21,11 @@ public class Request implements Serializable{
 		this.methodName = methodName;
 	}
 	
-	public Object[] getParameters() {
+	public Object getParameters() {
 		return parameters;
 	}
 	
-	public void setParameters(Object[] parameters) {
+	public void setParameters(Object parameters) {
 		this.parameters = parameters;
 	}
 }

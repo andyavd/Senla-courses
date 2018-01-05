@@ -10,24 +10,20 @@ import ui.src.eu.senla.andyavd.menu.MenuController;
 import hotel.src.eu.senla.andyavd.server.ServerWorker;
 
 public class Client {
-	
+
 	private static final Logger logger = Logger.getLogger(Client.class);
 	private final static int PORT = 8195;
 
-	private Socket socket;
-
-	public Client() {
-
+	public static void main(String[] args) {
 		try {
-			socket = new Socket(InetAddress.getLocalHost(), PORT);
+
+			Socket clientSocket = new Socket(InetAddress.getLocalHost(), PORT);
+			ServerWorker serverWorker = new ServerWorker(clientSocket);
+			MenuController menuController = new MenuController(serverWorker);
+			menuController.run();
+
 		} catch (IOException e) {
 			logger.error("Connection problems!", e);
 		}
-	}
-
-	public void run() throws ReflectiveOperationException {
-//		ServerWorker.getInstance().setSocket(socket);
-		MenuController contr = new MenuController();
-		contr.run();
 	}
 }
