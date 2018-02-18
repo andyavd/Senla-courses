@@ -235,7 +235,6 @@ public class HotelManager implements IHotelManager {
 	}
 	@Override
 	public void exit() {
-//		SerializationUtil.serialize(getRooms(), getServices(), getVisitors(), getHistories());
 		System.out.println("Bye-Bye");
 	}
 
