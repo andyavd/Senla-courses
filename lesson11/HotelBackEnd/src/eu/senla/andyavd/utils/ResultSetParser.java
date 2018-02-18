@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.Room;
+import eu.senla.andyavd.RoomHistory;
 import eu.senla.andyavd.Service;
 import eu.senla.andyavd.Visitor;
 
@@ -47,15 +48,18 @@ public class ResultSetParser {
         }
 		return visitor;
 	}
-//	public static RoomHistory parseHistory(ResultSet resultSet) {
-//		RoomHistory history = new RoomHistory();
-//		try {
-//			history.setId(resultSet.getInt("id"));
-//			history.setRoom();
-//			
-//        } catch (SQLException e) {
-//            logger.error("Failed to parse room history!");
-//        }
-//		return history;
-//	}
+	public static RoomHistory parseHistory(ResultSet resultSet) {
+		RoomHistory history = new RoomHistory();
+		try {
+			history.setId(resultSet.getInt("id"));
+			history.setRoomId(resultSet.getInt("room_id"));
+			history.setVisitorId(resultSet.getInt("visitor_id"));
+			history.setCheckInDate(resultSet.getDate("check_in"));
+			history.setCheckOutDate(resultSet.getDate("check_out"));
+			history.setStatus(resultSet.getString("history_status"));
+        } catch (SQLException e) {
+            logger.error("Failed to parse room history!");
+        }
+		return history;
+	}
 }

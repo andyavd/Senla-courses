@@ -23,32 +23,19 @@ public class ServicesByPrice implements IAction {
 		Scanner scanner = new Scanner(System.in);
 		
 		try {
-			
-			Request request = new Request("getVisitors", null);
+			Request request = new Request("getCheckedVisitorsWithServices", null);
 			@SuppressWarnings("unchecked")
 			List<Visitor> visitors = (List<Visitor>) serverWorker.sendRequest(request);
 			Printer.printList(visitors);
 			
 			Integer id = InputReader.getIntegerInput(scanner, "Input Visitor id ...");
-			request = new Request("getVisitorById", id);
-			
-			Visitor visitor = (Visitor) serverWorker.sendRequest(request);
-			
-			request = new Request("sortVisitorServicesByPrice", visitor);
+			request = new Request("getVisitorServices", id);
 			
 			@SuppressWarnings("unchecked")
 			List<Service> services = (List<Service>) serverWorker.sendRequest(request);
-
-			if (services == null || services.size() == 0) {
-				Printer.print("There are no Services for current Visitor!");
-			} else {
-				Printer.printList(services);
-			}
-			
+			Printer.printList(services);	
 		} catch (Exception e) {
-			logger.error("Failed to print Visitors Services!", e);
+			logger.error("No such Visitor to show services!", e);
 		}
-		
-
 	}
 }

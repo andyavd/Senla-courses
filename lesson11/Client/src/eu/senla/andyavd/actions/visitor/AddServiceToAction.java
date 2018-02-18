@@ -25,7 +25,7 @@ public class AddServiceToAction implements IAction {
 
 		try {
 			
-			Request request = new Request("getVisitors", null);
+			Request request = new Request("getCheckedVisitors", null);
 			@SuppressWarnings("unchecked")
 			List<Visitor> visitors = (List<Visitor>) serverWorker.sendRequest(request);
 			Printer.printList(visitors);
@@ -35,18 +35,12 @@ public class AddServiceToAction implements IAction {
 			List<Service> services = (List<Service>) serverWorker.sendRequest(request);
 			Printer.printList(services);
 			
-			Integer visitorId = InputReader.getIntegerInput(scanner, "Input the Visitor id...");
-			Integer serviceId = InputReader.getIntegerInput(scanner, "Input the Service id...");
-
-			request = new Request("getVisitorById", visitorId);
-			Visitor visitor = (Visitor) serverWorker.sendRequest(request);
-			
-			request = new Request("getServiceById", serviceId);
-			Service service = (Service) serverWorker.sendRequest(request);
+			int visitorId = InputReader.getIntegerInput(scanner, "Input the Visitor id...");
+			int serviceId = InputReader.getIntegerInput(scanner, "Input the Service id...");
 			
 			List<Object> parametersList = new ArrayList<>();
-			parametersList.add(visitor);
-			parametersList.add(service);
+			parametersList.add(visitorId);
+			parametersList.add(serviceId);
 			
 			request = new Request("addServicesToVisitor", parametersList);
 			serverWorker.sendRequest(request);
@@ -57,5 +51,4 @@ public class AddServiceToAction implements IAction {
 			logger.error("No such Visitor or Service!", e);
 		}
 	}
-
 }

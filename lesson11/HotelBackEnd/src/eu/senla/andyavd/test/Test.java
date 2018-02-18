@@ -17,9 +17,8 @@ public class Test {
 	private static final Logger logger = Logger.getLogger(Test.class);
 	
 	public static void main(String[] args) {
-		
-		Invoker.invokeHotelManager("loadFromFile", null);
 		BasicConfigurator.configure();
+		Invoker.invokeHotelManager("loadFromFile", null);
 		ServerSocket serverSocket = null;
 
 		try {

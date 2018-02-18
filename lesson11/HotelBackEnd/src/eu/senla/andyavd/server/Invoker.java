@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.DependencyInjection;
+import eu.senla.andyavd.api.view.IHotelManager;
 import eu.senla.andyavd.view.HotelManager;
 
 public class Invoker {
@@ -13,7 +14,7 @@ public class Invoker {
 	
 	public static Object invokeHotelManager(String methodName, Object parameters) {
 		
-		HotelManager hotelManager = (HotelManager) DependencyInjection.getInstance().getInstance(HotelManager.class);
+		IHotelManager hotelManager = (HotelManager) DependencyInjection.getInstance().getInstance(IHotelManager.class);
 		Object response = null;
 		
 		try {

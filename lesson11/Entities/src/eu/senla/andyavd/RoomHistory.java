@@ -1,8 +1,8 @@
 package eu.senla.andyavd;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import eu.senla.andyavd.annotations.CsvEntity;
@@ -16,16 +16,21 @@ public class RoomHistory extends AEntity implements Serializable{
 	
 	@CsvProperty(propertyType = PropertyType.SimpleProperty, columnNumber = 1)
 	private int id = 0;
-	private Room room;
-	private Visitor visitor;
-	private LocalDate checkInDate;
-	private LocalDate checkOutDate;
+	private int visitorId;
+	private int roomId;
+	private Date checkInDate;
+	private Date checkOutDate;
 	private List<Service> services = new ArrayList<Service>();
 	private String status;
 
 	public RoomHistory() {
 	}
-	
+	public RoomHistory(int visitorId, int roomId, Date checkInDate, Date checkOutDate) {
+		this.visitorId = visitorId;
+		this.roomId = roomId;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+	}
 	@Override
 	public int getId() {
 		return id;
@@ -34,28 +39,28 @@ public class RoomHistory extends AEntity implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Room getRoom() {
-		return room;
+	public int getVisitorId() {
+		return visitorId;
 	}
-	public void setRoom(Room room) {
-		this.room = room;
+	public void setVisitorId(int visitorId) {
+		this.visitorId = visitorId;
 	}
-	public Visitor getVisitor() {
-		return visitor;
+	public int getRoomId() {
+		return roomId;
 	}
-	public void setVisitor(Visitor visitor) {
-		this.visitor = visitor;
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
-	public LocalDate getCheckInDate() {
+	public Date getCheckInDate() {
 		return checkInDate;
 	}
-	public void setCheckInDate(LocalDate checkInDate) {
+	public void setCheckInDate(Date checkInDate) {
 		this.checkInDate = checkInDate;
 	}
-	public LocalDate getCheckOutDate() {
+	public Date getCheckOutDate() {
 		return checkOutDate;
 	}
-	public void setCheckOutDate(LocalDate checkOutDate) {
+	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
 	public List<Service> getService() {
@@ -77,9 +82,9 @@ public class RoomHistory extends AEntity implements Serializable{
 			s.append("History #");
 			s.append(id);
 			s.append(" : Room ");
-			s.append(room.getRoomNumber());
+			s.append(roomId);
 			s.append(", Visitor: ");
-			s.append(visitor.getLastName());
+			s.append(visitorId);
 			s.append(" has checked-in. Check-in date: ");
 			s.append(checkInDate);
 			s.append(". Check-out date: ");
@@ -89,9 +94,9 @@ public class RoomHistory extends AEntity implements Serializable{
 			s.append("History #");
 			s.append(id);
 			s.append(" : Room ");
-			s.append(room.getRoomNumber());
+			s.append(roomId);
 			s.append(", Visitor ");
-			s.append(visitor.getLastName());
+			s.append(visitorId);
 			s.append(" has checked-out.");
 			s.append(status);
 		}

@@ -43,8 +43,8 @@ public class AddRoomAction implements IAction {
 		Scanner scanner = new Scanner(System.in);
 		
 		try {
-			Integer roomNumber = InputReader.getIntegerInput(scanner, "Input the Room number...");
-			Integer capacity = InputReader.getIntegerInput(scanner, "Input the Room capacity...");
+			int roomNumber = InputReader.getIntegerInput(scanner, "Input the Room number...");
+			int capacity = InputReader.getIntegerInput(scanner, "Input the Room capacity...");
 			Double dailyPrice = InputReader.getDoubleInput(scanner, "Input the Room daily price...");
 			String stars = integerToStar(InputReader.getIntegerInput(scanner, "Input the Room rate from 1 to 4..."));
 

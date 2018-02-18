@@ -22,17 +22,14 @@ public class BillAction implements IAction {
 		Scanner scanner = new Scanner(System.in);
 
 		try {
-			
-			Request request = new Request("getVisitors", null);
+			Request request = new Request("getCheckedVisitors", null);
 			@SuppressWarnings("unchecked")
 			List<Visitor> visitors = (List<Visitor>) serverWorker.sendRequest(request);
 			Printer.printList(visitors);
 			
 			Integer id = InputReader.getIntegerInput(scanner, "Input the Visitor id to bill...");
-			request = new Request("getVisitorById", id);
-			Visitor visitor = (Visitor) serverWorker.sendRequest(request);
 			
-			request = new Request("billVisitor", visitor);
+			request = new Request("billVisitor", id);
 			Double sum = (Double) serverWorker.sendRequest(request);
 			
 			Printer.print("Visitor needs to pay " + sum);

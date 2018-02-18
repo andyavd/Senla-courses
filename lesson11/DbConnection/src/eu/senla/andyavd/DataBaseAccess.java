@@ -14,10 +14,6 @@ public class DataBaseAccess {
 	private static String dbUrl = Settings.getCustomProperties().getUrl();
 	private static String dbUsername = Settings.getCustomProperties().getUsername();
 	private static String dbPassword = Settings.getCustomProperties().getPassword();
-//	private static String dbDriver = "com.mysql.jdbc.Driver";
-//	private static String dbUrl = "jdbc:mysql://localhost:3306/hotel? autoReconnect=true&useSSL=false";
-//	private static String dbUsername = "root";
-//	private static String dbPassword = "root";
 	private Connection connection;
 	private DataBaseAccess() {
 		createConnection();
@@ -27,6 +23,9 @@ public class DataBaseAccess {
 			instance = new DataBaseAccess();
 		return instance;
 	}
+	
+	
+	
 	private void createConnection() {
 		try {
 		Class.forName(dbDriver);
@@ -48,6 +47,7 @@ public class DataBaseAccess {
 		try {
 			if(connection != null) {
 				connection.close();
+				connection = null;
 				logger.info("Disconnected");
 			}
 		} catch (SQLException e) {

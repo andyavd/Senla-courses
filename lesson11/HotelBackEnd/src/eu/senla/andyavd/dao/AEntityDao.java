@@ -11,26 +11,27 @@ import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.AEntity;
 import eu.senla.andyavd.api.dao.IAEntityDao;
+import eu.senla.andyavd.enums.SortType;
 
 public abstract class AEntityDao<T extends AEntity> implements IAEntityDao<T> {
 	
 	final static Logger logger = Logger.getLogger(AEntityDao.class);
-	protected static final String SQL_ERROR = "SQL Error!";
+	protected static final String ORDER_BY = " order by ";
 	
 	protected abstract T parseResult(ResultSet resultSet);
     protected abstract String getInsertQuery();
     protected abstract String getUpdateQuery();
     protected abstract String getDeleteQuery();
     protected abstract String getByIdQuery();
-    protected abstract String getGetAllQuery();
+    protected abstract String getAllQuery(SortType type);
     protected abstract void setInsertPreparedStatement(PreparedStatement statement, T entity) throws SQLException;
     protected abstract void setUpdatePreparedStatement(PreparedStatement statement, T entity) throws SQLException;
     
     @Override
-    public List<T> getAll(Connection connection) throws SQLException {
+    public List<T> getAll(Connection connection, SortType type) throws SQLException {
     		List<T> list = new ArrayList<>();
     		ResultSet resultSet = null;
-            try (PreparedStatement statement = connection.prepareStatement(getGetAllQuery())) {
+            try (PreparedStatement statement = connection.prepareStatement(getAllQuery(type))) {
             	resultSet = statement.executeQuery();
             while (resultSet.next()) {
                     list.add(parseResult(resultSet));
@@ -41,7 +42,7 @@ public abstract class AEntityDao<T extends AEntity> implements IAEntityDao<T> {
     		return list;
     }
     @Override
-	public T getById(Connection connection, Integer id) throws SQLException {
+	public T getById(Connection connection, int id) throws SQLException {
 		T entity = null;
         try (PreparedStatement statement = connection.prepareStatement(getByIdQuery())) {
             statement.setInt(1, id);
@@ -57,7 +58,7 @@ public abstract class AEntityDao<T extends AEntity> implements IAEntityDao<T> {
 			setInsertPreparedStatement(statement, entity);
             statement.executeUpdate();
         } catch (SQLException e) {
-        		logger.error("Failed to get by create entity!");
+        		logger.error("Failed to create entity!");
         }
 	}
     @Override
@@ -70,7 +71,7 @@ public abstract class AEntityDao<T extends AEntity> implements IAEntityDao<T> {
         }
 	}
     @Override
-	public void delete(Connection connection, Integer id) throws SQLException{
+	public void delete(Connection connection, int id) throws SQLException{
 		try (PreparedStatement statement = connection.prepareStatement(getDeleteQuery())) {
             statement.setInt(1, id);
             statement.executeUpdate();

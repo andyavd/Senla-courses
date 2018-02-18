@@ -1,13 +1,12 @@
 package eu.senla.andyavd.view;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.DependencyInjection;
+import eu.senla.andyavd.Printer;
 import eu.senla.andyavd.Room;
 import eu.senla.andyavd.RoomHistory;
 //import eu.senla.andyavd.SerializationUtil;
@@ -20,14 +19,8 @@ import eu.senla.andyavd.api.controllers.IRoomManager;
 import eu.senla.andyavd.api.controllers.IServiceManager;
 import eu.senla.andyavd.api.controllers.IVisitorManager;
 import eu.senla.andyavd.api.view.IHotelManager;
-import eu.senla.andyavd.exceptions.EmptyRoomException;
-import eu.senla.andyavd.exceptions.NotEmptyRoomException;
-//import eu.senla.andyavd.sorters.rooms.ByCapacity;
-//import eu.senla.andyavd.sorters.rooms.ByPrice;
-//import eu.senla.andyavd.sorters.rooms.ByStars;
-//import eu.senla.andyavd.sorters.services.ByDailyPrice;
-//import eu.senla.andyavd.sorters.services.ByName;
-//import eu.senla.andyavd.sorters.visitors.ByLastName;
+import eu.senla.andyavd.enums.SortType;
+
 
 @Storage
 public class HotelManager implements IHotelManager {
@@ -56,16 +49,28 @@ public class HotelManager implements IHotelManager {
 		roomManager.addRoom(room);
 	}
 	@Override
-	public void deleteRoom(Room room) {
-		roomManager.deleteRoom(room);
-	}
-	@Override
-	public Room cloneRoom(Room room) {
-		return roomManager.cloneRoom(room);
-	}
-	@Override
 	public List<Room> getRooms() {
 		return roomManager.getRooms();
+	}
+	@Override
+	public void updateRoom(Room room) {
+		roomManager.updateRoom(room);
+	}
+	@Override
+	public void deleteRoom(int id) {
+		roomManager.deleteRoom(id);
+	}
+	@Override
+	public Room getRoomById(int id) {
+		return roomManager.getRoomById(id);
+	}
+	@Override
+	public Room cloneRoom(int id) {
+		return roomManager.cloneRoom(id);
+	}
+	@Override
+	public List<Room> getUsedRooms() {
+		return roomManager.getUsedRooms();
 	}
 	@Override
 	public List<Room> getEmptyRooms() {
@@ -77,54 +82,37 @@ public class HotelManager implements IHotelManager {
 	}
 	@Override
 	public List<Room> sortRoomsByCapacity() {
-//		List<Room> sortedRooms = roomManager.sortRooms(new ByCapacity());
-//		return sortedRooms;
-		return null;
+		List<Room> sortedRooms = roomManager.sortRooms(SortType.capacity);
+		return sortedRooms;
 	}
 	@Override
 	public List<Room> sortRoomsByPrice() {
-//		List<Room> sortedRooms = roomManager.sortRooms(new ByPrice());
-//		return sortedRooms;
-		return null;
+		List<Room> sortedRooms = roomManager.sortRooms(SortType.daily_price);
+		return sortedRooms;
 	}
 	@Override
 	public List<Room> sortRoomsByStars() {
-//		List<Room> sortedRooms = roomManager.sortRooms(new ByStars());
-//		return sortedRooms;
-		return null;
+		List<Room> sortedRooms = roomManager.sortRooms(SortType.stars);
+		return sortedRooms;
 	}
 	@Override
 	public List<Room> sortEmptyRoomsByCapacity() {
-//		List<Room> sortedRooms = roomManager.sortEmptyRooms(new ByCapacity());
-//		return sortedRooms;
-		return null;
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(SortType.capacity);
+		return sortedRooms;
 	}
 	@Override
 	public List<Room> sortEmptyRoomsByPrice() {
-//		List<Room> sortedRooms = roomManager.sortEmptyRooms(new ByPrice());
-//		return sortedRooms;
-		return null;
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(SortType.daily_price);
+		return sortedRooms;
 	}
 	@Override
 	public List<Room> sortEmptyRoomsByStars() {
-//		List<Room> sortedRooms = roomManager.sortEmptyRooms(new ByStars());
-//		return sortedRooms;
-		return null;
+		List<Room> sortedRooms = roomManager.sortEmptyRooms(SortType.stars);
+		return sortedRooms;
 	}
 	@Override
-	public Double billVisitor(Visitor visitor) throws NullPointerException {
-		if (visitor.getHistory() != null) {
-
-			Period period = Period.between(visitor.getHistory().getCheckInDate(),
-					visitor.getHistory().getCheckOutDate());
-			int days = period.getDays();
-			double payment = visitor.getHistory().getRoom().getDailyPrice() * days;
-
-			return payment;
-		} else {
-			logger.error("No such visitor to bill!");
-			return null;
-		}
+	public Double billVisitor(int visitorId) {
+		return roomHistoryManager.billVisitor(visitorId);
 	}
 	@Override
 	public List<Room> getEmptyRoomsOnDate(LocalDate date) {
@@ -132,48 +120,20 @@ public class HotelManager implements IHotelManager {
 	}
 	@Override
 	public boolean isRoomStatus() {
-
 		boolean isAllowed = Settings.getCustomProperties().isStatus();
-
 		return isAllowed;
 	}
 	@Override
-	public void changeRoomStatus(Room room) {
-		if (room.getStatus().equals("Empty")) {
-			room.setStatus("Serviced");
-			roomManager.updateStorage(room.getId(), room);
-		}
+	public void changeRoomStatus(int id) {
+		roomManager.changeRoomStatus(id);
 	}
 	@Override
-	public List<RoomHistory> getLastVisitorsOfRoom(Room room) {
-
-		Integer variableProperty = Settings.getCustomProperties().getCount();
-		List<RoomHistory> lastVisitorsOfRoom = new ArrayList<RoomHistory>();
-		List<RoomHistory> histories = room.getHistories();
-		if (histories.size() <= variableProperty) {
-			for (int i = 0; i < histories.size(); i++) {
-				RoomHistory history = histories.get(i);
-				if (history != null) {
-					lastVisitorsOfRoom.add(history);
-				}
-			}
-		} else {
-			for (int i = histories.size() - variableProperty; i < histories.size(); i++) {
-				RoomHistory history = histories.get(i);
-				if (history != null) {
-					lastVisitorsOfRoom.add(history);
-				}
-			}
-		}
-		return lastVisitorsOfRoom;
+	public List<Visitor> getLastVisitorsOfRoom(int roomId) {
+		return roomHistoryManager.getLastVisitorsOfRoom(roomId);
 	}
 	@Override
-	public void changePriceOnRoom(Room room, double dailyPrice) {
-		room.setDailyPrice(dailyPrice);
-	}
-	@Override
-	public Room getRoomById(Integer id) {
-		return roomManager.getRoomById(id);
+	public void changeRoomPrice(int id, Double dailyPrice) {
+		roomManager.changeRoomPrice(id, dailyPrice);
 	}
 
 	/* ========================Visitors======================== */
@@ -187,47 +147,33 @@ public class HotelManager implements IHotelManager {
 		return visitorManager.getVisitors();
 	}
 	@Override
-	public void deleteVisitor(Visitor visitor) {
-		visitorManager.deleteVisitor(visitor);
+	public void updateVisitor(Visitor visitor) {
+		visitorManager.updateVisitor(visitor);
+	}
+	@Override
+	public void deleteVisitor(int id) {
+		visitorManager.deleteVisitor(id);
+	}
+	@Override
+	public Visitor getVisitorById(int id) {
+		return visitorManager.getVisitorById(id);
 	}
 	@Override
 	public List<Visitor> sortVisitorsByName() {
-//		List<Visitor> sortedVisitors = visitorManager.sortVisitors(new ByLastName());
-//		return sortedVisitors;
-		return null;
+		return visitorManager.getVisitors();
 	}
 	@Override
-	public void addServicesToVisitor(Visitor visitor, Service service) throws NullPointerException {
-		visitorManager.addServicesToVisitor(visitor, service);
+	public void addServicesToVisitor(int visitorId, int serviceId) {
+		roomHistoryManager.addServicesToVisitor(visitorId, serviceId);
 	}
 	@Override
-	public List<Service> getVisitorServices(Visitor visitor) {
-
-		List<Service> visitorServices = new ArrayList<Service>();
-		List<Service> services = visitorManager.getVisitorServices(visitor);
-		for (int i = 0; i < services.size(); i++) {
-			Service service = services.get(i);
-			if (service != null) {
-				visitorServices.add(service);
-			}
-		}
-		return visitorServices;
+	public List<Service> getVisitorServices(int visitorId) {
+		return roomHistoryManager.getVisitorServices(visitorId);
 	}
 	@Override
-	public List<Service> sortVisitorServicesByPrice(Visitor visitor) {
-//		List<Service> sortedServices = visitorManager.sortVisitorServicesByPrice(visitor, new ByDailyPrice());
-//		return sortedServices;
-		return null;
+	public Integer getTotalVisitorsOnDate(String date) {
+		return roomHistoryManager.getTotalVisitorsOnDate(date);
 	}
-	@Override
-	public Integer getTotalVisitorsOnDate(LocalDate date) {
-		return visitorManager.getTotalVisitorsOnDate(date);
-	}
-	@Override
-	public Visitor getVisitorById(Integer id) {
-		return visitorManager.getVisitorById(id);
-	}
-
 
 	/* ========================Services======================== */
 
@@ -240,32 +186,25 @@ public class HotelManager implements IHotelManager {
 		return serviceManager.getServices();
 	}
 	@Override
-	public void setServices(List<Service> services) {
-		serviceManager.setServices(services);
+	public void updateService(Service service) {
+		serviceManager.updateService(service);
 	}
 	@Override
-	public void deleteService(Service service) {
-		serviceManager.deleteService(service);
+	public void deleteService(int id) {
+		serviceManager.deleteService(id);
 	}
 	@Override
-	public List<Service> sortServicesByName() {
-//		List<Service> sortedServices = serviceManager.sortServices(new ByName());
-//		return sortedServices;
-		return null;
+	public Service getServiceById(int id) {
+		return serviceManager.getServiceById(id);
 	}
 	@Override
 	public List<Service> sortServicesByPrice() {
-//		List<Service> sortedServices = serviceManager.sortServices(new ByDailyPrice());
-//		return sortedServices;
-		return null;
+		List<Service> sortedServices = serviceManager.sortServices(SortType.daily_price);
+		return sortedServices;
 	}
 	@Override
-	public void changePriceOnService(Service service, double dailyPrice) {
-		service.setDailyPrice(dailyPrice);
-	}
-	@Override
-	public Service getServiceById(Integer id) {
-		return serviceManager.getServiceById(id);
+	public void changeServicePrice(int id, double dailyPrice) {
+		serviceManager.changeServicePrice(id, dailyPrice);
 	}
 
 	/* ========================Process========================= */
@@ -275,57 +214,29 @@ public class HotelManager implements IHotelManager {
 		return roomHistoryManager.getHistories();
 	}
 	@Override
-	public void checkInVisitor(Visitor visitor, Room room, LocalDate checkInDate, LocalDate checkOutDate)
-			throws NotEmptyRoomException {
-
-		if (room.getStatus().equals("Empty")) {
-			RoomHistory newHistory = new RoomHistory();
-
-			newHistory.setVisitor(visitor);
-			newHistory.setRoom(room);
-			newHistory.setCheckInDate(checkInDate);
-			newHistory.setCheckOutDate(checkOutDate);
-			newHistory.setStatus("CheckIn");
-
-			roomHistoryManager.addHistory(newHistory);
-
-			roomManager.updateRoom(room, newHistory);
-			room.setStatus("Occupied");
-			visitorManager.updateVisitor(visitor, newHistory);
-		} else {
-			logger.error("The Room is not empty!");
-			return;
-		}
+	public void checkInVisitor(RoomHistory history) {
+		roomHistoryManager.addHistory(history);
 	}
 	@Override
-	public void checkOutVisitor(Visitor visitor, Room room) throws EmptyRoomException {
-		if (room.getStatus().equals("Occupied")) {
-			List<RoomHistory> histories = room.getHistories();
-			for (int i = 0; i < histories.size(); i++) {
-				RoomHistory history = histories.get(i);
-				if (history != null && history.getVisitor().equals(visitor)&& history.getStatus().equals("CheckIn")){
-					history.setStatus("CheckOut");
-					visitor.setHistory(null);
-					room.setStatus("Empty");
-					break;
-				}
-			}
-		} else {
-			logger.error("The room is empty!");
-			return;
-		}
+	public List<Visitor> getCheckedVisitors() {
+		return visitorManager.getCheckedVisitors();
+	}
+	@Override
+	public List<Visitor> getCheckedVisitorsWithServices(){
+		return visitorManager.getCheckedVisitorsWithServices();
+	}
+	@Override
+	public void checkOutVisitor(int visitorId) {
+		roomHistoryManager.checkOutVisitor(visitorId);
+	}
+	@Override
+	public void loadFromFile() {
+		Printer.print("Hello-Hello!");
 	}
 	@Override
 	public void exit() {
 //		SerializationUtil.serialize(getRooms(), getServices(), getVisitors(), getHistories());
-	}
-	@Override
-	public void loadFromFile() {
-//		try {
-//			SerializationUtil.deserialize();
-//		} catch (Exception e) {
-//			logger.error("Failed to load from file!", e);
-//		}
+		System.out.println("Bye-Bye");
 	}
 
 	// ========================CSV=========================
@@ -372,10 +283,5 @@ public class HotelManager implements IHotelManager {
 		} catch (Exception e) {
 			logger.error("Visitors were not imported!", e);
 		}
-	}
-	@Override
-	public void setVisitors(List<Visitor> visitors) {
-		// TODO Auto-generated method stub
-		
 	}
 }

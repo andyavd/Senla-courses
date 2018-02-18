@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 public class InstanceProperties {
 
 	private static final Logger logger = Logger.getLogger(InstanceProperties.class);
-	private static final String PATH = "data/instance.properties";
+	private static final String PATH = "/DependencyInjection/resources/instance.properties";
 	private static Map<Object, Object> propertiesMap;
 
 	public static void init() {

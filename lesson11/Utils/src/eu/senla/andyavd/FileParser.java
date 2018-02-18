@@ -36,9 +36,9 @@ public class FileParser {
 			StringBuilder s = new StringBuilder();
 			s.append(String.valueOf(history.getId()));
 			s.append(SEPARATOR);
-			s.append(String.valueOf(history.getRoom().getId()));
+			s.append(String.valueOf(history.getRoomId()));
 			s.append(SEPARATOR);
-			s.append(String.valueOf(history.getVisitor().getId()));
+			s.append(String.valueOf(history.getVisitorId()));
 			s.append(SEPARATOR);
 			s.append(String.valueOf(history.getCheckInDate()));
 			s.append(SEPARATOR);
@@ -63,22 +63,6 @@ public class FileParser {
 			s.append(SEPARATOR);
 			s.append(newVisitor.getLastName());
 			s.append(SEPARATOR);
-			if (newVisitor.getHistory() == null) {
-				s.append(" ");
-				s.append(SEPARATOR);
-				s.append(" ");
-				s.append(SEPARATOR);
-				s.append(" ");
-				s.append(SEPARATOR);
-			} else {
-
-				s.append(String.valueOf(newVisitor.getHistory().getRoom().getId()));
-				s.append(SEPARATOR);
-				s.append(String.valueOf(newVisitor.getHistory().getCheckInDate()));
-				s.append(SEPARATOR);
-				s.append(String.valueOf(newVisitor.getHistory().getCheckOutDate()));
-				s.append(SEPARATOR);
-			}
 			serviceStrings[i] = s.toString();
 		}
 		return serviceStrings;
@@ -103,15 +87,6 @@ public class FileParser {
 			s.append(String.valueOf(newRoom.getStars()));
 			s.append(SEPARATOR);
 			s.append(String.valueOf(newRoom.getStatus()));
-			s.append(SEPARATOR);
-			if (newRoom.getHistories() == null) {
-				s.append(" ");
-			} else {
-				List<RoomHistory> roomHistories = newRoom.getHistories();
-				for (int k = 0; k < roomHistories.size(); k++) {
-					s.append(roomHistories.get(roomHistories.size() - 1).getId());
-				}
-			}
 			s.append(SEPARATOR);
 			roomStrings[i] = s.toString();
 		}
