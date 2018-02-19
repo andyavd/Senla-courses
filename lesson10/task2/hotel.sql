@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS hotel.history (
   id TINYINT(3) NOT NULL AUTO_INCREMENT,
   room_id TINYINT(3) NOT NULL,
   visitor_id TINYINT(3) NOT NULL,
-  visitor_service_id TINYINT(3) NULL,
   check_in DATE NOT NULL,
   check_out DATE NOT NULL,
   history_status ENUM('CheckIn','CheckOut') NOT NULL DEFAULT 'CheckOut',
@@ -46,5 +45,3 @@ service_id TINYINT(3) NOT NULL,
 PRIMARY KEY (id),
 FOREIGN KEY (service_id) REFERENCES service(id),
 FOREIGN KEY (history_id) REFERENCES history(id));
-
-ALTER TABLE history ADD FOREIGN KEY (visitor_service_id) REFERENCES visitor_service (history_id);
