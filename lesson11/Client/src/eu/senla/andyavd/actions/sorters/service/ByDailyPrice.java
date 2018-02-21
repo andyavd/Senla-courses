@@ -12,7 +12,7 @@ import eu.senla.andyavd.server.TransactionWorker;
 
 public class ByDailyPrice implements IAction {
 
-	final static Logger logger = Logger.getLogger(ByDailyPrice.class);
+	private final static Logger logger = Logger.getLogger(ByDailyPrice.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

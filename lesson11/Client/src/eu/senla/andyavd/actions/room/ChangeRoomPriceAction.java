@@ -15,7 +15,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class ChangeRoomPriceAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(ChangeRoomPriceAction.class);
+	private final static Logger logger = Logger.getLogger(ChangeRoomPriceAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

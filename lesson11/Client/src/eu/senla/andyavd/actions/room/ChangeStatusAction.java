@@ -14,7 +14,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class ChangeStatusAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(ChangeStatusAction.class);
+	private final static Logger logger = Logger.getLogger(ChangeStatusAction.class);
 	
 	@Override
 	public void execute(TransactionWorker serverWorker) {

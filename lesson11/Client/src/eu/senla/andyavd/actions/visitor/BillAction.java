@@ -14,7 +14,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class BillAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(BillAction.class);
+	private final static Logger logger = Logger.getLogger(BillAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

@@ -15,7 +15,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class PrintEmptyOnDateAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(PrintEmptyOnDateAction.class);
+	private final static Logger logger = Logger.getLogger(PrintEmptyOnDateAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

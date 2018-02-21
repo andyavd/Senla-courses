@@ -14,7 +14,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class DeleteVisitorAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(DeleteVisitorAction.class);
+	private final static Logger logger = Logger.getLogger(DeleteVisitorAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

@@ -13,7 +13,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class AddVisitorAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(AddVisitorAction.class);
+	private final static Logger logger = Logger.getLogger(AddVisitorAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

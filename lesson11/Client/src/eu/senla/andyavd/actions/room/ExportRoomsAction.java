@@ -9,7 +9,7 @@ import eu.senla.andyavd.server.TransactionWorker;
 
 public class ExportRoomsAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(ExportRoomsAction.class);
+	private final static Logger logger = Logger.getLogger(ExportRoomsAction.class);
 	
 	@Override
 	public void execute(TransactionWorker serverWorker) {

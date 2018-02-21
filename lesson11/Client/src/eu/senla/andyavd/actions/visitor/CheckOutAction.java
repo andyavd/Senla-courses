@@ -14,7 +14,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class CheckOutAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(CheckOutAction.class);
+	private final static Logger logger = Logger.getLogger(CheckOutAction.class);
 	
 	@Override
 	public void execute(TransactionWorker serverWorker) {

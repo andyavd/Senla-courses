@@ -12,7 +12,7 @@ import eu.senla.andyavd.server.TransactionWorker;
 
 public class ByName implements IAction {
 
-	final static Logger logger = Logger.getLogger(ByName.class);
+	private final static Logger logger = Logger.getLogger(ByName.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

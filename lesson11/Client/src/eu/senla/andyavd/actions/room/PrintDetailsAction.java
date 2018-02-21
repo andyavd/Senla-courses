@@ -14,7 +14,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class PrintDetailsAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(PrintDetailsAction.class);
+	private final static Logger logger = Logger.getLogger(PrintDetailsAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

@@ -13,7 +13,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class AddRoomAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(AddRoomAction.class);
+	private final static Logger logger = Logger.getLogger(AddRoomAction.class);
 
 	String integerToStar(Integer input) {
 

@@ -14,7 +14,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class DeleteServiceAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(DeleteServiceAction.class);
+	private final static Logger logger = Logger.getLogger(DeleteServiceAction.class);
 	
 	@Override
 	public void execute(TransactionWorker serverWorker) {

@@ -16,7 +16,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class AddServiceToAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(AddServiceToAction.class);
+	private final static Logger logger = Logger.getLogger(AddServiceToAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

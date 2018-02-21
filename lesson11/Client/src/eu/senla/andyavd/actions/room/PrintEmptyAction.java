@@ -12,7 +12,7 @@ import eu.senla.andyavd.server.TransactionWorker;
 
 public class PrintEmptyAction implements IAction{
 
-	final static Logger logger = Logger.getLogger(PrintEmptyAction.class);
+	private final static Logger logger = Logger.getLogger(PrintEmptyAction.class);
 	
 	@Override
 	public void execute(TransactionWorker serverWorker) {

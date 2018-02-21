@@ -15,7 +15,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class PrintLastVisitorsAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(PrintLastVisitorsAction.class);
+	private final static Logger logger = Logger.getLogger(PrintLastVisitorsAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {

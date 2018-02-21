@@ -13,7 +13,7 @@ import eu.senla.andyavd.utils.InputReader;
 
 public class AddServiceAction implements IAction {
 
-	final static Logger logger = Logger.getLogger(AddServiceAction.class);
+	private final static Logger logger = Logger.getLogger(AddServiceAction.class);
 
 	@Override
 	public void execute(TransactionWorker serverWorker) {
