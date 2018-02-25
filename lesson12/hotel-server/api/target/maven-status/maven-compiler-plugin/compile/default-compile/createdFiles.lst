@@ -1,0 +1,10 @@
+eu/senla/andyavd/api/managers/IRoomHistoryManager.class
+eu/senla/andyavd/api/controller/IHotelManager.class
+eu/senla/andyavd/api/dao/IServiceDao.class
+eu/senla/andyavd/api/dao/IRoomDao.class
+eu/senla/andyavd/api/managers/IRoomManager.class
+eu/senla/andyavd/api/managers/IServiceManager.class
+eu/senla/andyavd/api/managers/IVisitorManager.class
+eu/senla/andyavd/api/dao/IRoomHistoryDao.class
+eu/senla/andyavd/api/dao/IGenericDao.class
+eu/senla/andyavd/api/dao/IVisitorDao.class
