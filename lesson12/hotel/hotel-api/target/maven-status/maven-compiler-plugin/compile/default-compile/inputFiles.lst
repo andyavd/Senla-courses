@@ -1,0 +1,10 @@
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/dao/IServiceDao.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/controller/IHotelManager.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/dao/IRoomDao.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/dao/IGenericDao.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/dao/IVisitorDao.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/managers/IRoomHistoryManager.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/managers/IVisitorManager.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/managers/IServiceManager.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/dao/IRoomHistoryDao.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-api/src/main/java/eu/senla/andyavd/hotel/api/managers/IRoomManager.java
