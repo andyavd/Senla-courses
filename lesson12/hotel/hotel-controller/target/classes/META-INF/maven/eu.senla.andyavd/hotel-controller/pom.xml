@@ -41,7 +41,7 @@
 		</dependency>
 		<dependency>
 			<groupId>eu.senla.andyavd</groupId>
-			<artifactId>hotel-managers</artifactId>
+			<artifactId>hotel-services</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

@@ -1,0 +1,6 @@
+eu/senla/andyavd/hotel/dao/dbconnector/DataBaseConnector.class
+eu/senla/andyavd/hotel/dao/dao/ServiceDao.class
+eu/senla/andyavd/hotel/dao/dao/RoomHistoryDao.class
+eu/senla/andyavd/hotel/dao/dao/RoomDao.class
+eu/senla/andyavd/hotel/dao/dao/GenericDao.class
+eu/senla/andyavd/hotel/dao/dao/VisitorDao.class

@@ -100,7 +100,7 @@ public interface IHotelManager {
 
 	void exit();
 
-	void loadFromFile();
+	void start();
 
 	boolean isRoomStatus();
 

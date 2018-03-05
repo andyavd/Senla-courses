@@ -1,0 +1,6 @@
+eu/senla/andyavd/hotel/entity/beans/Service.class
+eu/senla/andyavd/hotel/entity/beans/Visitor.class
+eu/senla/andyavd/hotel/entity/beans/AEntity.class
+eu/senla/andyavd/hotel/entity/beans/RoomHistory.class
+eu/senla/andyavd/hotel/entity/beans/Room.class
+eu/senla/andyavd/hotel/entity/enums/SortType.class

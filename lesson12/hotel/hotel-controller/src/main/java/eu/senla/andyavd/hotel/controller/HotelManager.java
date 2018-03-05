@@ -11,6 +11,7 @@ import eu.senla.andyavd.hotel.api.managers.IRoomHistoryManager;
 import eu.senla.andyavd.hotel.api.managers.IRoomManager;
 import eu.senla.andyavd.hotel.api.managers.IServiceManager;
 import eu.senla.andyavd.hotel.api.managers.IVisitorManager;
+import eu.senla.andyavd.hotel.dao.dbconnector.HibernateUtil;
 import eu.senla.andyavd.hotel.di.DependencyInjection;
 import eu.senla.andyavd.hotel.entity.beans.Room;
 import eu.senla.andyavd.hotel.entity.beans.RoomHistory;
@@ -35,7 +36,7 @@ public class HotelManager implements IHotelManager {
 	private static IHotelManager hotelManager;
 
 	private HotelManager() {
-		loadFromFile();
+		start();
 	}
 
 	public static IHotelManager getInstance() {
@@ -461,15 +462,14 @@ public class HotelManager implements IHotelManager {
 	}
 
 	@Override
-	public void loadFromFile() {
+	public void start() {
 		Printer.print("Hello-Hello!");
 	}
 
 	@Override
 	public void exit() {
-		// SerializationUtil.serialize(getRooms(), getServices(), getVisitors(),
-		// getHistories());
 		System.out.println("Bye-Bye");
+		HibernateUtil.closeSessionFactory();
 	}
 
 	// ========================CSV=========================

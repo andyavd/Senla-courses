@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>eu.senla.andyavd</groupId>
@@ -45,14 +44,13 @@
 	<modules>
 		<module>hotel-annotations</module>
 		<module>hotel-entity</module>
-		<module>hotel-dbconnector</module>
 		<module>hotel-api</module>
 		<module>hotel-di</module>
 		<module>hotel-property</module>
 		<module>hotel-utils</module>
 		<module>hotel-dao</module>
-		<module>hotel-managers</module>
 		<module>hotel-controller</module>
 		<module>hotel-server</module>
-	</modules>
+    <module>hotel-services</module>
+  </modules>
 </project>
