@@ -29,22 +29,6 @@
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>eu.senla.andyavd</groupId>
-			<artifactId>hotel-dbconnector</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>eu.senla.andyavd</groupId>
-			<artifactId>hotel-api</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>eu.senla.andyavd</groupId>
 			<artifactId>hotel-utils</artifactId>
 			<version>0.1-SNAPSHOT</version>

@@ -1,4 +1,4 @@
-package eu.senla.andyavd.hotel.api.managers;
+package eu.senla.andyavd.hotel.api.services;
 
 import java.util.Date;
 import java.util.List;
@@ -6,12 +6,13 @@ import java.util.List;
 import eu.senla.andyavd.hotel.entity.beans.RoomHistory;
 import eu.senla.andyavd.hotel.entity.beans.Service;
 import eu.senla.andyavd.hotel.entity.beans.Visitor;
+import eu.senla.andyavd.hotel.entity.enums.SortType;
 
-public interface IRoomHistoryManager {
+public interface IRoomHistoryService {
 	
 	public void addHistory(RoomHistory history) throws Exception;
 
-	public List<RoomHistory> getHistories() throws Exception;
+	public List<RoomHistory> getHistories(SortType type) throws Exception;
 
 	void checkOutVisitor(int visitorId) throws Exception;
 

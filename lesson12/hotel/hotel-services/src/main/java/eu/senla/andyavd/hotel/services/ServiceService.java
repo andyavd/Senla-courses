@@ -3,59 +3,75 @@ package eu.senla.andyavd.hotel.services;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import eu.senla.andyavd.hotel.api.dao.IServiceDao;
-import eu.senla.andyavd.hotel.api.managers.IServiceManager;
+import eu.senla.andyavd.hotel.api.services.IServiceService;
+import eu.senla.andyavd.hotel.dao.dbconnector.HibernateUtil;
 import eu.senla.andyavd.hotel.di.DependencyInjection;
 import eu.senla.andyavd.hotel.entity.beans.Service;
 import eu.senla.andyavd.hotel.entity.enums.SortType;
 import eu.senla.andyavd.hotel.utils.csv.CsvReader;
 import eu.senla.andyavd.hotel.utils.csv.CsvWriter;
 
-public class ServiceService extends AService implements IServiceManager {
+public class ServiceService implements IServiceService {
 
 	private final static Logger logger = Logger.getLogger(ServiceService.class);
 	private IServiceDao serviceDao = (IServiceDao) DependencyInjection.getInstance().getInstance(IServiceDao.class);
+	private SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
 
 	public ServiceService() {
 	}
 
 	@Override
 	public void addService(Service service) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			serviceDao.create(session, service);
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to create the Service!");
 			throw new Exception();
 		}
 	}
 
 	@Override
-	public List<Service> getServices() throws Exception {
-		List<Service> services = null;
+	public List<Service> getServices(SortType type) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
-			services = serviceDao.getAll(session, SortType.name);
-			session.getTransaction().commit();
+			transaction = session.beginTransaction();
+			List<Service> services = serviceDao.getAll(session, null);
+			transaction.commit();
+			return services;
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to get the Services!");
 			throw new Exception();
 		}
-		return services;
 	}
 
 	@Override
 	public void updateService(Service service) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			serviceDao.update(session, service);
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to update the Service!");
 			throw new Exception();
 		}
@@ -63,12 +79,16 @@ public class ServiceService extends AService implements IServiceManager {
 
 	@Override
 	public void deleteService(Service service) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			serviceDao.delete(session, service);
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to delete the Service!");
 			throw new Exception();
 		}
@@ -76,59 +96,55 @@ public class ServiceService extends AService implements IServiceManager {
 
 	@Override
 	public Service getServiceById(int id) throws Exception {
-		Service service = null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
-			serviceDao.getById(session, id);
-			session.getTransaction().commit();
+			transaction = session.beginTransaction();
+			Service service = serviceDao.getById(session, id);
+			transaction.commit();
+			return service;
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to get the Service!");
 			throw new Exception();
 		}
-		return service;
 	}
 
 	@Override
 	public void changeServicePrice(int id, double dailyPrice) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			serviceDao.changeServicePrice(session, dailyPrice, id);
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to change the Service price!");
 			throw new Exception();
 		}
 	}
 
 	@Override
-	public List<Service> sortServices(SortType type) throws Exception {
-		List<Service> services = null;
-		try {
-			session.beginTransaction();
-			services = serviceDao.getAll(session, type);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			logger.error("Failed to sort the Services!");
-			throw new Exception();
-		}
-		return services;
-	}
-
-	@Override
+	@SuppressWarnings("unchecked")
 	public void importFromCsv() throws Exception {
-		@SuppressWarnings("unchecked")
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		List<Service> importedServices = (List<Service>) CsvReader.readFromFile(Service.class);
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			for (Service service : importedServices) {
 				session.saveOrUpdate(service);
 			}
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to import the Services!");
 			throw new Exception();
 		}
@@ -136,12 +152,16 @@ public class ServiceService extends AService implements IServiceManager {
 
 	@Override
 	public void exportToCsv() throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			CsvWriter.writeToFile(serviceDao.getAll(session, SortType.id));
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to export the Services!");
 			throw new Exception();
 		}

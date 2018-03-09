@@ -23,7 +23,7 @@ public class ServiceDao extends GenericDao<Service> implements IServiceDao {
 			query.setDouble("dailyPrice", dailyPrice);
 			query.executeUpdate();
 		} catch (Exception e) {
-			logger.error("Failed to Change room status!");
+			logger.error("Failed to change Service price!");
 			throw new Exception();
 		}
 	}

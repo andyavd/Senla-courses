@@ -5,9 +5,13 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import eu.senla.andyavd.hotel.api.dao.IRoomHistoryDao;
-import eu.senla.andyavd.hotel.api.managers.IRoomHistoryManager;
+import eu.senla.andyavd.hotel.api.services.IRoomHistoryService;
+import eu.senla.andyavd.hotel.dao.dbconnector.HibernateUtil;
 import eu.senla.andyavd.hotel.di.DependencyInjection;
 import eu.senla.andyavd.hotel.entity.beans.RoomHistory;
 import eu.senla.andyavd.hotel.entity.beans.Service;
@@ -17,23 +21,28 @@ import eu.senla.andyavd.hotel.utils.common.DateFormatter;
 import eu.senla.andyavd.hotel.utils.csv.CsvReader;
 import eu.senla.andyavd.hotel.utils.csv.CsvWriter;
 
-public class RoomHistoryService extends AService implements IRoomHistoryManager {
+public class RoomHistoryService implements IRoomHistoryService {
 
 	private final static Logger logger = Logger.getLogger(RoomHistoryService.class);
 	private IRoomHistoryDao roomHistoryDao = (IRoomHistoryDao) DependencyInjection.getInstance()
 			.getInstance(IRoomHistoryDao.class);
-
+	private SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+	
 	public RoomHistoryService() {
 	}
 
 	@Override
 	public void addHistory(RoomHistory history) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			roomHistoryDao.create(session, history);
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to create the RoomHistory!");
 			throw new Exception();
 		}
@@ -41,59 +50,73 @@ public class RoomHistoryService extends AService implements IRoomHistoryManager 
 
 	@Override
 	public void checkOutVisitor(int visitorId) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			roomHistoryDao.checkOutVisitor(session, visitorId);
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to checkout the Visitor!");
 			throw new Exception();
 		}
 	}
 
 	@Override
-	public List<RoomHistory> getHistories() throws Exception {
-		List<RoomHistory> histories = null;
+	public List<RoomHistory> getHistories(SortType type) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
-			histories = roomHistoryDao.getAll(session, SortType.id);
-			session.getTransaction().commit();
+			transaction = session.beginTransaction();
+			List<RoomHistory> histories = roomHistoryDao.getAll(session, null);
+			transaction.commit();
+			return histories;
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to get the Rooms!");
 			throw new Exception();
 		}
-		return histories;
 	}
 
 	@Override
 	public List<Visitor> getLastVisitorsOfRoom(int roomId) throws Exception {
-		List<Visitor> visitors = null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
-			visitors = roomHistoryDao.getLastVisitorsOfRoom(session, roomId);
-			session.getTransaction().commit();
+			transaction = session.beginTransaction();
+			List<Visitor> visitors = roomHistoryDao.getLastVisitorsOfRoom(session, roomId);
+			transaction.commit();
+			return visitors;
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to get the last Visitors of the Room!");
 			throw new Exception();
 		}
-		return visitors;
 	}
 
 	@Override
 	public void addServicesToVisitor(int visitorId, Service service) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		RoomHistory roomHistory = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			roomHistory = roomHistoryDao.getVisitorsHistory(session, visitorId);
 			List<Service> services = roomHistory.getServices();
 			services.add(service);
 			roomHistory.setServices(services);
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to add Service to the Visitor!");
 			throw new Exception();
 		}
@@ -101,66 +124,78 @@ public class RoomHistoryService extends AService implements IRoomHistoryManager 
 
 	@Override
 	public List<Service> getVisitorServices(int visitorId) throws Exception {
-		RoomHistory roomHistory = null;
-		List<Service> services = null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
-			roomHistory = roomHistoryDao.getVisitorsHistory(session, visitorId);
-			services = roomHistory.getServices();
-			session.getTransaction().commit();
+			transaction = session.beginTransaction();
+			RoomHistory roomHistory = roomHistoryDao.getVisitorsHistory(session, visitorId);
+			List<Service> services = roomHistory.getServices();
+			transaction.commit();
+			return services;
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to get the Visitors Services!");
 			throw new Exception();
 		}
-		return services;
 	}
 
 	@Override
 	public Double billVisitor(int visitorId) throws Exception {
-		Double bill = 0.0;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			Long diff = roomHistoryDao.getVisitorOutDate(session, visitorId).getTime()
 					- roomHistoryDao.getVisitorInDate(session, visitorId).getTime();
 			Long days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-			bill = days * roomHistoryDao.getVisitorRoomPrice(session, visitorId);
-			session.getTransaction().commit();
+			Double bill = days * roomHistoryDao.getVisitorRoomPrice(session, visitorId);
+			transaction.commit();
+			return bill;
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to bill the Visitor!");
 			throw new Exception();
 		}
-		return bill;
 	}
 
 	@Override
 	public Integer getTotalVisitorsOnDate(Date date) throws Exception {
-		Integer number = null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
-			number = roomHistoryDao.getTotalVisitorsOnDate(session, DateFormatter.stringFromDate(date));
-			session.getTransaction().commit();
+			transaction = session.beginTransaction();
+			Integer number = roomHistoryDao.getTotalVisitorsOnDate(session, DateFormatter.stringFromDate(date));
+			transaction.commit();
+			return number;
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to get the Visitors on chosen date!");
 			throw new Exception();
 		}
-		return number;
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public void importFromCsv() throws Exception {
-		@SuppressWarnings("unchecked")
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		List<RoomHistory> importedRoomHistories = (List<RoomHistory>) CsvReader.readFromFile(RoomHistory.class);
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			for (RoomHistory roomHistory : importedRoomHistories) {
 				session.saveOrUpdate(roomHistory);
 			}
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to import the Room Histories!");
 			throw new Exception();
 		}
@@ -168,12 +203,16 @@ public class RoomHistoryService extends AService implements IRoomHistoryManager 
 
 	@Override
 	public void exportToCsv() throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
 		try {
-			session.beginTransaction();
+			transaction = session.beginTransaction();
 			CsvWriter.writeToFile(roomHistoryDao.getAll(session, SortType.id));
-			session.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			session.getTransaction().rollback();
+			if (transaction != null) {
+				transaction.rollback();
+			}
 			logger.error("Failed to export the Rooms!");
 			throw new Exception();
 		}

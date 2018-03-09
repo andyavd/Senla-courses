@@ -16,7 +16,6 @@ public class HibernateUtil {
 	private static SessionFactory sessionFactory;
 
 	private HibernateUtil() {
-		configureHibernate();
 	}
 
 	public static HibernateUtil getInstance() {
@@ -26,18 +25,16 @@ public class HibernateUtil {
 		return instance;
 	}
 
-	private void configureHibernate() {
+	private static SessionFactory buildSessionFactory() {
 		try {
-
 			Configuration configuration = new Configuration();
 			configuration.configure("hibernate.cfg.xml");
 			logger.info("Hibernate configuration has been loaded!");
 
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
-
-			configuration.buildSessionFactory(serviceRegistry);
 			logger.info("Hibernate ServiceRegistry has been created!");
+			return configuration.buildSessionFactory(serviceRegistry);
 		} catch (Exception e) {
 			logger.error("Failed to create SessionFactory!" + e);
 			throw new ExceptionInInitializerError(e);
@@ -45,14 +42,14 @@ public class HibernateUtil {
 	}
 
 	public SessionFactory getSessionFactory() {
-		return sessionFactory;
+		return buildSessionFactory();
 	}
 
-	public static Session getSession() {
+	public Session getCurrentSession() {
 		try {
-			return sessionFactory.openSession();
+			return sessionFactory.getCurrentSession();
 		} catch (HibernateException e) {
-			logger.error("Failed to open Session!" + e);
+			logger.error("Failed to get current Session!" + e);
 			return null;
 		}
 	}

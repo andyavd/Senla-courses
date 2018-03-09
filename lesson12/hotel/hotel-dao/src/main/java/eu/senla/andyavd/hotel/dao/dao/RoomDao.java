@@ -1,6 +1,5 @@
 package eu.senla.andyavd.hotel.dao.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -32,21 +31,20 @@ public class RoomDao extends GenericDao<Room> implements IRoomDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Room> getEmpyRooms(Session session, SortType type) throws Exception {
-		List<Room> list = new ArrayList<>();
 		Criteria criteria = session.createCriteria(Room.class);
 		try {
 			criteria.add(Restrictions.eq("room_status", "Empty")).addOrder(Order.asc(type.toString()));
-			list = criteria.list();
+			List<Room> list = criteria.list();
+			return list;
 		} catch (Exception e) {
 			logger.error("Failed to get empty Rooms!");
 			throw new Exception();
 		}
-		return list;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Room> getEmptyRoomsOnDate(Session session, String date) throws Exception {
-		List<Room> list = new ArrayList<>();
 		Criteria criteriaRoom = session.createCriteria(Room.class);
 		try {
 			DetachedCriteria criteriaRoomHistory = DetachedCriteria.forClass(RoomHistory.class);
@@ -56,26 +54,26 @@ public class RoomDao extends GenericDao<Room> implements IRoomDao {
 			LogicalExpression andExpression = Restrictions.and(dateBefore, dateAfter);
 			criteriaRoomHistory.add(andExpression).add(historyStatus).setProjection(Projections.property("room_id"));
 			Criterion status = Restrictions.eq("room_status", "Empty");
-			criteriaRoom.add(status).add(Property.forName("id").in(criteriaRoomHistory)).list();
+			criteriaRoom.add(status).add(Property.forName("id").in(criteriaRoomHistory));
+			List<Room> list = criteriaRoom.list();
+			return list;
 		} catch (Exception e) {
 			logger.error("Failed to get empty Rooms on Date!");
 			throw new Exception();
 		}
-		return list;
 	}
 
 	@Override
 	public Integer getEmptyRoomsNumber(Session session) throws Exception {
-		Integer number = 0;
 		Criteria criteria = session.createCriteria(Room.class);
 		try {
-			number = (Integer) criteria.add(Restrictions.eq("room_status", "Empty"))
+			Integer number = (Integer) criteria.add(Restrictions.eq("room_status", "Empty"))
 					.setProjection(Projections.rowCount()).uniqueResult();
+			return number;
 		} catch (Exception e) {
 			logger.error("Failed to get empty Rooms number!");
 			throw new Exception();
 		}
-		return number;
 	}
 
 	@Override
@@ -98,25 +96,26 @@ public class RoomDao extends GenericDao<Room> implements IRoomDao {
 			query.setDouble("dailyPrice", dailyPrice);
 			query.executeUpdate();
 		} catch (Exception e) {
-			logger.error("Failed to Change room status!");
+			logger.error("Failed to Change room price!");
 			throw new Exception();
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Room> getUsedRooms(Session session) throws Exception {
-		List<Room> list = new ArrayList<>();
 		Criteria criteriaRoom = session.createCriteria(Room.class);
 		try {
 			DetachedCriteria criteriaRoomHistory = DetachedCriteria.forClass(RoomHistory.class);
 			criteriaRoomHistory.setProjection(Projections.property("room_id"))
 					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 			criteriaRoom.add(Property.forName("id").in(criteriaRoomHistory)).list();
+			List<Room> list = criteriaRoom.list();
+			return list;
 		} catch (Exception e) {
-			logger.error("Failed to get empty Rooms on Date!");
+			logger.error("Failed to get used Rooms on Date!");
 			throw new Exception();
 		}
-		return list;
 	}
 
 }

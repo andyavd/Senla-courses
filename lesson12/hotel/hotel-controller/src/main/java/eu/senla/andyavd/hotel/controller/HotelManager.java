@@ -7,10 +7,10 @@ import org.apache.log4j.Logger;
 
 import eu.senla.andyavd.hotel.annotations.annotations.Storage;
 import eu.senla.andyavd.hotel.api.controller.IHotelManager;
-import eu.senla.andyavd.hotel.api.managers.IRoomHistoryManager;
-import eu.senla.andyavd.hotel.api.managers.IRoomManager;
-import eu.senla.andyavd.hotel.api.managers.IServiceManager;
-import eu.senla.andyavd.hotel.api.managers.IVisitorManager;
+import eu.senla.andyavd.hotel.api.services.IRoomHistoryService;
+import eu.senla.andyavd.hotel.api.services.IRoomService;
+import eu.senla.andyavd.hotel.api.services.IServiceService;
+import eu.senla.andyavd.hotel.api.services.IVisitorService;
 import eu.senla.andyavd.hotel.dao.dbconnector.HibernateUtil;
 import eu.senla.andyavd.hotel.di.DependencyInjection;
 import eu.senla.andyavd.hotel.entity.beans.Room;
@@ -26,13 +26,13 @@ public class HotelManager implements IHotelManager {
 
 	private final static Logger logger = Logger.getLogger(HotelManager.class);
 
-	private IRoomHistoryManager roomHistoryManager = (IRoomHistoryManager) DependencyInjection.getInstance()
-			.getInstance(IRoomHistoryManager.class);
-	private IRoomManager roomManager = (IRoomManager) DependencyInjection.getInstance().getInstance(IRoomManager.class);
-	private IServiceManager serviceManager = (IServiceManager) DependencyInjection.getInstance()
-			.getInstance(IServiceManager.class);
-	private IVisitorManager visitorManager = (IVisitorManager) DependencyInjection.getInstance()
-			.getInstance(IVisitorManager.class);
+	private IRoomHistoryService roomHistoryService = (IRoomHistoryService) DependencyInjection.getInstance()
+			.getInstance(IRoomHistoryService.class);
+	private IRoomService roomService = (IRoomService) DependencyInjection.getInstance().getInstance(IRoomService.class);
+	private IServiceService serviceService = (IServiceService) DependencyInjection.getInstance()
+			.getInstance(IServiceService.class);
+	private IVisitorService visitorService = (IVisitorService) DependencyInjection.getInstance()
+			.getInstance(IVisitorService.class);
 	private static IHotelManager hotelManager;
 
 	private HotelManager() {
@@ -51,7 +51,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void addRoom(Room room) {
 		try {
-			roomManager.addRoom(room);
+			roomService.addRoom(room);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -60,7 +60,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Room> getRooms() {
 		try {
-			return roomManager.getRooms();
+			return roomService.getRooms(null);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -70,7 +70,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void updateRoom(Room room) {
 		try {
-			roomManager.updateRoom(room);
+			roomService.updateRoom(room);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -79,7 +79,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void deleteRoom(Room room) {
 		try {
-			roomManager.deleteRoom(room);
+			roomService.deleteRoom(room);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -88,7 +88,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public Room getRoomById(int id) {
 		try {
-			return roomManager.getRoomById(id);
+			return roomService.getRoomById(id);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -98,7 +98,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void cloneRoom(int id) {
 		try {
-			roomManager.cloneRoom(id);
+			roomService.cloneRoom(id);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -107,7 +107,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Room> getUsedRooms() {
 		try {
-			return roomManager.getUsedRooms();
+			return roomService.getUsedRooms();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -117,7 +117,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Room> getEmptyRooms() {
 		try {
-			return roomManager.getEmptyRooms();
+			return roomService.getEmptyRooms(SortType.roomNumber);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -127,7 +127,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public Integer getEmptyRoomsNumber() {
 		try {
-			return roomManager.getEmptyRoomsNumber();
+			return roomService.getEmptyRoomsNumber();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -138,7 +138,7 @@ public class HotelManager implements IHotelManager {
 	public List<Room> sortRoomsByCapacity() {
 		List<Room> sortedRooms = null;
 		try {
-			sortedRooms = roomManager.sortRooms(SortType.capacity);
+			sortedRooms = roomService.getRooms(SortType.capacity);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -149,7 +149,7 @@ public class HotelManager implements IHotelManager {
 	public List<Room> sortRoomsByPrice() {
 		List<Room> sortedRooms = null;
 		try {
-			sortedRooms = roomManager.sortRooms(SortType.dailyPrice);
+			sortedRooms = roomService.getRooms(SortType.dailyPrice);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -160,7 +160,7 @@ public class HotelManager implements IHotelManager {
 	public List<Room> sortRoomsByStars() {
 		List<Room> sortedRooms = null;
 		try {
-			sortedRooms = roomManager.sortRooms(SortType.stars);
+			sortedRooms = roomService.getRooms(SortType.stars);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -171,7 +171,7 @@ public class HotelManager implements IHotelManager {
 	public List<Room> sortEmptyRoomsByCapacity() {
 		List<Room> sortedRooms = null;
 		try {
-			sortedRooms = roomManager.sortEmptyRooms(SortType.capacity);
+			sortedRooms = roomService.getEmptyRooms(SortType.capacity);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -182,7 +182,7 @@ public class HotelManager implements IHotelManager {
 	public List<Room> sortEmptyRoomsByPrice() {
 		List<Room> sortedRooms = null;
 		try {
-			sortedRooms = roomManager.sortEmptyRooms(SortType.dailyPrice);
+			sortedRooms = roomService.getEmptyRooms(SortType.dailyPrice);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -193,7 +193,7 @@ public class HotelManager implements IHotelManager {
 	public List<Room> sortEmptyRoomsByStars() {
 		List<Room> sortedRooms = null;
 		try {
-			sortedRooms = roomManager.sortEmptyRooms(SortType.stars);
+			sortedRooms = roomService.getEmptyRooms(SortType.stars);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -203,7 +203,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public Double billVisitor(int visitorId) {
 		try {
-			return roomHistoryManager.billVisitor(visitorId);
+			return roomHistoryService.billVisitor(visitorId);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -213,7 +213,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Room> getEmptyRoomsOnDate(Date date) {
 		try {
-			return roomManager.getEmptyRoomsOnDate(date);
+			return roomService.getEmptyRoomsOnDate(date);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -229,7 +229,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void changeRoomStatus(int id) {
 		try {
-			roomManager.changeRoomStatus(id);
+			roomService.changeRoomStatus(id);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -238,7 +238,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Visitor> getLastVisitorsOfRoom(int roomId) {
 		try {
-			return roomHistoryManager.getLastVisitorsOfRoom(roomId);
+			return roomHistoryService.getLastVisitorsOfRoom(roomId);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -248,7 +248,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void changeRoomPrice(int id, Double dailyPrice) {
 		try {
-			roomManager.changeRoomPrice(id, dailyPrice);
+			roomService.changeRoomPrice(id, dailyPrice);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -259,7 +259,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void addVisitor(Visitor visitor) {
 		try {
-			visitorManager.addVisitor(visitor);
+			visitorService.addVisitor(visitor);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -268,7 +268,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Visitor> getVisitors() {
 		try {
-			return visitorManager.getVisitors();
+			return visitorService.getVisitors(null);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -278,7 +278,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void updateVisitor(Visitor visitor) {
 		try {
-			visitorManager.updateVisitor(visitor);
+			visitorService.updateVisitor(visitor);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -287,7 +287,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void deleteVisitor(Visitor visitor) {
 		try {
-			visitorManager.deleteVisitor(visitor);
+			visitorService.deleteVisitor(visitor);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -296,7 +296,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public Visitor getVisitorById(int id) {
 		try {
-			return visitorManager.getVisitorById(id);
+			return visitorService.getVisitorById(id);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -306,7 +306,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Visitor> sortVisitorsByName() {
 		try {
-			return visitorManager.getVisitors();
+			return visitorService.getVisitors(SortType.lastName);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -316,7 +316,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void addServicesToVisitor(int visitorId, Service service) {
 		try {
-			roomHistoryManager.addServicesToVisitor(visitorId, service);
+			roomHistoryService.addServicesToVisitor(visitorId, service);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -325,7 +325,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Service> getVisitorServices(int visitorId) {
 		try {
-			return roomHistoryManager.getVisitorServices(visitorId);
+			return roomHistoryService.getVisitorServices(visitorId);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -335,7 +335,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public Integer getTotalVisitorsOnDate(Date date) {
 		try {
-			return roomHistoryManager.getTotalVisitorsOnDate(date);
+			return roomHistoryService.getTotalVisitorsOnDate(date);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -347,7 +347,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void addService(Service service) {
 		try {
-			serviceManager.addService(service);
+			serviceService.addService(service);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -356,7 +356,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Service> getServices() {
 		try {
-			return serviceManager.getServices();
+			return serviceService.getServices(null);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -366,7 +366,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void updateService(Service service) {
 		try {
-			serviceManager.updateService(service);
+			serviceService.updateService(service);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -375,7 +375,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void deleteService(Service service) {
 		try {
-			serviceManager.deleteService(service);
+			serviceService.deleteService(service);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -384,7 +384,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public Service getServiceById(int id) {
 		try {
-			return serviceManager.getServiceById(id);
+			return serviceService.getServiceById(id);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -395,7 +395,7 @@ public class HotelManager implements IHotelManager {
 	public List<Service> sortServicesByPrice() {
 		List<Service> sortedServices = null;
 		try {
-			sortedServices = serviceManager.sortServices(SortType.dailyPrice);
+			sortedServices = serviceService.getServices(SortType.dailyPrice);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -405,7 +405,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void changeServicePrice(int id, double dailyPrice) {
 		try {
-			serviceManager.changeServicePrice(id, dailyPrice);
+			serviceService.changeServicePrice(id, dailyPrice);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -416,7 +416,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<RoomHistory> getHistories() {
 		try {
-			return roomHistoryManager.getHistories();
+			return roomHistoryService.getHistories(null);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -426,7 +426,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void checkInVisitor(RoomHistory history) {
 		try {
-			roomHistoryManager.addHistory(history);
+			roomHistoryService.addHistory(history);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -435,7 +435,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Visitor> getCheckedVisitors() {
 		try {
-			return visitorManager.getCheckedVisitors();
+			return visitorService.getCheckedVisitors();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -445,7 +445,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public List<Visitor> getCheckedVisitorsWithServices() {
 		try {
-			return visitorManager.getCheckedVisitorsWithServices();
+			return visitorService.getCheckedVisitorsWithServices();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -455,7 +455,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void checkOutVisitor(int visitorId) {
 		try {
-			roomHistoryManager.checkOutVisitor(visitorId);
+			roomHistoryService.checkOutVisitor(visitorId);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
@@ -476,8 +476,8 @@ public class HotelManager implements IHotelManager {
 
 	public void exportRoomsToCSV() {
 		try {
-			roomManager.exportToCsv();
-			roomHistoryManager.exportToCsv();
+			roomService.exportToCsv();
+			roomHistoryService.exportToCsv();
 		} catch (Exception e) {
 			logger.error("Failed to export Rooms data to CSV file", e);
 		}
@@ -485,7 +485,7 @@ public class HotelManager implements IHotelManager {
 
 	public void exportServicesToCSV() {
 		try {
-			serviceManager.exportToCsv();
+			serviceService.exportToCsv();
 		} catch (Exception e) {
 			logger.error("Failed to export Services data to CSV file", e);
 		}
@@ -493,7 +493,7 @@ public class HotelManager implements IHotelManager {
 
 	public void exportVisitorsToCSV() {
 		try {
-			visitorManager.exportToCsv();
+			visitorService.exportToCsv();
 		} catch (Exception e) {
 			logger.error("Failed to export Visitors data to CSV file", e);
 		}
@@ -501,7 +501,7 @@ public class HotelManager implements IHotelManager {
 
 	public void importRoomsFromCSV() {
 		try {
-			roomManager.importFromCsv();
+			roomService.importFromCsv();
 		} catch (Exception e) {
 			logger.error("Rooms were not imported!", e);
 		}
@@ -509,7 +509,7 @@ public class HotelManager implements IHotelManager {
 
 	public void importServicesFromCSV() {
 		try {
-			serviceManager.importFromCsv();
+			serviceService.importFromCsv();
 		} catch (Exception e) {
 			logger.error("Services were not imported!", e);
 		}
@@ -517,7 +517,7 @@ public class HotelManager implements IHotelManager {
 
 	public void importVisitorsFromCSV() {
 		try {
-			visitorManager.importFromCsv();
+			visitorService.importFromCsv();
 		} catch (Exception e) {
 			logger.error("Visitors were not imported!", e);
 		}

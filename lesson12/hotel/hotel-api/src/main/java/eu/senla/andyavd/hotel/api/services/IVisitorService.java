@@ -1,14 +1,15 @@
-package eu.senla.andyavd.hotel.api.managers;
+package eu.senla.andyavd.hotel.api.services;
 
 import java.util.List;
 
 import eu.senla.andyavd.hotel.entity.beans.Visitor;
+import eu.senla.andyavd.hotel.entity.enums.SortType;
 
-public interface IVisitorManager {
+public interface IVisitorService {
 	
 	void addVisitor(Visitor visitor) throws Exception;
 
-	List<Visitor> getVisitors() throws Exception;
+	List<Visitor> getVisitors(SortType type) throws Exception;
 
 	void updateVisitor(Visitor visitor) throws Exception;
 

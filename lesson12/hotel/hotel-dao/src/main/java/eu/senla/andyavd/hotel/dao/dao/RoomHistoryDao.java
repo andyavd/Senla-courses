@@ -1,6 +1,5 @@
 package eu.senla.andyavd.hotel.dao.dao;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,97 +30,91 @@ public class RoomHistoryDao extends GenericDao<RoomHistory> implements IRoomHist
 
 	@Override
 	public Double getVisitorRoomPrice(Session session, int visitorId) throws Exception {
-		Double price = 0.0;
 		Criteria criteriaRoom = session.createCriteria(Room.class);
 		Criteria criteriaRoomHistory = session.createCriteria(RoomHistory.class);
 		try {
 			Criterion visitorIdHistory = Restrictions.eq("visitor_id", visitorId);
 			int roomId = ((Integer) criteriaRoomHistory.add(visitorIdHistory)
 					.setProjection(Projections.property("room_id")).uniqueResult()).intValue();
-			price = ((Double) criteriaRoom.add(Restrictions.eq("id", roomId))
+			Double price = ((Double) criteriaRoom.add(Restrictions.eq("id", roomId))
 					.setProjection(Projections.property("daily_price")).uniqueResult()).doubleValue();
+			return price;
 		} catch (Exception e) {
 			logger.error("Failed to get Visitors Room price!");
 			throw new Exception();
 		}
-		return price;
 	}
 
 	@Override
 	public Date getVisitorInDate(Session session, int visitorId) throws Exception {
 		Criteria criteria = session.createCriteria(RoomHistory.class);
-		Date inDate = null;
 		try {
-			inDate = DateFormatter.dateFromString(criteria.add(Restrictions.eq("visitor_id", visitorId))
+			Date inDate = DateFormatter.dateFromString(criteria.add(Restrictions.eq("visitor_id", visitorId))
 					.setProjection(Projections.property("check_in")).uniqueResult().toString());
+			return inDate;
 		} catch (Exception e) {
 			logger.error("Failed to get Visitor check-in date!");
 			throw new Exception();
 		}
-		return inDate;
 	}
 
 	@Override
 	public Date getVisitorOutDate(Session session, int visitorId) throws Exception {
 		Criteria criteria = session.createCriteria(RoomHistory.class);
-		Date inDate = null;
 		try {
-			inDate = DateFormatter.dateFromString(criteria.add(Restrictions.eq("visitor_id", visitorId))
+			Date inDate = DateFormatter.dateFromString(criteria.add(Restrictions.eq("visitor_id", visitorId))
 					.setProjection(Projections.property("check_out")).uniqueResult().toString());
+			return inDate;
 		} catch (Exception e) {
 			logger.error("Failed to get Visitor check-out date!");
 			throw new Exception();
 		}
-		return inDate;
 	}
 
 	@Override
 	public Integer getTotalVisitorsOnDate(Session session, String date) throws Exception {
-		Integer number = 0;
 		Criteria criteria = session.createCriteria(RoomHistory.class);
 		try {
 			Criterion dateBefore = Restrictions.lt("check_in", DateFormatter.dateFromString(date));
 			Criterion dateAfter = Restrictions.gt("check_out", DateFormatter.dateFromString(date));
 			LogicalExpression andExpression = Restrictions.and(dateBefore, dateAfter);
-			number = (Integer) criteria.add(Restrictions.eq("history_status", "CheckIn")).add(andExpression)
+			Integer number = (Integer) criteria.add(Restrictions.eq("history_status", "CheckIn")).add(andExpression)
 					.setProjection(Projections.rowCount()).uniqueResult();
+			return number;
 		} catch (Exception e) {
 			logger.error("Failed to count Visitors!");
 			throw new Exception();
 		}
-		return number;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Visitor> getLastVisitorsOfRoom(Session session, int roomId) throws Exception {
-		List<Visitor> list = new ArrayList<>();
 		Criteria criteriaVisitor = session.createCriteria(Visitor.class);
 		try {
 			DetachedCriteria criteriaRoomHistory = DetachedCriteria.forClass(RoomHistory.class);
 			criteriaRoomHistory.add(Restrictions.eq("room_id", roomId)).setProjection(Projections.property("room_id"))
 					.addOrder(Order.desc("check_out"));
 			criteriaVisitor.add(Property.forName("id").in(criteriaRoomHistory)).setMaxResults(3);
-			list = criteriaVisitor.list();
+			List<Visitor> list = criteriaVisitor.list();
+			return list;
 		} catch (Exception e) {
 			logger.error("Failed to get the last Visitors of the Rooms!");
 			throw new Exception();
 		}
-		return list;
 	}
 
 	@Override
 	public RoomHistory getVisitorsHistory(Session session, int visitorId) throws Exception {
-		RoomHistory roomHistory = null;
 		Criteria criteria = session.createCriteria(RoomHistory.class);
 		try {
-			roomHistory = (RoomHistory) criteria.add(Restrictions.eq("history_status", "CheckIn"))
+			RoomHistory roomHistory = (RoomHistory) criteria.add(Restrictions.eq("history_status", "CheckIn"))
 					.add(Restrictions.eq("visitor_id", visitorId)).uniqueResult();
+			return roomHistory;
 		} catch (Exception e) {
 			logger.error("Failed to get Visitors history id!");
 			throw new Exception();
 		}
-		return roomHistory;
 	}
 
 	@Override

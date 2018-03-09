@@ -1,4 +1,4 @@
-package eu.senla.andyavd.hotel.api.managers;
+package eu.senla.andyavd.hotel.api.services;
 
 import java.util.Date;
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import eu.senla.andyavd.hotel.entity.beans.Room;
 import eu.senla.andyavd.hotel.entity.enums.SortType;
 
-public interface IRoomManager {
+public interface IRoomService {
 
 	void addRoom(Room room) throws Exception;
 
-	List<Room> getRooms() throws Exception;
+	List<Room> getRooms(SortType type) throws Exception;
 
 	void updateRoom(Room room) throws Exception;
 
@@ -22,17 +22,13 @@ public interface IRoomManager {
 
 	void changeRoomPrice(int id, Double dailyPrice) throws Exception;
 
-	List<Room> getEmptyRooms() throws Exception;
+	List<Room> getEmptyRooms(SortType type) throws Exception;
 
 	List<Room> getUsedRooms() throws Exception;
 
 	Integer getEmptyRoomsNumber() throws Exception;
 
 	List<Room> getEmptyRoomsOnDate(Date date) throws Exception;
-
-	List<Room> sortEmptyRooms(SortType type) throws Exception;
-
-	List<Room> sortRooms(SortType type) throws Exception;
 
 	void cloneRoom(int id) throws Exception;
 

@@ -24,12 +24,10 @@ public abstract class GenericDao<T extends AEntity> implements IGenericDao<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> getAll(Session session, SortType type) throws Exception {
-		Criteria criteria = session.createCriteria(classs);
-		try {
-			criteria.addOrder(Order.asc(type.toString()));
-		} catch (Exception e) {
-			logger.error("Dao error! Failed to execute getById method!");
+		if(type == null) {
+            type = SortType.id;
 		}
+		Criteria criteria = session.createCriteria(classs).addOrder(Order.asc(type.toString()));
 		return criteria.list();
 	}
 
@@ -70,7 +68,7 @@ public abstract class GenericDao<T extends AEntity> implements IGenericDao<T> {
 		try {
 			session.delete(entity);
 		} catch (Exception e) {
-			logger.error("Dao error! Failed to execute update method!");
+			logger.error("Dao error! Failed to execute delete method!");
 			throw new Exception();
 		}
 	}
