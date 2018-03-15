@@ -142,17 +142,16 @@ public class RoomHistoryService implements IRoomHistoryService {
 	}
 
 	@Override
-	public Double billVisitor(int visitorId) throws Exception {
+	public Long billVisitor(int visitorId) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
-			Long diff = roomHistoryDao.getVisitorOutDate(session, visitorId).getTime()
-					- roomHistoryDao.getVisitorInDate(session, visitorId).getTime();
+			RoomHistory history = roomHistoryDao.getVisitorsHistory(session, visitorId);
+			Long diff = history.getCheckOutDate().getTime() - history.getCheckInDate().getTime();
 			Long days = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-			Double bill = days * roomHistoryDao.getVisitorRoomPrice(session, visitorId);
 			transaction.commit();
-			return bill;
+			return days;
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();

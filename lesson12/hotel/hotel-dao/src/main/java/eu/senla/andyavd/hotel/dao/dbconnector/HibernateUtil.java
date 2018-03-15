@@ -40,9 +40,12 @@ public class HibernateUtil {
 			throw new ExceptionInInitializerError(e);
 		}
 	}
-
+	
 	public SessionFactory getSessionFactory() {
-		return buildSessionFactory();
+		if (sessionFactory == null) {
+			sessionFactory = buildSessionFactory();
+		}
+		return sessionFactory;
 	}
 
 	public Session getCurrentSession() {
@@ -64,7 +67,7 @@ public class HibernateUtil {
 		}
 	}
 
-	public static void closeSessionFactory() {
+	public void closeSessionFactory() {
 		if (sessionFactory != null) {
 			sessionFactory.close();
 		}

@@ -203,7 +203,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public Double billVisitor(int visitorId) {
 		try {
-			return roomHistoryService.billVisitor(visitorId);
+			return roomHistoryService.billVisitor(visitorId) * roomService.getVisitorsRoom(visitorId).getDailyPrice();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return null;
@@ -469,7 +469,7 @@ public class HotelManager implements IHotelManager {
 	@Override
 	public void exit() {
 		System.out.println("Bye-Bye");
-		HibernateUtil.closeSessionFactory();
+		HibernateUtil.getInstance().closeSessionFactory();
 	}
 
 	// ========================CSV=========================

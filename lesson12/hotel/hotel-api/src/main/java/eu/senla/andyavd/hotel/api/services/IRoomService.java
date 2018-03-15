@@ -29,6 +29,8 @@ public interface IRoomService {
 	Integer getEmptyRoomsNumber() throws Exception;
 
 	List<Room> getEmptyRoomsOnDate(Date date) throws Exception;
+	
+	Room getVisitorsRoom(int visitorId) throws Exception;
 
 	void cloneRoom(int id) throws Exception;
 

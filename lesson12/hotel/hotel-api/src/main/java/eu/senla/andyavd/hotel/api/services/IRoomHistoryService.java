@@ -24,7 +24,7 @@ public interface IRoomHistoryService {
 
 	Integer getTotalVisitorsOnDate(Date date) throws Exception;
 
-	Double billVisitor(int visitorId) throws Exception;
+	Long billVisitor(int visitorId) throws Exception;
 
 	void importFromCsv() throws Exception;
 

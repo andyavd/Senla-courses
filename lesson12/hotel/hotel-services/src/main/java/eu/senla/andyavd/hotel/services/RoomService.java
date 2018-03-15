@@ -238,6 +238,24 @@ public class RoomService implements IRoomService {
 			throw new Exception();
 		}
 	}
+	
+	@Override
+	public Room getVisitorsRoom(int visitorId) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Transaction transaction = null;
+		try {
+			transaction = session.beginTransaction();
+			Room room = roomDao.getVisitorsRoom(session, visitorId);
+			transaction.commit();
+			return room;
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			logger.error("Failed to get the Visitors Room!");
+			throw new Exception();
+		}
+	}
 
 	@Override
 	@SuppressWarnings("unchecked")

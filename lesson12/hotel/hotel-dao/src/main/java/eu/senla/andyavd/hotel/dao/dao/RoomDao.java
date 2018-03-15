@@ -118,4 +118,17 @@ public class RoomDao extends GenericDao<Room> implements IRoomDao {
 		}
 	}
 
+	@Override
+	public Room getVisitorsRoom(Session session, int visitorId) throws Exception {
+		Criteria criteria = session.createCriteria(RoomHistory.class);
+		try {
+			RoomHistory roomHistory = (RoomHistory) criteria.add(Restrictions.eq("history_status", "CheckIn"))
+					.add(Restrictions.eq("visitor_id", visitorId)).uniqueResult();
+			Room room = getById(session, roomHistory.getRoomId());
+			return room;
+		} catch (Exception e) {
+			logger.error("Failed to get Visitors Room!");
+			throw new Exception();
+		}
+	}
 }
