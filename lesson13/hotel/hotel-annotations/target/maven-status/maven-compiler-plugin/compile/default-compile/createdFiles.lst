@@ -1,0 +1,4 @@
+eu/senla/andyavd/hotel/annotations/annotations/Storage.class
+eu/senla/andyavd/hotel/annotations/annotations/CsvProperty.class
+eu/senla/andyavd/hotel/annotations/enums/PropertyType.class
+eu/senla/andyavd/hotel/annotations/annotations/CsvEntity.class

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="hotel-web">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="hotel-controller-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-controller/hotel-controller">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-services-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-services/hotel-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-di-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-di/hotel-di">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-annotations-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-annotations/hotel-annotations">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-property-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-property/hotel-property">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-dao-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-dao/hotel-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-api-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-api/hotel-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-utils-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-utils/hotel-utils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hotel-entity-0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hotel-entity/hotel-entity">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="hotel-web"/>
+        <property name="java-output-path" value="/hotel-web/target/classes"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,6 @@
+eu/senla/andyavd/hotel/services/VisitorService.class
+eu/senla/andyavd/hotel/services/RoomService.class
+eu/senla/andyavd/hotel/services/UserService.class
+eu/senla/andyavd/hotel/services/RoomHistoryService.class
+eu/senla/andyavd/hotel/services/AuditService.class
+eu/senla/andyavd/hotel/services/ServiceService.class

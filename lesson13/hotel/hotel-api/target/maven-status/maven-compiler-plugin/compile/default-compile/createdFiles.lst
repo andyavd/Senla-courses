@@ -1,0 +1,14 @@
+eu/senla/andyavd/hotel/api/services/IAuditService.class
+eu/senla/andyavd/hotel/api/services/IRoomService.class
+eu/senla/andyavd/hotel/api/dao/IAuditDao.class
+eu/senla/andyavd/hotel/api/dao/IServiceDao.class
+eu/senla/andyavd/hotel/api/controller/IHotelManager.class
+eu/senla/andyavd/hotel/api/services/IServiceService.class
+eu/senla/andyavd/hotel/api/services/IUserService.class
+eu/senla/andyavd/hotel/api/dao/IRoomHistoryDao.class
+eu/senla/andyavd/hotel/api/dao/IVisitorDao.class
+eu/senla/andyavd/hotel/api/services/IVisitorService.class
+eu/senla/andyavd/hotel/api/dao/IGenericDao.class
+eu/senla/andyavd/hotel/api/dao/IUserDao.class
+eu/senla/andyavd/hotel/api/dao/IRoomDao.class
+eu/senla/andyavd/hotel/api/services/IRoomHistoryService.class

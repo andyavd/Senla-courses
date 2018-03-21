@@ -1,0 +1,11 @@
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/app/VisitorServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/app/GetServicesServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/security/LogoutServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/security/AuthentificationFilter.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/app/GetHistoriesServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/security/RegistrationServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/app/RoomServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/app/ServiceServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/app/GetVisitorsServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/app/GetRoomsServlet.java
+/Users/andreiaudzeichyk/eclipse-workspace/hotel/hotel-web/src/main/java/eu/senla/andyavd/hotel/web/security/LoginServlet.java
